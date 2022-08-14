@@ -1,0 +1,29 @@
+.cabecalho-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    .div-logo{
+        margin-left: 1em;
+    }
+    .logo{
+        width: 125px;
+        height: 120px;
+    }
+
+    .div-icons{
+        display: flex;
+        flex-direction: row;
+
+        margin-right: 1em;
+    }
+    .icons-header{
+        width: 36px; height: 36px;
+    }
+
+    .fav,
+    .ent{
+        margin-right: 1em;
+    }
+}
