@@ -5,6 +5,7 @@ import SliderImg from './components/slider-img'
 import SliderMarcas from './components/slider-marcas'
 import Cabecalho from '../components/cabecalho'
 import Navs from '../components/navs'
+import Fixo from "./components/fixos";
 
 export default function Index(){
 
@@ -14,6 +15,7 @@ export default function Index(){
         <Navs />
         <SliderImg />
         <SliderMarcas />
+        <Fixo/>
     </div>
     )
 }

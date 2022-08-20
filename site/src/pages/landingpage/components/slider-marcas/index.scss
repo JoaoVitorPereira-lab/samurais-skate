@@ -7,6 +7,33 @@
     text{
         font-size: 26px;
         font-family: 'Dela Gothic One', cursive;
+        color: #000;
     }
     
+    .div-marcas{
+        display: flex;
+        flex-direction: row;
+        margin-top: 5em;
+    }
+    .img-marcas{
+        margin-left: 5px;
+        width: 220px;
+        height: 393px;
+    }
+
+    .seta{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        margin-top: 12em;
+        margin-left: -1em;
+        }
+    .seta-direita{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        margin-top: 12em;
+        margin-left: -2.1em;
+    }
+
 }
