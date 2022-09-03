@@ -8,17 +8,31 @@ export default function App() {
   return (
     <div className="slider-container">
     <Carousel>
-        <Carousel.Item autoPlay={true} interval={2000}>
+        <Carousel.Item autoPlay={true} interval={1000}>
           <img
-            className="imgs"
+            className="d-block w-100"
             src="../images/1.png"
             alt=""
           />
         </Carousel.Item>
-        <Carousel.Item interval={2000}>
+        <Carousel.Item interval={1000}>
           <img
-            className="imgs"
+            className="d-block w-100"
             src="../images/2.jpg"
+            alt=""
+          />
+        </Carousel.Item>
+        <Carousel.Item interval={1000}>
+          <img
+            className="d-block w-100"
+            src="../images/3.jpg"
+            alt=""
+          />
+        </Carousel.Item>
+        <Carousel.Item interval={1000}>
+          <img
+            className="d-block w-100"
+            src="../images/4.jpg"
             alt=""
           />
         </Carousel.Item>

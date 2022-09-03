@@ -35,9 +35,6 @@ export default function Fixo(){
                 </div>
 
             </div>
-
-            
-
         </section>
 
     )

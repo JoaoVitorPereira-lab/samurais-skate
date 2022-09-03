@@ -11,7 +11,6 @@ export default function App() {
       <div className="div-marcas">
 
         <div>
-          
           <img className="seta" src="../images/seta.png.png" alt=""/> 
           <img className="img-marcas" src="../images/HOCKS 1.png" alt="" />
         </div>
@@ -41,3 +40,6 @@ export default function App() {
     </section>
   );
 }
+
+/* 
+    */

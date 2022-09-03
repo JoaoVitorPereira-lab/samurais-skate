@@ -1,0 +1,34 @@
+h2,
+span{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.rodape-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .logo-rodape{
+        display: none;
+        width: 8.6em;  height: 8em;
+    }
+
+    .contato,
+    .rdsc,
+    .icon-pag-a-vista,
+    .icon-pag-a-prazo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .logo-contatos{
+        width: 2em;  height: 2em;
+    }
+    .div-contatos span:not(.span-telefone){
+        margin-left: 1em;
+    }
+    .span-telefone{
+        margin-left: 2em;
+    }
+}
