@@ -2,6 +2,13 @@ import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
 
+//Importando os EndPoints
+import UsuarioController from './Controller/UsuarioController.js'
+
+//EndPoints
+server.use(UsuarioController);
+
+
 // Configurando o Server
 const server = express();
 server.use(cors())
