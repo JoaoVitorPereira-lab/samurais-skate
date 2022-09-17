@@ -1,0 +1,30 @@
+.comp-cabecalho{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    img{
+        width: 8em; height: 8em;
+        margin-left: -2em;
+    }
+    p{
+        font-family: "Dekko", cursive;
+        font-size: 24px;
+    }
+
+    .bolinha{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 2.2em; height: 2.5em;
+        background-color: #E52A45;
+        border-radius: 50%;
+    }
+    span{
+        font-family: "Inter", sans-serif;
+        font-size: 24px;
+        color: #fff;
+    }
+}

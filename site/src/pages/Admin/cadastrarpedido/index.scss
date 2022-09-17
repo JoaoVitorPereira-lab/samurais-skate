@@ -1,0 +1,82 @@
+.page-cadastrar-produto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .comps{
+        width: 100%;
+    }
+
+
+/* COMEÇO TÍTULO */
+    .div-cadastrar{
+        margin-top: 4em;
+        border: 1.8px solid #000;
+        width: 75%;
+    }
+    .tite{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 1.2em;
+        width: 18em;
+    }
+    .tite hr{
+        border: none;
+        border-radius: .5em;
+        background-color: #E52A45;
+        height: 2em; width: .4em;
+    }
+    .tite h2{
+        font-family: "Dela Gothic One", cursive;
+        font-size: 18px;
+    }
+/* FIM TÍTULO */
+
+
+/* COMEÇO INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
+    .infos-cadastrar{
+        display: flex;
+        flex-direction: row;
+        margin: 6em 1.3em 3em 2.2em;
+    }
+
+    .sec-inputs-imgs input{
+        display: none;
+    }
+    .sec-inputs-imgs label {
+        margin: 1em;
+
+        padding: 4.2em 2.5em 3.2em 2.3em;
+        border: 2px solid #DFDFDF;
+        border-radius: .3em;
+        background-color: #fff;
+        color: #FFF;
+    }
+    
+    .p1, 
+    .p2{
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: #D1C9C9;
+    }
+    .p1{
+        margin: 4em 0em 4em 1.3em;
+        width: 7em;
+    }
+    .p2{
+        margin: 4em 0em 0em 1.3em;
+        width: 7em;
+    }
+/* FIM INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
+
+
+
+/* COMEÇO INFOS PRODUTO (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
+    .sec-infos-produto-1{
+        display: flex;
+        flex-direction: row;
+    }
+}
