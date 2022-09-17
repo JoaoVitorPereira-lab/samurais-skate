@@ -12,6 +12,7 @@
 /* COMEÇO TÍTULO */
     .div-cadastrar{
         margin-top: 4em;
+        margin-bottom: 3em;
         border: 1.8px solid #000;
         width: 75%;
     }
@@ -73,10 +74,228 @@
 /* FIM INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
 
 
+/* COMEÇO DE ESTILIZAÇÃO PARA OS INPUTS IGUAIS */
+.sec-infos-produto-1 input,
+.sec-infos-produtos-2 input{
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
 
-/* COMEÇO INFOS PRODUTO (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
-    .sec-infos-produto-1{
+    padding-left: .6em;
+    border: 1px solid #DFDFDF;
+    border-radius: .3em;
+}
+.sec-infos-produto-1 input:focus,
+.sec-infos-produtos-2 input:focus{
+    outline: none;
+}
+.sec-infos-produto-1 input::placeholder,
+.sec-infos-produtos-2 input::placeholder{
+    color: #CCCCCC;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+/* FIM DE ESTILIZAÇÃO PARA OS INPUTS IGUAIS */
+
+
+/* COMEÇO INFOS PRODUTO 1 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
+    .sec-infos-produto-1 {
+        display: flex;
+        flex-direction: column;
+        margin-top: -2em;
+    }
+    
+
+/* COMEÇO INFOS 1 (INFORMAÇÕES PT 1) */
+    .div-infos-1{
         display: flex;
         flex-direction: row;
+        align-items: center;
+    }
+    .div-infos-1 input{
+        margin-left: 1.2em;
+    }
+    .sla{
+        margin-left: 1.3em;
+    }
+    #titulos{
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    #nome{
+        height: 2.3em; width: 10.5em;
+    }
+    #preco{
+        height: 2.3em; width: 8.3em;
+    }
+    label:not(#titulos){
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: .3em;
+    }
+/* FIM INFOS 1 (INFORMAÇÕES PT 1) */
+
+
+/* COMEÇO INFOS 2 (INFORMAÇÕES PT 2) */
+    .div-infos-2{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+    }
+    .div-infos-2 input:not(#skate){
+        margin-left: 1em;
+    }
+    .tipo-skate{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 1.4em;
+    }
+/* FIM INFOS 2 (INFORMAÇÕES PT 2) */
+
+
+/* COMEÇO INFOS 3 (INFORMAÇÕES PT 3) */
+    .div-infos-3{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 1.5em;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+    #estoque{
+        font-weight: 700;
+        width: 3em; height: 1.5em;
+        background-color: #EFEFEF;
+        border: 1px solid #000;
+        border-radius: .1em;
+        color: #000;
+        margin-left: .7em;
+    }
+
+    .div-infos-3 button{
+        background-color: #EFEFEF;
+        border: 1px solid #000;
+        border-radius: .1em;
+        color: #000;
+        margin-left: .5em;
+    }
+
+    .promocao{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 3.7em;
+    }
+/* FIM INFOS 3 (INFORMAÇÕES PT 3) */
+
+
+/* COMEÇO INFOS 4 (INFORMAÇÕES PT 4) */
+    .div-infos-4{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1.5em;
+    }
+/* FIM INFOS 4 (INFORMAÇÕES PT 4) */
+
+
+/* COMEÇO LINHA 1 (LINHA PT 1) */
+    .sec-linha1{
+        margin-left: -12.8em;
+        margin-right: -11.8em;
+        margin-top: 10.9em;
+    }
+    .sec-linha1 hr{
+        width: 443px;
+        height: 0px;
+
+        border: 1px solid #CCCCCC;
+        transform: rotate(90deg);
+    }
+/* FIM LINHA 1 (LINHA PT 1) */
+
+
+/* COMEÇO LINHA 2 (LINHA PT 2) */
+    .sec-linha2{
+        margin-left: -12em;
+        margin-right: -11.8em;
+        margin-top: 11em;
+    }
+    .sec-linha2 hr{
+        width: 435px;
+        height: 0px;
+
+        border: 1px solid #CCCCCC;
+        transform: rotate(90deg);
+    }
+/* FIM LINHA 2 (LINHA PT 2) */
+
+/* FIM INFOS PRODUTO 1 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
+
+
+
+/* COMEÇO INFOS PRODUTO 2 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
+    .sec-infos-produtos-2{
+        display: flex;
+        flex-direction: column;
+        margin-left: -1.2em;
+        margin-top: -2em;
+    }
+
+/* COMEÇO DIV DA DESCRIÇÃO GERAL */
+    .div-descricao{
+        display: flex;
+        flex-direction: row;
+    }
+    .div-descricao label{
+        margin-top: 0.8em;
+        margin-right: 0.7em;
+    }
+    .div-descricao input{
+        width: 15.7em; height: 18em;
+    }
+/* FIM DIV DA DESCRIÇÃO GERAL */
+
+/* COMEÇO DIV DA CATEGORIA */
+    .div-categoria{
+        display: flex;
+        flex-direction: row;
+        margin-top: 2.8em;
+    }
+
+    .categorias{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0.8em;
+    }
+    .categorias div:not(.div-categorias-not){
+        margin-top: .3em;
+    }
+/* FIM DIV DA CATEGORIA */
+
+/* FIM INFOS PRODUTO 2 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
+
+/* COMEÇO DIV DO BOTÃO DE SALVAR */
+    .div-button-salvar button{
+        text-align: center;
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 16px;
+        color: #FFFFFF;
+        
+        width: 100px;
+        height: 36px;
+
+        background-color: #E52A45;
+        border: transparent;
+        border-radius: 3px;
     }
 }
