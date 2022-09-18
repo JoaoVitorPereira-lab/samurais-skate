@@ -94,6 +94,67 @@ create table tb_produto_curtido (
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
 
+create table tb_pedido_status (
+	ID_PEDIDO_STATUS		int primary key auto_increment,
+	NM_STATUS				varchar(100),
+	IMG_STATUS				varchar(600)
+);
+
+create table tb_pedido (
+	ID_PEDIDO				int primary key auto_increment,
+	ID_CONTA_USUARIO		int,
+	ID_USUARIO_ENDERECO		int,
+	ID_PEDIDO_STATUS		int,
+	TP_PAGAMENTO			varchar(100),
+	DT_PEDIDO				date,
+	NR_VALOR				decimal (15, 2),
+    
+    foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO),
+    foreign key (ID_USUARIO_ENDERECO) references tb_usuario_endereco (ID_USUARIO_ENDERECO),
+    foreign key (ID_PEDIDO_STATUS) references tb_pedido_status (ID_PEDIDO_STATUS)
+);
+
+create table tb_pedido_pag_cartao (
+	ID_PEDIDO_PAG_CARTAO		int primary key auto_increment,
+	ID_PEDIDO					int,
+	NR_CARTAO					int,
+	DT_VENCIMENTO				date,
+	NM_DONO_DO_CARTAO			varchar(100),
+	BT_SALVAR_CARTAO			boolean,
+	NR_VALOR					decimal(15, 2),
+    
+    foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
+);
+
+create table tb_pedido_pag_boleto (
+	ID_PEDIDO_PAG_BOLETO 		int primary key auto_increment,
+	ID_PEDIDO					int,
+	NR_CODIGO					int,
+	DT_VENCIMENTO				datetime,
+	NR_VALOR					decimal(15, 2),
+    
+	foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
+);
+
+create table tb_pedido_pag_pix (
+	ID_PEDIDO_PAG_PIX 		int primary key auto_increment,
+	ID_PEDIDO					int,
+	NR_VALOR					decimal(15, 2),
+	DT_VENCIMENTO				datetime,
+	NM_USUARIO					varchar(100),
+    DS_CHAVE					varchar(200),
+    
+	foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
+);
+
+create table tb_produto_pedido (
+	ID_PRODUTO_CATEGORIA		int primary key auto_increment,
+	ID_PRODUTO					int,
+	ID_PEDIDO					int,
+    
+    foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO),
+    foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
+);
 
 
 
