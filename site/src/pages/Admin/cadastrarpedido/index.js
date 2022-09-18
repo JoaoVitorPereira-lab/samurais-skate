@@ -3,6 +3,7 @@ import Navs from '../componentsAdmin/navs'
 import Cabecalho from '../componentsAdmin/cabecalho'
 
 export default function CadastrarProduto(){
+
     return(
         <section className="page-cadastrar-produto">
             <div className="comps">
@@ -91,7 +92,7 @@ export default function CadastrarProduto(){
 
                         <div className="div-descricao">
                             <label id="titulos"> Descrição Geral: </label>
-                            <input type="text" placeholder="Descrição do Produto"/>
+                            <textarea placeholder="Descrição do Produto"/>
                         </div>
 
                         <div className="div-categoria">
