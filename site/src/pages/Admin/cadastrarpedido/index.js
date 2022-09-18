@@ -33,26 +33,32 @@ export default function CadastrarProduto(){
                     </section>
 
 
+                    <section className="sec-linha1">
+                        <hr />
+                    </section>
+
 
                     <section className="sec-infos-produto-1">
-                        <hr />
 
-                        <div>
-                            <label for="nome"> Nome: </label>
+                        <div className="div-infos-1">
+                            <label for="nome" id="titulos"> Nome: </label>
                             <input type="text" id="nome" placeholder="Nome do Produto"/>
 
-                            <label for="preco"> Preço: </label>
+                            <label for="preco" id="titulos" className="sla"> Preço: </label>
                             <input type="number" id="preco" placeholder="R$ 000,00"/>
                         </div>
 
-                        <div>
-                            <label> Tipo: </label>
+                        <div className="div-infos-2">
+                            <label id="titulos"> Tipo: </label>
 
-                            <input type="checkbox" id="skate"/>
-                            <label for="skate"> Skate </label>
+                            <div className="tipo-skate">
+                                <input type="checkbox" id="skate"/>
+                                <label for="skate"> Skate </label>
+                            </div>
 
                             <input type="checkbox" id="bone"/>
                             <label for="bone"> Boné </label>
+                            
 
                             <input type="checkbox" id="tenis"/>
                             <label for="tenis"> Tênis </label>
@@ -61,35 +67,38 @@ export default function CadastrarProduto(){
                             <label for="acessorios"> Acessórios </label>
                         </div>
 
-                        <div>
-                            <label> Estoque: </label>
+                        <div className="div-infos-3">
+                            <label id="titulos"> Estoque: </label>
                             <input type="number" id="estoque"/>
                             <button> + </button>
 
-                            <input type="checkbox"/>
-                            <label> Promoção </label>
+                            <div className="promocao">
+                                <input type="checkbox"/>
+                                <label> Promoção </label>
+                            </div>
                         </div>
 
-                        <div>
-                            <label> Marca: </label>
+                        <div className="div-infos-4">
+                            <label id="titulos"> Marca: </label>
                         </div>
                     </section>
 
-                    <section className="sec-linha">
+                    <section className="sec-linha2">
                         <hr />
                     </section>
 
                     <section className="sec-infos-produtos-2">
 
-                        <div>
-                            <label> Descrição Geral: </label>
+                        <div className="div-descricao">
+                            <label id="titulos"> Descrição Geral: </label>
                             <input type="text" placeholder="Descrição do Produto"/>
                         </div>
 
-                        <div>
-                            <label> Categoria: </label>
-                            <div>
-                                <div>
+                        <div className="div-categoria">
+                            <label id="titulos"> Categoria: </label>
+                            
+                            <aside className="categorias">
+                                <div className="div-categorias-not">
                                     <input type="checkbox" id="iniciante"/>
                                     <label for="iniciante"> Iniciante </label>
                                 </div>
@@ -103,12 +112,12 @@ export default function CadastrarProduto(){
                                     <input type="checkbox" id="profissional"/>
                                     <label for="profissional"> Profissional </label>
                                 </div>
-                            </div>
+                            </aside>
                         </div>
                     </section>
                 </div>
 
-                <div>
+                <div className="div-button-salvar">
                     <button> Salvar </button>
                 </div>
             </div>
