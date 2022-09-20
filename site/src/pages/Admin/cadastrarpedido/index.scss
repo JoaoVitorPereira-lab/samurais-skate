@@ -14,7 +14,7 @@
         margin-top: 4em;
         margin-bottom: 3em;
         border: 1.8px solid #000;
-        width: 75%;
+        width: 67em;
     }
     .tite{
         display: flex;
@@ -64,11 +64,11 @@
         color: #D1C9C9;
     }
     .p1{
-        margin: 4em 0em 4em 1.3em;
+        margin: 4em 0em 4em 0.5em;
         width: 7em;
     }
     .p2{
-        margin: 4em 0em 0em 1.3em;
+        margin: 4em 0em 0em 0.5em;
         width: 7em;
     }
 /* FIM INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
@@ -76,21 +76,25 @@
 
 /* COMEÇO DE ESTILIZAÇÃO PARA OS INPUTS IGUAIS */
 .sec-infos-produto-1 input,
-.sec-infos-produtos-2 input{
+.sec-infos-produtos-2 input,
+.div-descricao textarea{
     font-family: "Inter", sans-serif;
     font-size: 14px;
     font-weight: 500;
+    color: #000;
 
     padding-left: .6em;
     border: 1px solid #DFDFDF;
     border-radius: .3em;
 }
 .sec-infos-produto-1 input:focus,
-.sec-infos-produtos-2 input:focus{
+.sec-infos-produtos-2 input:focus,
+.div-descricao textarea:focus{
     outline: none;
 }
 .sec-infos-produto-1 input::placeholder,
-.sec-infos-produtos-2 input::placeholder{
+.sec-infos-produtos-2 input::placeholder,
+.div-descricao textarea::placeholder{
     color: #CCCCCC;
     font-family: "Inter", sans-serif;
     font-size: 14px;
@@ -258,8 +262,10 @@
         margin-top: 0.8em;
         margin-right: 0.7em;
     }
-    .div-descricao input{
-        width: 15.7em; height: 18em;
+    .div-descricao textarea{
+        resize: none;
+        padding-top: .7em;
+        width: 17em; height: 18em;
     }
 /* FIM DIV DA DESCRIÇÃO GERAL */
 
@@ -284,6 +290,10 @@
 /* FIM INFOS PRODUTO 2 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
 
 /* COMEÇO DIV DO BOTÃO DE SALVAR */
+    .div-button-salvar{
+        margin: 1em 1.7em 1.5em 0em;
+        float: right;
+    }
     .div-button-salvar button{
         text-align: center;
         font-family: 'Inter';
