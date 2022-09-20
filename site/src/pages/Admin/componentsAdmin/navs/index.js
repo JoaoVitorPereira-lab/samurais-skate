@@ -1,23 +1,17 @@
-import { Link } from 'react-router-dom'
 import "./index.scss";
 
 export default function Navs(props) {
-
-    function verificarMenuSelecionado(menu){
-        if (menu === props.selecionado)
-            return 'selecionado';
-        else
-            return '';
-    }
 
     return (
         <nav className="comp-navs">
 
             <div className="div-navs">
+
                 <div className="navs-produtos not">
                     <img src="../images/home.png" className="imgs-nav" alt="" />
                     <span> Home </span>
                 </div>
+
 
                 <div className="navs-produtos">
                     <img src="../images/cadastrar.png" className="imgs-nav" alt="" />
