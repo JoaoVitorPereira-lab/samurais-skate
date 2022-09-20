@@ -1,8 +1,15 @@
 import "./index.scss"
 import Navs from '../componentsAdmin/navs'
 import Cabecalho from '../componentsAdmin/cabecalho'
+import { useState } from "react";
 
 export default function CadastrarProduto(){
+
+    const [estoque, setEstoque] = useState(1);
+
+    function AumentarEstoque(){
+        setEstoque(estoque + 1);
+    }
 
     return(
         <section className="page-cadastrar-produto">
@@ -70,8 +77,8 @@ export default function CadastrarProduto(){
 
                         <div className="div-infos-3">
                             <label id="titulos"> Estoque: </label>
-                            <input type="number" id="estoque"/>
-                            <button> + </button>
+                            <input type="number" id="estoque" value={estoque}/>
+                            <button onClick={AumentarEstoque}> + </button>
 
                             <div className="promocao">
                                 <input type="checkbox"/>
