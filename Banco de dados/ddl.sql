@@ -58,13 +58,14 @@ create table tb_produto	(
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
 	VL_AVALIACAO		int,
-	DT_LANCAMENTO		date,
+    NR_ESTOQUE			int,
 	DS_TIPO				varchar(100),
     
     foreign key (ID_MARCA) references tb_marca (ID_MARCA),
     foreign key (ID_CATEGORIA) references tb_categoria (ID_CATEGORIA),
     foreign key (ID_TIPO) references tb_tipo (ID_TIPO)
 );
+
 
 create table tb_imagem_produto (
 	ID_IMAGEM_PRODUTO		int primary key auto_increment,
