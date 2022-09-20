@@ -1,19 +1,23 @@
 import { Router } from 'express';
-import { login } from '../Repository/UsuarioRepository';
+import { Login } from '../repository/usuarioRepository.js'
 
 const server = Router();
 
-server.post('/api/login', async (req, resp) =>{
+server.post('/api/login', async (req,resp) =>{
     try {
-        const { email, senha } = req.body;
 
-        const resposta = await login(email,senha)
-        if(!resposta) throw new Error("Credencias inválidas!")
-        resp.status(200).send(resposta)
+        const {email, senha} = req.body;
+
+        const resposta = await Login(email, senha)
+        if(!resposta) throw new Error("Credencias INVÁLIDAS")
         
-    } catch (err) {
+        resp.status(200).send(resposta)
+    } 
+    catch (err) {
         resp.status(401).send({
-            Erro: err.message
+            Erro:err.message
         })
     }
-} )  
+})
+
+export default server;
