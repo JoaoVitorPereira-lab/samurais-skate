@@ -2,18 +2,21 @@ create database SAMURAISDB;
 
 use samuraisdb;
 
+-- Tabela do Admin
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,
       DS_EMAIL		varchar(100),
       DS_SENHA      varchar(100)
 );
 
+--Tabela do Usuário
 create table tb_conta_usuario (
 	 ID_CONTA_USUARIO 		int primary key auto_increment,
 	 NM_USUARIO				varchar(100),
 	 NM_SOBRENOME			varchar(100)
 );
 
+--Tabela do Usuário Login
 create table tb_login_usuario (
 	ID_LOGIN_USUARIO	int primary key auto_increment,
 	ID_CONTA_USUARIO	int,
@@ -23,6 +26,7 @@ create table tb_login_usuario (
     foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO)
 );
 
+--Tabela Endereço do Usuário
 create table tb_usuario_endereco (
 	  ID_USUARIO_ENDERECO 		int primary key auto_increment,
 	  ID_CONTA_USUARIO			int,
@@ -33,21 +37,25 @@ create table tb_usuario_endereco (
       foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO)
 );
 
+--Tabela da marca
 create table tb_marca (
 	ID_MARCA	int primary key auto_increment,
 	NM_MARCA	varchar(100)
 );
 
+--Tabela da categoria
 create table tb_categoria (
 	ID_CATEGORIA		int primary key auto_increment,
 	NM_CATEGORIA		varchar(100)
 );
 
+--Tabela dos tipos de produto
 create table tb_tipo (
 	ID_TIPO 			int primary key auto_increment,
  	NM_TIPO				varchar(100)
 );
 
+--Tabela do produto
 create table tb_produto	(
 	ID_PRODUTO			int primary key auto_increment,
 	ID_MARCA			int,
@@ -66,7 +74,7 @@ create table tb_produto	(
     foreign key (ID_TIPO) references tb_tipo (ID_TIPO)
 );
 
-
+--Tabela da imagem do produto
 create table tb_imagem_produto (
 	ID_IMAGEM_PRODUTO		int primary key auto_increment,
 	ID_PRODUTO				int,
@@ -75,6 +83,7 @@ create table tb_imagem_produto (
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
 
+--Tabela da avaliação do produto
 create table tb_produto_avaliacao (
 	ID_PRODUTO_AVALIACAO 	int primary key auto_increment,
 	ID_CONTA_USUARIO		int,
@@ -86,6 +95,7 @@ create table tb_produto_avaliacao (
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
 
+--Tabela do produto curtido
 create table tb_produto_curtido (
 	ID_PRODUTO_CURTIDO 	int primary key auto_increment,
 	ID_PRODUTO				int,
@@ -95,12 +105,14 @@ create table tb_produto_curtido (
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
 
+--Tabela do status do pedido
 create table tb_pedido_status (
 	ID_PEDIDO_STATUS		int primary key auto_increment,
 	NM_STATUS				varchar(100),
 	IMG_STATUS				varchar(600)
 );
 
+--Tabela do pedido
 create table tb_pedido (
 	ID_PEDIDO				int primary key auto_increment,
 	ID_CONTA_USUARIO		int,
@@ -115,6 +127,7 @@ create table tb_pedido (
     foreign key (ID_PEDIDO_STATUS) references tb_pedido_status (ID_PEDIDO_STATUS)
 );
 
+--Tabela de pagamento em cartão
 create table tb_pedido_pag_cartao (
 	ID_PEDIDO_PAG_CARTAO		int primary key auto_increment,
 	ID_PEDIDO					int,
@@ -127,6 +140,7 @@ create table tb_pedido_pag_cartao (
     foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
 );
 
+--Tabela de pagamento boleto
 create table tb_pedido_pag_boleto (
 	ID_PEDIDO_PAG_BOLETO 		int primary key auto_increment,
 	ID_PEDIDO					int,
@@ -137,6 +151,7 @@ create table tb_pedido_pag_boleto (
 	foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
 );
 
+--Tabela de pagamento pix
 create table tb_pedido_pag_pix (
 	ID_PEDIDO_PAG_PIX 		int primary key auto_increment,
 	ID_PEDIDO					int,
@@ -148,6 +163,7 @@ create table tb_pedido_pag_pix (
 	foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
 );
 
+--Tabela Produto pedido
 create table tb_produto_pedido (
 	ID_PRODUTO_CATEGORIA		int primary key auto_increment,
 	ID_PRODUTO					int,
@@ -156,17 +172,3 @@ create table tb_produto_pedido (
     foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO),
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
