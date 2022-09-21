@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { InserirProduto } from "../repository/AdminRepository.js";
+import { InserirProduto, SalvarImagem } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
-const Upload = multer({ dest: "storage/imgproduto" });
+const upload = multer({ dest: "storage/imgproduto" });
 
-server.post("/api/admin/produto", async (req, resp) => {
+server.post('/api/admin/produto', async (req, resp) => {
   try {
     const novoproduto = req.body;
 
@@ -38,5 +38,26 @@ server.post("/api/admin/produto", async (req, resp) => {
     });
   }
 });
+
+server.post( '/api/admin/:id/imagem', upload.single("imgproduto"), async (req, resp) => {
+    try {
+      const { id } = req.params
+
+      const imagem = req.file.path
+
+      const resposta = await SalvarImagem(imagem, id)
+
+      resp.status(204).send()
+
+      if (resposta != 1) throw new Error("Não foi possível adicionar a imagem!")
+
+    } catch (err) {
+
+      resp.status(400).send({
+        erro: err.message,
+      });
+    }
+  }
+);
 
 export default server;

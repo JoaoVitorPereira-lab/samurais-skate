@@ -15,4 +15,8 @@ server.use(express.json())
 server.use(usuarioController)
 server.use(adminController)
 
+
+//Liberar rota para a imagem
+server.use('/storage/imgproduto' , express.static('storage/imgproduto'));
+
 server.listen(process.env.PORT, () => console.log(`API online na Porta ${process.env.PORT}`))

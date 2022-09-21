@@ -9,3 +9,11 @@ export async function InserirProduto (produto){
 
     return produto
 }
+
+export async function SalvarImagem (imagem, id) {
+    const comando = ` INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 
+                      VALUES(?,?)`
+
+    const [resposta] = await con.query(comando, [id,imagem]);
+    return resposta.affectedRows;
+}
