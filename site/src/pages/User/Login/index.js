@@ -18,9 +18,16 @@ export default function Login() {
                 <div className="cx2">
                     <h6>Senha</h6>
                     <input className="senha" type="text"></input>
-                    <button className="esqueceu">Esqueceu a senha?</button>
-                    <button className="entrar">Entrar</button>
+                    <a className="esqueceu">Esqueceu a senha?</a>
                 </div>
+                <div className="botao">
+                <button className="entrar">ENTRAR</button>
+                </div>
+                <div className="criar_conta">
+                    <a>criar conta</a>
+
+                </div>
+
 
             </div>
         </section>
