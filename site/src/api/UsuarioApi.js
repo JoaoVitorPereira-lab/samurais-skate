@@ -4,7 +4,7 @@ const api = axios.create({
 })
 
 
-export default function Login(email,senha){
+export  async function EntrarLogin(email,senha){
     const resposta = await api.post('/api/login', {
         email: email,
         senha: senha
