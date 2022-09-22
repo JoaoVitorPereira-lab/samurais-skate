@@ -1,14 +1,55 @@
-import "./index.scss"
-import Navs from '../componentsAdmin/navs'
-import Cabecalho from '../componentsAdmin/cabecalho'
-import { useState } from "react";
+import "./index.scss";
+import Navs from '../componentsAdmin/navs';
+import Cabecalho from '../componentsAdmin/cabecalho';
+import { EndPointCadastrarProduto, alterarProduto } from "../../../api/AdminAPI";
+import { useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [estoque, setEstoque] = useState(1);
+    const [mostrar, setMostrar] = useState(false);
 
-    function AumentarEstoque(){
-        setEstoque(estoque + 1);
+    const [marca, setMarca] = useState('');
+    const [categoria, setCategoria] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [nome, setNome] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [promocao, setPromocao] = useState(false);
+    const [preco, setPreco] = useState();
+    const [avaliacao, setAvaliacao] = useState(0);
+    const [estoque, setEstoque] = useState(0);
+    const [id, setId] = useState(0);
+
+    function exibir(){
+        setMostrar(true);
+    }
+
+    async function salvarClick(){
+        try {
+                const novoAgendamento = await EndPointCadastrarProduto(marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque);
+
+                setId(novoAgendamento.id);
+                alert('Agendamento cadastrado com sucesso 🚀');
+        } catch (err) {
+            if(err.response)
+                console.log(err.response.data.erro);  
+            else{
+                console.log(err.message);
+            }
+        }
+        
+    }
+
+    function novoClick(){
+        setMarca('');
+        setCategoria('');
+        setTipo('');
+        setNome('');
+        setDescricao(0);
+        setPromocao(false);
+        setPreco(0);
+        setAvaliacao(0);
+        setEstoque(0);
+        setId(0);
     }
 
     return(
@@ -47,86 +88,138 @@ export default function CadastrarProduto(){
 
 
                     <section className="sec-infos-produto-1">
+                        
+                            <div className="div-infos-1">
+                                <label for="nome" id="titulos"> Nome: </label>
+                                <input type="text" id="nome" placeholder="Nome do Produto" 
+                                       value={nome} 
+                                       onChange={e => setNome(e.target.value)}
+                                />
 
-                        <div className="div-infos-1">
-                            <label for="nome" id="titulos"> Nome: </label>
-                            <input type="text" id="nome" placeholder="Nome do Produto"/>
-
-                            <label for="preco" id="titulos" className="sla"> Preço: </label>
-                            <input type="number" id="preco" placeholder="R$ 000,00"/>
-                        </div>
-
-                        <div className="div-infos-2">
-                            <label id="titulos"> Tipo: </label>
-
-                            <div className="tipo-skate">
-                                <input type="checkbox" id="skate"/>
-                                <label for="skate"> Skate </label>
+                                <label for="preco" id="titulos" className="sla"> Preço: </label>
+                                <input type="number" id="preco" placeholder="R$ 000,00"
+                                       value={preco} 
+                                       onChange={e => setPreco(e.target.value)}
+                                />
                             </div>
 
-                            <input type="checkbox" id="bone"/>
-                            <label for="bone"> Boné </label>
-                            
+                            <div className="div-informacoes">
 
-                            <input type="checkbox" id="tenis"/>
-                            <label for="tenis"> Tênis </label>
+                            <div className="div-infos-2">
+                                <label id="titulos"> Tipo: </label>
 
-                            <input type="checkbox" id="acessorios"/>
-                            <label for="acessorios"> Acessórios </label>
-                        </div>
+                                <div className="tipo-skate">
+                                    <div className="div-skate">
+                                        <input type="checkbox" id="skate" onChange={exibir} />
+                                        <label id="label" for="skate"> Skate </label>
 
-                        <div className="div-infos-3">
-                            <label id="titulos"> Estoque: </label>
-                            <input type="number" id="estoque" value={estoque}/>
-                            <button onClick={AumentarEstoque}> + </button>
+                                        <div className="div-tipos div-bone">
+                                            <input type="checkbox" id="bone"/>
+                                            <label id="label" for="bone"> Boné </label>
+                                        </div>
+                                        
+                                        <div className="div-tipos div-tenis">
+                                            <input type="checkbox" id="tenis"/>
+                                            <label id="label" for="tenis"> Tênis </label>
+                                        </div>
 
-                            <div className="promocao">
-                                <input type="checkbox"/>
-                                <label> Promoção </label>
+                                        <div className="div-tipos div-acessorios">
+                                            <input type="checkbox" id="acessorios"/>
+                                            <label id="label" for="acessorios"> Acessórios </label>
+                                        </div>
+                                    </div>
+
+                                    { mostrar == true &&
+                                        <div className="div-tipos-skate">
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Equipamento de proteção </label>
+                                            </div>
+
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Skate Montado </label>
+                                            </div>
+
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Rolamento </label>
+                                            </div>
+
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Shape </label>
+                                            </div>
+
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Truck </label>
+                                            </div>
+
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> Roda </label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+                            <div className="div-infos-3">
+                                <label id="titulos"> Estoque: </label>
+                                <input type="number" id="estoque"/>
+
+                                <div className="promocao">
+                                    <input type="checkbox"/>
+                                    <label> Promoção </label>
+                                </div>
+                            </div>
+
+                            <div className="div-infos-4">
+                                <label id="titulos"> Marca: </label>
                             </div>
                         </div>
-
-                        <div className="div-infos-4">
-                            <label id="titulos"> Marca: </label>
-                        </div>
-                    </section>
-
-                    <section className="sec-linha2">
-                        <hr />
                     </section>
 
                     <section className="sec-infos-produtos-2">
 
-                        <div className="div-descricao">
-                            <label id="titulos"> Descrição Geral: </label>
-                            <textarea placeholder="Descrição do Produto"/>
-                        </div>
+                        <section className="sec-linha2">
+                            <hr />
+                        </section>
 
-                        <div className="div-categoria">
-                            <label id="titulos"> Categoria: </label>
-                            
-                            <aside className="categorias">
-                                <div className="div-categorias-not">
-                                    <input type="checkbox" id="iniciante"/>
-                                    <label for="iniciante"> Iniciante </label>
-                                </div>
+                        <div className="div-informacoes2">
+                            <div className="div-descricao">
+                                <label id="titulos"> Descrição Geral: </label>
+                                <textarea placeholder="Descrição do Produto"/>
+                            </div>
 
-                                <div>
-                                    <input type="checkbox" id="semi"/>
-                                    <label for="semi"> Semi-Profissional </label>
-                                </div>
+                            <div className="div-categoria">
+                                <label id="titulos"> Categoria: </label>
+                                
+                                <aside className="categorias">
+                                    <div className="div-categorias-not">
+                                        <input type="checkbox" id="iniciante"/>
+                                        <label for="iniciante"> Iniciante </label>
+                                    </div>
 
-                                <div>
-                                    <input type="checkbox" id="profissional"/>
-                                    <label for="profissional"> Profissional </label>
-                                </div>
-                            </aside>
+                                    <div>
+                                        <input type="checkbox" id="semi"/>
+                                        <label for="semi"> Semi-Profissional </label>
+                                    </div>
+
+                                    <div>
+                                        <input type="checkbox" id="profissional"/>
+                                        <label for="profissional"> Profissional </label>
+                                    </div>
+                                </aside>
+                            </div>
                         </div>
                     </section>
                 </div>
 
                 <div className="div-button-salvar">
-                    <button> Salvar </button>
+                    <button onClick={salvarClick}> { id === 0 ? 'SALVAR' : 'ALTERAR' } </button> <nbsp/> <nbsp/>
+                    <button className="novo" onClick={novoClick}>NOVO</button>
                 </div>
             </div>
         </section>
