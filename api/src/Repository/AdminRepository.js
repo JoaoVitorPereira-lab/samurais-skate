@@ -11,9 +11,17 @@ export async function InserirProduto (produto){
 }
 
 export async function SalvarImagem (imagem, id) {
-    const comando = ` INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 
+    const comando = `INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 
                       VALUES(?,?)`
 
     const [resposta] = await con.query(comando, [id,imagem]);
     return resposta.affectedRows;
+}
+
+export async function Categoria (){
+    const comando = ` SELECT id_categoria           id,
+                             nm_categoria           nome
+                      FROM tb_categoria`
+const [resposta] = await con.query(comando);
+return resposta;
 }

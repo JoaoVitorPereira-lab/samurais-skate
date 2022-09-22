@@ -1,13 +1,14 @@
 import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { EndPointCadastrarProduto, alterarProduto } from "../../../api/AdminAPI";
-import { useState } from 'react';
+import { EndPointCadastrarProduto, alterarProduto, ListarCategoria } from "../../../api/AdminAPI";
+import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [mostrar, setMostrar] = useState(false);
+    const[categoriaas, setCategoriaas] = useState([]);
 
+    const [mostrar, setMostrar] = useState(false);
     const [marca, setMarca] = useState('');
     const [categoria, setCategoria] = useState('');
     const [tipo, setTipo] = useState('');
@@ -18,6 +19,14 @@ export default function CadastrarProduto(){
     const [avaliacao, setAvaliacao] = useState(0);
     const [estoque, setEstoque] = useState(0);
     const [id, setId] = useState(0);
+
+    async function CarregarCategorias(){
+        const resp = await ListarCategoria()
+        setCategoriaas(resp)
+    }
+    useEffect(() =>{
+        CarregarCategorias();
+    },[])
 
     function exibir(){
         setMostrar(true);
@@ -194,24 +203,18 @@ export default function CadastrarProduto(){
                             </div>
 
                             <div className="div-categoria">
+
                                 <label id="titulos"> Categoria: </label>
+
+                                {categoriaas.map(item => 
                                 
                                 <aside className="categorias">
-                                    <div className="div-categorias-not">
-                                        <input type="checkbox" id="iniciante"/>
-                                        <label for="iniciante"> Iniciante </label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="semi"/>
-                                        <label for="semi"> Semi-Profissional </label>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" id="profissional"/>
-                                        <label for="profissional"> Profissional </label>
-                                    </div>
+                                <div className="div-categorias-not">
+                                    <input type="checkbox" id="iniciante"/>
+                                    <label for="iniciante"> {item.nome} </label>
+                                </div>
                                 </aside>
+                                )}
                             </div>
                         </div>
                     </section>

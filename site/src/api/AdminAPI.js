@@ -36,3 +36,9 @@ export async function alterarProduto(id, marca, categoria, tipo, nome, descricao
     return resposta.data;
 
 }
+
+
+export async function ListarCategoria(){
+    const resposta = await api.get('/api/categoria');
+    return resposta.data;
+}

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { InserirProduto, SalvarImagem } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, SalvarImagem } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -59,5 +59,18 @@ server.post( '/api/admin/:id/imagem', upload.single("imgproduto"), async (req, r
     }
   }
 );
+
+server.get ('/api/categoria', async (req,resp) =>{
+  try{ 
+  const resposta = await Categoria();
+
+  resp.status(200).send(resposta)
+}
+catch(err){
+  resp.status(400).send({
+      Erro:err.message
+  })
+}
+})
 
 export default server;
