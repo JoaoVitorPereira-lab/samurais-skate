@@ -51,3 +51,15 @@ export async function TiposSkate(){
     const [resposta] = await con.query(comando)
     return resposta
 }
+
+export async function Login(email, senha) {
+    const comando =
+        `select id_admin      id
+        from tb_admin
+        where ds_email = ?
+        and 
+              ds_senha = ?
+        `
+    const [resposta] = await con.query(comando, [email, senha]);
+    return resposta[0]
+}

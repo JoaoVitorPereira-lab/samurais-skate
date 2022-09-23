@@ -74,3 +74,11 @@ export async function enviarimagem (id, imagem){
     });
     return resposta.status;
 }
+
+export async function LoginAdm(email,senha){
+        const resposta = await api.post('/api/login/adm', {
+            email: email,
+            senha: senha
+        })
+        return resposta.data
+}
