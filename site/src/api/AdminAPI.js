@@ -53,6 +53,11 @@ export async function ListarMarcas(){
     return resposta.data
 }
 
+export async function ListarTiposSkate(){
+    const resposta = await api.get('/api/tipo/skate')
+    return resposta.data
+}
+
 export async function BuscarImagem(imagem){
     return `${api.getUri()}/${imagem}`
 }

@@ -1,7 +1,7 @@
 import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem } from "../../../api/AdminAPI";
+import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, ListarTiposSkate } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
@@ -9,6 +9,7 @@ export default function CadastrarProduto(){
     const [tipos, setTipos] = useState([]);
     const [marcas, setMarcas] = useState([]);
     const [categoria, setCategoria] = useState([]);
+    const [tipoSkate, setTipoSkate] = useState([])
 
     const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState()
@@ -16,8 +17,9 @@ export default function CadastrarProduto(){
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
-    const [estoque, setEstoque] = useState(0);
+    const [estoque, setEstoque] = useState(1);
     const [id, setId] = useState(0);
+
 
     async function CarregarCategorias(){
         const resp = await ListarCategoria()
@@ -34,10 +36,16 @@ export default function CadastrarProduto(){
         setMarcas(resp)
     }
 
+    async function CarregartiposSkate(){
+        const resp = await ListarTiposSkate()
+        setTipoSkate(resp)
+    }
+
     useEffect(() =>{
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
+        CarregartiposSkate()
     },[] );
 
     function exibir(){
@@ -58,7 +66,6 @@ export default function CadastrarProduto(){
             await enviarimagem(Novoproduto.id, imagem)
 
             alert('cadastrado com sucesso 🚀');
-
         } catch (err) {
             if(err.response)
                 alert(err.response.data.erro);  
@@ -147,31 +154,18 @@ export default function CadastrarProduto(){
                                 <label id="titulos"> Tipo: </label>
 
                                 <div className="tipo-skate">
-                                    <div className="div-skate">
-                                        <input type="checkbox" id="skate" onClick={exibir}/>
-                                        <label id="label" for="skate"> Skate </label>
 
-                                        <div className="div-tipos div-bone">
-                                            <input type="checkbox" id="bone" />
-                                            <label id="label" for="bone"> Boné </label>
-                                        </div>
-                                        
-                                        <div className="div-tipos div-tenis">
-                                            <input type="checkbox" id="tenis" />
-                                            <label id="label" for="tenis"> Tênis </label>
-                                        </div>
-
-                                        <div className="div-tipos div-acessorios">
-                                            <input type="checkbox" id="acessorios" />
-                                            <label id="label" for="acessorios"> Acessórios </label>
-                                        </div>
-                                    </div>
+                                {tipos.map(item => <div className="div-skate">
+                                        <input type="radio" id="skate" onClick={exibir} name="Tipos"/>
+                                        <label id="label" for="skate"> {item.nome}
+                                        </label>
+                                        </div>)}
 
                                     { mostrar === true &&
                                         <div className="div-tipos-skate">
-                                            {tipos.map(item =>
+                                            {tipoSkate.map(item =>
                                                 <div className="input-tipo-skate">
-                                                    <input type="checkbox" class="check"/>
+                                                    <input type="radio" class="check"/>
                                                     <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
                                                 </div>
                                             )}
@@ -182,10 +176,10 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-3">
                                 <label id="titulos"> Estoque: </label>
-                                <input type="number" id="estoque"/>
+                                <input value={estoque} onChange={e=> setEstoque(e.target.value) } type="number" id="estoque"  />
 
                                 <div className="promocao">
-                                    <input type="checkbox"/>
+                                    <input type="radio"/>
                                     <label> Promoção </label>
                                 </div>
                             </div>
@@ -196,9 +190,7 @@ export default function CadastrarProduto(){
                                 <div className="div-marca-skate">
                                     {marcas.map(item =>
                                         <div className="input-marca-skate">
-                                            <input type="checkbox" class="check" 
-                                                   
-                                            />
+                                            <input type="radio" class="check" name="Marcas"/>
                                             <label id="label-marca-skate" for="acessorios"> {item.nome} </label>
                                         </div>
                                     )}
@@ -216,7 +208,7 @@ export default function CadastrarProduto(){
                         <div className="div-informacoes2">
                             <div className="div-descricao">
                                 <label id="titulos"> Descrição Geral: </label>
-                                <textarea placeholder="Descrição do Produto"/>
+                                <textarea placeholder="Descrição do Produto" value={descricao} onChange={e => setDescricao(e.target.value)}/>
                             </div>
 
                             <div className="div-categoria">
@@ -226,7 +218,7 @@ export default function CadastrarProduto(){
                                     {categoria.map(item => 
                                         <aside className="categorias">
                                             <div className="div-categorias-not">
-                                                <input type="checkbox" id="categoria"/>
+                                                <input type="radio" id="categoria" name="Categoria"/>
                                                 <label for="categoria"> {item.nome} </label>
                                             </div>
                                             <span></span>
