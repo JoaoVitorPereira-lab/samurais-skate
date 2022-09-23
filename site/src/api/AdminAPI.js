@@ -4,7 +4,7 @@ const api = axios.create({
 })
 
 
-export async function EndPointCadastrarProduto (marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque){
+export async function EndPointCadastrarProduto (marca, categoria, tipo, nome, descricao, promocao, preco,  estoque){
     const resposta = await api.post('/api/admin/produto', {
         marca: marca, 
         categoria: categoria,
@@ -13,8 +13,7 @@ export async function EndPointCadastrarProduto (marca, categoria, tipo, nome, de
         descricao: descricao,
         promocao: promocao,
         preco: preco,
-        avaliacao: avaliacao,
-        estoque: estoque,
+        estoque: estoque
     })
 
     return resposta.data;

@@ -17,6 +17,7 @@ export default function CadastrarProduto(){
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
+    
     const [estoque, setEstoque] = useState(1);
     const [id, setId] = useState(0);
 
@@ -64,7 +65,7 @@ export default function CadastrarProduto(){
 
             const Novoproduto = await EndPointCadastrarProduto(marcas, categoria, tipos, nome, descricao, promocao, preco, estoque);
             await enviarimagem(Novoproduto.id, imagem)
-
+            console.log(Novoproduto)
             alert('cadastrado com sucesso 🚀');
         } catch (err) {
             if(err.response)
@@ -155,28 +156,28 @@ export default function CadastrarProduto(){
 
                                 <div className="tipo-skate">
 
-                                {tipos.map(item => <div className="div-skate">
-                                        <input type="radio" id="skate" onClick={exibir} name="Tipos"/>
-                                        <label id="label" for="skate"> {item.nome}
-                                        </label>
-                                        </div>)}
+                                    {tipos.map(item => <div className="div-skate">
+                                            <input type="radio" id="skate" onClick={exibir} name="Tipos"/>
+                                            <label id="label" for="skate"> {item.nome}
+                                            </label>
+                                            </div>)}
 
-                                    { mostrar === true &&
-                                        <div className="div-tipos-skate">
-                                            {tipoSkate.map(item =>
-                                                <div className="input-tipo-skate">
-                                                    <input type="radio" class="check"/>
-                                                    <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
-                                                </div>
-                                            )}
-                                        </div>
-                                    }
+                                        { mostrar === true &&
+                                            <div className="div-tipos-skate">
+                                                {tipoSkate.map(item =>
+                                                    <div className="input-tipo-skate">
+                                                        <input type="radio" class="check"/>
+                                                        <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        }
                                 </div>
                             </div>
 
                             <div className="div-infos-3">
                                 <label id="titulos"> Estoque: </label>
-                                <input value={estoque} onChange={e=> setEstoque(e.target.value) } type="number" id="estoque"  />
+                                <input type="number" id="estoque" value={estoque} onChange={e=> setEstoque(Number(e.target.value))}   />
 
                                 <div className="promocao">
                                     <input type="radio"/>
