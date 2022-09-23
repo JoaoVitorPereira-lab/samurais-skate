@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 export default function CadastrarProduto(){
 
     const[categoriaas, setCategoriaas] = useState([]);
-    const [tipoos, setTipoos] = useState([])
-    const [marcaas, setmarcaas] = useState([])
+    const [tiposCategoria, setTiposCategoria] = useState([])
+    const [marcas, setMarcas] = useState([])
 
     const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState()
@@ -30,12 +30,12 @@ export default function CadastrarProduto(){
 
     async function CarregarTipos(){
         const resp = await ListarTipos()
-        setTipoos(resp)
+        setTiposCategoria(resp)
     }
 
     async function CarregarMarcas(){
         const resp = await ListarMarcas()
-        setmarcaas(resp)
+        setMarcas(resp)
     }
 
     useEffect(() =>{
@@ -50,7 +50,13 @@ export default function CadastrarProduto(){
 
     async function salvarClick(){
         try {
-            if(!imagem) throw new Error('Escolha a imagem!')
+            if(!imagem)                     throw new Error('Escolha a imagem!')
+            if(!nome)                       throw new Error('Escreva o nome do produto!')
+            if(!preco)                      throw new Error('Digite o preço do produto!')
+            if(!tipo)                       throw new Error('Escolha um tipo para o produto')
+            if(!estoque || estoque <= 0)    throw new Error('Digite a quantidade de itens estocados')
+            if(!descricao)                  throw new Error('Dê uma descrição para o produto!')
+            if(!nome)                       throw new Error('Escreva o nome do produto!')
 
                 const Novoproduto = await EndPointCadastrarProduto(marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque);
                 await enviarimagem(Novoproduto.id, imagem)
@@ -171,7 +177,7 @@ export default function CadastrarProduto(){
 
                                     { mostrar == true &&
                                         <div className="div-tipos-skate">
-                                            {tipoos.map(item =>
+                                            {tiposCategoria.map(item =>
                                                 <div className="input-tipo-skate">
                                                 <input type="checkbox" class="check" />
                                                 <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
@@ -194,7 +200,7 @@ export default function CadastrarProduto(){
                             <div className="div-infos-4">
                                 <label id="titulos"> Marca: </label>
                                     <div>
-                                        {marcaas.map(item =>
+                                        {marcas.map(item =>
                                         <p> {item.nome} </p>    
                                         )}
                                     </div>
