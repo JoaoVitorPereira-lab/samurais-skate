@@ -179,9 +179,10 @@ export default function CadastrarProduto(){
                                         <div className="div-tipos-skate">
                                             {tiposCategoria.map(item =>
                                                 <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
-                                            </div>)}
+                                                    <input type="checkbox" class="check" />
+                                                    <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
+                                                </div>
+                                            )}
                                         </div>
                                     }
                                 </div>
@@ -199,9 +200,12 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-4">
                                 <label id="titulos"> Marca: </label>
-                                    <div>
+                                    <div className="div-tipos-skate">
                                         {marcas.map(item =>
-                                        <p> {item.nome} </p>    
+                                            <div className="input-tipo-skate">
+                                                <input type="checkbox" class="check" />
+                                                <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
+                                            </div>
                                         )}
                                     </div>
                             </div>
