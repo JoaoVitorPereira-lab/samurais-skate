@@ -34,3 +34,12 @@ export async function Tipos (){
     const [resposta] = await con.query(comando)
     return resposta
 }
+
+export async function Marca(){
+    const comando = ` SELECT id_marca       id,
+                             nm_marca       nome
+                      FROM tb_marca
+    `
+    const [resposta] = await con.query(comando)
+    return resposta 
+}

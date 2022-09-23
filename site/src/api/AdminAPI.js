@@ -47,3 +47,25 @@ export async function ListarTipos(){
     const resposta = await api.get('/api/tipo');
     return resposta.data
 }
+
+export async function ListarMarcas(){
+    const resposta = await api.get('/api/marca')
+    return resposta.data
+}
+
+export async function BuscarImagem(imagem){
+    return `${api.getUri()}/${imagem}`
+}
+
+
+export async function enviarimagem (id, imagem){
+    const formData = new FormData();
+    formData.append('imgproduto', imagem);
+    
+    const resposta = await api.post(`/api/admin/${id}/imagem` , formData, {
+        headers:{
+            "Content-Type": "multipart/form-data"
+        },
+    });
+    return resposta.status;
+}

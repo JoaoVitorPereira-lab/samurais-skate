@@ -1,15 +1,17 @@
 import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { EndPointCadastrarProduto, alterarProduto, ListarCategoria, ListarTipos } from "../../../api/AdminAPI";
+import { EndPointCadastrarProduto, alterarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
     const[categoriaas, setCategoriaas] = useState([]);
     const [tipoos, setTipoos] = useState([])
+    const [marcaas, setmarcaas] = useState([])
 
     const [mostrar, setMostrar] = useState(false);
+    const [imagem, setImagem] = useState()
     const [marca, setMarca] = useState('');
     const [categoria, setCategoria] = useState('');
     const [tipo, setTipo] = useState('');
@@ -31,9 +33,15 @@ export default function CadastrarProduto(){
         setTipoos(resp)
     }
 
+    async function CarregarMarcas(){
+        const resp = await ListarMarcas()
+        setmarcaas(resp)
+    }
+
     useEffect(() =>{
-        CarregarCategorias();
+        CarregarCategorias()
         CarregarTipos()
+        CarregarMarcas()
     },[])
 
     function exibir(){
@@ -42,15 +50,17 @@ export default function CadastrarProduto(){
 
     async function salvarClick(){
         try {
-                const novoAgendamento = await EndPointCadastrarProduto(marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque);
+            if(!imagem) throw new Error('Escolha a imagem!')
 
-                setId(novoAgendamento.id);
-                alert('Agendamento cadastrado com sucesso 🚀');
+                const Novoproduto = await EndPointCadastrarProduto(marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque);
+                await enviarimagem(Novoproduto.id, imagem)
+
+                alert('cadastrado com sucesso 🚀');
         } catch (err) {
             if(err.response)
-                console.log(err.response.data.erro);  
+                alert(err.response.data.erro);  
             else{
-                console.log(err.message);
+                alert(err.message);
             }
         }
         
@@ -70,6 +80,9 @@ export default function CadastrarProduto(){
         setId(0);
     }
 
+    function MostrarImagem(){
+        return URL.createObjectURL(imagem)
+    }
     return(
         <section className="page-cadastrar-produto">
             <div className="comps">
@@ -86,17 +99,39 @@ export default function CadastrarProduto(){
                 <div className="infos-cadastrar">
 
                     <section className="sec-inputs-imgs">
+                        
                         <label for='input-img1'>
-                            <img src="./images/upload.png" alt=""/>
-                        </label>
-                        <input type="file" id="input-img1" name="input-img1" accept=".jpg, .jpeg, .png"/>
-                        <p className="p1"> Imagem 1 do produto </p>
 
-                        <label for='input-img2'>
+                            {!imagem &&
+                          
+                          <img src="./images/upload.png" alt=""/>
+                           
+                           }
+
+                            
+                            {imagem &&
+                           
+                           <img className='imagem-escolha' src={MostrarImagem()} alt=""/>
+                           
+                           }
+
+                         </label>
+                         
+                         <input type="file" id="input-img1" name="input-img1" accept=".jpg, .jpeg, .png, .jfif" onChange={e =>setImagem(e.target.files[0])}/>
+                         
+                         <p className="p1"> Imagem 1 do produto </p>
+                       
+                        
+                         <label for='input-img2'>
+                           
                             <img src="./images/upload.png" alt=""/>
+                            
                         </label>
-                        <input type="file" id="input-img2" name="input-img2"/>
+
+                        <input type="file" id="input-img1" accept=".jpg, .jpeg, .png, .jfif" name="input-img2"/>
+                      
                         <p className="p2"> Imagens complementares do produto </p>
+                    
                     </section>
 
 
@@ -171,6 +206,11 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-4">
                                 <label id="titulos"> Marca: </label>
+                                    <div>
+                                        {marcaas.map(item =>
+                                        <p> {item.nome} </p>    
+                                        )}
+                                    </div>
                             </div>
                         </div>
                     </section>

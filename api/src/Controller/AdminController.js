@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, SalvarImagem, Tipos } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -14,7 +14,7 @@ server.post('/api/admin/produto', async (req, resp) => {
     if (!novoproduto.categoria)
       throw new Error("Categoria do produto é obrigatória!");
 
-    if (!novoproduto.tipoid) throw new Error("Tipo do produto é obrigatório!");
+    if (!novoproduto.tipo) throw new Error("Tipo do produto é obrigatório!");
 
     if (!novoproduto.nome) throw new Error("Nome do produto é obrigatório!");
 
@@ -41,15 +41,18 @@ server.post('/api/admin/produto', async (req, resp) => {
 
 server.post( '/api/admin/:id/imagem', upload.single("imgproduto"), async (req, resp) => {
     try {
+      if(!req.file) throw new Error ('Escolha a imagem!')
+
       const { id } = req.params
 
       const imagem = req.file.path
 
       const resposta = await SalvarImagem(imagem, id)
 
+      if (resposta != 1) throw new Error("Não foi possível salvar a imagem!")
+
       resp.status(204).send()
 
-      if (resposta != 1) throw new Error("Não foi possível adicionar a imagem!")
 
     } catch (err) {
 
@@ -84,6 +87,19 @@ catch(err){
       Erro:err.message
   })
 }
+})
+
+server.get('/api/marca', async (req,resp) =>{
+  try {
+    const resposta = await Marca()
+
+    resp.status(200).send(resposta)
+    
+  } catch (err) {
+    resp.status(400).send({
+      Erro:err.message
+    })    
+  }
 })
 
 
