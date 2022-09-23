@@ -15,19 +15,6 @@ create table tb_conta_usuario (
 	 NM_USUARIO				varchar(100),
 	 NM_SOBRENOME			varchar(100)
 );
-select * from tb_admin;
-select * from tb_conta_usuario;
-select * from tb_login_usuario;
-
-create table tb_tipo_skate (
-	id_tipo_skate			int primary key auto_increment,
-    id_tipo					int,
-    nm_tipo_skate			varchar(100),
-    
-    foreign key (id_tipo) references tb_tipo (id_tipo)
-);
-
-select * from tb_tipo;
 
 -- Tabela do Usuário Login
 create table tb_login_usuario (
@@ -185,3 +172,13 @@ create table tb_produto_pedido (
     foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO),
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
+
+-- tabela tipo skate
+create table tb_tipo_skate (
+    id_tipo_skate            int primary key auto_increment,
+    id_tipo                    int,
+    nm_tipo_skate            varchar(100),
+
+    foreign key (id_tipo) references tb_tipo (id_tipo)
+);
+

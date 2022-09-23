@@ -7,24 +7,33 @@ select tb_conta_usuario.id_conta_usuario      id,
   join tb_conta_usuario
     on tb_login_usuario.id_conta_usuario = tb_conta_usuario.id_conta_usuario
 where ds_email = 'admin@admin.com'
-  and ds_senha = '1234'
+  and ds_senha = '1234';
 
 
 -- ----------------------------------------------
 
--- Inserir Tipo
-insert into tb_tipo (nm_tipo)
+-- Inserir Tipo Skate
+insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Equipamento de proteção');
-insert into tb_tipo (nm_tipo)
+insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Skate Montado');
-insert into tb_tipo (nm_tipo)
+insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Rolamento');
-insert into tb_tipo (nm_tipo)
+insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Shape');
-insert into tb_tipo (nm_tipo)
+insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Truck');
+
+-- ----------------------------------------------
+-- inserir tipo
 insert into tb_tipo (nm_tipo)
-			 values ('Roda');
+			 values ('Skate');
+insert into tb_tipo (nm_tipo)
+			 values ('Boné');
+insert into tb_tipo (nm_tipo)
+			 values ('Tênis');
+insert into tb_tipo (nm_tipo)
+			 values ('Acessórios');
 
 
 -- ----------------------------------------------
