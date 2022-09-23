@@ -19,13 +19,16 @@ export default function Login() {
 
         try {
             const r = await EntrarLogin(email, senha)
-
+            setTimeout(() => {
+                navigate('/teste'); 
+            }, 3000);
         }
         catch (err) {
             ref.current.complete()
             setCarregando(false)
             if (err.message.status === 401) {
                 setErro(err.response.data.Erro)
+                console.log(erro)
             }
 
         }
