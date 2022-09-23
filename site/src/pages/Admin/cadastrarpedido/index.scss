@@ -8,12 +8,12 @@
         width: 100%;
     }
 
-
 /* COMEÇO TÍTULO */
     .div-cadastrar{
         margin-top: 4em;
         margin-bottom: 3em;
         border: 1.8px solid #000;
+        border-radius: 1em;
         width: 70em;
     }
     .tite{
@@ -172,29 +172,26 @@
     .div-infos-2 input:not(#skate){
         margin-left: 1em;
     }
-    .tipo-skate{
+    .tipo-produto{
         display: flex;
         flex-direction: column;
 
         margin-left: 1.4em;
     }
-    .div-skate{
+
+    .tipos-produtos{
         display: flex;
         flex-direction: row;
-        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: .1em;
     }
     .div-skate #label{
         font-family: "Inter", sans-serif;
         font-size: 14px;
         font-weight: 500;
+        margin-top: 10em;
     }
 
-    .div-tipos{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-left: 1.32em;
-    }
     .div-tipos-skate{
         display: flex;
         flex-direction: row;

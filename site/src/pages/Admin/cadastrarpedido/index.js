@@ -17,8 +17,8 @@ export default function CadastrarProduto(){
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
+    const [estoque, setEstoque] = useState();
     
-    const [estoque, setEstoque] = useState(1);
     const [id, setId] = useState(0);
 
 
@@ -58,7 +58,7 @@ export default function CadastrarProduto(){
             if(!imagem)                     throw new Error('Escolha a imagem!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
             if(!preco)                      throw new Error('Digite o preço do produto!')
-            if(tipos === false)              throw new Error('Escolha um tipo para o produto')
+            if(tipos === false)             throw new Error('Escolha um tipo para o produto')
             if(!estoque || estoque <= 0)    throw new Error('Digite a quantidade de itens estocados')
             if(!descricao)                  throw new Error('Dê uma descrição para o produto!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
@@ -154,24 +154,32 @@ export default function CadastrarProduto(){
                             <div className="div-infos-2">
                                 <label id="titulos"> Tipo: </label>
 
-                                <div className="tipo-skate">
+                                <div className="tipo-produto">
 
-                                    {tipos.map(item => <div className="div-skate">
-                                            <input type="radio" id="skate" onClick={exibir} name="Tipos"/>
-                                            <label id="label" for="skate"> {item.nome}
-                                            </label>
-                                            </div>)}
-
-                                        { mostrar === true &&
-                                            <div className="div-tipos-skate">
-                                                {tipoSkate.map(item =>
-                                                    <div className="input-tipo-skate">
-                                                        <input type="radio" class="check"/>
-                                                        <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
-                                                    </div>
-                                                )}
+                                    <div className="tipos-produtos">
+                                        {tipos.map(item => 
+                                            <div className="div-skate">
+                                                <input type="radio" id="skate" onClick={exibir} name="igual1"/>
+                                                <label id="label" for="skate"> 
+                                                    {item.nome}
+                                                </label> 
+                                                &nbsp; &nbsp; &nbsp; &nbsp;
                                             </div>
-                                        }
+                                        )}
+                                    </div>
+
+                                    { mostrar === true &&
+                                        <div className="div-tipos-skate">
+                                            {tipoSkate.map(item =>
+                                                <div className="input-tipo-skate">
+                                                    <input type="radio" class="check" name="igual2"/>
+                                                    <label id="label-tipo-skate" for="acessorios"> 
+                                                        {item.nome} 
+                                                    </label>
+                                                </div>
+                                            )}
+                                        </div>
+                                    }
                                 </div>
                             </div>
 

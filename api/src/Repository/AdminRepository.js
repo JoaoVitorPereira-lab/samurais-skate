@@ -4,10 +4,10 @@ export async function InserirProduto (produto){
     const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
                      VALUES (?,?,?,?,?,?,?,?)`
 
-    const [resposta] = await con.query(comando,[produto.marca, produto.categoria,produto.tipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
+    const [resposta] = await con.query(comando, [produto.marca, produto.categoria,produto.tipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
     produto.id = resposta.insertId;
 
-    return produto
+    return produto;
 }
 
 export async function SalvarImagem (imagem, id) {
@@ -21,7 +21,7 @@ export async function SalvarImagem (imagem, id) {
 export async function Categoria (){
     const comando = ` SELECT id_categoria           id,
                              nm_categoria           nome
-                      FROM tb_categoria`
+                        FROM tb_categoria`
 const [resposta] = await con.query(comando);
 return resposta;
 }
@@ -29,7 +29,7 @@ return resposta;
 export async function Tipos (){
     const comando = ` Select id_tipo       id,
                              nm_tipo       nome
-                      FROM tb_tipo
+                        FROM tb_tipo
     `
     const [resposta] = await con.query(comando)
     return resposta
@@ -38,7 +38,7 @@ export async function Tipos (){
 export async function Marca(){
     const comando = ` SELECT id_marca       id,
                              nm_marca       nome
-                      FROM tb_marca
+                        FROM tb_marca
     `
     const [resposta] = await con.query(comando)
     return resposta 
@@ -47,19 +47,19 @@ export async function Marca(){
 export async function TiposSkate(){
     const comando = ` Select id_tipo_skate      id,
                              nm_tipo_skate      nome
-                      from tb_tipo_skate`
+                        from tb_tipo_skate`
     const [resposta] = await con.query(comando)
     return resposta
 }
 
 export async function Login(email, senha) {
     const comando =
-        `select id_admin      id
-        from tb_admin
-        where ds_email = ?
-        and 
-              ds_senha = ?
+        `select id_admin    id
+           from tb_admin
+          where ds_email    = ?
+            and 
+                ds_senha    = ?
         `
     const [resposta] = await con.query(comando, [email, senha]);
-    return resposta[0]
+    return resposta[0];
 }
