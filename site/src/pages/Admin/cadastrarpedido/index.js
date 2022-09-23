@@ -80,9 +80,14 @@ export default function CadastrarProduto(){
         setId(0);
     }
 
+    function EscolherImagem() {
+        document.getElementById('ClickFoto').click();
+    }
+
     function MostrarImagem(){
         return URL.createObjectURL(imagem)
     }
+
     return(
         <section className="page-cadastrar-produto">
             <div className="comps">
@@ -100,37 +105,19 @@ export default function CadastrarProduto(){
 
                     <section className="sec-inputs-imgs">
                         
-                        <label for='input-img1'>
-
+                        <div className='foto-upload' onClick={EscolherImagem}>
                             {!imagem &&
-                          
-                          <img src="./images/upload.png" alt=""/>
-                           
-                           }
-
+                                <img src="../images/upload.png" alt=""/>
                             
+                            }
                             {imagem &&
-                           
-                           <img className='imagem-escolha' src={MostrarImagem()} alt=""/>
-                           
-                           }
+                                <img className="img-produto" src={MostrarImagem()}/>
+                            }
 
-                         </label>
-                         
-                         <input type="file" id="input-img1" name="input-img1" accept=".jpg, .jpeg, .png, .jfif" onChange={e =>setImagem(e.target.files[0])}/>
-                         
-                         <p className="p1"> Imagem 1 do produto </p>
-                       
+                            <input type="file" id='ClickFoto' onChange={e  => setImagem(e.target.files[0])}/>
+                        </div>
                         
-                         <label for='input-img2'>
-                           
-                            <img src="./images/upload.png" alt=""/>
-                            
-                        </label>
-
-                        <input type="file" id="input-img1" accept=".jpg, .jpeg, .png, .jfif" name="input-img2"/>
-                      
-                        <p className="p2"> Imagens complementares do produto </p>
+                        <p className="p1"> Imagem 1 do produto </p>
                     
                     </section>
 

@@ -44,17 +44,39 @@
         margin: 6em 1.3em 3em 2.2em;
     }
 
+    .sec-inputs-imgs{
+        margin-top: -2.3em;
+        margin-right: 1em
+    }
     .sec-inputs-imgs input{
         display: none;
+        width: 10em; height: 20em;
     }
     .sec-inputs-imgs label {
         margin: 1em;
 
-        padding: 4.2em 2.5em 3.2em 2.3em;
         border: 2px solid #DFDFDF;
         border-radius: .3em;
         background-color: #fff;
         color: #FFF;
+    }
+
+    .foto-upload {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 7.2em; height: 8.5em;
+
+        border: 1px solid #DFDFDF;
+        border-radius: 3px;
+        background-color: #FFF;
+        cursor: pointer;
+    }
+    #ClickFoto{
+        visibility: hidden;
+    }
+    .img-produto{
+        width: 100%; height: 100%;
     }
     
     .p1, 
@@ -62,10 +84,6 @@
         font-family: "Inter", sans-serif;
         font-size: 14px;
         color: #D1C9C9;
-    }
-    .p1{
-        margin: 4em 0em 4em 0.5em;
-        width: 7em;
     }
     .p2{
         margin: 4em 0em 0em 0.5em;
