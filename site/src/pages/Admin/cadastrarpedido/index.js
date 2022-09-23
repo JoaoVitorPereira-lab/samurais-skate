@@ -6,26 +6,23 @@ import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const[categoriaas, setCategoriaas] = useState([]);
-    const [tiposCategoria, setTiposCategoria] = useState([])
-    const [marcas, setMarcas] = useState([])
+    const [tiposCategoria, setTiposCategoria] = useState([]);
+    const [marcas, setMarcas] = useState([]);
+    const [categoria, setCategoria] = useState([]);
+    const [tipo, setTipo] = useState([]);
 
     const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState()
-    const [marca, setMarca] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [tipo, setTipo] = useState('');
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
-    const [avaliacao, setAvaliacao] = useState(0);
     const [estoque, setEstoque] = useState(0);
     const [id, setId] = useState(0);
 
     async function CarregarCategorias(){
         const resp = await ListarCategoria()
-        setCategoriaas(resp)
+        setCategoria(resp)
     }
 
     async function CarregarTipos(){
@@ -53,15 +50,16 @@ export default function CadastrarProduto(){
             if(!imagem)                     throw new Error('Escolha a imagem!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
             if(!preco)                      throw new Error('Digite o preço do produto!')
-            if(!tipo)                       throw new Error('Escolha um tipo para o produto')
+            if(tipo === false)              throw new Error('Escolha um tipo para o produto')
             if(!estoque || estoque <= 0)    throw new Error('Digite a quantidade de itens estocados')
             if(!descricao)                  throw new Error('Dê uma descrição para o produto!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
 
-                const Novoproduto = await EndPointCadastrarProduto(marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque);
-                await enviarimagem(Novoproduto.id, imagem)
+            const Novoproduto = await EndPointCadastrarProduto(marcas, categoria, tipo, nome, descricao, promocao, preco, estoque);
+            await enviarimagem(Novoproduto.id, imagem)
 
-                alert('cadastrado com sucesso 🚀');
+            alert('cadastrado com sucesso 🚀');
+
         } catch (err) {
             if(err.response)
                 alert(err.response.data.erro);  
@@ -73,17 +71,12 @@ export default function CadastrarProduto(){
     }
 
     function novoClick(){
-        setMarca('');
-        setMostrar(false)
-        setCategoria('');
-        setTipo('');
         setNome('');
-        setDescricao(0);
-        setPromocao(false);
+        setDescricao('');
         setPreco(0);
-        setAvaliacao(0);
         setEstoque(0);
         setId(0);
+        setPromocao(false);
     }
 
     function EscolherImagem() {
@@ -156,21 +149,32 @@ export default function CadastrarProduto(){
 
                                 <div className="tipo-skate">
                                     <div className="div-skate">
-                                        <input type="checkbox" id="skate" onChange={exibir} />
+                                        <input type="checkbox" id="skate" name="input-tipo"
+                                               checked={tipo} 
+                                               onChange={exibir} 
+                                        />
                                         <label id="label" for="skate"> Skate </label>
 
                                         <div className="div-tipos div-bone">
-                                            <input type="checkbox" id="bone"/>
+                                            <input type="checkbox" id="bone" name="input-tipo"
+                                                   checked={tipo}
+                                                   onChange={e => setTipo(e.target.checked)}
+                                            />
                                             <label id="label" for="bone"> Boné </label>
                                         </div>
                                         
                                         <div className="div-tipos div-tenis">
-                                            <input type="checkbox" id="tenis"/>
+                                            <input type="checkbox" id="tenis" name="input-tipo"
+                                                   checked={tipo}
+                                                   onChange={e => setTipo(e.target.checked)} 
+                                            />
                                             <label id="label" for="tenis"> Tênis </label>
                                         </div>
 
                                         <div className="div-tipos div-acessorios">
-                                            <input type="checkbox" id="acessorios"/>
+                                            <input type="checkbox" id="acessorios" name="input-tipo"
+                                                   checked={tipo}
+                                                   onChange={e => setTipo(e.target.checked)}/>
                                             <label id="label" for="acessorios"> Acessórios </label>
                                         </div>
                                     </div>
@@ -179,7 +183,10 @@ export default function CadastrarProduto(){
                                         <div className="div-tipos-skate">
                                             {tiposCategoria.map(item =>
                                                 <div className="input-tipo-skate">
-                                                    <input type="checkbox" class="check" />
+                                                    <input type="checkbox" class="check" 
+                                                           checked={tipo}
+                                                           onChange={e => setTipo(e.target.checked)} 
+                                                    />
                                                     <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
                                                 </div>
                                             )}
@@ -200,14 +207,17 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-4">
                                 <label id="titulos"> Marca: </label>
-                                    <div className="div-tipos-skate">
-                                        {marcas.map(item =>
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
-                                            </div>
-                                        )}
-                                    </div>
+
+                                <div className="div-marca-skate">
+                                    {marcas.map(item =>
+                                        <div className="input-marca-skate">
+                                            <input type="checkbox" class="check" 
+                                                   
+                                            />
+                                            <label id="label-marca-skate" for="acessorios"> {item.nome} </label>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -225,24 +235,26 @@ export default function CadastrarProduto(){
                             </div>
 
                             <div className="div-categoria">
-
+                                
                                 <label id="titulos"> Categoria: </label>
 
-                                {categoriaas.map(item => 
-                                
-                                <aside className="categorias">
-                                <div className="div-categorias-not">
-                                    <input type="checkbox" id="iniciante"/>
-                                    <label for="iniciante"> {item.nome} </label>
+                                <div className="div-array-categorias">
+                                    {categoria.map(item => 
+                                        <aside className="categorias">
+                                            <div className="div-categorias-not">
+                                                <input type="checkbox" id="categoria"/>
+                                                <label for="categoria"> {item.nome} </label>
+                                            </div>
+                                            <span></span>
+                                        </aside>
+                                    )}
                                 </div>
-                                </aside>
-                                )}
                             </div>
                         </div>
                     </section>
                 </div>
 
-                <div className="div-button-salvar">
+                <div className="div-button-salvar-novo">
                     <button onClick={salvarClick}> { id === 0 ? 'SALVAR' : 'ALTERAR' } </button> <nbsp/> <nbsp/>
                     <button className="novo" onClick={novoClick}>NOVO</button>
                 </div>
