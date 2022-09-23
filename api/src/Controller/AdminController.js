@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -115,6 +115,24 @@ server.get('/api/tipo/skate' , async (req,resp) =>{
     })
   }
 })
+
+server.post('/api/login/adm', async (req,resp) =>{
+  try {
+
+      const {email, senha} = req.body;
+
+      const resposta = await Login(email, senha)
+      if(!resposta) throw new Error("Credencias INVÁLIDAS")
+      
+      resp.status(200).send(resposta)
+  } 
+  catch (err) {
+      resp.status(401).send({
+          Erro:err.message
+      })
+  }
+})
+
 
 
 

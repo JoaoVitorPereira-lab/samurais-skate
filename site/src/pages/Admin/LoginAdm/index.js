@@ -1,8 +1,10 @@
 import "./index.scss"
-import { EntrarLogin } from '../../../api/UsuarioApi.js'
+import { LoginAdm } from '../../../api/AdminAPI.js'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
+import { toast } from 'react-toastify'
+
 
 
 export default function Login() {
@@ -18,7 +20,7 @@ export default function Login() {
         setCarregando(true);
 
         try {
-            const r = await EntrarLogin(email, senha)
+            const r = await LoginAdm(email, senha)
             setTimeout(() => {
                 navigate('/teste'); 
             }, 3000);
@@ -28,8 +30,9 @@ export default function Login() {
                 setErro(err.response.data.Erro)
             }
         }
-    }
 
+
+    }
     return (
         <section className="page-login">
             <LoadingBar color="#E52A45" ref={ref}/>
@@ -57,7 +60,6 @@ export default function Login() {
                 </div>
                 <div className="criar_conta">
                     <a>criar conta</a>
-
                 </div>
 
 
