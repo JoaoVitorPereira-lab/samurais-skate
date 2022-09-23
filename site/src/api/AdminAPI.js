@@ -42,3 +42,8 @@ export async function ListarCategoria(){
     const resposta = await api.get('/api/categoria');
     return resposta.data;
 }
+
+export async function ListarTipos(){
+    const resposta = await api.get('/api/tipo');
+    return resposta.data
+}

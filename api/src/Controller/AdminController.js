@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, SalvarImagem } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, SalvarImagem, Tipos } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -72,5 +72,20 @@ catch(err){
   })
 }
 })
+
+server.get ('/api/tipo', async (req,resp) =>{
+  try{ 
+  const resposta = await Tipos();
+
+  resp.status(200).send(resposta)
+}
+catch(err){
+  resp.status(400).send({
+      Erro:err.message
+  })
+}
+})
+
+
 
 export default server;

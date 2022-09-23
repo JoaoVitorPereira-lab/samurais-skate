@@ -25,3 +25,12 @@ export async function Categoria (){
 const [resposta] = await con.query(comando);
 return resposta;
 }
+
+export async function Tipos (){
+    const comando = ` Select id_tipo       id,
+                             nm_tipo       nome
+                      FROM tb_tipo
+    `
+    const [resposta] = await con.query(comando)
+    return resposta
+}

@@ -1,12 +1,13 @@
 import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { EndPointCadastrarProduto, alterarProduto, ListarCategoria } from "../../../api/AdminAPI";
+import { EndPointCadastrarProduto, alterarProduto, ListarCategoria, ListarTipos } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
     const[categoriaas, setCategoriaas] = useState([]);
+    const [tipoos, setTipoos] = useState([])
 
     const [mostrar, setMostrar] = useState(false);
     const [marca, setMarca] = useState('');
@@ -24,8 +25,15 @@ export default function CadastrarProduto(){
         const resp = await ListarCategoria()
         setCategoriaas(resp)
     }
+
+    async function CarregarTipos(){
+        const resp = await ListarTipos()
+        setTipoos(resp)
+    }
+
     useEffect(() =>{
         CarregarCategorias();
+        CarregarTipos()
     },[])
 
     function exibir(){
@@ -50,6 +58,7 @@ export default function CadastrarProduto(){
 
     function novoClick(){
         setMarca('');
+        setMostrar(false)
         setCategoria('');
         setTipo('');
         setNome('');
@@ -140,35 +149,11 @@ export default function CadastrarProduto(){
 
                                     { mostrar == true &&
                                         <div className="div-tipos-skate">
-                                            <div className="input-tipo-skate">
+                                            {tipoos.map(item =>
+                                                <div className="input-tipo-skate">
                                                 <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Equipamento de proteção </label>
-                                            </div>
-
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Skate Montado </label>
-                                            </div>
-
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Rolamento </label>
-                                            </div>
-
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Shape </label>
-                                            </div>
-
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Truck </label>
-                                            </div>
-
-                                            <div className="input-tipo-skate">
-                                                <input type="checkbox" class="check" />
-                                                <label id="label-tipo-skate" for="acessorios"> Roda </label>
-                                            </div>
+                                                <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
+                                            </div>)}
                                         </div>
                                     }
                                 </div>
