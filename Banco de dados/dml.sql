@@ -10,7 +10,7 @@ where ds_email = 'admin@admin.com'
   and ds_senha = '1234'
 
 
--- -----------------------------------------------------------------------
+-- ----------------------------------------------
 
 -- Inserir Tipo
 insert into tb_tipo (nm_tipo)
@@ -27,7 +27,7 @@ insert into tb_tipo (nm_tipo)
 			 values ('Roda');
 
 
--- -----------------------------------------------------------------------
+-- ----------------------------------------------
 
 -- Inserir Marca
 insert into tb_marca (nm_marca)
@@ -72,7 +72,17 @@ insert into tb_marca (nm_marca)
 			 values ('Hocks');
 
 
--- -----------------------------------------------------------------------
+-- ----------------------------------------------
+
+-- Inserir Marca
+insert into tb_categoria (nm_categoria)
+			 values ('Iniciante');
+insert into tb_categoria (nm_categoria)
+			 values ('Semi-Profissional');             
+insert into tb_categoria (nm_categoria)
+			 values ('Profissional');
+
+-- ----------------------------------------------
 
 -- Cadastrar Produto
 INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)

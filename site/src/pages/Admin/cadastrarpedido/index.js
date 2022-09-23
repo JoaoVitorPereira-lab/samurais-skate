@@ -1,15 +1,14 @@
 import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { EndPointCadastrarProduto, alterarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem } from "../../../api/AdminAPI";
+import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [tiposCategoria, setTiposCategoria] = useState([]);
+    const [tipos, setTipos] = useState([]);
     const [marcas, setMarcas] = useState([]);
     const [categoria, setCategoria] = useState([]);
-    const [tipo, setTipo] = useState([]);
 
     const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState()
@@ -27,7 +26,7 @@ export default function CadastrarProduto(){
 
     async function CarregarTipos(){
         const resp = await ListarTipos()
-        setTiposCategoria(resp)
+        setTipos(resp)
     }
 
     async function CarregarMarcas(){
@@ -39,7 +38,7 @@ export default function CadastrarProduto(){
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
-    },[])
+    },[] );
 
     function exibir(){
         setMostrar(true);
@@ -50,12 +49,12 @@ export default function CadastrarProduto(){
             if(!imagem)                     throw new Error('Escolha a imagem!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
             if(!preco)                      throw new Error('Digite o preço do produto!')
-            if(tipo === false)              throw new Error('Escolha um tipo para o produto')
+            if(tipos === false)              throw new Error('Escolha um tipo para o produto')
             if(!estoque || estoque <= 0)    throw new Error('Digite a quantidade de itens estocados')
             if(!descricao)                  throw new Error('Dê uma descrição para o produto!')
             if(!nome)                       throw new Error('Escreva o nome do produto!')
 
-            const Novoproduto = await EndPointCadastrarProduto(marcas, categoria, tipo, nome, descricao, promocao, preco, estoque);
+            const Novoproduto = await EndPointCadastrarProduto(marcas, categoria, tipos, nome, descricao, promocao, preco, estoque);
             await enviarimagem(Novoproduto.id, imagem)
 
             alert('cadastrado com sucesso 🚀');
@@ -110,7 +109,7 @@ export default function CadastrarProduto(){
                             
                             }
                             {imagem &&
-                                <img className="img-produto" src={MostrarImagem()}/>
+                                <img className="img-produto" src={MostrarImagem()} alt=""/>
                             }
 
                             <input type="file" id='ClickFoto' onChange={e  => setImagem(e.target.files[0])}/>
@@ -149,44 +148,30 @@ export default function CadastrarProduto(){
 
                                 <div className="tipo-skate">
                                     <div className="div-skate">
-                                        <input type="checkbox" id="skate" name="input-tipo"
-                                               checked={tipo} 
-                                               onChange={exibir} 
-                                        />
+                                        <input type="checkbox" id="skate" onClick={exibir}/>
                                         <label id="label" for="skate"> Skate </label>
 
                                         <div className="div-tipos div-bone">
-                                            <input type="checkbox" id="bone" name="input-tipo"
-                                                   checked={tipo}
-                                                   onChange={e => setTipo(e.target.checked)}
-                                            />
+                                            <input type="checkbox" id="bone" />
                                             <label id="label" for="bone"> Boné </label>
                                         </div>
                                         
                                         <div className="div-tipos div-tenis">
-                                            <input type="checkbox" id="tenis" name="input-tipo"
-                                                   checked={tipo}
-                                                   onChange={e => setTipo(e.target.checked)} 
-                                            />
+                                            <input type="checkbox" id="tenis" />
                                             <label id="label" for="tenis"> Tênis </label>
                                         </div>
 
                                         <div className="div-tipos div-acessorios">
-                                            <input type="checkbox" id="acessorios" name="input-tipo"
-                                                   checked={tipo}
-                                                   onChange={e => setTipo(e.target.checked)}/>
+                                            <input type="checkbox" id="acessorios" />
                                             <label id="label" for="acessorios"> Acessórios </label>
                                         </div>
                                     </div>
 
-                                    { mostrar == true &&
+                                    { mostrar === true &&
                                         <div className="div-tipos-skate">
-                                            {tiposCategoria.map(item =>
+                                            {tipos.map(item =>
                                                 <div className="input-tipo-skate">
-                                                    <input type="checkbox" class="check" 
-                                                           checked={tipo}
-                                                           onChange={e => setTipo(e.target.checked)} 
-                                                    />
+                                                    <input type="checkbox" class="check"/>
                                                     <label id="label-tipo-skate" for="acessorios"> {item.nome} </label>
                                                 </div>
                                             )}
@@ -235,7 +220,6 @@ export default function CadastrarProduto(){
                             </div>
 
                             <div className="div-categoria">
-                                
                                 <label id="titulos"> Categoria: </label>
 
                                 <div className="div-array-categorias">
