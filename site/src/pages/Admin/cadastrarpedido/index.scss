@@ -169,9 +169,6 @@
         flex-direction: row;
         margin-top: 1em;
     }
-    .div-infos-2 input:not(#skate){
-        margin-left: 1em;
-    }
     .tipo-produto{
         display: flex;
         flex-direction: column;
@@ -185,11 +182,11 @@
         flex-wrap: wrap;
         margin-bottom: .1em;
     }
-    .div-skate #label{
+    .div-tipos{
         font-family: "Inter", sans-serif;
         font-size: 14px;
         font-weight: 500;
-        margin-top: 10em;
+        text-align: center;
     }
 
     .div-tipos-skate{
@@ -197,8 +194,7 @@
         flex-direction: row;
         flex-wrap: wrap;
 
-        margin-top: 1em;
-        margin-left: -.6em;
+        margin-top: 1.2em;
     }
 
     .input-tipo-skate{
@@ -354,20 +350,18 @@
         margin-top: 2.8em;
     }
 
-    .categorias{
+    .div-categorias{
         display: flex;
         flex-direction: column;
         text-align: left;
 
         margin-left: 0.8em;
     }
-    .div-categorias-not{
+    .div-inputs-categorias{
         display: flex;
         flex-direction: row;
         align-items: flex-start;
-    }
-    .categorias span{
-        margin-top: .5em;
+        margin-bottom: .5em;
     }
 /* FIM DIV DA CATEGORIA */
 

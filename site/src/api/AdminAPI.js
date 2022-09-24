@@ -4,11 +4,11 @@ const api = axios.create({
 })
 
 
-export async function EndPointCadastrarProduto (marca, categoria, tipo, nome, descricao, promocao, preco,  estoque){
+export async function EndPointCadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
-        marca: marca, 
-        categoria: categoria,
-        tipo: tipo,
+        IdMarca: IdMarca, 
+        IdCategoria: IdCategoria,
+        IdTipo: IdTipo,
         nome: nome,
         descricao: descricao,
         promocao: promocao,
@@ -19,12 +19,12 @@ export async function EndPointCadastrarProduto (marca, categoria, tipo, nome, de
     return resposta.data;
 }
 
-export async function alterarProduto(id, marca, categoria, tipo, nome, descricao, promocao, preco, avaliacao, estoque){
+export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
 
     const resposta = await api.put(`api/admin/${id}`, {
-        marca: marca, 
-        categoria: categoria,
-        tipo: tipo,
+        IdMarca: IdMarca, 
+        IdCategoria: IdCategoria,
+        IdTipo: IdTipo,
         nome: nome,
         descricao: descricao,
         promocao: promocao,
