@@ -8,9 +8,13 @@ import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [IdTipos, setIdTipos] = useState([]);
-    const [IdMarcas,setIdMarcas] = useState([]);
-    const [IdCategoria,setIdCategoria] = useState([]);
+    const [Tipos, setTipos] = useState([]);
+    const [Marcas,setMarcas] = useState([]);
+    const [Categoria,setCategoria] = useState([]);
+
+    const[IdTipos, setIdTipos] = useState()
+    const [IdMarcas,setIdMarcas] = useState()
+    const [IdCategoria,setIdCategoria] = useState()
 
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
@@ -24,17 +28,17 @@ export default function CadastrarProduto(){
 
     async function CarregarCategorias(){
         const resp = await ListarCategoria()
-        setIdCategoria(resp)
+        setCategoria(resp)
     }
 
     async function CarregarTipos(){
         const resp = await ListarTipos()
-        setIdTipos(resp)
+        setTipos(resp)
     }
 
     async function CarregarMarcas(){
         const resp = await ListarMarcas()
-        setIdMarcas(resp)
+        setMarcas(resp)
     }
 
     /* async function CarregartiposSkate(){
@@ -145,7 +149,7 @@ export default function CadastrarProduto(){
                                 <select value={IdTipos} onChange={e => setIdTipos(e.target.value)}>
                                     <option selected disabled hidden> Tipos </option>
 
-                                    {IdTipos.map(item =>
+                                    {Tipos.map(item =>
                                         <option value={item.id}> 
                                             {item.nome}
                                         </option>
@@ -175,7 +179,7 @@ export default function CadastrarProduto(){
                                 <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
                                     <option selected disabled hidden> Marcas </option>
 
-                                    {IdMarcas.map(item =>
+                                    {Marcas.map(item =>
                                         <option value={item.id}>
                                             {item.nome}
                                         </option>    
@@ -205,7 +209,7 @@ export default function CadastrarProduto(){
                                 <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
                                         <option selected disabled hidden >  Categoria  </option>
 
-                                        {IdCategoria.map(item =>
+                                        {Categoria.map(item =>
                                             <option value={item.id}>
                                                 {item.nome}
                                             </option>    
