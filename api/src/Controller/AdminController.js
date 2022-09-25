@@ -13,7 +13,7 @@ server.post('/api/admin/produto', async (req, resp) => {
 
     if (!novoproduto.nome) throw new Error("Nome do produto é obrigatório!");
 
-    if (!novoproduto.preco) throw new Error("Preço do produto é obrigatória!");
+    if (!novoproduto.preco|| novoproduto.preco<=0) throw new Error("Preço do produto é obrigatória!");
 
     if (!novoproduto.IdTipo) throw new Error("Tipo do produto é obrigatório!");
 

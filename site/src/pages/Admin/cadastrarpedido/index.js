@@ -8,13 +8,17 @@ import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [IdTipos, setTipos] = useState([]);
-    const [IdMarcas, setMarcas] = useState([]);
-    const [IdCategoria, setCategoria] = useState([]);
+    const [Tipos, setTipos] = useState([]); 
+    const [Marcas, setMarcas] = useState([]);
+    const [Categoria, setCategoria] = useState([]);
     const [tipoSkate, setTipoSkate] = useState([]);
 
-    const [skate, setSkate] = useState(false);
+    const[IdTipos, setIdTipos] = useState()
+    const [Idmarcas,setIdMarcas] = useState()
+    const [IdCategoria,setIdCategoria] = useState()
+    const [IdtipoSkate, setIdTipoSkate] = useState()
 
+    const [skate, setSkate] = useState(false);
     const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
@@ -62,7 +66,7 @@ export default function CadastrarProduto(){
             if(!imagem)
                 throw new Error('Escolha a imagem!');
 
-            const Novoproduto = await EndPointCadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+            const Novoproduto = await EndPointCadastrarProduto(Idmarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
             await enviarimagem(Novoproduto.id, imagem);
             alert('cadastrado com sucesso 🚀');
         } catch (err) {
@@ -151,11 +155,17 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-2">
                                 <label id="titulos"> Tipo: </label>
+                                <select value={IdTipos} onChange={e => setIdTipos(e.target.value)}>
+                                    <option selected disabled hidden> Tipos </option>
+                                    {Tipos.map(item =>
+                                        <option value={item.id}> {item.nome} </option>
+                                        )}
+                                </select>
 
                                 <div className="tipo-produto">
 
                                     <div className="tipos-produtos">
-                                        {IdTipos.map(item => 
+                                        {Tipos.map(item => 
                                             <div className="div-tipos">
                                                 <input type="radio" 
                                                        id="tipos-input" 
@@ -168,22 +178,7 @@ export default function CadastrarProduto(){
                                         )}
                                     </div>
 
-                                    { mostrar === true &&
-                                        <div className="div-tipos-skate">
-                                            {tipoSkate.map(item =>
-                                                <div className="input-tipo-skate">
-                                                    <input type="radio" 
-                                                           class="check" 
-                                                           name="igual2"
-                                                           value={item.id}
-                                                    />
-                                                    <label id="label-tipo-skate" for="acessorios"> 
-                                                        {item.nome} 
-                                                    </label>
-                                                </div>
-                                            )}
-                                        </div>
-                                    }
+                                   
                                 </div>
                             </div>
 
@@ -196,9 +191,9 @@ export default function CadastrarProduto(){
                                 />
 
                                 <div className="promocao">
-                                    <input type="radio"
+                                    <input type="checkbox"
                                            value={promocao}
-                                           onChange={e => setPromocao(e.target.value    )}     
+                                           onChange={e => setPromocao(e.target.checked )}     
                                     />
                                     <label> Promoção </label>
                                 </div>
@@ -206,20 +201,15 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-4">
                                 <label id="titulos"> Marca: </label>
+                                <select value={Idmarcas} onChange={e=> setIdMarcas(e.target.value)}>
+                                    <option selected disabled hidden> Marcas </option>
+                                    {Marcas.map(item =>
+                                    <option value={item.id}> {item.nome} </option>    
+                                    )}
+                                </select>
 
                                 <div className="div-marca-skate">
-                                    {IdMarcas.map(item =>
-                                        <div className="input-marca-skate">
-                                            <input type="radio"
-                                                   class="check"
-                                                   name="Marcas"
-                                                   value={item.id} 
-                                            />
-                                            <label id="label-marca-skate" for="acessorios"> 
-                                                {item.nome}
-                                            </label>
-                                        </div>
-                                    )}
+                                   
                                 </div>
                             </div>
                         </div>
@@ -239,22 +229,14 @@ export default function CadastrarProduto(){
 
                             <div className="div-categoria">
                                 <label id="titulos"> Categoria: </label>
+                                <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
+                                        <option selected disabled hidden >  Categoria  </option>
+                                        {Categoria.map(item =>
+                                        <option value={item.id}> {item.nome} </option>    
+                                        )}
+                                </select>
 
                                 <div className="div-map-categorias">
-                                    {IdCategoria.map(item => 
-                                        <div className="div-categorias">
-                                            <div className="div-inputs-categorias">
-                                                <input type="radio" 
-                                                       id="categoria"
-                                                       name="Categoria"
-                                                       value={item.id}    
-                                                />
-                                                <label for="categoria"> 
-                                                    {item.nome}
-                                                </label>
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             </div>
                         </div>
