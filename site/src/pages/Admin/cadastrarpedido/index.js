@@ -3,23 +3,15 @@ import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, ListarTiposSkate } from "../../../api/AdminAPI";
+import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem} from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function CadastrarProduto(){
 
-    const [Tipos, setTipos] = useState([]); 
-    const [Marcas, setMarcas] = useState([]);
-    const [Categoria, setCategoria] = useState([]);
-    const [tipoSkate, setTipoSkate] = useState([]);
+    const [IdTipos, setIdTipos] = useState([]);
+    const [IdMarcas,setIdMarcas] = useState([]);
+    const [IdCategoria,setIdCategoria] = useState([]);
 
-    const[IdTipos, setIdTipos] = useState()
-    const [Idmarcas,setIdMarcas] = useState()
-    const [IdCategoria,setIdCategoria] = useState()
-    const [IdtipoSkate, setIdTipoSkate] = useState()
-
-    const [skate, setSkate] = useState(false);
-    const [mostrar, setMostrar] = useState(false);
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -32,41 +24,36 @@ export default function CadastrarProduto(){
 
     async function CarregarCategorias(){
         const resp = await ListarCategoria()
-        setCategoria(resp)
+        setIdCategoria(resp)
     }
 
     async function CarregarTipos(){
         const resp = await ListarTipos()
-        setTipos(resp)
+        setIdTipos(resp)
     }
 
     async function CarregarMarcas(){
         const resp = await ListarMarcas()
-        setMarcas(resp)
+        setIdMarcas(resp)
     }
 
-    async function CarregartiposSkate(){
+    /* async function CarregartiposSkate(){
         const resp = await ListarTiposSkate()
-        setTipoSkate(resp)
-    }
+        setIdTipoSkate(resp)
+    }*/ 
 
     useEffect(() =>{
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
-        CarregartiposSkate()
-    },[] );
-
-    function exibir(){
-        setMostrar(true);
-    }
+    },[] )
 
     async function salvarClick(){
         try {
             if(!imagem)
                 throw new Error('Escolha a imagem!');
 
-            const Novoproduto = await EndPointCadastrarProduto(Idmarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+            const Novoproduto = await EndPointCadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
             await enviarimagem(Novoproduto.id, imagem);
             alert('cadastrado com sucesso 🚀');
         } catch (err) {
@@ -138,7 +125,7 @@ export default function CadastrarProduto(){
                     <section className="sec-infos-produto-1">
                         
                             <div className="div-infos-1">
-                                <label for="nome" id="titulos"> Nome: </label>
+                                <label for="nome" id="nome-titulo"> Nome: </label>
                                 <input type="text" id="nome" placeholder="Nome do Produto" 
                                        value={nome} 
                                        onChange={e => setNome(e.target.value)}
@@ -154,32 +141,16 @@ export default function CadastrarProduto(){
                             <div className="div-informacoes">
 
                             <div className="div-infos-2">
-                                <label id="titulos"> Tipo: </label>
+                                <label id="tipo-titulo"> Tipo: </label>
                                 <select value={IdTipos} onChange={e => setIdTipos(e.target.value)}>
                                     <option selected disabled hidden> Tipos </option>
-                                    {Tipos.map(item =>
-                                        <option value={item.id}> {item.nome} </option>
-                                        )}
+
+                                    {IdTipos.map(item =>
+                                        <option value={item.id}> 
+                                            {item.nome}
+                                        </option>
+                                    )}
                                 </select>
-
-                                <div className="tipo-produto">
-
-                                    <div className="tipos-produtos">
-                                        {Tipos.map(item => 
-                                            <div className="div-tipos">
-                                                <input type="radio" 
-                                                       id="tipos-input" 
-                                                       name="inputs-tipos"
-                                                       value={item.id}
-                                                       onClick={exibir}
-                                                /> {item.nome}
-                                                &nbsp; &nbsp; &nbsp; &nbsp;
-                                            </div>
-                                        )}
-                                    </div>
-
-                                   
-                                </div>
                             </div>
 
                             <div className="div-infos-3">
@@ -199,18 +170,17 @@ export default function CadastrarProduto(){
                                 </div>
                             </div>
 
-                            <div className="div-infos-4">
-                                <label id="titulos"> Marca: </label>
-                                <select value={Idmarcas} onChange={e=> setIdMarcas(e.target.value)}>
+                            <div className="div-marcas">
+                                <label id="marca-titulo"> Marca: </label>
+                                <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
                                     <option selected disabled hidden> Marcas </option>
-                                    {Marcas.map(item =>
-                                    <option value={item.id}> {item.nome} </option>    
+
+                                    {IdMarcas.map(item =>
+                                        <option value={item.id}>
+                                            {item.nome}
+                                        </option>    
                                     )}
                                 </select>
-
-                                <div className="div-marca-skate">
-                                   
-                                </div>
                             </div>
                         </div>
                     </section>
@@ -224,20 +194,23 @@ export default function CadastrarProduto(){
                         <div className="div-informacoes2">
                             <div className="div-descricao">
                                 <label id="titulos"> Descrição Geral: </label>
-                                <textarea placeholder="Descrição do Produto" value={descricao} onChange={e => setDescricao(e.target.value)}/>
+                                <textarea placeholder="Descrição do Produto"
+                                          value={descricao}
+                                          onChange={e => setDescricao(e.target.value)}
+                                />
                             </div>
 
                             <div className="div-categoria">
-                                <label id="titulos"> Categoria: </label>
+                                <label id="categoria-titulo"> Categoria: </label>
                                 <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
                                         <option selected disabled hidden >  Categoria  </option>
-                                        {Categoria.map(item =>
-                                        <option value={item.id}> {item.nome} </option>    
+
+                                        {IdCategoria.map(item =>
+                                            <option value={item.id}>
+                                                {item.nome}
+                                            </option>    
                                         )}
                                 </select>
-
-                                <div className="div-map-categorias">
-                                </div>
                             </div>
                         </div>
                     </section>

@@ -27,6 +27,8 @@ insert into tb_tipo_skate (nm_tipo_skate)
 -- ----------------------------------------------
 -- inserir tipo
 insert into tb_tipo (nm_tipo)
+			 values ('Skate');
+insert into tb_tipo (nm_tipo)
 			 values ('Boné');
 insert into tb_tipo (nm_tipo)
 			 values ('Tênis');

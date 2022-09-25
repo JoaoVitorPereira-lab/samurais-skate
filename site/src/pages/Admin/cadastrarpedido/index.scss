@@ -7,6 +7,14 @@
     .comps{
         width: 100%;
     }
+    select{
+        border-color: #DFDFDF;
+        border-radius: .4em;
+    }
+    select:focus{
+        outline: none;
+        border-color: #DFDFDF;
+    }
 
 /* COMEÇO TÍTULO */
     .div-cadastrar{
@@ -137,6 +145,12 @@
         flex-direction: row;
         align-items: center;
     }
+    #nome-titulo{
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin-right: .55em;
+    }
     .div-infos-1 input{
         margin-left: 1.2em;
     }
@@ -154,7 +168,7 @@
     #preco{
         height: 2.3em; width: 8.3em;
     }
-    label:not(#titulos){
+    label:not(#titulos, #tipo-titulo, #nome-titulo, #marca-titulo, #categoria-titulo){
         font-family: "Inter", sans-serif;
         font-size: 14px;
         font-weight: 500;
@@ -169,45 +183,11 @@
         flex-direction: row;
         margin-top: 1em;
     }
-    .tipo-produto{
-        display: flex;
-        flex-direction: column;
-
-        margin-left: 1.4em;
-    }
-
-    .tipos-produtos{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-bottom: .1em;
-    }
-    .div-tipos{
+    #tipo-titulo{
         font-family: "Inter", sans-serif;
         font-size: 14px;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    .div-tipos-skate{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        margin-top: 1.2em;
-    }
-
-    .input-tipo-skate{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin-bottom: 1em;
-        width: 9.2em;
-    }
-    .input-tipo-skate #label-tipo-skate{
-        font-family: "Inter", sans-serif;
-        font-size: 12px;
-        font-weight: 500;
+        font-weight: 700;
+        margin-right: 2.38em;
     }
 /* FIM INFOS 2 (INFORMAÇÕES PT 2) */
 
@@ -228,17 +208,9 @@
         width: 3em; height: 1.5em;
         background-color: #EFEFEF;
         border: 1px solid #000;
-        border-radius: .1em;
+        border-radius: .4em;
         color: #000;
         margin-left: .7em;
-    }
-
-    .div-infos-3 button{
-        background-color: #EFEFEF;
-        border: 1px solid #000;
-        border-radius: .1em;
-        color: #000;
-        margin-left: .5em;
     }
 
     .promocao{
@@ -252,28 +224,16 @@
 
 
 /* COMEÇO INFOS 4 (INFORMAÇÕES PT 4) */
-    .div-infos-4{
+    .div-marcas{
         display: flex;
         flex-direction: row;
         margin-top: 1.5em;
     }
-    .div-marca-skate{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-left: .5em;
-    }
-    .input-marca-skate{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin-bottom: 1em;
-        width: 8.5em;
-    }
-    .input-marca-skate #label-marca-skate{
+    #marca-titulo{
         font-family: "Inter", sans-serif;
-        font-size: 12px;
-        font-weight: 500;
+        font-size: 14px;
+        font-weight: 700;
+        margin-right: 1.4em;
     }
 /* FIM INFOS 4 (INFORMAÇÕES PT 4) */
 
@@ -349,19 +309,12 @@
 
         margin-top: 2.8em;
     }
-
-    .div-categorias{
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-
-        margin-left: 0.8em;
-    }
-    .div-inputs-categorias{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin-bottom: .5em;
+    #categoria-titulo{
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin-right: 1.4em;
+        margin-left: -1em;
     }
 /* FIM DIV DA CATEGORIA */
 
@@ -369,7 +322,7 @@
 
 /* COMEÇO DIV DO BOTÃO DE SALVAR */
     .div-button-salvar-novo{
-        margin: 1em 1.7em 1.5em 0em;
+        margin: 4em 1.7em 1.5em 0em;
         float: right;
     }
     .div-button-salvar-novo button{
@@ -388,3 +341,48 @@
         cursor: pointer;
     }
 }
+
+
+
+
+/* guarda(nao apaga) */
+/* .tipo-produto{
+        display: flex;
+        flex-direction: column;
+
+        margin-left: 1.4em;
+    }
+
+    .tipos-produtos{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: .1em;
+    }
+    .div-tipos{
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .div-tipos-skate{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        margin-top: 1.2em;
+    }
+
+    .input-tipo-skate{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 1em;
+        width: 9.2em;
+    }
+    .input-tipo-skate #label-tipo-skate{
+        font-family: "Inter", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+    } */
