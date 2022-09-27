@@ -11,10 +11,14 @@ export default function CadastrarProduto(){
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
     const [Categoria,setCategoria] = useState([]);
+    const [tipoSkate, setTipoSkate] = useState(false)
 
-    const[IdTipos, setIdTipos] = useState()
+    const [IdTipos, setIdTipos] = useState()
     const [IdMarcas,setIdMarcas] = useState()
     const [IdCategoria,setIdCategoria] = useState()
+    const [IdTipoSkate, setIdTipoSkate] = useState()
+    
+
 
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
@@ -87,6 +91,10 @@ export default function CadastrarProduto(){
         return URL.createObjectURL(imagem)
     }
 
+    function skateTipo () {
+        if (IdTipos == 1) setTipoSkate(true)
+    }
+
     return(
         <section className="page-cadastrar-produto">
             <div className="comps">
@@ -146,7 +154,7 @@ export default function CadastrarProduto(){
 
                             <div className="div-infos-2">
                                 <label id="tipo-titulo"> Tipo: </label>
-                                <select value={IdTipos} onChange={e => setIdTipos(e.target.value)}>
+                                <select value={IdTipos} onChange={e => setIdTipos(e.target.value) }>
                                     <option selected disabled hidden> Tipos </option>
 
                                     {Tipos.map(item =>
@@ -154,7 +162,13 @@ export default function CadastrarProduto(){
                                             {item.nome}
                                         </option>
                                     )}
+
                                 </select>
+                                {tipoSkate &&
+                                    <label id="skate-tipo"> Tipo: </label>
+                                }
+                                
+                                
                             </div>
 
                             <div className="div-infos-3">
