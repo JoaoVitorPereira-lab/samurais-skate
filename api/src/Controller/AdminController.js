@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -40,6 +40,20 @@ server.post('/api/admin/produto', async (req, resp) => {
     });
   }
 });
+
+
+/* CONSULTAR PRODUTO */
+//Consultar todos Agendamentos
+server.get('/api/admin/produto', async (req, resp) => {
+  try{
+      const resposta = await ConsultarProduto();
+      resp.send(resposta) 
+  } catch(err){
+      resp.status(401).send({
+          erro: err.message
+      })
+  }
+})
 
 
 /* SALVAR IMAGEM */
