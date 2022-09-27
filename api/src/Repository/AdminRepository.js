@@ -13,6 +13,26 @@ export async function InserirProduto (produto){
 }
 
 
+/* CONSULTAR PRODUTOS */
+export async function ConsultarProduto (produto){
+    const comando = 
+        `SELECT id_marca	    marca,
+                id_categoria    categoria,
+                id_tipo  		tipo,
+                nm_produto		nome,
+                ds_descricao	descricao,
+                bt_promocao	    promocao,
+                nr_preco		preco,
+                vl_avaliacao	avaliacao,
+                nr_estoque		estoque,
+                ds_tipo			tipo
+           FROM tb_produto`;
+
+    const [resposta] = await con.query(comando);
+    return resposta;
+}
+
+
 /* SALVAR IMAGEM */
 export async function SalvarImagem (imagem, id) {
     const comando = `INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 

@@ -9,10 +9,16 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('')
+    
+    const [mostrarSenha, SetMostrarSenha] = useState();
+
     const [carregando, setCarregando] = useState(false)
     const navigate = useNavigate()
     const ref = useRef()
 
+    function MostrarSenhaClick(){
+        SetMostrarSenha(senha)
+    }
     async function Entrar() {
         ref.current.continuousStart();
         setCarregando(true);
@@ -25,6 +31,7 @@ export default function Login() {
         }
         catch (err) {
           if(err.response.status === 401){
+                ref.current.complete()
                 setErro(err.response.data.Erro)
             }
         }
@@ -46,7 +53,8 @@ export default function Login() {
                 <p></p>
                 <div className="cx2">
                     <h6>Senha</h6>
-                    <input className="senha" type="text" value={senha} onChange={e => setSenha(e.target.value)}></input>
+                    <input className="senha" type="password" value={senha} onChange={e => setSenha(e.target.value)}></input>
+                    <button onClick={MostrarSenhaClick}> Mostrar Senha </button>
                     <a className="esqueceu">Esqueceu a senha?</a>
                 </div>
                 <div className="botao">
