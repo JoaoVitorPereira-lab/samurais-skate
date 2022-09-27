@@ -12,6 +12,22 @@ where ds_email = 'admin@admin.com'
 
 -- ----------------------------------------------
 
+-- Consultar pedido
+SELECT id_marca			'marca',
+	   id_categoria     'categoria',
+	   id_tipo  		'tipo',
+       nm_produto		'nome',
+       ds_descricao	    'descricao',
+       bt_promocao	    'promocao',
+	   nr_preco			'preco',
+	   vl_avaliacao		'avaliacao',
+       nr_estoque		'estoque',
+       ds_tipo			'tipo'
+  FROM tb_produto;
+
+
+-- ----------------------------------------------
+
 -- Inserir Tipo Skate
 insert into tb_tipo_skate (nm_tipo_skate)
 			 values ('Equipamento de proteção');
