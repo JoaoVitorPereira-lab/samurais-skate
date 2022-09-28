@@ -17,9 +17,6 @@ server.post('/api/admin/produto', async (req, resp) => {
 
     if (!novoproduto.IdTipo) throw new Error("Tipo do produto é obrigatório!");
 
-    if (!novoproduto.estoque)
-      throw new Error("Quantidade de estoque do produto é obrigatória!");
-
     if (novoproduto.promocao == undefined)
       throw new Error("Promoção do produto é obrigatória!");
 

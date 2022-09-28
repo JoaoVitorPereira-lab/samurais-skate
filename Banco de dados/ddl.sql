@@ -176,7 +176,7 @@ create table tb_produto_pedido (
 -- tabela tipo skate
 create table tb_tipo_skate (
     id_tipo_skate            int primary key auto_increment,
-    id_tipo                    int,
+    id_tipo                  int,
     nm_tipo_skate            varchar(100),
 
     foreign key (id_tipo) references tb_tipo (id_tipo)

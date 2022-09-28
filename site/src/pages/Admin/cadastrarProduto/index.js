@@ -23,7 +23,7 @@ export default function PageCadastrarProduto(){
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
-    const [estoque, setEstoque] = useState();
+    const [estoque, setEstoque] = useState(0);
     
     const [id, setId] = useState(0);
 

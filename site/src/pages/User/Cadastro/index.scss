@@ -12,7 +12,7 @@
     }
 
     .barra_lateral {
-        margin-left: 5em;
+
         border: solid #E52A45;
         background-color: #E52A45;
         height: 40em;
@@ -32,19 +32,17 @@
         font-size: 16px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         ;
-        margin-top: 0em;
     }
 
     .email,
     .senha:focus {
         outline: none;
+
     }
 
     .botoes {
-        margin-left: 4em;
-        margin-top: 14em;
+        margin-top: 15em;
         margin-right: 5em;
-        margin-bottom: 0em;
     }
 
     h1 {
@@ -93,7 +91,7 @@
         padding-top: 0.4em;
         letter-spacing: 9px;
         font-size: 2em;
-        width: 10em;
+        width: 7em;
         height: 1.7em;
         background: #E52A45;
         border-radius: 14px;
@@ -107,7 +105,7 @@
         padding-top: 0.4em;
         letter-spacing: 9px;
         font-size: 2em;
-        width: 10em;
+        width: 7em;
         height: 1.7em;
         background: #E52A45;
         border-radius: 14px;
@@ -137,11 +135,6 @@
         font-family:'Timmana', sans-serif;
         font-weight: bold;
         cursor:pointer;
-    }
-
-    .Formulario{
-        margin-top: -5em;
-        margin-left: 2em;
     }
 }
 
