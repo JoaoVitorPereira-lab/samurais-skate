@@ -16,6 +16,21 @@ SELECT id_produto		'id',
  INNER JOIN tb_categoria ON tb_produto.id_categoria = tb_categoria.id_categoria
  INNER JOIN tb_tipo      ON tb_produto.id_tipo = tb_tipo.id_tipo;
 
+-- ----------------------------------------------
+
+select * from tb_produto;
+
+-- Consultar pedido
+UPDATE tb_produto
+   SET id_marca			= 1,
+	   id_categoria     = 3,
+	   id_tipo  		= 2,
+       nm_produto		= 'skate teste',
+       ds_descricao	    = 'skate muiiiitoooo boooommmm',
+       bt_promocao	    = false,
+	   nr_preco			= 122.98,
+       nr_estoque		= 2
+ WHERE id_produto      = 6;
 
 -- ----------------------------------------------
 
@@ -103,5 +118,3 @@ insert into tb_categoria (nm_categoria)
 -- Cadastrar Produto
 INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
                      VALUES (1, 1, 1,'Skate','Skate muito monstroooooo', 0 , 1234 , 1234);
-                     
-select * from tb_produto;
