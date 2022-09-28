@@ -27,7 +27,6 @@
     .div-card-produto{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         align-items: flex-start;
         word-break: break-all;
 
@@ -41,6 +40,22 @@
     }
     .div-produto{
         width: 11.2em;
+    }
+    .div-tipo{
+        width: 7em;
+        margin-left: 5em;
+    }
+    .div-marca{
+        width: 8em;
+        margin-left: 1.7em;
+    }
+    .div-preco{
+        margin-left: 4em;
+        width: 7em;
+    }
+    .div-disponivel{
+        width: 7em;
+        margin-left: 3em;
     }
 
     .div-editar-deletar button{

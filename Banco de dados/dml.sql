@@ -1,22 +1,10 @@
 use samuraisdb;
 
--- Login 
-select tb_conta_usuario.id_conta_usuario      id,
-      nm_usuario      nome
-  from tb_login_usuario
-  join tb_conta_usuario
-    on tb_login_usuario.id_conta_usuario = tb_conta_usuario.id_conta_usuario
-where ds_email = 'admin@admin.com'
-  and ds_senha = '1234';
-
-
--- ----------------------------------------------
-
 -- Consultar pedido
 SELECT id_produto		'id',
-	   id_marca			'marca',
-	   id_categoria     'categoria',
-	   id_tipo  		'tipo',
+	   nm_marca			'marca',
+	   nm_categoria     'categoria',
+	   nm_tipo  		'tipo',
        nm_produto		'nome',
        ds_descricao	    'descricao',
        bt_promocao	    'promocao',
@@ -24,7 +12,10 @@ SELECT id_produto		'id',
 	   vl_avaliacao		'avaliacao',
        nr_estoque		'estoque',
        ds_tipo			'tipo'
-  FROM tb_produto;
+  FROM tb_produto
+ INNER JOIN tb_marca     ON tb_produto.id_marca = tb_marca.id_marca
+ INNER JOIN tb_categoria ON tb_produto.id_categoria = tb_categoria.id_categoria
+ INNER JOIN tb_tipo      ON tb_produto.id_tipo = tb_tipo.id_tipo;
 
 
 -- ----------------------------------------------

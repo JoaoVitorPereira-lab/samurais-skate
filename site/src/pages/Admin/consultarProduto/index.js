@@ -46,24 +46,24 @@ export default function PageConsultarProduto(){
                 
             {produto.map(item =>
                 <div className="div-card-produto">
-                    <div className="divs-iguais div-produto" style={{display: "flex", flexDirection: "column"}}>
+                    <div className="div-produto" style={{display: "flex", flexDirection: "column"}}>
                         <text> {item.nome} </text>
                         <text> #0{item.id} </text>
                     </div>
 
-                    <div className="divs-iguais div-tipo">
+                    <div className="div-tipo">
                         <text> {item.tipo} </text>
                     </div>
 
-                    <div className="divs-iguais div-marca">
+                    <div className="div-marca">
                         <text> {item.marca} </text>
                     </div>
 
-                    <div className="divs-iguais div-preco">
+                    <div className="div-preco">
                         <text> {item.preco} </text>
                     </div>
 
-                    <div className="divs-iguais div-disponivel">
+                    <div className="div-disponivel">
                         <img src="./images/disponivel.png" alt=""/>
                     </div>
 

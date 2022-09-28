@@ -17,17 +17,19 @@ export async function InserirProduto (produto){
 export async function ConsultarProduto(){
     const comando = 
         `SELECT id_produto      id,
-                id_marca	    marca,
-                id_categoria    categoria,
-                id_tipo  		tipo,
+                nm_marca	    marca,
+                nm_categoria    categoria,
+                nm_tipo  		tipo,
                 nm_produto		nome,
                 ds_descricao	descricao,
                 bt_promocao	    promocao,
                 nr_preco		preco,
                 vl_avaliacao	avaliacao,
-                nr_estoque		estoque,
-                ds_tipo			tipo
-           FROM tb_produto`;
+                nr_estoque		estoque
+           FROM tb_produto
+          INNER JOIN tb_marca     ON tb_produto.id_marca = tb_marca.id_marca
+          INNER JOIN tb_categoria ON tb_produto.id_categoria = tb_categoria.id_categoria
+          INNER JOIN tb_tipo      ON tb_produto.id_tipo = tb_tipo.id_tipo`;
 
     const [resposta] = await con.query(comando);
     return resposta;
