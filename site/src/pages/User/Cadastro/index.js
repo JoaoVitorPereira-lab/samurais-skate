@@ -48,32 +48,36 @@ export default function Login() {
             <div className="barra_lateral"></div>
             <div className="botoes">
                 <h1>CRIAR CONTA</h1>
-                <div className="cx1">
-                    <h6>Nome</h6>
-                    <input className="email" type="text" value={nome} onChange={e => setNome(e.target.value)}/>
-                </div>
-                <p></p>
-                <div className="cx2">
-                    <h6>Sobrenome</h6>
-                    <input className="senha" type="password" value={sobrenome} onChange={e => setSobrenome(e.target.value)}></input>
-                    <button onClick={MostrarSenhaClick}> Mostrar Senha </button>
-                    {mostrarSenha &&
-                    senha
-                    }
-                    <a className="esqueceu">Esqueceu a senha?</a>
-                </div>
-                <h6>E-mail</h6>
-                    <input className="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
-                    <h6>Senha</h6>
-                    <input className="email" type="text" value={senha} onChange={e => setSenha(e.target.value)}/>
-                <div className="botao">
-                    <div>
-                        {erro}
-                    </div>
-                <button className="entrar" onClick={Entrar}>ENTRAR</button>
-                </div>
-                <div className="criar_conta">
-                    <a>criar conta</a>
+
+                <div className="Formulario">
+
+                        <div className="cx1">
+                            <h6>Nome</h6>
+                            <input className="email" type="text" value={nome} onChange={e => setNome(e.target.value)}/>
+                        </div>
+                        <p></p>
+                        <div className="cx2">
+                            <h6>Sobrenome</h6>
+                            <input className="senha" type="text" value={sobrenome} onChange={e => setSobrenome(e.target.value)}></input>
+                        </div>
+                        <h6>E-mail</h6>
+                            <input className="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                            <h6>Senha</h6>
+                            <input className="email" type="password" value={senha} onChange={e => setSenha(e.target.value)}/>
+                        <button onClick={MostrarSenhaClick}> Mostrar Senha </button>
+                            {mostrarSenha &&
+                            senha
+                            }
+                        <div className="botao">
+                            <div>
+                                {erro}
+                            </div>
+                        <button className="entrar" onClick={Entrar}>Criar Conta</button>
+                        </div>
+                        </div>
+                    
+                        <div className="criar_conta">
+                            <a>Entrar</a>
 
                 </div>
 
