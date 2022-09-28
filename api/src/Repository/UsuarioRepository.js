@@ -12,3 +12,10 @@ export async function Login(email, senha) {
     const [resposta] = await con.query(comando, [email, senha]);
     return resposta[0]
 }
+
+export async function Cadastro(cadastro) {
+  const comando =  ` INSERT INTO tb_conta_usuario (nm_usuario, nm_sobrenome)
+                     VALUES (?,?)`
+  const [resposta] = await con.query(comando,[cadastro.nome, cadastro.sobrenome])
+  return resposta[0]
+}
