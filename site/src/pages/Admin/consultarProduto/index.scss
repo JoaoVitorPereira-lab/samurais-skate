@@ -42,18 +42,16 @@
     .div-produto{
         width: 11.2em;
     }
-    .div-produto{
-        display: flex;
-        flex-direction: column;
-    }
 
-    .div-editar-deletar{
-        display: flex;
-        flex-direction: row;
-    }
     .div-editar-deletar button{
+        width: 2em; height: 2em;
+        cursor: pointer;
+
         border: transparent;
         background-color: inherit;
+    }
+    .editar-button{
+        margin-right: .2em;
     }
 /* FIM CARDS DOS PRODUTOS */
 }

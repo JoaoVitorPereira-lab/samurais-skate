@@ -3,7 +3,7 @@ import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem} from "../../../api/AdminAPI";
+import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem} from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
 export default function PageCadastrarProduto(){
@@ -11,12 +11,10 @@ export default function PageCadastrarProduto(){
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
     const [Categoria,setCategoria] = useState([]);
-    const [tipoSkate, setTipoSkate] = useState(false)
 
     const [IdTipos, setIdTipos] = useState()
     const [IdMarcas,setIdMarcas] = useState()
     const [IdCategoria,setIdCategoria] = useState()
-    const [IdTipoSkate, setIdTipoSkate] = useState()
     
 
 
@@ -61,7 +59,7 @@ export default function PageCadastrarProduto(){
             if(!imagem)
                 throw new Error('Escolha a imagem!');
 
-            const Novoproduto = await EndPointCadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+            const Novoproduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
             await enviarimagem(Novoproduto.id, imagem);
             alert('cadastrado com sucesso 🚀');
         } catch (err) {
@@ -91,9 +89,9 @@ export default function PageCadastrarProduto(){
         return URL.createObjectURL(imagem)
     }
 
-    function skateTipo () {
+    /* function skateTipo () {
         if (IdTipos == 1) setTipoSkate(true)
-    }
+    } */
 
     return(
         <main className="page-cadastrar-produto">
@@ -164,10 +162,6 @@ export default function PageCadastrarProduto(){
                                     )}
 
                                 </select>
-                                {tipoSkate &&
-                                    <label id="skate-tipo"> Tipo: </label>
-                                }
-                                
                                 
                             </div>
 

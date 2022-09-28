@@ -13,7 +13,8 @@ where ds_email = 'admin@admin.com'
 -- ----------------------------------------------
 
 -- Consultar pedido
-SELECT id_marca			'marca',
+SELECT id_produto		'id',
+	   id_marca			'marca',
 	   id_categoria     'categoria',
 	   id_tipo  		'tipo',
        nm_produto		'nome',

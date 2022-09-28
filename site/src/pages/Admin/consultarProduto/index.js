@@ -1,9 +1,22 @@
 import './index.scss'
+import { useEffect, useState } from 'react'
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
+import { ConsultarProduto } from '../../../api/AdminAPI';
 
 export default function PageConsultarProduto(){
+
+    const [produto, setProduto] = useState([]);
+
+    async function CarregarProdutos(){
+        const resp = await ConsultarProduto();
+        return setProduto(resp); 
+    }
+
+    useEffect(() => {
+        CarregarProdutos();
+    })
 
     return(
         <main className="page-consultar-produto">
@@ -30,40 +43,41 @@ export default function PageConsultarProduto(){
                     </ul>
                 </div>
             </section>
-
-            <div className="div-card-produto">
                 
-                <div className="divs-iguais div-produto">
-                    <text> Kit Joelheira Fast Forward</text>
-                    <text> #01 </text>
-                </div>
+            {produto.map(item =>
+                <div className="div-card-produto">
+                    <div className="divs-iguais div-produto" style={{display: "flex", flexDirection: "column"}}>
+                        <text> {item.nome} </text>
+                        <text> #0{item.id} </text>
+                    </div>
 
-                <div className="divs-iguais div-tipo">
-                    <text> Acessórios</text>
-                </div>
+                    <div className="divs-iguais div-tipo">
+                        <text> {item.tipo} </text>
+                    </div>
 
-                <div className="divs-iguais div-marca">
-                    <text> Hondar </text>
-                </div>
+                    <div className="divs-iguais div-marca">
+                        <text> {item.marca} </text>
+                    </div>
 
-                <div className="divs-iguais div-preco">
-                    <text> 100,99 </text>
-                </div>
+                    <div className="divs-iguais div-preco">
+                        <text> {item.preco} </text>
+                    </div>
 
-                <div className="divs-iguais div-disponivel">
-                    <img src="./images/disponivel.png" alt=""/>
-                </div>
+                    <div className="divs-iguais div-disponivel">
+                        <img src="./images/disponivel.png" alt=""/>
+                    </div>
 
-                <div className="div-editar-deletar">
-                    <button>
-                        <img src="./images/editar.png"  alt=""/> 
-                    </button>
+                    <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
+                        <button className="editar-button">
+                            <img src="./images/editar.png"  alt=""/> 
+                        </button>
 
-                    <button>
-                        <img src="./images/excluir.png" alt=""/>
-                    </button>
+                        <button className="excluir-button">
+                            <img src="./images/excluir.png" alt=""/>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            )}
 
         </main>
     )

@@ -14,9 +14,10 @@ export async function InserirProduto (produto){
 
 
 /* CONSULTAR PRODUTOS */
-export async function ConsultarProduto (produto){
+export async function ConsultarProduto(){
     const comando = 
-        `SELECT id_marca	    marca,
+        `SELECT id_produto      id,
+                id_marca	    marca,
                 id_categoria    categoria,
                 id_tipo  		tipo,
                 nm_produto		nome,

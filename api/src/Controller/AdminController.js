@@ -43,7 +43,6 @@ server.post('/api/admin/produto', async (req, resp) => {
 
 
 /* CONSULTAR PRODUTO */
-//Consultar todos Agendamentos
 server.get('/api/admin/produto', async (req, resp) => {
   try{
       const resposta = await ConsultarProduto();

@@ -3,8 +3,8 @@ const api = axios.create({
     baseURL:'http://localhost:5000'
 })
 
-
-export async function EndPointCadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
+/*  */
+export async function CadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
         IdMarca: IdMarca, 
         IdCategoria: IdCategoria,
@@ -18,6 +18,13 @@ export async function EndPointCadastrarProduto (IdMarca, IdCategoria, IdTipo, no
 
     return resposta.data;
 }
+
+
+export async function ConsultarProduto(){
+    const resposta = await api.get('/api/admin/produto');
+    return resposta.data;
+}
+
 
 export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
 
