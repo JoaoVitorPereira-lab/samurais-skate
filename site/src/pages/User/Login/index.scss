@@ -45,7 +45,7 @@
         margin-right: 5em;
     }
 
-    h1 {
+    .titulo {
         margin-top: -2em;
         margin-bottom: 2em;
         font-size: 60px;
@@ -71,12 +71,7 @@
         cursor: pointer;
     }
 
-    .entrar {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 3em;
-    }
+    
 
     h6 {
         margin-bottom: 0.7em;
@@ -84,35 +79,7 @@
         font-size: 12px;
     }
 
-    .entrar {
-        font-family: 'Timmana', sans-serif;
-        color:#fff;
-        align-items: center;
-        padding-top: 0.4em;
-        letter-spacing: 9px;
-        font-size: 2em;
-        width: 7em;
-        height: 1.7em;
-        background: #E52A45;
-        border-radius: 14px;
-        border: none;
-    }
-
-    .entrar:hover {
-        font-family: 'Timmana', sans-serif;
-        color:#fff;
-        align-items: center;
-        padding-top: 0.4em;
-        letter-spacing: 9px;
-        font-size: 2em;
-        width: 7em;
-        height: 1.7em;
-        background: #E52A45;
-        border-radius: 14px;
-        border: none;
-        cursor: pointer;
-    }
-
+        
     .botao {
          display: flex;
          justify-content: center;

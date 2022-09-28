@@ -45,7 +45,7 @@ export default function Login() {
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">
-                <h1>Entrar</h1>
+                <h1 className="titulo">Entrar</h1>
                 <div className="cx1">
                     <h6>E-mail</h6>
                     <input className="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
