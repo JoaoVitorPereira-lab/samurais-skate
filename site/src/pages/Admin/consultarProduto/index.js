@@ -1,5 +1,7 @@
 import './index.scss'
+
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
@@ -7,7 +9,13 @@ import { ConsultarProduto } from '../../../api/AdminAPI';
 
 export default function PageConsultarProduto(){
 
+    const navigate = useNavigate();
+
     const [produto, setProduto] = useState([]);
+
+    async function EditarProduto(id) {
+        navigate(`/api/admin/${id}`)
+    }
 
     async function CarregarProdutos(){
         const resp = await ConsultarProduto();

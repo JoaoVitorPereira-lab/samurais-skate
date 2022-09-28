@@ -36,6 +36,27 @@ export async function ConsultarProduto(){
 }
 
 
+
+/* EDITAR PRODUTO */
+export async function AlterarProduto(id, produto){
+    const comando =
+       `UPDATE tb_produto
+           SET id_marca			= ?,
+               id_categoria     = ?,
+               id_tipo  		= ?,
+               nm_produto		= ?,
+               ds_descricao	    = ?,
+               bt_promocao	    = ?,
+               nr_preco			= ?,
+               nr_estoque		= ?
+         WHERE id_produto       = ?`;
+        
+    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque, id])
+
+    return resposta.affectedRows;
+}
+
+
 /* SALVAR IMAGEM */
 export async function SalvarImagem (imagem, id) {
     const comando = `INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 

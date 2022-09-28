@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -11,26 +11,26 @@ server.post('/api/admin/produto', async (req, resp) => {
   try {
     const novoproduto = req.body;
 
-    if (!novoproduto.nome) throw new Error("Nome do produto é obrigatório!");
+    if (!novoproduto.nome.trim()) throw new Error("Nome do produto é obrigatório!");
 
-    if (!novoproduto.preco|| novoproduto.preco<=0) throw new Error("Preço do produto é obrigatória!");
+    if (!novoproduto.preco.trim() || novoproduto.preco <= 0) throw new Error("Preço do produto é obrigatória!");
 
-    if (!novoproduto.IdTipo) throw new Error("Tipo do produto é obrigatório!");
+    if (!novoproduto.IdTipo.trim()) throw new Error("Tipo do produto é obrigatório!");
 
     if (novoproduto.promocao == undefined)
       throw new Error("Promoção do produto é obrigatória!");
 
-    if (!novoproduto.IdMarca) throw new Error("Marca do produto é obrigatória!");
+    if (!novoproduto.IdMarca.trim()) throw new Error("Marca do produto é obrigatória!");
 
-    if (!novoproduto.descricao)
+    if (!novoproduto.descricao.trim())
       throw new Error("Descrição do produto é obrigatório!");
 
-    if (!novoproduto.IdCategoria)
+    if (!novoproduto.IdCategoria.trim())
       throw new Error("Categoria do produto é obrigatória!");
 
     const resposta = await InserirProduto(novoproduto);
     
-    resp.status(200).send(resposta);
+    resp.status(204).send(resposta);
   } catch (err) {
     resp.status(400).send({
       erro: err.message,
@@ -46,6 +46,47 @@ server.get('/api/admin/produto', async (req, resp) => {
       resp.send(resposta) 
   } catch(err){
       resp.status(401).send({
+          erro: err.message
+      })
+  }
+})
+
+
+
+// ALTERAR PRODUTO //
+server.put('/api/admin/produto/:id', async (req, resp) => {
+  try
+  {
+      const { id } = req.params;
+      const novoproduto = req.body;
+
+      if (!novoproduto.nome) throw new Error("Nome do produto é obrigatório!");
+
+      if (!novoproduto.preco || novoproduto.preco <= 0) throw new Error("Preço do produto é obrigatória!");
+
+      if (!novoproduto.IdTipo) throw new Error("Tipo do produto é obrigatório!");
+
+      if (novoproduto.promocao == undefined)
+        throw new Error("Promoção do produto é obrigatória!");
+
+      if (!novoproduto.IdMarca) throw new Error("Marca do produto é obrigatória!");
+
+      if (!novoproduto.descricao)
+        throw new Error("Descrição do produto é obrigatório!");
+
+      if (!novoproduto.IdCategoria)
+        throw new Error("Categoria do produto é obrigatória!");
+
+      const resposta = await AlterarProduto(id, novoproduto);
+      
+      if(resposta != 1)
+          throw new Error('Produto não pode ser alterado. ');
+      else
+          resp.sendStatus(204)
+  }
+  catch(err)
+  {
+      resp.status(400).send({
           erro: err.message
       })
   }
