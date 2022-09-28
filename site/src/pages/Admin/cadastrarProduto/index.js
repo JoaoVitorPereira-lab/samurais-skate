@@ -6,7 +6,7 @@ import Cabecalho from '../componentsAdmin/cabecalho';
 import { EndPointCadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem} from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 
-export default function CadastrarProduto(){
+export default function PageCadastrarProduto(){
 
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
@@ -96,7 +96,7 @@ export default function CadastrarProduto(){
     }
 
     return(
-        <section className="page-cadastrar-produto">
+        <main className="page-cadastrar-produto">
             <div className="comps">
                 <Cabecalho />
                 <Navs />
@@ -239,6 +239,6 @@ export default function CadastrarProduto(){
                     <button className="novo" onClick={novoClick}>NOVO</button>
                 </div>
             </div>
-        </section>
+        </main>
     );
 }
