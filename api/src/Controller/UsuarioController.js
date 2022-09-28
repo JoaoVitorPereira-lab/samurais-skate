@@ -20,4 +20,13 @@ server.post('/api/login', async (req,resp) =>{
     }
 })
 
+server.post('/api/cadastro/usuario', async (req,resp) =>{
+    try {
+        const {cadastro} = req.body;
+    }
+     catch (err) {
+        
+    }
+})
+
 export default server;
