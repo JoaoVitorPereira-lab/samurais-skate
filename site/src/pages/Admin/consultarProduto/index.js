@@ -63,9 +63,16 @@ export default function PageConsultarProduto(){
                         <text> {item.preco} </text>
                     </div>
 
-                    <div className="div-disponivel">
-                        <img src="./images/disponivel.png" alt=""/>
-                    </div>
+                    {item.estoque >= 1 &&
+                        <div className="div-disponivel">
+                            <img src="./images/disponivel.png" alt=""/>
+                        </div>
+                    }
+                    {item.estoque <= 0 &&
+                        <div className="div-disponivel">
+                            <img src="./images/naodisponivel.png" alt=""/>
+                        </div>
+                    }
 
                     <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
                         <button className="editar-button">

@@ -10,8 +10,7 @@ SELECT id_produto		'id',
        bt_promocao	    'promocao',
 	   nr_preco			'preco',
 	   vl_avaliacao		'avaliacao',
-       nr_estoque		'estoque',
-       ds_tipo			'tipo'
+       nr_estoque		'estoque'
   FROM tb_produto
  INNER JOIN tb_marca     ON tb_produto.id_marca = tb_marca.id_marca
  INNER JOIN tb_categoria ON tb_produto.id_categoria = tb_categoria.id_categoria
@@ -103,4 +102,6 @@ insert into tb_categoria (nm_categoria)
 
 -- Cadastrar Produto
 INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
-                     VALUES (1,1,1,'Skate','Skate muito monstroooooo', 0 , 1234 , 1234);
+                     VALUES (1, 1, 1,'Skate','Skate muito monstroooooo', 0 , 1234 , 1234);
+                     
+select * from tb_produto;
