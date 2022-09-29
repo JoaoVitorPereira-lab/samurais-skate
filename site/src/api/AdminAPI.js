@@ -3,7 +3,7 @@ const api = axios.create({
     baseURL:'http://localhost:5000'
 })
 
-/*  */
+/* CADASTRAR PRODUTO */
 export async function CadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
         IdMarca: IdMarca, 
@@ -20,12 +20,14 @@ export async function CadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, desc
 }
 
 
+/* CONSULTAR PRODUTO */
 export async function ConsultarProduto(){
     const resposta = await api.get('/api/admin/produto');
     return resposta.data;
 }
 
 
+/* ALTERAR PRODUTO */
 export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
 
     const resposta = await api.put(`api/admin/${id}`, {
@@ -44,31 +46,40 @@ export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, des
 }
 
 
+/* LISTAR CATEGORIA */
 export async function ListarCategoria(){
     const resposta = await api.get('/api/categoria');
     return resposta.data;
 }
 
+
+/* LISTAR TIPOS */
 export async function ListarTipos(){
     const resposta = await api.get('/api/tipo');
     return resposta.data
 }
 
+
+/* LISTAR MARCAS */
 export async function ListarMarcas(){
     const resposta = await api.get('/api/marca')
     return resposta.data
 }
 
+/* LISTAR TIPOS DE SKATE */
 export async function ListarTiposSkate(){
     const resposta = await api.get('/api/tipo/skate')
     return resposta.data
 }
 
+
+/* BUSCAR IMAGEM */
 export async function BuscarImagem(imagem){
     return `${api.getUri()}/${imagem}`
 }
 
 
+/* ENVIAR IMAGEM */
 export async function enviarimagem (id, imagem){
     const formData = new FormData();
     formData.append('imgproduto', imagem);
@@ -81,6 +92,8 @@ export async function enviarimagem (id, imagem){
     return resposta.status;
 }
 
+
+/* LOGIN DO ADM */
 export async function LoginAdm(email,senha){
         const resposta = await api.post('/api/login/adm', {
             email: email,
