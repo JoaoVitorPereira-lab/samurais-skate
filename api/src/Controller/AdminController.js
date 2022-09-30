@@ -54,7 +54,7 @@ server.get('/api/admin/produto', async (req, resp) => {
 
 
 // ALTERAR PRODUTO //
-server.put('/api/admin/produto/:id', async (req, resp) => {
+server.put('/api/admin/:id', async (req, resp) => {
   try
   {
       const { id } = req.params;
