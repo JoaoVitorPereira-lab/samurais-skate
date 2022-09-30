@@ -12,10 +12,20 @@ export  async function EntrarLogin(email,senha){
     return resposta.data
 }
 
-export async function CadastrarLogin (email, senha){
+export async function CadastrarLogin (email, senha, id){
     const resposta = await api.post ('/api/cadastro',{
         email: email,
-        senha: senha
+        senha: senha,
+        conta: id
+    })
+
+    return resposta.data
+}
+
+export async function CadastrarConta (nome, sobrenome) {
+    const resposta = await api.post ('/api/cadastro/informacoes', {
+        nome: nome,
+        sobrenome: sobrenome
     })
 
     return resposta.data

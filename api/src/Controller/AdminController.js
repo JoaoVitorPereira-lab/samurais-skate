@@ -11,26 +11,27 @@ server.post('/api/admin/produto', async (req, resp) => {
   try {
     const novoproduto = req.body;
 
-    if (!novoproduto.nome.trim()) throw new Error("Nome do produto é obrigatório!");
+    if (!novoproduto.nome) throw new Error("Nome do produto é obrigatório!");
 
-    if (!novoproduto.preco.trim() || novoproduto.preco <= 0) throw new Error("Preço do produto é obrigatória!");
+    if (!novoproduto.preco || novoproduto.preco <= 0) throw new Error("Preço do produto é obrigatória!");
 
-    if (!novoproduto.IdTipo.trim()) throw new Error("Tipo do produto é obrigatório!");
+    if (!novoproduto.IdTipo) throw new Error("Tipo do produto é obrigatório!");
 
     if (novoproduto.promocao == undefined)
       throw new Error("Promoção do produto é obrigatória!");
 
-    if (!novoproduto.IdMarca.trim()) throw new Error("Marca do produto é obrigatória!");
+    if (!novoproduto.IdMarca) throw new Error("Marca do produto é obrigatória!");
 
-    if (!novoproduto.descricao.trim())
+    if (!novoproduto.descricao)
       throw new Error("Descrição do produto é obrigatório!");
 
-    if (!novoproduto.IdCategoria.trim())
+    if (!novoproduto.IdCategoria)
       throw new Error("Categoria do produto é obrigatória!");
 
     const resposta = await InserirProduto(novoproduto);
     
     resp.status(204).send(resposta);
+    console.log(resposta)
   } catch (err) {
     resp.status(400).send({
       erro: err.message,
@@ -86,6 +87,7 @@ server.put('/api/admin/:id', async (req, resp) => {
   }
   catch(err)
   {
+      console.log(err)
       resp.status(400).send({
           erro: err.message
       })

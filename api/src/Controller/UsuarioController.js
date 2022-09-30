@@ -41,7 +41,7 @@ server.post('/api/cadastro' , async (req,resp) => {
         const cadastro = req.body;
         if(!cadastro.email.trim()) throw new Error ('Digite um email!')
         if(!cadastro.senha.trim()) throw new Error('Digite uma senha!')
-        if(!cadastro.id) throw new Error('Coloque o id!')
+        if(!cadastro.conta) throw new Error('Coloque o id!')
         
         const resposta = await CadastrarLogin (cadastro)
         resp.status(200).send(resposta)

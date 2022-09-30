@@ -7,9 +7,8 @@ export async function InserirProduto (produto){
                      VALUES (?,?,?,?,?,?,?,?)`
 
     const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
-    produto.id = resposta.insertId;
-
-    return produto;
+ 
+    return resposta;
 }
 
 
