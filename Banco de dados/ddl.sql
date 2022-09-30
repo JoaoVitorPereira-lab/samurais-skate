@@ -25,6 +25,8 @@ create table tb_login_usuario (
     foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO)
 );
 
+
+
 -- Tabela Endereço do Usuário
 create table tb_usuario_endereco (
 	  ID_USUARIO_ENDERECO 		int primary key auto_increment,
@@ -71,6 +73,7 @@ create table tb_produto	(
     foreign key (ID_CATEGORIA) references tb_categoria (ID_CATEGORIA),
     foreign key (ID_TIPO) references tb_tipo (ID_TIPO)
 );
+
 
 
 -- Tabela da imagem do produto

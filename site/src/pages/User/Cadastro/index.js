@@ -1,12 +1,13 @@
 import "./index.scss"
-import { EntrarLogin } from '../../../api/UsuarioApi.js'
+import { CadastrarLogin, CadastrarConta } from '../../../api/UsuarioApi.js'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 export default function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const[nome, setNome] = useState('')
+    const [nome, setNome] = useState('')
     const [sobrenome, setSobrenome] = useState('')
+    
     const [erro, setErro] = useState('')
  
     const [mostrarSenha, SetMostrarSenha] = useState(false);
@@ -14,9 +15,10 @@ export default function Login() {
     function MostrarSenhaClick(){
         SetMostrarSenha(true)
     }
-    async function Entrar() {
+    async function CriarConta() {
         try {
-            const r = await EntrarLogin(email, senha)
+            const r = await CadastrarConta(nome, sobrenome)
+            const resp = await CadastrarLogin (email, senha, r.id)
             setTimeout(() => {
                 navigate('/teste'); 
             }, 3000);
@@ -58,7 +60,7 @@ export default function Login() {
                             <div>
                                 {erro}
                             </div>
-                        <button className="entrar" onClick={Entrar}>Criar Conta</button>
+                        <button className="entrar" onClick={CriarConta}>Criar Conta</button>
                         </div>
                         </div>
 

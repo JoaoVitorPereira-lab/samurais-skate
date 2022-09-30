@@ -23,7 +23,7 @@ export async function Cadastro(cadastro) {
 export async function CadastrarLogin (cadastro){
   const comando = ` INSERT INTO tb_login_usuario (id_conta_usuario, ds_email, ds_senha)
                     values (?,?,?) `
-  const [resposta] = await con.query(comando, [cadastro.id, cadastro.email, cadastro.senha])
+  const [resposta] = await con.query(comando, [cadastro.conta, cadastro.email, cadastro.senha])
   cadastro.id = resposta.insertId
   return cadastro         
 }
