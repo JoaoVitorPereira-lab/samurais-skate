@@ -2,7 +2,6 @@ import "./index.scss"
 import { EntrarLogin } from '../../../api/UsuarioApi.js'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
-import LoadingBar from 'react-top-loading-bar'
 export default function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -11,15 +10,11 @@ export default function Login() {
     const [erro, setErro] = useState('')
  
     const [mostrarSenha, SetMostrarSenha] = useState(false);
-    const [carregando, setCarregando] = useState(false)
     const navigate = useNavigate()
-    const ref = useRef()
     function MostrarSenhaClick(){
         SetMostrarSenha(true)
     }
     async function Entrar() {
-        ref.current.continuousStart();
-        setCarregando(true);
         try {
             const r = await EntrarLogin(email, senha)
             setTimeout(() => {
@@ -28,14 +23,12 @@ export default function Login() {
         }
         catch (err) {
           if(err.response.status === 401){
-                ref.current.complete()
                 setErro(err.response.data.Erro)
             }
         }
     }
     return (
         <section className="page-login">
-            <LoadingBar color="#E52A45" ref={ref}/>
             <div>
                 <img src="../images/logo.png" alt="logo" className="logo" />
             </div>

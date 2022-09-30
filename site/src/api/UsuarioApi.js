@@ -11,3 +11,12 @@ export  async function EntrarLogin(email,senha){
     })
     return resposta.data
 }
+
+export async function CadastrarLogin (email, senha){
+    const resposta = await api.post ('/api/cadastro',{
+        email: email,
+        senha: senha
+    })
+
+    return resposta.data
+}
