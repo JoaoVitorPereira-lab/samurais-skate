@@ -12,8 +12,11 @@ export default function Rotas (){
         <BrowserRouter>
             <Routes>
                 <Route path='/Login' element={<Login/>} />
+
                 <Route path='/cadastrarproduto' element ={<CadastrarProduto/>}/>
+                <Route path='/alterarproduto/:idParam' element ={<CadastrarProduto/>}/>
                 <Route path='/consultarproduto' element ={<ConsultarProduto/>}/>
+
                 <Route path='/teste' element ={<Teste/>}/>
                 <Route path='/Login/adm' element ={<LoginAdm/>} />
                 <Route path='/CriarConta' element ={<CadastroConta/>} />

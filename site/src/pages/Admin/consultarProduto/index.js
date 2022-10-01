@@ -14,7 +14,7 @@ export default function PageConsultarProduto(){
     const [produto, setProduto] = useState([]);
 
     async function EditarProduto(id) {
-        navigate(`/api/admin/${id}`)
+        navigate(`/alterarproduto/${id}`)
     }
 
     async function CarregarProdutos(){
@@ -83,7 +83,7 @@ export default function PageConsultarProduto(){
                     }
 
                     <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
-                        <button className="editar-button">
+                        <button className="editar-button" onClick={() => EditarProduto(item.id)}>
                             <img src="./images/editar.png"  alt=""/> 
                         </button>
 

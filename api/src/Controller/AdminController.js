@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -95,8 +95,32 @@ server.put('/api/admin/:id', async (req, resp) => {
 })
 
 
+/* BUSCAR POR ID */
+server.get('/api/produto/:id', async (req, resp) =>{
+  try
+  {
+      const id = Number(req.params.id);
+
+      const resposta = await BuscarPorID(id);
+
+      if(!resposta)
+        resp.status(404).send([]);
+      else
+        resp.send(resposta);
+  }
+
+  catch(err)
+  {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
+
+
+
 /* SALVAR IMAGEM */
-server.post( '/api/admin/:id/imagem', upload.single("imgproduto"), async (req, resp) => {
+server.post('/api/admin/:id/imagem', upload.single("imgproduto"), async (req, resp) => {
     try {
       if(!req.file) throw new Error ('Escolha a imagem!')
 

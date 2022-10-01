@@ -39,10 +39,17 @@ export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, des
         promocao: promocao,
         preco: preco,
         avaliacao: avaliacao,
-        estoque: estoque,
+        estoque: estoque
     })
+    
     return resposta.data;
+}
 
+
+/* LISTAR CATEGORIA */
+export async function BuscarPorID (id){
+    const resposta = await api.get(`api/produto/${id}`);
+    return resposta.data
 }
 
 

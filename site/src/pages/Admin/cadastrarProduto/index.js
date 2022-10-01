@@ -3,8 +3,9 @@ import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem} from "../../../api/AdminAPI";
+import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, alterarProduto, BuscarPorID} from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
 
 export default function PageCadastrarProduto(){
 
@@ -15,8 +16,6 @@ export default function PageCadastrarProduto(){
     const [IdTipos, setIdTipos] = useState()
     const [IdMarcas,setIdMarcas] = useState()
     const [IdCategoria,setIdCategoria] = useState()
-    
-
 
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
@@ -24,8 +23,27 @@ export default function PageCadastrarProduto(){
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
     const [estoque, setEstoque] = useState(0);
-    
+
     const [id, setId] = useState(0);
+
+    const { idParam } = useParams();
+
+    async function carregarAgendamento(){
+        const resposta = await BuscarPorID(idParam);
+
+        console.log(resposta);
+
+        setNome(resposta.nome);
+        setDescricao(resposta.descricao);
+        setPreco(resposta.preco);
+        setEstoque(resposta.estoque);
+        setId(resposta.id);
+        setPromocao(resposta.promocao);
+
+        setIdTipos(resposta.IdTipo);
+        setIdCategoria(resposta.IdCategoria);
+        setIdMarcas(resposta.IdMarca);
+    }
 
 
     async function CarregarCategorias(){
@@ -49,6 +67,9 @@ export default function PageCadastrarProduto(){
     }*/ 
 
     useEffect(() =>{
+        if(idParam){
+            carregarAgendamento();
+        }
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
@@ -59,9 +80,17 @@ export default function PageCadastrarProduto(){
             if(!imagem)
                 throw new Error('Escolha a imagem!');
 
-            const Novoproduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
-            await enviarimagem(Novoproduto.id, imagem);
-            alert('cadastrado com sucesso 🚀');
+            if(id === 0){
+                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+                await enviarimagem(novoProduto.id, imagem);
+            
+                setId(novoProduto.id)
+                alert('Produto cadastrado com sucesso 🚀');
+            }
+            else{
+                await alterarProduto(idParam, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+                alert('Produto alterado com sucesso 🚀');
+            }
         } catch (err) {
             if(err.response)
                 alert(err.response.data.erro);  
@@ -103,7 +132,7 @@ export default function PageCadastrarProduto(){
             <div className="div-cadastrar">
                 <div className="tite">
                     <hr />
-                    <h2> Cadastrar Novo Produto </h2>
+                    <h2> {id===0 ? 'Cadastrar' : 'Alterar' } Novo Produto </h2>
                 </div>
 
                 <div className="infos-cadastrar">

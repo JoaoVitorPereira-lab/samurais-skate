@@ -7,8 +7,9 @@ export async function InserirProduto (produto){
                      VALUES (?,?,?,?,?,?,?,?)`
 
     const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
- 
-    return resposta;
+    produto.id = resposta.insertId;
+
+    return produto;
 }
 
 
@@ -28,7 +29,9 @@ export async function ConsultarProduto(){
            FROM tb_produto
           INNER JOIN tb_marca     ON tb_produto.id_marca = tb_marca.id_marca
           INNER JOIN tb_categoria ON tb_produto.id_categoria = tb_categoria.id_categoria
-          INNER JOIN tb_tipo      ON tb_produto.id_tipo = tb_tipo.id_tipo`;
+          INNER JOIN tb_tipo      ON tb_produto.id_tipo = tb_tipo.id_tipo
+          ORDER 
+	         BY id_produto`;
 
     const [resposta] = await con.query(comando);
     return resposta;
@@ -36,7 +39,7 @@ export async function ConsultarProduto(){
 
 
 
-/* EDITAR PRODUTO */
+/* ALTERAR PRODUTO */
 export async function AlterarProduto(id, produto){
     const comando =
        `UPDATE tb_produto
@@ -53,6 +56,25 @@ export async function AlterarProduto(id, produto){
     const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque, id])
 
     return resposta.affectedRows;
+}
+
+
+/* BUSCAR POR ID */
+export async function BuscarPorID (id){
+    const comando = 
+    `SELECT id_produto      id,
+            id_marca	    marca,
+            id_categoria    categoria,
+            id_tipo  		tipo,
+            nm_produto		nome,
+            ds_descricao	descricao,
+            bt_promocao	    promocao,
+            nr_preco		preco,
+            vl_avaliacao	avaliacao,
+            nr_estoque		estoque
+       FROM tb_produto`;
+    const [linhas] = await con.query(comando, [id]);
+    return linhas[0];
 }
 
 
