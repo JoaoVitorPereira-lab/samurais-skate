@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -117,6 +117,28 @@ server.get('/api/produto/:id', async (req, resp) =>{
   }
 })
 
+
+/* BUSCAR PRODUTO POR NOME */
+server.get('/api/buscar', async (req, resp) =>{
+  try
+  {
+      const { nome } = req.query;
+
+      const resposta = await BuscarPorNome(nome);
+
+      if(resposta.length == 0)
+          resp.status(404).send( [] );
+      else
+          resp.send(resposta);
+  }
+
+  catch(err)
+  {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
 
 
 /* SALVAR IMAGEM */

@@ -4,7 +4,7 @@ const api = axios.create({
 })
 
 /* CADASTRAR PRODUTO */
-export async function CadastrarProduto (IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
+export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
         IdMarca: IdMarca, 
         IdCategoria: IdCategoria,
@@ -28,7 +28,7 @@ export async function ConsultarProduto(){
 
 
 /* ALTERAR PRODUTO */
-export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
+export async function AlterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
 
     const resposta = await api.put(`api/admin/${id}`, {
         IdMarca: IdMarca, 
@@ -48,7 +48,7 @@ export async function alterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, des
 
 /* LISTAR CATEGORIA */
 export async function BuscarPorID (id){
-    const resposta = await api.get(`api/produto/${id}`);
+    const resposta = await api.get(`/api/produto/${id}`);
     return resposta.data
 }
 
@@ -56,6 +56,13 @@ export async function BuscarPorID (id){
 /* LISTAR CATEGORIA */
 export async function ListarCategoria(){
     const resposta = await api.get('/api/categoria');
+    return resposta.data;
+}
+
+
+// BUSCAR PRODUTO POR NOME //
+export async function BuscarProdutoPorNome(nome){
+    const resposta = await api.get(`/api/buscar?nome=${nome}`);
     return resposta.data;
 }
 

@@ -3,7 +3,7 @@ import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, alterarProduto, BuscarPorID} from "../../../api/AdminAPI";
+import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
@@ -28,7 +28,7 @@ export default function PageCadastrarProduto(){
 
     const { idParam } = useParams();
 
-    async function carregarAgendamento(){
+    async function CarregarProduto(){
         const resposta = await BuscarPorID(idParam);
 
         console.log(resposta);
@@ -37,12 +37,13 @@ export default function PageCadastrarProduto(){
         setDescricao(resposta.descricao);
         setPreco(resposta.preco);
         setEstoque(resposta.estoque);
-        setId(resposta.id);
         setPromocao(resposta.promocao);
 
         setIdTipos(resposta.IdTipo);
         setIdCategoria(resposta.IdCategoria);
         setIdMarcas(resposta.IdMarca);
+
+        setId(resposta.id);
     }
 
 
@@ -68,7 +69,7 @@ export default function PageCadastrarProduto(){
 
     useEffect(() =>{
         if(idParam){
-            carregarAgendamento();
+            CarregarProduto();
         }
         CarregarCategorias()
         CarregarTipos()
@@ -88,7 +89,7 @@ export default function PageCadastrarProduto(){
                 alert('Produto cadastrado com sucesso 🚀');
             }
             else{
-                await alterarProduto(idParam, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+                await AlterarProduto(id, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
                 alert('Produto alterado com sucesso 🚀');
             }
         } catch (err) {
@@ -104,10 +105,14 @@ export default function PageCadastrarProduto(){
     function novoClick(){
         setNome('');
         setDescricao('');
-        setPreco(0);
+        setPreco('');
         setEstoque(0);
         setId(0);
         setPromocao(false);
+
+        setIdCategoria('Categoria');
+        setIdTipos('Tipos');
+        setIdMarcas('Marcas');
     }
 
     function EscolherImagem() {

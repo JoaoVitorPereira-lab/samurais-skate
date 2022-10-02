@@ -5,13 +5,18 @@ import { useNavigate } from 'react-router-dom'
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { ConsultarProduto } from '../../../api/AdminAPI';
+import { ConsultarProduto, BuscarProdutoPorNome } from '../../../api/AdminAPI';
 
 export default function PageConsultarProduto(){
 
     const navigate = useNavigate();
 
     const [produto, setProduto] = useState([]);
+    const [filtro, setFiltro] = useState('');
+
+    useEffect(() => {
+        CarregarProdutos();
+    })
 
     async function EditarProduto(id) {
         navigate(`/alterarproduto/${id}`)
@@ -22,9 +27,10 @@ export default function PageConsultarProduto(){
         return setProduto(resp); 
     }
 
-    useEffect(() => {
-        CarregarProdutos();
-    })
+    async function filtrar() {
+        const resp = await BuscarProdutoPorNome(filtro);
+        return setProduto(resp);
+    }
 
     return(
         <main className="page-consultar-produto">
@@ -51,6 +57,15 @@ export default function PageConsultarProduto(){
                     </ul>
                 </div>
             </section>
+
+            <div className='caixa-busca'>
+                <input type="text" 
+                       placeholder='Buscar produto por nome'
+                       value={filtro}
+                       onChange={e => setFiltro(e.target.value)}
+                />
+                <img src='../images/buscar.png' alt='buscar' onClick={filtrar}/>
+            </div>
                 
             {produto.map(item =>
                 <div className="div-card-produto">
@@ -73,22 +88,22 @@ export default function PageConsultarProduto(){
 
                     {item.estoque >= 1 &&
                         <div className="div-disponivel">
-                            <img src="./images/disponivel.png" alt=""/>
+                            <img src="../images/disponivel.png" alt=""/>
                         </div>
                     }
                     {item.estoque <= 0 &&
                         <div className="div-disponivel">
-                            <img src="./images/naodisponivel.png" alt=""/>
+                            <img src="../images/naodisponivel.png" alt=""/>
                         </div>
                     }
 
                     <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
                         <button className="editar-button" onClick={() => EditarProduto(item.id)}>
-                            <img src="./images/editar.png"  alt=""/> 
+                            <img src="../images/editar.png"  alt=""/> 
                         </button>
 
                         <button className="excluir-button">
-                            <img src="./images/excluir.png" alt=""/>
+                            <img src="../images/excluir.png" alt=""/>
                         </button>
                     </div>
                 </div>

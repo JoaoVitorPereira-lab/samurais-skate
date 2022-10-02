@@ -72,9 +72,32 @@ export async function BuscarPorID (id){
             nr_preco		preco,
             vl_avaliacao	avaliacao,
             nr_estoque		estoque
-       FROM tb_produto`;
+       FROM tb_produto
+      WHERE id_produto = ? `;
+    
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
+}
+
+
+// BUSCAR PRODUTO POR NOME //
+export async function BuscarPorNome(nome){
+    const comando =
+        `SELECT id_produto      id,
+                id_marca	    marca,
+                id_categoria    categoria,
+                id_tipo  		tipo,
+                nm_produto		nome,
+                ds_descricao	descricao,
+                bt_promocao	    promocao,
+                nr_preco		preco,
+                vl_avaliacao	avaliacao,
+                nr_estoque		estoque
+           FROM tb_produto
+          WHERE nm_produto      like ? `;
+
+    const [linhas] = await con.query(comando, [ `%${nome}%` ]);
+    return linhas;
 }
 
 
@@ -88,7 +111,7 @@ export async function SalvarImagem (imagem, id) {
 }
 
 
-/* INSERIR CATEGORIA */
+/* CONSULTAR CATEGORIA */
 export async function Categoria (){
     const comando = ` SELECT id_categoria           id,
                              nm_categoria           nome
@@ -98,7 +121,7 @@ export async function Categoria (){
 }
 
 
-/* INSERIR TIPOS */
+/* CONSULTAR TIPOS */
 export async function Tipos (){
     const comando = ` Select id_tipo       id,
                              nm_tipo       nome
@@ -109,7 +132,7 @@ export async function Tipos (){
 }
 
 
-/* INSERIR MARCA */
+/* CONSULTAR MARCA */
 export async function Marca(){
     const comando = ` SELECT id_marca       id,
                              nm_marca       nome
@@ -120,7 +143,7 @@ export async function Marca(){
 }
 
 
-/* INSERIR TIPOS DO SKATE */
+/* CONSULTAR TIPOS DO SKATE */
 export async function TiposSkate(){
     const comando = ` Select id_tipo_skate      id,
                              nm_tipo_skate      nome
