@@ -11,6 +11,7 @@ export default function Login() {
     const [erro, setErro] = useState('')
  
     const [mostrarSenha, SetMostrarSenha] = useState(false);
+  
 
     const [carregando, setCarregando] = useState(false)
     const navigate = useNavigate()
@@ -18,6 +19,10 @@ export default function Login() {
 
     function MostrarSenhaClick(){
         SetMostrarSenha(true)
+    }
+    
+    function OcultarSenhaClick(){
+        SetMostrarSenha(false)
     }
     async function Entrar() {
         ref.current.continuousStart();
@@ -48,15 +53,24 @@ export default function Login() {
                 <h1 className="titulo">Entrar</h1>
                 <div className="cx1">
                     <h6>E-mail</h6>
-                    <input className="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input className="email" type="text" value={email} placeholder="Ex: user@user.com" onChange={e => setEmail(e.target.value)}/>
                 </div>
                 <p></p>
                 <div className="cx2">
                     <h6>Senha</h6>
-                    <input className="senha" type="password" value={senha} onChange={e => setSenha(e.target.value)}></input>
-                    <button onClick={MostrarSenhaClick}> Mostrar Senha </button>
+                    {!mostrarSenha &&
+                    <input className="senha" type="password" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
+                    }
                     {mostrarSenha &&
-                    senha
+                    
+                    <input className="senha" type="text" value={senha} onChange={e => setSenha(e.target.value)}></input>
+                    
+                    }
+                    {!mostrarSenha &&
+                    <img className="olho_mostrar_senha" src="../images/olho sem x.png" onClick={MostrarSenhaClick} />                    
+                    }
+                    {mostrarSenha &&
+                    <img className="olho_mostrar_senha" src="../images/olho com x.png" onClick={OcultarSenhaClick}/>
                     }
                     <a className="esqueceu">Esqueceu a senha?</a>
                 </div>

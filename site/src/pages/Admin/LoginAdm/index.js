@@ -28,6 +28,7 @@ export default function Login() {
         catch (err) {
           if(err.response.status === 401){
                 setErro(err.response.data.Erro)
+                ref.current.complete()
             }
         }
 
@@ -49,7 +50,7 @@ export default function Login() {
                 <p></p>
                 <div className="cx2">
                     <h6>Senha</h6>
-                    <input className="senha" type="text" value={senha} onChange={e => setSenha(e.target.value)}></input>
+                    <input className="senha" type="password" value={senha} onChange={e => setSenha(e.target.value)}></input>
                     <a className="esqueceu">Esqueceu a senha?</a>
                 </div>
                 <div className="botao">
