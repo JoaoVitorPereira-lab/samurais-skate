@@ -3,7 +3,7 @@ import { con } from './connection.js'
 
 /* CADASTRAR NOVO PRODUTO */
 export async function InserirProduto (produto){
-    const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
+    const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, id_tipo_skate, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
                      VALUES (?,?,?,?,?,?,?,?)`
 
     const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])

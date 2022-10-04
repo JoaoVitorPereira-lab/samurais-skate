@@ -3,7 +3,7 @@ import "./index.scss";
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID } from "../../../api/AdminAPI";
+import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
@@ -12,6 +12,7 @@ export default function PageCadastrarProduto(){
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
     const [Categoria,setCategoria] = useState([]);
+    const [TiposSkate, setTiposSkate] = useState([]);
 
     const [IdTipos, setIdTipos] = useState()
     const [IdMarcas,setIdMarcas] = useState()
@@ -22,7 +23,7 @@ export default function PageCadastrarProduto(){
     const [descricao, setDescricao] = useState('');
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
-    const [estoque, setEstoque] = useState(0);
+    const [estoque, setEstoque] = useState('');
 
     const [id, setId] = useState(0);
 
@@ -62,10 +63,11 @@ export default function PageCadastrarProduto(){
         setMarcas(resp)
     }
 
-    /* async function CarregartiposSkate(){
+    async function CarregartiposSkate(){
         const resp = await ListarTiposSkate()
-        setIdTipoSkate(resp)
-    }*/ 
+        setTiposSkate(resp)
+    }
+
 
     useEffect(() =>{
         if(idParam){
@@ -74,6 +76,7 @@ export default function PageCadastrarProduto(){
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
+        CarregartiposSkate()
     },[] )
 
     async function salvarClick(){
@@ -83,6 +86,7 @@ export default function PageCadastrarProduto(){
 
             if(id === 0){
                 const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+
                 await enviarimagem(novoProduto.id, imagem);
             
                 setId(novoProduto.id)
@@ -123,9 +127,7 @@ export default function PageCadastrarProduto(){
         return URL.createObjectURL(imagem)
     }
 
-    /* function skateTipo () {
-        if (IdTipos == 1) setTipoSkate(true)
-    } */
+    
 
     return(
         <main className="page-cadastrar-produto">
@@ -190,6 +192,17 @@ export default function PageCadastrarProduto(){
                                     <option selected disabled hidden> Tipos </option>
 
                                     {Tipos.map(item =>
+                                        <option value={item.id}> 
+                                            {item.nome}
+                                        </option>
+                                    )}
+
+                                </select>
+
+                                <select value={TiposSkate} onChange={e => setTiposSkate(e.target.value) }>
+                                    <option selected disabled hidden> Tipos Skate </option>
+
+                                    {TiposSkate.map(item =>
                                         <option value={item.id}> 
                                             {item.nome}
                                         </option>

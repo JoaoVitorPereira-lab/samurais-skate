@@ -30,7 +30,7 @@ server.post('/api/admin/produto', async (req, resp) => {
 
     const resposta = await InserirProduto(novoproduto);
     
-    resp.status(204).send(resposta);
+    resp.send(resposta);
     console.log(resposta)
   } catch (err) {
     resp.status(400).send({
@@ -147,6 +147,8 @@ server.post('/api/admin/:id/imagem', upload.single("imgproduto"), async (req, re
       if(!req.file) throw new Error ('Escolha a imagem!')
 
       const { id } = req.params
+
+      console.log(id);
 
       const imagem = req.file.path
 

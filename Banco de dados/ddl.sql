@@ -62,6 +62,7 @@ create table tb_produto	(
 	ID_MARCA			int,
 	ID_CATEGORIA		int,
 	ID_TIPO				int,
+    ID_TIPO_SKATE		int,
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
 	BT_PROMOCAO			boolean,
@@ -71,7 +72,8 @@ create table tb_produto	(
     
     foreign key (ID_MARCA) references tb_marca (ID_MARCA),
     foreign key (ID_CATEGORIA) references tb_categoria (ID_CATEGORIA),
-    foreign key (ID_TIPO) references tb_tipo (ID_TIPO)
+    foreign key (ID_TIPO) references tb_tipo (ID_TIPO),
+    foreign key (ID_TIPO_SKATE) references tb_tipo_skate (ID_TIPO_SKATE)
 );
 
 
