@@ -6,6 +6,7 @@ import ConsultarProduto from './pages/Admin/consultarProduto'
 import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
+import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
 
 export default function Rotas (){
     return(
@@ -20,6 +21,8 @@ export default function Rotas (){
                 <Route path='/teste' element ={<Teste/>}/>
                 <Route path='/Login/adm' element ={<LoginAdm/>} />
                 <Route path='/CriarConta' element ={<CadastroConta/>} />
+
+                <Route path='/ConsultarTenis' element ={<ConsultarTenis/>}/>
             </Routes>
         </BrowserRouter>
     )

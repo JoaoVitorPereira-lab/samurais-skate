@@ -12,6 +12,11 @@ export default function Login() {
  
     const [mostrarSenha, SetMostrarSenha] = useState(false);
     const navigate = useNavigate()
+
+    function OcultarSenhaClick(){
+        SetMostrarSenha(false)
+    }
+
     function MostrarSenhaClick(){
         SetMostrarSenha(true)
     }
@@ -25,7 +30,7 @@ export default function Login() {
         }
         catch (err) {
           if(err.response.status === 401){
-                setErro(err.response.data.Erro)
+                setErro(err.response.data.Erro) 
             }
         }
     }
@@ -41,21 +46,30 @@ export default function Login() {
 
                         <div className="cx1">
                             <h6>Nome</h6>
-                            <input className="email" type="text" value={nome} onChange={e => setNome(e.target.value)}/>
+                            <input className="email" type="text" placeholder="user" value={nome} onChange={e => setNome(e.target.value)}/>
                         </div>
                         <p></p>
                         <div className="cx2">
                             <h6>Sobrenome</h6>
-                            <input className="senha" type="text" value={sobrenome} onChange={e => setSobrenome(e.target.value)}></input>
+                            <input className="senha" type="text" value={sobrenome} placeholder="user" onChange={e => setSobrenome(e.target.value)}></input>
                         </div>
                         <h6>E-mail</h6>
-                            <input className="email" type="text" value={email} onChange={e => setEmail(e.target.value)}/>
+                            <input className="email" type="text" value={email} placeholder="user@user" onChange={e => setEmail(e.target.value)}/>
                             <h6>Senha</h6>
-                            <input className="email" type="password" value={senha} onChange={e => setSenha(e.target.value)}/>
-                        <button onClick={MostrarSenhaClick}> Mostrar Senha </button>
-                            {mostrarSenha &&
-                            senha
-                            }
+                            {!mostrarSenha &&
+                    <input className="senha" type="password" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
+                    }
+                    {mostrarSenha &&
+                    
+                    <input className="senha" type="text" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
+                    
+                    }
+                    {!mostrarSenha &&
+                    <img className="olho_mostrar_senha" src="../images/olho sem x.png" onClick={MostrarSenhaClick} />                    
+                    }
+                    {mostrarSenha &&
+                    <img className="olho_mostrar_senha" src="../images/olho com x.png" onClick={OcultarSenhaClick}/>
+                    }
                         <div className="botao">
                             <div>
                                 {erro}
