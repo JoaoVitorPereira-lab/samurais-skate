@@ -165,3 +165,15 @@ export async function Login(email, senha) {
     const [resposta] = await con.query(comando, [email, senha]);
     return resposta[0];
 }
+
+
+/* REMOVER PRODUTO */
+export async function removerProduto(idProduto) {
+    const comando = `
+        delete from tb_produto 
+              where id_produto = ?
+    `
+
+    const [resp] = await con.query(comando, [idProduto])
+    return resp.affectedRows;
+}

@@ -115,3 +115,10 @@ export async function LoginAdm(email,senha){
         })
         return resposta.data
 }
+
+
+/* REMOVER PRODUTO */
+export async function RemoverProduto(id) {
+    const r = await api.delete('/api/produto/' + id);
+    return r.data;
+} 

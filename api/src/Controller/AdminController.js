@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -246,5 +246,20 @@ server.post('/api/login/adm', async (req,resp) =>{
 })
 
 
+/* REMOVER PRODUTO */
+server.delete('/api/produto/:id', async (req, resp) => {
+  try {
+      const id = req.params.id;
+
+      await removerProduto(id);
+
+      resp.status(204).send();
+  }
+  catch (err) {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
 
 export default server;

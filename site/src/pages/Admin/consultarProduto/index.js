@@ -1,11 +1,12 @@
 import './index.scss'
+import { toast } from 'react-toastify';
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { ConsultarProduto, BuscarProdutoPorNome } from '../../../api/AdminAPI';
+import { ConsultarProduto, BuscarProdutoPorNome, RemoverProduto } from '../../../api/AdminAPI';
 
 export default function PageConsultarProduto(){
 
@@ -27,9 +28,20 @@ export default function PageConsultarProduto(){
         return setProduto(resp); 
     }
 
-    async function filtrar() {
+    async function Filtrar() {
         const resp = await BuscarProdutoPorNome(filtro);
         return setProduto(resp);
+    }
+
+    async function DeletarProduto(id) {
+        try {
+            await RemoverProduto(id);
+            await CarregarProdutos();
+            toast.dark('Produto removido com sucesso');
+        }
+        catch (err) {
+            toast.error(err.response.data.erro);
+        }
     }
 
     return(
@@ -64,7 +76,7 @@ export default function PageConsultarProduto(){
                        value={filtro}
                        onChange={e => setFiltro(e.target.value)}
                 />
-                <img src='../images/buscar.png' alt='buscar' onClick={filtrar}/>
+                <img src='../images/buscar.png' alt='buscar' onClick={Filtrar}/>
             </div>
                 
             {produto.map(item =>
@@ -102,7 +114,7 @@ export default function PageConsultarProduto(){
                             <img src="../images/editar.png"  alt=""/> 
                         </button>
 
-                        <button className="excluir-button">
+                        <button className="excluir-button" onClick={() => DeletarProduto(item.id)}>
                             <img src="../images/excluir.png" alt=""/>
                         </button>
                     </div>
