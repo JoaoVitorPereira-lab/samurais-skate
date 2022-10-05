@@ -8,6 +8,7 @@ create table tb_admin(
       DS_SENHA      varchar(100)
 );
 
+
 -- Tabela do Usuário
 create table tb_conta_usuario (
 	 ID_CONTA_USUARIO 		int primary key auto_increment,
@@ -73,6 +74,7 @@ create table tb_produto	(
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
 	NR_TAMANHO			int,
+    NM_IMPORTADO		varchar(100),
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
 	VL_AVALIACAO		int,
