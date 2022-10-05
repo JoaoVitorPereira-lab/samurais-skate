@@ -17,6 +17,7 @@ export default function PageCadastrarProduto(){
     const [IdTipos, setIdTipos] = useState()
     const [IdMarcas,setIdMarcas] = useState()
     const [IdCategoria,setIdCategoria] = useState()
+    const [IdTipoSkate, setIdTipoSkate] = useState()
 
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
@@ -200,7 +201,7 @@ export default function PageCadastrarProduto(){
                                 </select>
 
                                 <select value={TiposSkate} onChange={e => setTiposSkate(e.target.value) }>
-                                    <option selected disabled hidden> Tipos Skate </option>
+                                    <option> Tipos Skate </option>
 
                                     {TiposSkate.map(item =>
                                         <option value={item.id}> 

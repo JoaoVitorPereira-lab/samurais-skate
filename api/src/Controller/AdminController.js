@@ -31,7 +31,6 @@ server.post('/api/admin/produto', async (req, resp) => {
     const resposta = await InserirProduto(novoproduto);
     
     resp.send(resposta);
-    console.log(resposta)
   } catch (err) {
     resp.status(400).send({
       erro: err.message,

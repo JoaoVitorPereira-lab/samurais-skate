@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CadastrarLogin, Login, CadastrarInformacoes} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -49,6 +49,17 @@ server.post('/api/cadastro' , async (req,resp) => {
     catch (err) {
         resp.status(400).send({
             Erro: err.message
+        })
+    }
+})
+
+server.get('/api/produtos/tenis', async (req, resp) => {
+    try {
+        const resposta = await ConsultarTenis();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
         })
     }
 })
