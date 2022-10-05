@@ -1,88 +1,9 @@
 use samuraisdb;
 
--- CARGAS INICIAIS
-
--- ADMIN
-insert into tb_admin (ds_email, ds_senha)
-			 values ('admin@admin.com', 'pedroatacantedohexa');
--- INSERIR TIPO SKATE
-insert into tb_tipo_skate (nm_tipo_skate)
-			 values ('Equipamento de proteção');
-insert into tb_tipo_skate (nm_tipo_skate)
-			 values ('Skate Montado');
-insert into tb_tipo_skate (nm_tipo_skate)
-			 values ('Rolamento');
-insert into tb_tipo_skate (nm_tipo_skate)
-			 values ('Shape');
-insert into tb_tipo_skate (nm_tipo_skate)
-			 values ('Truck');
--- ----------------------------------------------
--- INSERIR TIPO
-insert into tb_tipo (nm_tipo)
-			 values ('Skate');
-insert into tb_tipo (nm_tipo)
-			 values ('Boné');
-insert into tb_tipo (nm_tipo)
-			 values ('Tênis');
-insert into tb_tipo (nm_tipo)
-			 values ('Acessórios');
--- ----------------------------------------------
--- INSERIR MARCA
-insert into tb_marca (nm_marca)
-			 values ('Flip Skateboards');
-insert into tb_marca (nm_marca)
-			 values ('Santa Cruz');             
-insert into tb_marca (nm_marca)
-			 values ('Girl Skateboards');             
-insert into tb_marca (nm_marca)
-			 values ('Element');             
-insert into tb_marca (nm_marca)
-			 values ('Thrasher');             
-insert into tb_marca (nm_marca)
-			 values ('Everlong Skate');
-insert into tb_marca (nm_marca)
-			 values ('Vans');
-insert into tb_marca (nm_marca)
-			 values ('Tesla');             
-insert into tb_marca (nm_marca)
-			 values ('DC Shoes');             
-insert into tb_marca (nm_marca)
-			 values ('Grizzly');             
-insert into tb_marca (nm_marca)
-			 values ('Hocks');             
-insert into tb_marca (nm_marca)
-			 values ('Nine Clouds');
-insert into tb_marca (nm_marca)
-			 values ('Nike');             
-insert into tb_marca (nm_marca)
-			 values ('Lakai');
-insert into tb_marca (nm_marca)
-			 values ('ÖUS');
-insert into tb_marca (nm_marca)
-			 values ('Independent');             
-insert into tb_marca (nm_marca)
-			 values ('Diamond');             
-insert into tb_marca (nm_marca)
-			 values ('Hondar');             
-insert into tb_marca (nm_marca)
-			 values ('High Company');             
-insert into tb_marca (nm_marca)
-			 values ('Hocks');
--- ----------------------------------------------
--- INSERIR CATEGORIA
-insert into tb_categoria (nm_categoria)
-			 values ('Iniciante');
-insert into tb_categoria (nm_categoria)
-			 values ('Semi-Profissional');             
-insert into tb_categoria (nm_categoria)
-			 values ('Profissional');
--- ----------------------------------------------
-
-
 -- ENDPOINTS/CASO DE USO
 -- CADASTRAR PRODUTO
-INSERT INTO tb_produto (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
-		        VALUES (1, 1, 1,'Skate','Skate muito monstroooooo', 0 , 1234 , 1234);
+INSERT INTO tb_produto (id_marca, id_categoria, id_tipo, id_tipo_skate, nm_produto, ds_descricao, nr_tamanho, bt_promocao, nr_preco, nr_estoque)
+		        VALUES (1, 1, 1, 1, 'Skate','Skate muito monstroooooo', 38, 0 , 1234 , 1234);
 -- ----------------------------------------------
 
 -- CONSULTAR PEDIDO
@@ -181,3 +102,13 @@ select id_admin    id
   from tb_admin
  where ds_email    = 'admin@admin.com'
    and ds_senha    = 'pedroatacantedohexa';
+   
+-- ------------------------------------------------
+
+-- CONSULTAR TENIS (USER)
+
+select nm_produto, nr_preco, vl_avaliacao, tb_tipo.id_tipo, ds_imagem
+  from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Tênis";

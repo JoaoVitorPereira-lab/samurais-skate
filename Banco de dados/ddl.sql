@@ -56,6 +56,13 @@ create table tb_tipo (
  	NM_TIPO				varchar(100)
 );
 
+-- tabela tipo skate
+create table tb_tipo_skate (
+    id_tipo_skate            int primary key auto_increment,
+    nm_tipo_skate            varchar(100)
+
+);
+
 -- Tabela do produto
 create table tb_produto	(
 	ID_PRODUTO			int primary key auto_increment,
@@ -65,6 +72,7 @@ create table tb_produto	(
     ID_TIPO_SKATE		int,
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
+	NR_TAMANHO			int,
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
 	VL_AVALIACAO		int,
@@ -75,7 +83,6 @@ create table tb_produto	(
     foreign key (ID_TIPO) references tb_tipo (ID_TIPO),
     foreign key (ID_TIPO_SKATE) references tb_tipo_skate (ID_TIPO_SKATE)
 );
-
 
 
 -- Tabela da imagem do produto
@@ -177,11 +184,5 @@ create table tb_produto_pedido (
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
 
--- tabela tipo skate
-create table tb_tipo_skate (
-    id_tipo_skate            int primary key auto_increment,
-    id_tipo                    int,
-    nm_tipo_skate            varchar(100),
 
-    foreign key (id_tipo) references tb_tipo (id_tipo)
-);
+
