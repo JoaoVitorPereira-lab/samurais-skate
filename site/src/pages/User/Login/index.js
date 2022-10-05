@@ -80,7 +80,7 @@ export default function Login() {
                             {erro}
                         </span>
                     </div>
-                <button className="entrar" onClick={Entrar}>ENTRAR</button>
+                <button className="entrar" onClick={Entrar}>Entrar</button>
                 </div>
                 <div className="criar_conta">
                     <a>criar conta</a>
