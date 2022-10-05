@@ -40,8 +40,8 @@ export default function PageConsultarProduto(){
 
     async function DeletarProduto(id, nome) {
         confirmAlert({
-            title: 'Remover filme',
-            message: `Deseja remover o filme ${nome}?`,
+            title: 'Remover Produto',
+            message: `Deseja remover o produto ${nome}?`,
             buttons: [
                 {
                     label: 'Sim',
