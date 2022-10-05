@@ -12,8 +12,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        min-width: 60%;
-        max-width: 60%;
     }
 
     .navs-produtos{
@@ -26,7 +24,7 @@
         color: #fff;
     }
     .navs-produtos:not(.not){
-        margin-left: 2em;
+        margin-left: 3em;
     }
     .not{
         margin-left: 3em;
@@ -41,7 +39,7 @@
         position: relative;
 
         margin-top: .5em;
-        margin-right: 5em;
+        margin-right: 3em;
     }
     .div-buscar::before{
         content: "";
