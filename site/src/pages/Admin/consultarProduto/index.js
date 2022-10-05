@@ -52,7 +52,7 @@ export default function PageConsultarProduto(){
                         else
                             Filtrar();
 
-                        toast.dark('🔥 filme removido');
+                        toast.dark('🔥 Produto removido');
                     }
                 },
                 {
