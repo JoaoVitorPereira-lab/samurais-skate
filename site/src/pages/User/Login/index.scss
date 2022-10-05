@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
 
 
@@ -13,12 +14,9 @@
 
     .barra_lateral {
 
-        border: solid #E52A45;
         background-color: #E52A45;
-        height: 40em;
+        height: 38em;
         width: 5px;
-        margin-top: 10em;
-
     }
 
 
@@ -108,6 +106,10 @@
         margin-top: 1em;
         margin-left: -3em;
         cursor: pointer;
+    }
+
+    .ERRO {
+        position: absolute;
     }
 }
 
