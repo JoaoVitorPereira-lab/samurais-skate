@@ -1,5 +1,10 @@
 import './index.scss'
-import { toast } from 'react-toastify';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -33,19 +38,33 @@ export default function PageConsultarProduto(){
         return setProduto(resp);
     }
 
-    async function DeletarProduto(id) {
-        try {
-            await RemoverProduto(id);
-            await CarregarProdutos();
-            toast.dark('Produto removido com sucesso');
-        }
-        catch (err) {
-            toast.error(err.response.data.erro);
-        }
+    async function DeletarProduto(id, nome) {
+        confirmAlert({
+            title: 'Remover filme',
+            message: `Deseja remover o filme ${nome}?`,
+            buttons: [
+                {
+                    label: 'Sim',
+                    onClick: async () => {
+                        const resposta = await RemoverProduto(id, nome);
+                        if(filtro === '')
+                            CarregarProdutos();
+                        else
+                            Filtrar();
+
+                        toast.dark('🔥 filme removido');
+                    }
+                },
+                {
+                    label: 'Não'
+                }
+            ]
+        })
     }
 
     return(
         <main className="page-consultar-produto">
+            <ToastContainer />
 
             <aside className="comps">
                 <Cabecalho />
