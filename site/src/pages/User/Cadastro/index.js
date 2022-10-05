@@ -35,13 +35,13 @@ export default function Login() {
         }
     }
     return (
-        <section className="page-login">
+        <section className="page-cadastro">
             <div>
                 <img src="../images/logo.png" alt="logo" className="logo" />
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">
-                <h1>CRIAR CONTA</h1>
+                <h1 className="titulo">CRIAR CONTA</h1>
                 <div className="Formulario">
 
                         <div className="cx1">
@@ -79,7 +79,7 @@ export default function Login() {
                         </div>
 
                         <div className="criar_conta">
-                            <a>Entrar</a>
+                            <a>Entrar na sua conta</a>
 
                 </div>
 

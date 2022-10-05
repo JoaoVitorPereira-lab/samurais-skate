@@ -1,5 +1,10 @@
 import './index.scss'
-import { toast } from 'react-toastify';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -33,19 +38,33 @@ export default function PageConsultarProduto(){
         return setProduto(resp);
     }
 
-    async function DeletarProduto(id) {
-        try {
-            await RemoverProduto(id);
-            await CarregarProdutos();
-            toast.dark('Produto removido com sucesso');
-        }
-        catch (err) {
-            toast.error(err.response.data.erro);
-        }
+    async function DeletarProduto(id, nome) {
+        confirmAlert({
+            title: 'Remover Produto',
+            message: `Deseja remover o produto ${nome}?`,
+            buttons: [
+                {
+                    label: 'Sim',
+                    onClick: async () => {
+                        const resposta = await RemoverProduto(id, nome);
+                        if(filtro === '')
+                            CarregarProdutos();
+                        else
+                            Filtrar();
+
+                        toast.dark('🔥 Produto removido');
+                    }
+                },
+                {
+                    label: 'Não'
+                }
+            ]
+        })
     }
 
     return(
         <main className="page-consultar-produto">
+            <ToastContainer />
 
             <aside className="comps">
                 <Cabecalho />
@@ -114,7 +133,11 @@ export default function PageConsultarProduto(){
                             <img src="../images/editar.png"  alt=""/> 
                         </button>
 
-                        <button className="excluir-button" onClick={() => DeletarProduto(item.id)}>
+                        <button className="excluir-button"
+                               onClick={e => {
+                                          e.stopPropagation();
+                                          DeletarProduto(item.id, item.nome);
+                                    }}>
                             <img src="../images/excluir.png" alt=""/>
                         </button>
                     </div>

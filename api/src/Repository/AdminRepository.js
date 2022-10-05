@@ -177,3 +177,15 @@ export async function removerProduto(idProduto) {
     const [resp] = await con.query(comando, [idProduto])
     return resp.affectedRows;
 }
+
+
+/* REMOVER IMAGEM DO PRODUTO */
+export async function removerProdutoImagens(idProduto) {
+    const comando = `
+        delete from tb_imagem_produto 
+              where id_produto = ?
+    `
+
+    const [resp] = await con.query(comando, [idProduto])
+    return resp.affectedRows;
+}
