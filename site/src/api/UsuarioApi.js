@@ -3,7 +3,7 @@ const api = axios.create({
     baseURL:'http://localhost:5000'
 })
 
-
+//Login Usuário
 export  async function EntrarLogin(email,senha){
     const resposta = await api.post('/api/login', {
         email: email,
@@ -12,6 +12,7 @@ export  async function EntrarLogin(email,senha){
     return resposta.data
 }
 
+//Cadastrar Informações de Login
 export async function CadastrarLogin (email, senha, id){
     const resposta = await api.post ('/api/cadastro',{
         email: email,
@@ -22,6 +23,7 @@ export async function CadastrarLogin (email, senha, id){
     return resposta.data
 }
 
+//Cadastrar Informações Pessoais
 export async function CadastrarConta (nome, sobrenome) {
     const resposta = await api.post ('/api/cadastro/informacoes', {
         nome: nome,
@@ -30,3 +32,10 @@ export async function CadastrarConta (nome, sobrenome) {
 
     return resposta.data
 }
+
+//Listar Produtos do Tenis
+export async function ListarTenis(){
+    const resposta = await api.get('/api/produtos/tenis')
+    return resposta.data
+}
+
