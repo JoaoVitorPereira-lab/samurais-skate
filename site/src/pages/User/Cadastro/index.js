@@ -35,7 +35,7 @@ export default function Login() {
         }
     }
     return (
-        <section className="page-login">
+        <section className="page-cadastro">
             <div>
                 <img src="../images/logo.png" alt="logo" className="logo" />
             </div>
