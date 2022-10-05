@@ -133,7 +133,11 @@ export default function PageConsultarProduto(){
                             <img src="../images/editar.png"  alt=""/> 
                         </button>
 
-                        <button className="excluir-button" onClick={() => DeletarProduto(item.id)}>
+                        <button className="excluir-button"
+                               onClick={e => {
+                                          e.stopPropagation();
+                                          DeletarProduto(item.id, item.nome);
+                                    }}>
                             <img src="../images/excluir.png" alt=""/>
                         </button>
                     </div>
