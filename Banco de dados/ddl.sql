@@ -74,7 +74,7 @@ create table tb_produto	(
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
 	NR_TAMANHO			int,
-    NM_IMPORTADO		varchar(100),
+    BT_IMPORTADO		boolean,
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
 	VL_AVALIACAO		int,
