@@ -4,16 +4,13 @@ const api = axios.create({
 })
 
 /* CADASTRAR PRODUTO */
-export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, IdTipoSkate, nome, descricao, tamanho, importado, promocao, preco, estoque){
+export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
         IdMarca: IdMarca, 
         IdCategoria: IdCategoria,
         IdTipo: IdTipo,
-        IdTipoSkate: IdTipoSkate,
         nome: nome,
         descricao: descricao,
-        tamanho: tamanho,
-        importado: importado,
         promocao: promocao,
         preco: preco,
         estoque: estoque
@@ -31,7 +28,7 @@ export async function ConsultarProduto(){
 
 
 /* ALTERAR PRODUTO */
-export async function AlterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, avaliacao, estoque){
+export async function AlterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
 
     const resposta = await api.put(`api/admin/${id}`, {
         IdMarca: IdMarca, 
@@ -41,7 +38,6 @@ export async function AlterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, des
         descricao: descricao,
         promocao: promocao,
         preco: preco,
-        avaliacao: avaliacao,
         estoque: estoque
     })
     

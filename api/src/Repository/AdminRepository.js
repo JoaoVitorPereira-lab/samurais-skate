@@ -3,10 +3,10 @@ import { con } from './connection.js'
 
 /* CADASTRAR NOVO PRODUTO */
 export async function InserirProduto (produto){
-    const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, id_tipo_skate, nm_produto, ds_descricao, nr_tamanho, bt_importado, bt_promocao, nr_preco, nr_estoque)
-                     VALUES (?,?,?,?,?,?,?,?,?,?,?)`
+    const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
+                     VALUES (?,?,?,?,?,?,?,?)`
 
-    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.IdTipoSkate, produto.nome, produto.descricao, produto.tamanho, produto.importado, produto.promocao, produto.preco, produto.estoque])
+    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
     produto.id = resposta.insertId;
 
     return produto;
@@ -24,7 +24,6 @@ export async function ConsultarProduto(){
                 ds_descricao	descricao,
                 bt_promocao	    promocao,
                 nr_preco		preco,
-                vl_avaliacao	avaliacao,
                 nr_estoque		estoque
            FROM tb_produto
           INNER JOIN tb_marca     ON tb_produto.id_marca = tb_marca.id_marca
@@ -83,15 +82,14 @@ export async function BuscarPorID (id){
 // BUSCAR PRODUTO POR NOME //
 export async function BuscarPorNome(nome){
     const comando =
-        `SELECT id_produto      id,
+        `SELECT nm_produto		nome,
+                id_produto      id,
                 id_marca	    marca,
                 id_categoria    categoria,
                 id_tipo  		tipo,
-                nm_produto		nome,
                 ds_descricao	descricao,
                 bt_promocao	    promocao,
                 nr_preco		preco,
-                vl_avaliacao	avaliacao,
                 nr_estoque		estoque
            FROM tb_produto
           WHERE nm_produto      like ? `;

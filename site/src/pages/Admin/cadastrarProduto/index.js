@@ -90,7 +90,7 @@ export default function PageCadastrarProduto(){
                 throw new Error('Escolha a imagem!');
 
             if(id === 0){
-                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, IdTipoSkate, nome, descricao, tamanho, importado, promocao, preco, estoque);
+                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
 
                 await enviarimagem(novoProduto.id, imagem);
             
@@ -267,25 +267,20 @@ export default function PageCadastrarProduto(){
                                           onChange={e => setDescricao(e.target.value)}
                                 />
                             </div>
-
-                            {IdTipoSkate < 3 && 
-                                <div className="div-categoria">
-                                    <label id="categoria-titulo"> Categoria: </label>
-                                    <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
-                                            <option selected disabled hidden >  Categoria  </option>
-
-                                            {Categoria.map(item =>
-                                                <option value={item.id}>
-                                                    {item.nome}
-                                                </option>    
-                                            )}
-                                    </select> 
-                                </div>
-                            }
-
                             
+                            <div className="div-categoria">
+                                <label id="categoria-titulo"> Categoria: </label>
+                                <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
+                                        <option selected disabled hidden >  Categoria  </option>
 
-                            
+                                        {Categoria.map(item =>
+                                            <option value={item.id}>
+                                                {item.nome}
+                                            </option>    
+                                        )}
+                                </select> 
+                            </div>
+
                         </div>
                     </section>
                 </div>

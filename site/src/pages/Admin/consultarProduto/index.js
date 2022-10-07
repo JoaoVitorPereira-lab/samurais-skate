@@ -30,12 +30,12 @@ export default function PageConsultarProduto(){
 
     async function CarregarProdutos(){
         const resp = await ConsultarProduto();
-        return setProduto(resp); 
+        setProduto(resp); 
     }
 
     async function Filtrar() {
         const resp = await BuscarProdutoPorNome(filtro);
-        return setProduto(resp);
+        setProduto(resp);
     }
 
     async function DeletarProduto(id, nome) {
