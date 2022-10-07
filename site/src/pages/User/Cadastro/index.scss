@@ -69,7 +69,10 @@
 
     
 
-    h6 {
+    .nome,
+    .sobrenome,
+    .email1,
+    .senha1 {
         margin-bottom: 0.7em;
         font-family: "Inter", sans-serif;
         font-size: 12px;
@@ -106,10 +109,10 @@
         cursor: pointer;
     }
 
-    .entrar {
+    .criar {
         font-family: "Timmana", sans-serif;
         color: #fff;
-        align-items: center;
+        text-align: center;
         padding-top: 0.4em;
         letter-spacing: 9px;
         font-size: 2em;

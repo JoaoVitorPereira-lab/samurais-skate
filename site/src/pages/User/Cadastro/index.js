@@ -45,17 +45,17 @@ export default function Login() {
                 <div className="Formulario">
 
                         <div className="cx1">
-                            <h6>Nome</h6>
+                            <h6 className="nome">Nome</h6>
                             <input className="email" type="text" placeholder="user" value={nome} onChange={e => setNome(e.target.value)}/>
                         </div>
                         <p></p>
                         <div className="cx2">
-                            <h6>Sobrenome</h6>
+                            <h6 className="sobrenome">Sobrenome</h6>
                             <input className="senha" type="text" value={sobrenome} placeholder="user" onChange={e => setSobrenome(e.target.value)}></input>
                         </div>
-                        <h6>E-mail</h6>
+                        <h6 className="enail1">E-mail</h6>
                             <input className="email" type="text" value={email} placeholder="user@user" onChange={e => setEmail(e.target.value)}/>
-                            <h6>Senha</h6>
+                            <h6 className="senha1">Senha</h6>
                             {!mostrarSenha &&
                     <input className="senha" type="password" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
                     }
@@ -74,12 +74,12 @@ export default function Login() {
                             <div>
                                 {erro}
                             </div>
-                        <button className="entrar" onClick={CriarConta}>Criar Conta</button>
+                        <button className="criar" onClick={CriarConta}>Criar Conta</button>
                         </div>
                         </div>
 
                         <div className="criar_conta">
-                            <a>Entrar na sua conta</a>
+                            <a href="../Login">Entrar na sua conta</a>
 
                 </div>
 

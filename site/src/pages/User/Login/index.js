@@ -83,7 +83,7 @@ export default function Login() {
                 <button className="entrar" onClick={Entrar}>Entrar</button>
                 </div>
                 <div className="criar_conta">
-                    <a>criar conta</a>
+                    <a href="../CriarConta">criar conta</a>
 
                 </div>
 
