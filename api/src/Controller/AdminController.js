@@ -27,8 +27,7 @@ server.post('/api/admin/produto', async (req, resp) => {
 
 
 
-    if (!novoproduto.IdCategoria)
-      throw new Error("Categoria do produto é obrigatória!");
+   
     
 
     const resposta = await InserirProduto(novoproduto);
@@ -150,7 +149,7 @@ server.post('/api/admin/:id/imagem', upload.single("imgproduto"), async (req, re
 
       const { id } = req.params
 
-      console.log(id);
+      
 
       const imagem = req.file.path
 

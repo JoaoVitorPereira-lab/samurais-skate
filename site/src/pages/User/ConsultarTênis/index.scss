@@ -1,0 +1,60 @@
+.tenis-container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .titulo {
+        font-family: 'Dekko';
+        font-weight: 400;
+    }
+
+    .titulo-span {
+        color: #E52A45;
+    }
+
+    .contents {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: fit-content;
+        justify-content: center;
+        
+    }
+
+    .filtros {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .filtro-marca {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .produtos {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .div-produto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Dekko';
+        font-weight: 400;
+        margin: 0em 1em;
+    }
+
+    .div-produto * {
+        margin: 0.2em 0em;
+    }
+
+    .div-produto h4 {
+        font-family: 'Timmana';
+        font-weight: 400;
+        color: #E52A45;
+        font-size: 1.5em;
+    }
+}

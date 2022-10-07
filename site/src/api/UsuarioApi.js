@@ -39,3 +39,14 @@ export async function ListarTenis(){
     return resposta.data
 }
 
+//buscar imagem
+export function buscarimagem(imagem){
+    return `${api.getUri()}/${imagem}`
+}
+
+// BUSCAR TÊNIS POR NOME //
+export async function BuscarTenisPorNome(nome){
+    const resposta = await api.get(`/api/buscar/tenis?nome=${nome}`);
+    return resposta.data;
+}
+

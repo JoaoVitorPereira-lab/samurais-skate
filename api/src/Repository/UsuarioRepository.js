@@ -40,13 +40,31 @@ export async function ConsultarTenis() {
   const comando = `select nm_produto        produto,
                           nr_preco          preco,
                           vl_avaliacao      avaliacao,
-                          tb_tipo.id_tipo   id,
-                          ds_imagem         imagem
+                          tb_tipo.id_tipo   idTipo,
+                          ds_imagem         imagem,
+                          tb_produto.id_produto  id
                      from tb_produto
                      join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
                      join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
                     where nm_tipo = "Tênis"`
             
   const [resposta] = await con.query(comando);
+  return resposta;
+}
+
+export async function ConsultarTenisNome (nome) {
+  const comando = `select nm_produto        produto,
+                          nr_preco          preco,
+                          vl_avaliacao      avaliacao,
+                          tb_tipo.id_tipo   idTipo,
+                          ds_imagem         imagem,
+                          tb_produto.id_produto  id
+                     from tb_produto
+                     join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+                     join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+                    where nm_tipo = "Tênis"
+                    and nm_produto like ?`
+  
+  const [resposta] = await con.query(comando, [ `%${nome}%` ]); 
   return resposta;
 }

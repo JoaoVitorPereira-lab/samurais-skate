@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -63,5 +63,26 @@ server.get('/api/produtos/tenis', async (req, resp) => {
         })
     }
 })
+
+server.get('/api/buscar/tenis', async (req, resp) =>{
+    try
+    {
+        const { nome } = req.query;
+  
+        const resposta = await ConsultarTenisNome(nome);
+  
+        if(resposta.length == 0)
+            resp.status(404).send( [] );
+        else
+            resp.send(resposta);
+    }
+  
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+  })
 
 export default server;
