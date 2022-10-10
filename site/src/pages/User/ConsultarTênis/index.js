@@ -14,8 +14,8 @@ import { ListarTenis, buscarimagem, BuscarTenisPorNome } from '../../../api/Usua
     }
 
     async function BuscarNome () {
-        const resp = await BuscarTenisPorNome();
-        return resp;
+        const resp = await BuscarTenisPorNome(busca);
+        setProduto(resp)
         
     }
 

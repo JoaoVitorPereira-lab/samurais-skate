@@ -2,6 +2,11 @@ import React from "react";
 import "./index.scss";
 
 export default function App(props) {
+
+    function Search ( ) {
+        return props.click;
+    }
+
   return (
     
     <main className="header-container">
@@ -54,7 +59,7 @@ export default function App(props) {
             <div className="div-buscar">
                 <input type="text" className="buscar-input" placeholder="Buscar" value={props.value} onChange={props.change} />
                 <div>
-                    <img src="../images/buscar.png" className="buscar-img" alt="" onClick={props.click} />
+                    <img src="../images/buscar.png" className="buscar-img" alt="" onClick={Search} />
                 </div>
             </div>
 
