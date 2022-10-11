@@ -35,8 +35,8 @@ import { ListarTenis, buscarimagem, BuscarTenisPorNome } from '../../../api/Usua
                 <div className='produtos'>
                 {produto.map(item =>
                     <div className='div-produto'>
-                        <img src={buscarimagem(item.imagem)} alt="" />
-                        <h3>{item.produto}</h3>
+                        <img src={buscarimagem(item.imagem)} alt="" width="100px" />
+                        <h3 className='largura-h3'>{item.produto}</h3>
                         <img src="../images/aval3.png" alt="" />
                         <h4>por: {item.preco}</h4>
                         
