@@ -25,11 +25,6 @@ server.post('/api/admin/produto', async (req, resp) => {
     if (!novoproduto.descricao)
       throw new Error("Descrição do produto é obrigatório!");
 
-
-
-   
-    
-
     const resposta = await InserirProduto(novoproduto);
     
     resp.send(resposta);
@@ -75,9 +70,6 @@ server.put('/api/admin/:id', async (req, resp) => {
 
       if (!novoproduto.descricao)
         throw new Error("Descrição do produto é obrigatório!");
-
-      if (!novoproduto.IdCategoria)
-        throw new Error("Categoria do produto é obrigatória!");
 
       const resposta = await AlterarProduto(id, novoproduto);
       

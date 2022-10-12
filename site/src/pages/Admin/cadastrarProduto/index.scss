@@ -51,7 +51,7 @@
     .infos-cadastrar{
         display: flex;
         flex-direction: row;
-        margin: 6em 1.3em 3em 2.2em;
+        margin: 6em 1.3em 7em 2.2em;
     }
 
     .sec-inputs-imgs{
@@ -310,6 +310,7 @@
         flex-wrap: wrap;
 
         margin-top: 2.8em;
+        margin-bottom: -4em;
     }
     #categoria-titulo{
         font-family: "Inter", sans-serif;
@@ -324,7 +325,7 @@
 
 /* COMEÇO DIV DO BOTÃO DE SALVAR */
     .div-button-salvar-novo{
-        margin: 4em 1.7em 1.5em 0em;
+        margin: 5em 1.7em 1.5em 0em;
         float: right;
     }
     .div-button-salvar-novo button{
@@ -341,6 +342,10 @@
         border: transparent;
         border-radius: 3px;
         cursor: pointer;
+    }
+
+    .aa{
+        margin-left: 1em;
     }
 }
 
@@ -366,14 +371,6 @@
         font-size: 14px;
         font-weight: 500;
         text-align: center;
-    }
-
-    .div-tipos-skate{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        margin-top: 1.2em;
     }
 
     .input-tipo-skate{

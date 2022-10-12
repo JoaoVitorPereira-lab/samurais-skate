@@ -77,7 +77,6 @@ create table tb_produto	(
     BT_IMPORTADO		boolean,
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
-	VL_AVALIACAO		int,
     NR_ESTOQUE			int,
     
     foreign key (ID_MARCA) references tb_marca (ID_MARCA),

@@ -106,7 +106,7 @@ export default function PageConsultarProduto(){
                     </div>
 
                     <div className="div-tipo">
-                        <text> {item.tipo} </text>
+                        <text> {item.tipo}  </text>
                     </div>
 
                     <div className="div-marca">

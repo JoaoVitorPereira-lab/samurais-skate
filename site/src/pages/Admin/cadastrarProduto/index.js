@@ -22,8 +22,8 @@ export default function PageCadastrarProduto(){
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [tamanho, setTamanho] = useState();
-    const [importado, setImportado] = useState(false);
+    /* const [tamanho, setTamanho] = useState();
+    const [importado, setImportado] = useState(false); */
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
     const [estoque, setEstoque] = useState('');
@@ -35,16 +35,12 @@ export default function PageCadastrarProduto(){
     async function CarregarProduto(){
         const resposta = await BuscarPorID(idParam);
 
-        console.log(resposta);
-
         setNome(resposta.nome);
         setDescricao(resposta.descricao);
         setPreco(resposta.preco);
         setEstoque(resposta.estoque);
-        setPromocao(resposta.promocao);
 
         setIdTipos(resposta.IdTipo);
-        setIdCategoria(resposta.IdCategoria);
         setIdMarcas(resposta.IdMarca);
 
         setId(resposta.id);
@@ -204,10 +200,10 @@ export default function PageCadastrarProduto(){
 
                                 </select>
 
-                                {IdTipos == 1 &&
-                                    <section>
+                                {IdTipos === 1 &&
+                                    <section className="aa">
                                         <select value={IdTipoSkate} onChange={e => setIdTipoSkate(e.target.value) }>
-                                        <option selected disabled hidden> Detalhes </option>
+                                        <option selected disabled hidden> Tipo do Skate </option>
 
                                             {TiposSkate.map(item =>
                                                 <option value={item.id}> 
@@ -241,7 +237,7 @@ export default function PageCadastrarProduto(){
                             <div className="div-marcas">
                                 <label id="marca-titulo"> Marca: </label>
                                 <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
-                                    <option selected disabled hidden> Marcas </option>
+                                    <option selected disabled hidden> Marca </option>
 
                                     {Marcas.map(item =>
                                         <option value={item.id}>
@@ -268,18 +264,20 @@ export default function PageCadastrarProduto(){
                                 />
                             </div>
                             
-                            <div className="div-categoria">
-                                <label id="categoria-titulo"> Categoria: </label>
-                                <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
-                                        <option selected disabled hidden >  Categoria  </option>
+                            {IdTipos === 1 &&
+                                <div className="div-categoria">
+                                    <label id="categoria-titulo"> Categoria: </label>
+                                    <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
+                                            <option selected disabled hidden >  Categoria  </option>
 
-                                        {Categoria.map(item =>
-                                            <option value={item.id}>
-                                                {item.nome}
-                                            </option>    
-                                        )}
-                                </select> 
-                            </div>
+                                            {Categoria.map(item =>
+                                                <option value={item.id}>
+                                                    {item.nome}
+                                                </option>    
+                                            )}
+                                    </select> 
+                                </div>
+                            }
 
                         </div>
                     </section>
