@@ -45,7 +45,7 @@ export async function AlterarProduto(id, produto){
                ds_descricao	    = ?,
                bt_promocao	    = ?,
                nr_preco			= ?,
-               nr_estoque		= ?
+               nr_estoque		= ?,
          WHERE id_produto       = ?`;
         
     const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque, id])
@@ -57,16 +57,18 @@ export async function AlterarProduto(id, produto){
 /* BUSCAR POR ID */
 export async function BuscarPorID (id){
     const comando = 
-    `SELECT id_produto      id,
-            nm_marca	    marca,
-            nm_tipo  		tipo,
-            nm_produto		nome,
-            ds_descricao	descricao,
-            nr_preco		preco,
-            nr_estoque		estoque
+    `SELECT tb_produto.id_produto   id,
+            nm_marca	            marca,
+            nm_tipo  		        tipo,
+            nm_produto		        nome,
+            ds_descricao	        descricao,
+            nr_preco		        preco,
+            nr_estoque		        estoque,
+            ds_imagem               imagem     
        FROM tb_produto
-      INNER JOIN tb_marca      ON tb_produto.id_marca = tb_marca.id_marca
-      INNER JOIN tb_tipo       ON tb_produto.id_tipo = tb_tipo.id_tipo
+      INNER JOIN tb_marca           ON tb_produto.id_marca   = tb_marca.id_marca
+      INNER JOIN tb_tipo            ON tb_produto.id_tipo    = tb_tipo.id_tipo
+      INNER JOIN tb_imagem_produto  ON tb_produto.id_produto = tb_imagem_produto.id_produto
       WHERE tb_produto.id_produto = ? `;
     
     const [linhas] = await con.query(comando, [id]);

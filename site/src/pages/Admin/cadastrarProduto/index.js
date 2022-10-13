@@ -1,9 +1,11 @@
 import "./index.scss";
 
+import { toast } from "react-toastify"
+
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, ListarCategoria, ListarTipos,ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate } from "../../../api/AdminAPI";
+import { CadastrarProduto, ListarCategoria, ListarTipos, ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate, BuscarImagem } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
@@ -34,6 +36,7 @@ export default function PageCadastrarProduto(){
 
     async function CarregarProduto(){
         const resposta = await BuscarPorID(idParam);
+        const respImagem = await BuscarImagem(imagem);
 
         setNome(resposta.nome);
         setDescricao(resposta.descricao);
@@ -42,6 +45,8 @@ export default function PageCadastrarProduto(){
 
         setIdTipos(resposta.IdTipo);
         setIdMarcas(resposta.IdMarca);
+
+        setImagem(respImagem.imagem);
 
         setId(resposta.id);
     }
@@ -91,11 +96,14 @@ export default function PageCadastrarProduto(){
                 await enviarimagem(novoProduto.id, imagem);
             
                 setId(novoProduto.id)
-                alert('Produto cadastrado com sucesso 🚀');
+                toast.success('Produto cadastrado com sucesso 🚀');
             }
             else{
                 await AlterarProduto(id, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
-                alert('Produto alterado com sucesso 🚀');
+                if(typeof(imagem) == 'object'){
+                    await enviarimagem(idParam, imagem)
+                }
+                toast.success('Agendamento alterado com sucesso 🚀');
             }
         } catch (err) {
             if(err.response)
@@ -115,9 +123,10 @@ export default function PageCadastrarProduto(){
         setId(0);
         setPromocao(false);
 
+        setIdTipoSkate('Tipo do Skate');
         setIdCategoria('Categoria');
         setIdTipos('Tipos');
-        setIdMarcas('Marcas');
+        setIdMarcas('Marca');
     }
 
     function EscolherImagem() {
@@ -125,7 +134,12 @@ export default function PageCadastrarProduto(){
     }
 
     function MostrarImagem(){
-        return URL.createObjectURL(imagem)
+        if(typeof (imagem) === 'object'){
+            return URL.createObjectURL(imagem);
+        }
+        else{
+            return BuscarImagem(imagem);
+        }
     }
 
     
@@ -200,7 +214,7 @@ export default function PageCadastrarProduto(){
 
                                 </select>
 
-                                {IdTipos === 1 &&
+                                {IdTipos == 1 &&
                                     <section className="aa">
                                         <select value={IdTipoSkate} onChange={e => setIdTipoSkate(e.target.value) }>
                                         <option selected disabled hidden> Tipo do Skate </option>
@@ -264,7 +278,7 @@ export default function PageCadastrarProduto(){
                                 />
                             </div>
                             
-                            {IdTipos === 1 &&
+                            {IdTipos == 1 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
                                     <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
