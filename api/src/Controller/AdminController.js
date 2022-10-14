@@ -77,6 +77,7 @@ server.put('/api/admin/:id', async (req, resp) => {
           throw new Error('Produto não pode ser alterado. ');
       else
           resp.sendStatus(204)
+          
   }
   catch(err)
   {

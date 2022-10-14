@@ -3,10 +3,10 @@ import { con } from './connection.js'
 
 /* CADASTRAR NOVO PRODUTO */
 export async function InserirProduto (produto){
-    const comando = `INSERT INTO tb_produto  (id_marca, id_categoria, id_tipo, nm_produto, ds_descricao, bt_promocao, nr_preco, nr_estoque)
-                     VALUES (?,?,?,?,?,?,?,?)`
+    const comando = `INSERT INTO tb_produto (id_marca, id_categoria, id_tipo, id_tipo_skate, nm_produto, ds_descricao, nr_tamanho, bt_importado, bt_promocao, nr_preco, nr_estoque)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`
 
-    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque])
+    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.idTipoSkate, produto.nome, produto.descricao, produto.tamanho, produto.importado, produto.promocao, produto.preco, produto.estoque])
     produto.id = resposta.insertId;
 
     return produto;
@@ -38,17 +38,20 @@ export async function ConsultarProduto(){
 export async function AlterarProduto(id, produto){
     const comando =
        `UPDATE tb_produto
-           SET id_marca			= ?,
-               id_categoria     = ?,
-               id_tipo  		= ?,
-               nm_produto		= ?,
-               ds_descricao	    = ?,
-               bt_promocao	    = ?,
-               nr_preco			= ?,
-               nr_estoque		= ?,
-         WHERE id_produto       = ?`;
+       SET id_marca = ?,
+           id_categoria = ?, 
+           id_tipo = ?, 
+           id_tipo_skate = ?, 
+           nm_produto = ?, 
+           ds_descricao = ?, 
+           nr_tamanho = ?, 
+           bt_importado = ?, 
+           bt_promocao = ?, 
+           nr_preco = ?, 
+           nr_estoque = ?
+     WHERE id_produto      = ?`;
         
-    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.nome, produto.descricao, produto.promocao, produto.preco, produto.estoque, id])
+    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.idTipoSkate, produto.nome, produto.descricao, produto.tamanho, produto.importado, produto.promocao, produto.preco, produto.estoque, id])
 
     return resposta.affectedRows;
 }
