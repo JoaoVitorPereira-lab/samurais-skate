@@ -7,11 +7,14 @@ import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
 import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
+import Landing_Page  from './pages/Landing_Page/index.js'
 
 export default function Rotas (){
     return(
         <BrowserRouter>
             <Routes>
+                <Route path='/' element={<Landing_Page/>}></Route>
+                
                 <Route path='/Login' element={<Login/>} />
 
                 <Route path='/cadastrarproduto' element ={<CadastrarProduto/>}/>
