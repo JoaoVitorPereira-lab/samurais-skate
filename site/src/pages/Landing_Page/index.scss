@@ -1,3 +1,31 @@
-.fotos {
-    height: 15em;
+
+.carrosel {
+    margin: 0;
+    width: 200vh;
+    height: 104vh;
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 104vh;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.foto1,
+.foto2,
+.foto3 {
+    width: 25%;
+    position: relative;
+}
+
+.foto1,
+.foto2,
+.foto3 img {
+    width: 200vh;
+    
 }
