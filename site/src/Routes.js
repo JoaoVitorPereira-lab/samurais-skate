@@ -7,26 +7,27 @@ import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
 import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
+import Carrinho from './pages/User/Carrinho/index.js'
 import Landing_Page  from './pages/Landing_Page/index.js'
 
 export default function Rotas (){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Landing_Page/>}></Route>
+                <Route path='/'                         element={<Landing_Page/>}></Route>
                 
-                <Route path='/Login' element={<Login/>} />
+                <Route path='/Login'                    element={<Login/>} />
 
-                <Route path='/cadastrarproduto' element ={<CadastrarProduto/>}/>
-                <Route path='/alterarproduto/:idParam' element ={<CadastrarProduto/>}/>
-                <Route path='/consultarproduto' element ={<ConsultarProduto/>}/>
+                <Route path='/cadastrarproduto'         element ={<CadastrarProduto/>}/>
+                <Route path='/alterarproduto/:idParam'  element ={<CadastrarProduto/>}/>
+                <Route path='/consultarproduto'         element ={<ConsultarProduto/>}/>
 
-                <Route path='/teste' element ={<Teste/>}/>
-                <Route path='/Login/adm' element ={<LoginAdm/>} />
-                <Route path='/CriarConta' element ={<CadastroConta/>} />
+                <Route path='/teste'                    element ={<Teste/>}/>
+                <Route path='/Login/adm'                element ={<LoginAdm/>} />
+                <Route path='/CriarConta'               element ={<CadastroConta/>} />
 
-                <Route path='/ConsultarTenis' element={<ConsultarTenis/>}/>
-                <Route path='/carrinho' element={<Carrinho/>}/>
+                <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
+                <Route path='/carrinho'                 element={<Carrinho/>}/>
             </Routes>
         </BrowserRouter>
     )
