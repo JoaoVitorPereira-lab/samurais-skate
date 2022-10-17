@@ -7,6 +7,7 @@ import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
 import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
+import Carrinho from './pages/User/Carrinho/index.js'
 
 export default function Rotas (){
     return(
@@ -22,7 +23,8 @@ export default function Rotas (){
                 <Route path='/Login/adm' element ={<LoginAdm/>} />
                 <Route path='/CriarConta' element ={<CadastroConta/>} />
 
-                <Route path='/ConsultarTenis' element ={<ConsultarTenis/>}/>
+                <Route path='/ConsultarTenis' element={<ConsultarTenis/>}/>
+                <Route path='/carrinho' element={<Carrinho/>}/>
             </Routes>
         </BrowserRouter>
     )

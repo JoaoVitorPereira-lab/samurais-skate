@@ -35,20 +35,18 @@ export default function PageCadastrarProduto(){
     const { idParam } = useParams();
 
     async function CarregarProduto(){
-        const resposta = await BuscarPorID(idParam);
-        const respImagem = await BuscarImagem(imagem);
+        const r = await BuscarPorID(idParam);
 
-        setNome(resposta.nome);
-        setDescricao(resposta.descricao);
-        setPreco(resposta.preco);
-        setEstoque(resposta.estoque);
+        setNome(r.nome);
+        setDescricao(r.descricao);
+        setPreco(r.preco.toString());
+        setEstoque(r.estoque);
+        setPromocao(r.promocao)
 
-        setIdTipos(resposta.IdTipo);
-        setIdMarcas(resposta.IdMarca);
+        setIdTipos(r.IdTipo);
+        setIdMarcas(r.IdMarca);
 
-        setImagem(respImagem.imagem);
-
-        setId(resposta.id);
+        setId(r.id);
     }
 
 
