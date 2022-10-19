@@ -196,8 +196,44 @@
         border-radius: 10px;
     }
     .cartao-infos{
-        p{
-            margin-bottom: -.5em;
+        margin-left: 1em;
+        .cartao-p-1{
+            margin-top: .5em;
         }
+        p{
+            font-family: 'Dekko', sans-serif;
+            font-size: 20px;
+
+            width: 9em;
+            margin-bottom: -1em;
+        }
+    }
+    .cartao-inputs input:not(input[type="checkbox"]){
+        margin-bottom: .7em;
+        width: 193px;
+        height: 20px;
+
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        border-radius: 5px;
+    }
+    
+    #input-1{
+        margin-top: 1em;
+    }
+    #vencimento-dia{
+        width: 39px; height: 25px;
+    }
+    #vencimento-ano{
+        margin-left: .4em;
+        width: 62px; height: 25px;
+    }
+    #code-seg{
+        margin-top: 1em;
+    }
+    
+    .container{
+        display: flex;
+        flex-direction: row;
     }
 }

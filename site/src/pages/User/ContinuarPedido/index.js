@@ -74,19 +74,19 @@ export default function ConsultarTenis(){
 
                         <div className="cartao-credito">
                             <div className="cartao-infos">
-                                <p> Número do cartão </p>
+                                <p className="cartao-p-1"> Número do cartão </p>
                                 <p> Nome do cartão </p>
                                 <p> Vencimento </p>
                                 <p> Código de segurança (CVV) </p>
                             </div>
 
                             <div className="cartao-inputs">
-                                <input type="number"/>
-                                <input type="number"/>
-                                <input type="number"/>
-                                <input type="number"/>
+                                <input type="number" id="input-1"/>
+                                <input type="text"   id="input-2"/>
+                                <input type="number" id="vencimento-dia"/>
+                                <input type="number" id="vencimento-ano"/>
+                                <input type="number" id="code-seg"/>
                                 <label className="container">
-                                    <br/>
                                     <input type="checkbox"/>
                                     <span className="checkmark"></span>
                                     Usar como meu pagamento padrão

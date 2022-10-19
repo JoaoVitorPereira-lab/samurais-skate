@@ -14,7 +14,7 @@ export default function ConsultarTenis(){
     async function CarregarProdutos () {
         const resp = await ListarTenis();
         setProduto(resp);
-        
+        console.log(resp);
     }
 
     async function BuscarNome () {
