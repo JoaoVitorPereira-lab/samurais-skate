@@ -12,6 +12,7 @@ import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
 
 import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
+import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
 
@@ -32,6 +33,7 @@ export default function Rotas (){
                 <Route path='/CriarConta'               element={<CadastroConta/>} />   
 
                 <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
+                <Route path='/produto/:id/detalhe'      element={<DetalheProduto/>}/>
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
             </Routes>
