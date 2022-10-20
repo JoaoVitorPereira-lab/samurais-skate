@@ -82,9 +82,12 @@ export default function ConsultarTenis(){
 
                             <div className="cartao-inputs">
                                 <input type="number" id="input-1"/>
+                                <br/>
                                 <input type="text"   id="input-2"/>
+                                <br/>
                                 <input type="number" id="vencimento-dia"/>
                                 <input type="number" id="vencimento-ano"/>
+                                <br/>
                                 <input type="number" id="code-seg"/>
                                 <label className="container">
                                     <input type="checkbox"/>

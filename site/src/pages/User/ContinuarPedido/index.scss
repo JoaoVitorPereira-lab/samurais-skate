@@ -43,6 +43,7 @@
         display: flex;
         flex-direction: row;
         margin-top: 2em;
+        margin-bottom: 10em;
     }
 
     .sec-enderecos{
@@ -113,11 +114,12 @@
     }
 
 
+/******************************************************************************/
 
     .sec-pagamento{
         margin-left: 2.5em;
         padding: 0em 0em 4em 1.5em;
-        width: 50%;
+        width: 50%; height: 60%;
 
         background: #FFFFFF;
         border: 1px solid #000000;
@@ -188,12 +190,16 @@
         flex-direction: row;
         justify-content: space-between;
 
-        width: 421px;
-        height: 205px;
+        width: 28em;
+        height: 14em;
 
         background: #EBEBEB;
         border: 1px solid #000000;
         border-radius: 10px;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
     }
     .cartao-infos{
         margin-left: 1em;
@@ -205,17 +211,23 @@
             font-size: 20px;
 
             width: 9em;
-            margin-bottom: -1em;
+            margin-bottom: -.8em;
         }
     }
+    .cartao-inputs{
+        margin-left: 1em;
+    }
     .cartao-inputs input:not(input[type="checkbox"]){
-        margin-bottom: .7em;
-        width: 193px;
-        height: 20px;
+        margin-bottom: .8em;
+        width: 14.5em;
+        height: 1.5em;
 
         background: #FFFFFF;
         border: 1px solid #000000;
         border-radius: 5px;
+    }
+    input:focus{
+        outline: none;
     }
     
     #input-1{
@@ -228,12 +240,21 @@
         margin-left: .4em;
         width: 62px; height: 25px;
     }
+
+
     #code-seg{
-        margin-top: 1em;
-    }
-    
+        width: 7.7em;
+        margin-top: .5em;
+    }    
     .container{
         display: flex;
         flex-direction: row;
+        align-items: baseline;
+
+        font-family: 'Dekko', sans-serif;
+        font-size: 16px;
+    }
+    .container input{
+        margin-right: .6em;
     }
 }

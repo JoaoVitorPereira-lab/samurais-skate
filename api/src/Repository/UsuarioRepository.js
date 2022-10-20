@@ -78,7 +78,6 @@ export async function BuscarNomePorID (id){
           nm_produto		        nome,
           ds_descricao	        descricao,
           nr_preco		        preco,
-          vl_avaliacao        avaliacao,
           nr_estoque		        estoque,
           ds_imagem               imagem     
      FROM tb_produto
