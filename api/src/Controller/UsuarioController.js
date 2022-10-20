@@ -1,4 +1,5 @@
-import { Router } from 'express';
+import { Router, text } from 'express';
+import nodemailer from 'nodemailer'
 import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID} from '../repository/usuarioRepository.js'
 
 const server = Router();
@@ -106,4 +107,37 @@ server.get('/produto/:id/detalhe', async (req, resp) =>{
     }
 })
 
+
+//Enviar email após o cadastro
+server.post('/api/email', (req,resp) => {
+    let dados = req.body;
+    const transport = nodemailer.createTransport({
+        host: process.env.HOST,
+        port: 587,
+        service: process.env.SERVICE,
+        secure: process.env.SECURE,
+        auth:{
+            user: process.env.EMAILA,
+            pass: process.env.SENHA
+        }
+    })
+
+    const message ={
+        from: process.env.EMAIL,
+        to: dados.email,
+        subject:"Samurai's Skate shop",
+        html:`
+            <h1> Skate shop Samurasi's </h1>
+            <h3> Seja bem vindo ao nosso site, ${dados.nome}! </h3>
+        `
+       }
+
+    transport.sendMail(message, (error, info)=>{
+        if(error){
+            return resp.status(400).send(error)
+        }
+        return resp.status(200).send('Email enviado com sucesso')
+    })
+
+})
 export default server;

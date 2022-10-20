@@ -61,23 +61,20 @@ export async function AlterarProduto(id, produto){
 export async function BuscarPorID (id){
     const comando = 
     `SELECT tb_produto.id_produto   id,
-            nm_marca	            marca,
-            nm_tipo  		        tipo,
-            nm_produto		        nome,
-            ds_descricao	        descricao,
-            nr_preco		        preco,
-            nr_estoque		        estoque,
-            ds_imagem               imagem     
-       FROM tb_produto
-      INNER JOIN tb_marca           ON tb_produto.id_marca   = tb_marca.id_marca
-      INNER JOIN tb_tipo            ON tb_produto.id_tipo    = tb_tipo.id_tipo
-      INNER JOIN tb_imagem_produto  ON tb_produto.id_produto = tb_imagem_produto.id_produto
-      WHERE tb_produto.id_produto = ? `;
+    id_marca	            marca,
+    id_tipo  		        tipo,
+    nm_produto		        nome,
+    ds_descricao	        descricao,
+    nr_preco		        preco,
+    nr_estoque		        estoque,
+    ds_imagem               imagem     
+FROM tb_produto
+INNER JOIN tb_imagem_produto  ON tb_produto.id_produto = tb_imagem_produto.id_produto
+WHERE tb_produto.id_produto = ?`;
     
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
-
 
 // BUSCAR PRODUTO POR NOME //
 export async function BuscarPorNome(nome){

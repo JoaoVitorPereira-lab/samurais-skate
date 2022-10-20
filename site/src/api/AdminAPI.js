@@ -88,7 +88,7 @@ export async function ListarTiposSkate(){
 
 /* BUSCAR IMAGEM */
 export async function BuscarImagem(imagem){
-    return `${api.getUri()}/${imagem}`
+    return `${api.getUri()}/${imagem}`  
 }
 
 
