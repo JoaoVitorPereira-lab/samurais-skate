@@ -1,6 +1,13 @@
+import { useState } from 'react'
+
 import './index.scss'
 
-export default function ConsultarTenis(){
+export default function ContinuarPedido(){
+    const [mostrar, setMostrar] = useState(false);
+
+    function exibir(){
+        setMostrar(true);
+    }
 
     return(
         <main className='main-continuarPedido'>
@@ -68,34 +75,36 @@ export default function ConsultarTenis(){
                     <div className="div-cartao-credito">
                         <h2> Cartões de Crédito </h2>
 
-                        <button>
+                        <button onClick={exibir}>
                             ADICIONAR CARTÃO DE CRÉDITO
                         </button>
 
-                        <div className="cartao-credito">
-                            <div className="cartao-infos">
-                                <p className="cartao-p-1"> Número do cartão </p>
-                                <p> Nome do cartão </p>
-                                <p> Vencimento </p>
-                                <p> Código de segurança (CVV) </p>
-                            </div>
+                        {mostrar === true &&
+                            <div className="cartao-credito">
+                                <div className="cartao-infos">
+                                    <p className="cartao-p-1"> Número do cartão </p>
+                                    <p> Nome do cartão </p>
+                                    <p> Vencimento </p>
+                                    <p> Código de segurança (CVV) </p>
+                                </div>
 
-                            <div className="cartao-inputs">
-                                <input type="number" id="input-1"/>
-                                <br/>
-                                <input type="text"   id="input-2"/>
-                                <br/>
-                                <input type="number" id="vencimento-dia"/>
-                                <input type="number" id="vencimento-ano"/>
-                                <br/>
-                                <input type="number" id="code-seg"/>
-                                <label className="container">
-                                    <input type="checkbox"/>
-                                    <span className="checkmark"></span>
-                                    Usar como meu pagamento padrão
-                                </label>
+                                <div className="cartao-inputs">
+                                    <input type="number" id="input-1"/>
+                                    <br/>
+                                    <input type="text"   id="input-2"/>
+                                    <br/>
+                                    <input type="number" id="vencimento-dia"/>
+                                    <input type="number" id="vencimento-ano"/>
+                                    <br/>
+                                    <input type="number" id="code-seg"/>
+                                    <label className="container">
+                                        <input type="checkbox"/>
+                                        <span className="checkmark"></span>
+                                        Usar como meu pagamento padrão
+                                    </label>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </section>
             </aside>

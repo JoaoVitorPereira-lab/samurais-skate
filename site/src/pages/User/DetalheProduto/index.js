@@ -26,7 +26,7 @@ export default function ProdutoDetalhe() {
                 <p>{produto.nome}</p>
                 <p>{produto.marca}</p>
                 <p>{produto.preco}</p>
-                <button>Adcionar ao carrinho</button>
+                <button>Adicionar ao carrinho</button>
                 <p>{produto.descricao}</p>
             </div>
         </main>

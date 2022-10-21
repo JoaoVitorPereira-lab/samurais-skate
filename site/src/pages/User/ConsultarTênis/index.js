@@ -17,14 +17,9 @@ export default function ConsultarTenis(){
         console.log(resp);
     }
 
-    async function BuscarNome () {
-        const resp = await BuscarTenisPorNome(busca);
-        setProduto(resp)
-        
-    }
 
     useEffect(() => {
-        CarregarProdutos()
+        CarregarProdutos();
     }, [])
 
     function AbrirDetalhes(id) {
@@ -33,7 +28,7 @@ export default function ConsultarTenis(){
 
     return(
         <main className='tenis-container'>
-            <Cabecalho value={busca} change={e => setBusca(e.target.value)} click = {BuscarNome()} />
+            <Cabecalho value={busca}/>
             <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / TÊNIS</span></h1>
 
             <div className='contents'>
