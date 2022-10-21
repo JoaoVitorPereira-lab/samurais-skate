@@ -112,7 +112,7 @@ from tb_produto_avaliacao
 	join tb_produto on tb_produto.id_produto = tb_produto_avaliacao.id_produto
 	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
 	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Tênis";
+where nm_tipo = "";
 
 -- Consultar tenis por nome
 select nm_produto ,

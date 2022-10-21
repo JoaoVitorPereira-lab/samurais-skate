@@ -26,8 +26,8 @@ export default function PageCadastrarProduto(){
     const [imagem, setImagem] = useState();
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    /* const [tamanho, setTamanho] = useState();
-    const [importado, setImportado] = useState(false); */
+    const [tamanho, setTamanho] = useState();
+    const [importado, setImportado] = useState(false); 
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
     const [estoque, setEstoque] = useState('');
@@ -103,7 +103,7 @@ export default function PageCadastrarProduto(){
                 throw new Error('Escolha a imagem!');
 
             if(id === 0){
-                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
+                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, tamanho, importado, promocao, preco, estoque);
 
                 await enviarimagem(novoProduto.id, imagem);
             
@@ -265,6 +265,21 @@ export default function PageCadastrarProduto(){
                                     )}
                                 </select>
                             </div>
+
+                            {IdTipos == 3 && 
+                                <div className="div-marcas">
+                                    <label id="marca-titulo"> Tamanho: </label>
+                                    <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
+                                        <option selected disabled hidden> Marca </option>
+
+                                       
+                                            <option>
+                                                a
+                                            </option>    
+                                        
+                                    </select>
+                                </div>
+                            }
                         </div>
                     </section>
 
@@ -283,7 +298,7 @@ export default function PageCadastrarProduto(){
                                 />
                             </div>
                             
-                            {IdTipos == 1 &&
+                            {IdTipoSkate <= 2 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
                                     <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
@@ -296,6 +311,16 @@ export default function PageCadastrarProduto(){
                                             )}
                                     </select> 
                                 </div>
+                            }
+
+                            {IdTipoSkate >= 4 &&
+                                <div className="importado">
+                                <input type="checkbox"
+                                       value={importado}
+                                       onChange={e => setImportado(e.target.checked )}     
+                                />
+                                <label id="importado-titulo"> Importado </label>
+                            </div>
                             }
 
                         </div>
