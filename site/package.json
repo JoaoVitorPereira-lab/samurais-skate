@@ -7,11 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-<<<<<<< HEAD
     "framer-motion": "^7.6.1",
-=======
-    "nodemailer": "^6.8.0",
->>>>>>> 551e53caabd2bf2e1a7ca506bb98ba255cdd1b71
     "react": "^18.2.0",
     "react-carousel": "^4.3.0",
     "react-confirm-alert": "^3.0.6",
