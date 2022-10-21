@@ -126,7 +126,7 @@ export default function Landing_Page() {
                 <div> <img src={images9} alt="a" /> </div>
                 <div> <img src={images10} alt="a" /> </div>
                 <div> <img src={images11} alt="a" /> </div>
-                <div> <img src={images12} alt="a" /> </div>
+                <div> <img src={images12} alt="b" /> </div>
 
             </section>
 
