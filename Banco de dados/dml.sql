@@ -107,10 +107,11 @@ select id_admin    id
 
 -- CONSULTAR TENIS (USER)
 
-select nm_produto, nr_preco, vl_avaliacao, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto
-  from tb_produto
-join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
-join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+select nm_produto, nr_preco, nr_estrela, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
+from tb_produto_avaliacao
+	join tb_produto on tb_produto.id_produto = tb_produto_avaliacao.id_produto
+	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
 where nm_tipo = "Tênis";
 
 -- Consultar tenis por nome
