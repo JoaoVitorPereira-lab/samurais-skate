@@ -1,5 +1,6 @@
 import "./index.scss"
 import { EntrarLogin } from '../../../api/UsuarioApi.js'
+import strorage from 'local-storage'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
@@ -30,6 +31,7 @@ export default function Login() {
 
         try {
             const r = await EntrarLogin(email, senha)
+            strorage('usuario-logado', r)
             setTimeout(() => {
                 navigate('/'); 
             }, 3000);
