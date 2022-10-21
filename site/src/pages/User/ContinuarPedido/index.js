@@ -9,8 +9,6 @@ import CardEndereco from '../../components/cardEndereco';
 export default function ContinuarPedido(){
     const [mostrar, setMostrar] = useState(false);
 
-    const [idEndereco, setIdEndereco] = useState();
-
     const [enderecos, setEnderecos] = useState([]);
 
     function exibir(){
@@ -18,7 +16,8 @@ export default function ContinuarPedido(){
     }
 
     async function carregarEnderecos(){
-        const r = await Listar();
+        const id = Storage('usuario-logado').id;
+        const r = await Listar(id);
         setEnderecos(r);
     }
 
@@ -44,7 +43,7 @@ export default function ContinuarPedido(){
                     <p> Endereços </p>
 
                     {enderecos.map(item =>
-                        <CardEndereco item={item} selecionar={setIdEndereco} selecionado={item.id == idEndereco} />
+                        <CardEndereco item={item} />
                     )}
 
                     <div className="containers-endereco">
