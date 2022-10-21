@@ -94,7 +94,6 @@ server.get('/api/produto/:id', async (req, resp) =>{
   try
   {
       const id = Number(req.params.id);
-
       const resposta = await BuscarPorID(id);
 
       if(!resposta)

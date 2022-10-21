@@ -8,8 +8,10 @@ import Cabecalho from '../componentsAdmin/cabecalho';
 import { CadastrarProduto, ListarCategoria, ListarTipos, ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate, BuscarImagem } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { API_URL } from "../../../api/config";
 
 export default function PageCadastrarProduto(){
+
 
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
@@ -34,21 +36,34 @@ export default function PageCadastrarProduto(){
 
     const { idParam } = useParams();
 
+    function MostrarImagem(){
+        if(typeof (imagem) === 'object'){
+            return URL.createObjectURL(imagem);
+        }
+
+        else if (typeof (imagem) === 'string'){
+            return `${API_URL}/${imagem}` 
+        }
+        else{
+            return BuscarImagem(imagem);
+        }
+    }
+
     async function CarregarProduto(){
         const r = await BuscarPorID(idParam);
 
-        setNome(r.nome);
+        setImagem(r.imagem)
+
         setDescricao(r.descricao);
         setPreco(r.preco.toString());
         setEstoque(r.estoque);
         setPromocao(r.promocao)
 
-        setIdTipos(r.IdTipo);
-        setIdMarcas(r.IdMarca);
+        setIdTipos(r.tipo);
+        setIdMarcas(r.marca);
 
         setId(r.id);
     }
-
 
     async function CarregarCategorias(){
         const resp = await ListarCategoria()
@@ -81,7 +96,6 @@ export default function PageCadastrarProduto(){
         CarregartiposSkate()
     },[] )
 
-    console.log(IdTipoSkate)
 
     async function salvarClick(){
         try {
@@ -131,16 +145,9 @@ export default function PageCadastrarProduto(){
         document.getElementById('ClickFoto').click();
     }
 
-    function MostrarImagem(){
-        if(typeof (imagem) === 'object'){
-            return URL.createObjectURL(imagem);
-        }
-        else{
-            return BuscarImagem(imagem);
-        }
-    }
-
-    
+    useEffect(() =>{
+        MostrarImagem()
+    },[imagem])
 
     return(
         <main className="page-cadastrar-produto">

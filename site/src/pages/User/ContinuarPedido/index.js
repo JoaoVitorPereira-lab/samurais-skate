@@ -1,6 +1,13 @@
+import { useState } from 'react'
+
 import './index.scss'
 
-export default function ConsultarTenis(){
+export default function ContinuarPedido(){
+    const [mostrar, setMostrar] = useState(false);
+
+    function exibir(){
+        setMostrar(true);
+    }
 
     return(
         <main className='main-continuarPedido'>
@@ -15,21 +22,92 @@ export default function ConsultarTenis(){
                 </div>
             </header>
 
-            <section className="sec-enderecos">
-                <p> Endereços </p>
+            <aside className="aside-lado-a-lado">
+                <section className="sec-enderecos">
+                    <p> Endereços </p>
 
-                <div className="teste">
-                    <div className="div-endereco">
-                        <p className="p-1"> Casa </p>
-                        <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
-                        <p> 04773-000 - São Paulo/SP </p>
+                    <div className="containers-endereco">
+                        <div className="div-endereco">
+                            <p className="p-1"> Casa </p>
+                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
+                            <p> 04773-000 - São Paulo/SP </p>
+                        </div>
+
+                        <div className="div-endereco">
+                            <p className="p-1"> Casa </p>
+                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
+                            <p> 04773-000 - São Paulo/SP </p>
+                        </div>
+
+                        <div className="div-endereco">
+                            <p className="p-1"> Casa </p>
+                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
+                            <p> 04773-000 - São Paulo/SP </p>
+                        </div>
                     </div>
-                </div>
 
-                <section className="sec-button">
-                    <button> NOVO ENDEREÇO </button>
+                    <div className="div-button">
+                        <button> NOVO ENDEREÇO </button>
+                    </div>
                 </section>
-            </section>
+
+                <section className="sec-pagamento">
+                    <div className="div-boleto">
+                        <h2> Boleto </h2>
+
+                        <div className="boleto">
+                            <input type="checkbox"/>
+                            <img src="../images/boleto.png" alt=""/>
+                            <text> Vencimento em 1 dia útil. A data de entrega será alterada devido ao tempo de processamento do Boleto. Veja mais na próxima página. </text>
+                        </div>
+                    </div>
+
+                    <div className="div-pix">
+                        <h2> Pix </h2>
+
+                        <div className="pix">
+                            <input type="checkbox"/>
+                            <img src="../images/pix-rodape.png" alt=""/>
+                            <text> Vencimento em 30 minutos. Após o pagamento seu pedido será processado.</text>
+                        </div>
+                    </div>
+
+                    <div className="div-cartao-credito">
+                        <h2> Cartões de Crédito </h2>
+
+                        <button onClick={exibir}>
+                            ADICIONAR CARTÃO DE CRÉDITO
+                        </button>
+
+                        {mostrar === true &&
+                            <div className="cartao-credito">
+                                <div className="cartao-infos">
+                                    <p className="cartao-p-1"> Número do cartão </p>
+                                    <p> Nome do cartão </p>
+                                    <p> Vencimento </p>
+                                    <p> Código de segurança (CVV) </p>
+                                </div>
+
+                                <div className="cartao-inputs">
+                                    <input type="number" id="input-1"/>
+                                    <br/>
+                                    <input type="text"   id="input-2"/>
+                                    <br/>
+                                    <input type="number" id="vencimento-dia"/>
+                                    <input type="number" id="vencimento-ano"/>
+                                    <br/>
+                                    <input type="number" id="code-seg"/>
+                                    <label className="container">
+                                        <input type="checkbox"/>
+                                        <span className="checkmark"></span>
+                                        Usar como meu pagamento padrão
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </aside>
         </main>
     )
 }

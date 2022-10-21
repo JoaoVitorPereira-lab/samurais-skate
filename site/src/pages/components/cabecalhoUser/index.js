@@ -14,14 +14,14 @@ export default function App(props) {
         <div className="div-logo">
 
             <div>
-            <img src="../images/logo.png" width="124.8px" />
+            <img src="../images/logo.png" width="124.8px" alt=""/>
             </div>
 
             <div className="infos">
-                <img src="../images/lua.png" width="40px" />
-                <img src="../images/favoritos.png" width="40px" />
-                <img src="../images/user.png" width="40px" />
-                <img src="../images/carrinho.png" width="40px" />
+                <img src="../images/lua.png" width="40px" alt=""/>
+                <img src="../images/favoritos.png" width="40px" alt=""/>
+                <img src="../images/user.png" width="40px" alt=""/>
+                <img src="../images/carrinho.png" width="40px" alt=""/>
             </div>
 
         </div>

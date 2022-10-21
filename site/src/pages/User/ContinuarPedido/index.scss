@@ -39,10 +39,17 @@
         }
     }
 
+    .aside-lado-a-lado{
+        display: flex;
+        flex-direction: row;
+        margin-top: 2em;
+        margin-bottom: 10em;
+    }
 
     .sec-enderecos{
+        margin-left: 2em;
         padding: 0em 0em 4em 1.5em;
-        width: 45%;
+        width: 38%;
 
         background: #FFFFFF;
         border: 1px solid #000000;
@@ -54,7 +61,7 @@
             font-size: 22px;
         }
     }
-    .teste{
+    .containers-endereco{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -65,7 +72,7 @@
 
         word-break: break-all;
         padding: .2em 1.2em 0em .8em;
-        width: 35%;
+        width: 13em;
         height: 20%;
 
         background: #FFFFFF;
@@ -89,9 +96,7 @@
             font-size: 16px;
         }
     }
-
-
-    .sec-button{
+    .div-button{
         button{
             background-color: #E52A45;
             border: transparent;
@@ -99,12 +104,162 @@
             width: 20em;
             height: 3em;
 
-            font-family: 'Dela Gothic One';
+            font-family: 'Dela Gothic One', cursive;
             font-weight: 400;
             font-size: 12px;
             line-height: 17px;
 
             color: #FFFFFF;
         }
+    }
+
+
+/******************************************************************************/
+
+    .sec-pagamento{
+        margin-left: 2.5em;
+        padding: 0em 0em 1.5em 1.5em;
+        width: 50%;
+
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+
+        h2{
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 22px;
+            line-height: 17px;
+        }
+        img{
+            width: 18px; height: 18px;
+        }
+        text{
+            font-family: 'Dekko', sans-serif;
+            font-size: 14px;
+        }
+    }
+
+    .div-boleto{
+        margin-top: 2em;
+    }
+    .boleto{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: -.5em;
+        margin-left: .5em;
+        img{
+            margin-left: .7em; margin-right: .3em;
+        }
+        text{
+            margin-top: 1em;
+            width: 43em;
+        }
+    }
+
+    .pix{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: -.6em;
+        margin-left: .5em;
+        img{
+            margin-left: .7em; margin-right: .3em;
+        }
+        text{
+            margin-top: 1em;
+            width: 30em;
+        }
+    }
+
+    .div-cartao-credito{
+        button{
+            cursor: pointer;
+            background-color: #E52A45;
+            border-radius: 10px;
+            border: transparent;
+
+            width: 28em;
+            height: 3.2em;
+            margin-bottom: 1.2em; margin-top: .8em;
+
+            color: #FFFFFF;
+            font-family: 'Dela Gothic One', cursive;
+            font-size: 12px;
+        }
+    }
+
+    .cartao-credito{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 28em;
+        height: 14em;
+
+        background: #EBEBEB;
+        border: 1px solid #000000;
+        border-radius: 10px;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+    .cartao-infos{
+        margin-left: 1em;
+        .cartao-p-1{
+            margin-top: .5em;
+        }
+        p{
+            font-family: 'Dekko', sans-serif;
+            font-size: 20px;
+
+            width: 9em;
+            margin-bottom: -.8em;
+        }
+    }
+    .cartao-inputs{
+        margin-left: 1em;
+    }
+    .cartao-inputs input:not(input[type="checkbox"]){
+        margin-bottom: .8em;
+        width: 14.5em;
+        height: 1.5em;
+
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        border-radius: 5px;
+    }
+    input:focus{
+        outline: none;
+    }
+    
+    #input-1{
+        margin-top: 1em;
+    }
+    #vencimento-dia{
+        width: 39px; height: 25px;
+    }
+    #vencimento-ano{
+        margin-left: .4em;
+        width: 62px; height: 25px;
+    }
+
+
+    #code-seg{
+        width: 7.7em;
+        margin-top: .5em;
+    }    
+    .container{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+
+        font-family: 'Dekko', sans-serif;
+        font-size: 16px;
+    }
+    .container input{
+        margin-right: .6em;
     }
 }
