@@ -54,6 +54,7 @@ export default function PageCadastrarProduto(){
 
         setImagem(r.imagem)
 
+        setNome(r.nome);
         setDescricao(r.descricao);
         setPreco(r.preco.toString());
         setEstoque(r.estoque);

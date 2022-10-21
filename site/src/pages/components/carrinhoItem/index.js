@@ -3,14 +3,14 @@ import { useState } from 'react'
 
 import './index.scss'
 
-export default function Carrinho({ item: { produto: { nome, preco, imagem }, qtd } } ) {
+export default function Carrinho({ item: { produto: { id, nome, preco, imagem }, qtd } } ) {
     const [qtdProduto, setQtdProduto] = useState(qtd);
 
     function alterarQuantidade(novaQtd) {
         setQtdProduto(novaQtd);
         
         let carrinho = Storage('carrinho');
-        let itemStorage = carrinho.find(item => item.id == item.produto.id);
+        let itemStorage = carrinho.find(item => item.id == item.id);
         itemStorage.qtd = novaQtd;
 
         Storage('carrinho', carrinho);
@@ -24,9 +24,9 @@ export default function Carrinho({ item: { produto: { nome, preco, imagem }, qtd
 
     return (
         <div className="div-produto">        
-            <img src={exibirImagem()} alt="" width="270" height="220"/>
+            <img src={exibirImagem()} alt="" width="270" height="220" className='img-produto'/>
 
-            <text> {nome} </text>
+            <text className='nome-produto'> {nome} </text>
 
             <select onChange={e => alterarQuantidade(e.target.value)} value={qtdProduto}>
                 <option>1</option>
@@ -36,11 +36,7 @@ export default function Carrinho({ item: { produto: { nome, preco, imagem }, qtd
                 <option>5</option>
             </select>
 
-            <span> {preco} </span>
-
-            <div> 
-                Excluir
-            </div>
+            <span className='preco-produto'> {preco} </span>
         </div>
     )
 }

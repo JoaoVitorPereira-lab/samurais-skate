@@ -45,44 +45,44 @@ export default function App(props) {
         <div className="div-logo">
 
             <div>
-            <img onClick={HomeClick} src="../images/logo.png" width="124.8px" alt=""/>
+            <img onClick={HomeClick} src="/images/logo.png" width="124.8px" alt=""/>
             </div>
 
             <div className="infos">
-                <img src="../images/lua.png" width="40px" alt=""/>
+                <img src="/images/lua.png" width="40px" alt=""/>
 
                 {storage('usuario-logado') && 
                 
-                <img onClick={FavoritosClick} src="../images/favoritos.png" width="40px" alt=""/>
+                <img onClick={FavoritosClick} src="/images/favoritos.png" width="40px" alt=""/>
                 
                 }
 
                 {!storage('usuario-logado') &&
                 
                 
-                <img onClick={Login} src="../images/favoritos.png" width="40px" alt=""/>
+                <img onClick={Login} src="/images/favoritos.png" width="40px" alt=""/>
 
                 }
 
 
                 {storage('usuario-logado') &&
-                <img onClick={SairClick} src="../images/User-logado.png" alt="" width='40px' />
+                <img onClick={SairClick} src="/images/User-logado.png" alt="" width='40px' />
                 }
 
                 {!storage('usuario-logado') &&
                 
-                <img onClick={Login} src="../images/teste-entrar 1.png" width="40px" alt=""/>
+                <img onClick={Login} src="/images/teste-entrar 1.png" width="40px" alt=""/>
                 
                 }
 
                {!storage('usuario-logado') &&
                 
-                <img onClick={Login} src="../images/carrinho.png" width="40px" alt=""/>
+                <img onClick={Login} src="/images/carrinho.png" width="40px" alt=""/>
             }
                 
 
                 {storage('usuario-logado') &&
-                 <img onClick={CarrinhoClick} src="../images/carrinho.png" width="40px" alt=""/>
+                 <img onClick={CarrinhoClick} src="/images/carrinho.png" width="40px" alt=""/>
                  }
             </div>
 
@@ -93,27 +93,27 @@ export default function App(props) {
 
             <div className="div-navs">
                 <div className="navs-produtos not">
-                    <img src="../images/skate.png" className="imgs-nav" alt=""/>
+                    <img src="/images/skate.png" className="imgs-nav" alt=""/>
                     <span> Skate </span>
                 </div>
 
                 <div className="navs-produtos" onClick={TenisClick}>
-                    <img src="../images/tenis.png" className="imgs-nav" alt=""/>
+                    <img src="/images/tenis.png" className="imgs-nav" alt=""/>
                     <span> Tênis </span>
                 </div>
 
                 <div className="navs-produtos">
-                    <img src="../images/bone.png" className="imgs-nav" alt=""/>
+                    <img src="/images/bone.png" className="imgs-nav" alt=""/>
                     <span> Boné </span>
                 </div>
 
                 <div className="navs-produtos">
-                    <img src="../images/acessorios.png" className="imgs-nav" alt=""/>
+                    <img src="/images/acessorios.png" className="imgs-nav" alt=""/>
                     <span> Acessórios </span>
                 </div>
 
                 <div className="navs-produtos">
-                    <img src="../images/promocoes.png" className="imgs-nav" alt=""/>
+                    <img src="/images/promocoes.png" className="imgs-nav" alt=""/>
                     <span> Promoções </span>
                 </div>
             </div>
@@ -121,7 +121,7 @@ export default function App(props) {
             <div className="div-buscar">
                 <input type="text" className="buscar-input" placeholder="Buscar" value={props.value} onChange={props.change} />
                 <div>
-                    <img src="../images/buscar.png" className="buscar-img" alt="" onClick={Search} />
+                    <img src="/images/buscar.png" className="buscar-img" alt="" onClick={Search} />
                 </div>
             </div>
 
