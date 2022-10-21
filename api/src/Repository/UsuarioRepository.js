@@ -8,8 +8,8 @@ export async function Login(email, senha) {
                                         from tb_login_usuario
                                         join tb_conta_usuario
                                         on tb_login_usuario.id_conta_usuario     = tb_conta_usuario.id_conta_usuario
-                                        where ds_email                              = "pedro13@gmail"
-                                        and ds_senha                              = 1234;`;
+                                        where ds_email                              = ?
+                                        and ds_senha                              = ?`;
   const [resposta] = await con.query(comando, [email, senha]);
   return resposta[0];
 }
@@ -38,16 +38,14 @@ export async function CadastrarInformacoes(info) {
 
 export async function ConsultarTenis() {
   const comando = `select nm_produto              produto, 
-                          nr_preco                preco, 
-                          nr_estrela              avaliacao, 
-                          tb_tipo.id_tipo         tipo, 
-                          ds_imagem               imagem, 
-                          tb_produto.id_produto   id
-                    from tb_produto_avaliacao
-                      join tb_produto on tb_produto.id_produto = tb_produto_avaliacao.id_produto
-                      join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
-                      join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-                    where nm_tipo = "Tênis"`
+  nr_preco                preco,  
+  tb_tipo.id_tipo         tipo, 
+  ds_imagem               imagem, 
+  tb_produto.id_produto   id
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Tênis"`
             
   const [resposta] = await con.query(comando);
   return resposta;

@@ -34,9 +34,14 @@
         }
     
         .navs-produtos{
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        .navs-produtos:hover{
+            background-color: #292929;
         }
         .navs-produtos span{
             font-family: 'Dela Gothic One', cursive;

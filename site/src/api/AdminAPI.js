@@ -4,13 +4,15 @@ const api = axios.create({
 })
 
 /* CADASTRAR PRODUTO */
-export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, nome, descricao, promocao, preco, estoque){
+export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, nome, descricao, tamanho, importado, promocao, preco, estoque){
     const resposta = await api.post('/api/admin/produto', {
         IdMarca: IdMarca, 
         IdCategoria: IdCategoria,
         IdTipo: IdTipo,
         nome: nome,
         descricao: descricao,
+        tamanho: tamanho,
+        importado: importado,
         promocao: promocao,
         preco: preco,
         estoque: estoque
