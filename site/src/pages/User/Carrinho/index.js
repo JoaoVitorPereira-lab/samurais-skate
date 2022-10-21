@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function PageCarrinho(){
     const [itens, setItens] = useState([]);
+    const [subTotal, setSubTotal] = useState();
 
     async function CarregarCarrinho(){
         let carrinho = Storage('carrinho');
@@ -24,7 +25,6 @@ export default function PageCarrinho(){
                     qtd: produto.qtd
                 })
             }
-            console.log(itens);
             setItens(temp);
         }
     }
