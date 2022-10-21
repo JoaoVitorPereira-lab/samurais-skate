@@ -9,6 +9,10 @@ export default function App(props) {
 
     function TenisClick(){
         navigate('/ConsultarTenis')
+        
+        setTimeout(() => {
+            navigate('/'); 
+        }, 3000);
     }
 
     function HomeClick(){
