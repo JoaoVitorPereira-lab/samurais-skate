@@ -11,14 +11,16 @@ import { toast } from 'react-toastify'
 export default function ProdutoDetalhe() {
 
     const [produto, setProduto] = useState([]);
+    const [desconto, setDesconto] = useState(produto.preco);
 
     const { id } = useParams();
 
     async function carregarPagina() {
         const r = await BuscarProdutoPorID(id);
         setProduto(r);
+        
     }
-
+console.log(produto)
     function adicionarAoCarrinho() {
         let carrinho = []
         if (Storage('carrinho')) {
@@ -37,7 +39,8 @@ export default function ProdutoDetalhe() {
     }
 
     function desc () {
-        
+        let comDesconto = produto.preco * 0.9;
+        return comDesconto.toFixed(2);
     }
 
     useEffect(() => {
@@ -49,7 +52,7 @@ export default function ProdutoDetalhe() {
             <Cabecalho />
             <div className='div-detalhes-pai'>
                 <div>
-                    <h1 className='Nome-samurais'> Samurai's Skate Shop </h1>
+                    <h1 className='Nome-samurais'> Samurai’s Skate Shop </h1>
                 </div>
                 <div className='div-detalhes'>
 
@@ -76,6 +79,10 @@ export default function ProdutoDetalhe() {
 
                         <div className='preco-produto'>
                             <p>R${produto.preco}</p>
+                        </div>
+
+                        <div className='nome-marca'>
+                            <p>R${desc()} à vista com desconto</p>
                         </div>
 
 
