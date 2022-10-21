@@ -1,4 +1,6 @@
 .page-detalhes{
+
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,6 +46,11 @@
         text-align: center;
 
         color: #E52A45;
+    }
+
+    .imgs img {
+        width: 55%;
+        
     }
 
     .btn-carrinho{
