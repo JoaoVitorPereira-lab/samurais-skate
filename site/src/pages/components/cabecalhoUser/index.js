@@ -7,6 +7,10 @@ export default function App(props) {
 
     const navigate = useNavigate()
 
+    function TenisClick(){
+        navigate('/ConsultarTenis')
+    }
+
     function HomeClick(){
         navigate('/')
     }
@@ -93,7 +97,7 @@ export default function App(props) {
                     <span> Skate </span>
                 </div>
 
-                <div className="navs-produtos">
+                <div className="navs-produtos" onClick={TenisClick}>
                     <img src="../images/tenis.png" className="imgs-nav" alt=""/>
                     <span> Tênis </span>
                 </div>
