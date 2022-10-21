@@ -1,13 +1,30 @@
-import { useState } from 'react'
-
+import { useEffect, useState } from 'react'
 import './index.scss'
+
+
+import { Listar } from '../../../api/EnderecoAPI'
+import CardEndereco from '../../components/cardEndereco';
+
 
 export default function ContinuarPedido(){
     const [mostrar, setMostrar] = useState(false);
 
+    const [idEndereco, setIdEndereco] = useState();
+
+    const [enderecos, setEnderecos] = useState([]);
+
     function exibir(){
         setMostrar(true);
     }
+
+    async function carregarEnderecos(){
+        const r = await Listar();
+        setEnderecos(r);
+    }
+
+    useEffect(() =>{
+        carregarEnderecos();
+    }, [])
 
     return(
         <main className='main-continuarPedido'>
@@ -25,6 +42,10 @@ export default function ContinuarPedido(){
             <aside className="aside-lado-a-lado">
                 <section className="sec-enderecos">
                     <p> Endereços </p>
+
+                    {enderecos.map(item =>
+                        <CardEndereco item={item} selecionar={setIdEndereco} selecionado={item.id == idEndereco} />
+                    )}
 
                     <div className="containers-endereco">
                         <div className="div-endereco">

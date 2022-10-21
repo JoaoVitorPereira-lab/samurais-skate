@@ -1,0 +1,48 @@
+ .Pagina-Curtidos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .titulo {
+            margin-top: 3em;
+            font-family: 'Dekko';
+            font-weight: 400;
+        }
+    .titulo-span {
+            color: #E52A45;
+        }
+    .produtos-imgs{
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        margin-top: 2em;
+    }
+    .card-produtos-curtidos{
+        display: flex;
+        flex-direction: row;
+        width: 50em;
+        justify-content: space-around;
+        margin-left: 20em;
+    }
+    .preco-produtos{
+        font-family: 'Dela Gothic One';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .img-coracao{
+        margin-top: 2.5em;
+    }
+    .remover-btn{
+        position: absolute;
+
+        margin-left: -0.6em;
+
+        font-family: 'Dekko';
+        font-style: normal;
+        font-size: 20px;
+        
+        color: #E52A45;
+
+        text-decoration: underline;
+    }
+
+ }
