@@ -1,6 +1,68 @@
 .page-detalhes{
-    text-align: center;
-    .div-detalhes{
-        margin-top: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Nome-samurais{
+        position: absolute;
+        width: 607px;
+        height: 67px;
+        left: 401px;
+
+        font-family: 'Dela Gothic One';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 46px;
+        line-height: 67px;
     }
+    .div-detalhes{
+        display: flex;
+        flex-direction: row;
+        margin-top: 20em;
+        width: 50em;
+        justify-content: space-between;
+        margin-left: 10em;
+    }
+    .nome-produto , .nome-marca{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 34px;
+        text-align: center;
+
+        color: #000000;
+    }
+    .nome-marca{
+        font-size: 15px;
+    }
+    .preco-produto{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 34px;
+        text-align: center;
+
+        color: #E52A45;
+    }
+
+    .btn-carrinho{
+        width: 268px;
+        height: 54px;
+        left: 953px;
+        top: 874px;
+
+        border: none;
+        background: #E52A45;
+
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 51px;
+        text-align: center;
+
+        color: #FFFFFF;
+    }
+    
 }
