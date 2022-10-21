@@ -35,6 +35,10 @@ create table tb_usuario_endereco (
       DS_CEP					varchar(9),
       NM_RUA					varchar(100),
       NR_NUMERO					int,
+      ds_complemento			varchar(200),
+      ds_bairro					varchar(100),
+      ds_cidade					varchar(100),
+      ds_estado					varchar(100),
       
       foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO)
 );

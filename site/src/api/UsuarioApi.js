@@ -50,3 +50,9 @@ export async function BuscarTenisPorNome(nome){
     return resposta.data;
 }
 
+// BUSCAR PRODUTO POR ID //
+export async function BuscarProdutoPorID(id){
+    const resposta = await api.get(`/produto/${id}/detalhe`);
+    return resposta.data;
+}
+

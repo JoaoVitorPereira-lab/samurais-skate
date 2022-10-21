@@ -5,6 +5,7 @@ import 'dotenv/config'
 //Importando EndPoints
 import usuarioController from './controller/usuarioController.js'
 import adminController from './controller/adminController.js'
+import enderecoController from './controller/enderecoController.js'
 
 // Configurando o Server
 const server = express();
@@ -14,6 +15,7 @@ server.use(express.json())
 //Endpoints
 server.use(usuarioController)
 server.use(adminController)
+server.use(enderecoController)
 
 
 //Liberar rota para a imagem

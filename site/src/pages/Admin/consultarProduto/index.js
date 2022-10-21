@@ -25,7 +25,7 @@ export default function PageConsultarProduto(){
     })
 
     async function EditarProduto(id) {
-        navigate(`/alterarproduto/${id}`)
+        navigate(`/alterarproduto/`+id)
     }
 
     async function CarregarProdutos(){

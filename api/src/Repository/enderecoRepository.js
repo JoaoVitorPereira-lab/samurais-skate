@@ -1,0 +1,30 @@
+import { con } from '../Repository/Connection.js'
+
+/* Listar Endereços */
+export async function ListarEndereco(idUsuario){
+    const comando = 
+    `select ds_cep		                cep,
+            nm_rua		                rua,
+            nr_numero	                numero,
+            ds_complemento	            complemento,
+            ds_bairro		            bairro,
+            ds_cidade		            cidade,
+            ds_estado		            estado
+       from tb_usuario_endereco
+      where id_conta_usuario = ? 
+    `
+    
+    const [registros] = await con.query(comando, [idUsuario]);
+    return registros;
+  }
+  
+  
+/* Salvar Endereços */
+export async function SalvarEndereco(idUsuario, endereco){
+    const comando = 
+    `insert into tb_usuario_endereco (id_conta_usuario, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
+                                values (?, ?, ?, ?, ?, ?, ?, ?); `;
+
+    const [info] = await con.query(comando, [idUsuario, endereco.cep, endereco.rua, endereco.numero, endereco.complemento, endereco.bairro, endereco.cidade, endereco.estado]);
+    return info.insertId;
+  }
