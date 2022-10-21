@@ -4,15 +4,35 @@ import { BuscarProdutoPorID } from '../../../api/UsuarioApi';
 import { API_URL } from '../../../api/config';
 import './index.scss'
 
+import Storage from 'local-storage'
+import { toast } from 'react-toastify'
+
 export default function ProdutoDetalhe() {
 
-    const [produto, setProduto] = useState({});
+    const [produto, setProduto] = useState([]);
 
     const {id} = useParams();
 
     async function carregarPagina() {
         const r = await BuscarProdutoPorID(id);
         setProduto(r);
+    }
+
+    function adicionarAoCarrinho(){
+        let carrinho = []
+        if(Storage('carrinho')) {
+            carrinho = Storage('carrinho');
+        }
+        if(!carrinho.find(item => item.id ==- id)){
+            carrinho.push({
+                id: id,
+                qtd: 1
+            })
+
+            Storage('carrinho', carrinho);
+        }
+
+        toast.dark('Produto adicionado ao carrinho')
     }
 
     useEffect(() => {
@@ -26,7 +46,7 @@ export default function ProdutoDetalhe() {
                 <p>{produto.nome}</p>
                 <p>{produto.marca}</p>
                 <p>{produto.preco}</p>
-                <button>Adicionar ao carrinho</button>
+                <button onClick={adicionarAoCarrinho}>Adicionar ao carrinho</button>
                 <p>{produto.descricao}</p>
             </div>
         </main>

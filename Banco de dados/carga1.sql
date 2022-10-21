@@ -8,7 +8,8 @@ insert into tb_admin (ds_email, ds_senha)
 insert into tb_conta_usuario (nm_usuario, nm_sobrenome)
 			 values ('leo', 'natel');
 
-select ds_cep			cep,
+select ds_referencia	referencia,
+	   ds_cep			cep,
 	   nm_rua			rua,
        nr_numero		numero,
        ds_complemento	complemento,
@@ -18,8 +19,8 @@ select ds_cep			cep,
   from tb_usuario_endereco
  where id_conta_usuario = 1;
  
-insert into tb_usuario_endereco (id_conta_usuario, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
-						 values (1, '04843-460', 'rua uraba', 7, 'Casa2', 'Grajaú', 'São Paulo', 'São Paulo');
+insert into tb_usuario_endereco (id_conta_usuario, ds_referencia, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
+						 values (1, 'MyHome', '04843-460', 'rua uraba', 7, 'Casa2', 'Grajaú', 'São Paulo', 'São Paulo');
              
 -- INSERIR TIPO SKATE
 insert into tb_tipo_skate (nm_tipo_skate)
