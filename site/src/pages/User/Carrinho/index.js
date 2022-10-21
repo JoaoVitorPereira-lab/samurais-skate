@@ -8,10 +8,13 @@ import Cabecalho from '../../components/cabecalhoUser';
 import Navs from '../../components/navs';
 import Rodape from '../../components/rodape';
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PageCarrinho(){
     const [itens, setItens] = useState([]);
     const [qtdProduto, setQtdProduto] = useState(itens.qtd);
+
+    const navigate = useNavigate();
 
     async function CarregarCarrinho(){
         let carrinho = Storage('carrinho');
@@ -34,7 +37,7 @@ export default function PageCarrinho(){
         for (let item of itens) {
             total = total + item.produto.preco * item.qtd;
         }
-        return total;
+        return total + 20;
     }
 
     function removerItem(id) {
@@ -111,7 +114,13 @@ export default function PageCarrinho(){
             </section>
 
             <section className="sec-3">
-                <button> Fechar Pedido </button>
+                <button onClick={async () => {
+                        try {
+                            navigate("/ContinuarPedido")
+                        } catch (err) {
+                                
+                        }
+                    }}> Fechar Pedido </button>
             </section>
 
             <Rodape />

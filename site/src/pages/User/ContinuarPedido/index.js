@@ -15,7 +15,7 @@ export default function ContinuarPedido(){
 
     const [enderecos, setEnderecos] = useState([]);
 
-    function exibir(){
+    function ExibirCardClick(){
         setMostrar(true);
     }
 
@@ -34,6 +34,10 @@ export default function ContinuarPedido(){
             navigate('/Login')
         }
     },[])
+
+    function OcultarCardClick(){
+        setMostrar(false)
+    }
 
     return(
         <main className='main-continuarPedido'>
@@ -104,10 +108,18 @@ export default function ContinuarPedido(){
 
                     <div className="div-cartao-credito">
                         <h2> Cartões de Crédito </h2>
+                        
+                        {mostrar === true &&
+                            <button onClick={OcultarCardClick}>
+                                ADICIONAR CARTÃO DE CRÉDITO
+                            </button>
+                        }
 
-                        <button onClick={exibir}>
-                            ADICIONAR CARTÃO DE CRÉDITO
-                        </button>
+                        {mostrar === false &&
+                            <button onClick={ExibirCardClick}>
+                                ADICIONAR CARTÃO DE CRÉDITO
+                            </button>
+                        }
 
                         {mostrar === true &&
                             <div className="cartao-credito">
