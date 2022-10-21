@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
-import strorage from 'local-storage'
+import storage from 'local-storage'
 import { useNavigate } from "react-router-dom";
 
 export default function App(props) {
 
     const navigate = useNavigate()
-    const[vigiarStorage, setVigiarStorage] = useState(false)
 
+    function HomeClick(){
+        navigate('/')
+    }
+
+    function CarrinhoClick(){
+        navigate('/carrinho')
+    }
+
+    function FavoritosClick(){
+        navigate('/favoritos')
+    }
 
     function Search ( ) {
         return props.click;
     }
 
     function SairClick(){
-        strorage.remove('usuario-logado')
+        storage.remove('usuario-logado')
         navigate('/Login')
     }
+
+    function Login (){
+        navigate('/Login')
+    }
+
+    
 
   return (
     
@@ -25,16 +41,45 @@ export default function App(props) {
         <div className="div-logo">
 
             <div>
-            <img src="../images/logo.png" width="124.8px" alt=""/>
+            <img onClick={HomeClick} src="../images/logo.png" width="124.8px" alt=""/>
             </div>
 
             <div className="infos">
                 <img src="../images/lua.png" width="40px" alt=""/>
-                <img src="../images/favoritos.png" width="40px" alt=""/>
-                {strorage}
-                <img onClick={SairClick} src="../images/user.png" width="40px" alt=""/>
 
-                <img src="../images/carrinho.png" width="40px" alt=""/>
+                {storage('usuario-logado') && 
+                
+                <img onClick={FavoritosClick} src="../images/favoritos.png" width="40px" alt=""/>
+                
+                }
+
+                {!storage('usuario-logado') &&
+                
+                
+                <img onClick={Login} src="../images/favoritos.png" width="40px" alt=""/>
+
+                }
+
+
+                {storage('usuario-logado') &&
+                <img onClick={SairClick} src="../images/User-logado.png" alt="" width='40px' />
+                }
+
+                {!storage('usuario-logado') &&
+                
+                <img onClick={Login} src="../images/teste-entrar 1.png" width="40px" alt=""/>
+                
+                }
+
+               {!storage('usuario-logado') &&
+                
+                <img onClick={Login} src="../images/carrinho.png" width="40px" alt=""/>
+            }
+                
+
+                {storage('usuario-logado') &&
+                 <img onClick={CarrinhoClick} src="../images/carrinho.png" width="40px" alt=""/>
+                 }
             </div>
 
         </div>

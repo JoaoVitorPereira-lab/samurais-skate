@@ -1,6 +1,6 @@
 import "./index.scss";
 
-import Cabecalho from '../../components/cabecalho';
+import Cabecalho from '../../components/cabecalhoUser';
 import Navs from '../../components/navs';
 import Rodape from '../../components/rodape';
 
@@ -9,7 +9,6 @@ export default function Carrinho(){
     return(
         <main className="main-carrinho">
             <Cabecalho />
-            <Navs />
 
             <section className="sec-1">
                 <p> Samurai’s Skate Shop </p>
