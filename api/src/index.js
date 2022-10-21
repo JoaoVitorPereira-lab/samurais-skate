@@ -5,7 +5,7 @@ import 'dotenv/config'
 //Importando EndPoints
 import usuarioController from './controller/usuarioController.js'
 import adminController from './controller/adminController.js'
-import enderecoController from './controller/enderecoController.js'
+import enderecoController from './Controller/enderecoController.js'
 
 // Configurando o Server
 const server = express();

@@ -1,18 +1,19 @@
-import { con } from '../Repository/Connection.js'
+import { con } from './Connection.js'
 
 /* Listar Endereços */
-export async function ListarEndereco(idUsuario){
+export async function listarEndereco(idUsuario){
     const comando = 
-    `select ds_cep		                cep,
-            nm_rua		                rua,
-            nr_numero	                numero,
-            ds_complemento	            complemento,
+    `SELECT id_usuario_endereco     id,
+            ds_cep		              cep,
+            nm_rua		              rua,
+            nr_numero	              numero,
+            ds_complemento	        complemento,
             ds_bairro		            bairro,
             ds_cidade		            cidade,
             ds_estado		            estado
-       from tb_usuario_endereco
-      where id_conta_usuario = ? 
-    `
+       FROM tb_usuario_endereco
+      WHERE id_conta_usuario = ? 
+    `;
     
     const [registros] = await con.query(comando, [idUsuario]);
     return registros;
