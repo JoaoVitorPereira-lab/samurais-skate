@@ -18,6 +18,10 @@ export default function Login() {
     const navigate = useNavigate()
     const ref = useRef()
 
+    function HomeClick(){
+        navigate('/')
+    }
+
     function MostrarSenhaClick(){
         SetMostrarSenha(true)
     }
@@ -48,7 +52,7 @@ export default function Login() {
         <section className="page-login">
             <LoadingBar color="#E52A45" ref={ref}/>
             <div>
-                <img src="../images/logo.png" alt="logo" className="logo" />
+                <img onClick={HomeClick} src="../images/logo.png" alt="logo" className="logo" />
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">

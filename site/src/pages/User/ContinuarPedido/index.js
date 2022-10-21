@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import storage from 'local-storage'
 import './index.scss'
 
 
@@ -7,6 +9,8 @@ import CardEndereco from '../../components/cardEndereco';
 
 
 export default function ContinuarPedido(){
+    const navigate = useNavigate();
+
     const [mostrar, setMostrar] = useState(false);
 
     const [idEndereco, setIdEndereco] = useState();
@@ -25,6 +29,12 @@ export default function ContinuarPedido(){
     useEffect(() =>{
         carregarEnderecos();
     }, [])
+
+    useEffect(() =>{
+        if(!storage("usuario-logado")){
+            navigate('/Login')
+        }
+    },[])
 
     return(
         <main className='main-continuarPedido'>
