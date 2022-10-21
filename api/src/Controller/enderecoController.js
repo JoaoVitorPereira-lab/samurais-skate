@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { listarEndereco, SalvarEndereco } from "../Repository/EnderecoRepository.js";
+import { Listar, Salvar } from "../Repository/EnderecoRepository.js";
 
 const server = Router();
 
-server.get('/api/endereco/:id/usuario'), async (req, resp) =>{
+server.get('/api/usuario/:id/endereco', async (req, resp) =>{
     try {
         const id = req.params.id;
 
-        const r = await listarEndereco(id);
+        const r = await Listar(id);
 
         resp.send(r);
     } catch (err) {
@@ -15,22 +15,22 @@ server.get('/api/endereco/:id/usuario'), async (req, resp) =>{
             erro:err.message
         })
     }
-}
+})
 
 
-server.post('/api/endereco/:id/usuario'), async (req, resp) =>{
+server.post('/api/usuario/:id/endereco', async (req, resp) =>{
     try {
         const id = req.params.id;
         const endereco = req.body;
 
-        const r = await SalvarEndereco(id, endereco);
+        const r = await Salvar(id, endereco);
 
-        resp.status(204).send(r);
+        resp.status(204).send();
     } catch (err) {
         resp.status(400).send({
             erro:err.message
         })
     }
-}
+})
 
 export default server;

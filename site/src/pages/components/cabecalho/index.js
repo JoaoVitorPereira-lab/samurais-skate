@@ -1,7 +1,11 @@
 import React from "react";
 import "./index.scss";
+import { useNavigate } from 'react-router-dom'
 
 export default function App() {
+
+    const navigate = useNavigate();
+
   return (
     <header className="cabecalho-container">
 
@@ -18,7 +22,7 @@ export default function App() {
                 <img src="../images/entrar.png" alt="ent-img" className="icons-header ent"/> 
             </div>
 
-            <div className="carrinho">
+            <div className="carrinho" onClick={navigate('/ContinuarPedido')}>
                 <img src="../images/carrinho.png" alt="carrinho-img" className="icons-header ent"/> 
             </div>   
         </div>

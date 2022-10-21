@@ -32,6 +32,7 @@ create table tb_login_usuario (
 create table tb_usuario_endereco (
 	  ID_USUARIO_ENDERECO 		int primary key auto_increment,
 	  ID_CONTA_USUARIO			int,
+	  ds_referencia				varchar(200),
       DS_CEP					varchar(9),
       NM_RUA					varchar(100),
       NR_NUMERO					int,

@@ -31,7 +31,7 @@ export default function Login() {
         try {
             const r = await EntrarLogin(email, senha)
             setTimeout(() => {
-                navigate('/teste'); 
+                navigate('/'); 
             }, 3000);
         }
         catch (err) {
@@ -80,14 +80,11 @@ export default function Login() {
                             {erro}
                         </span>
                     </div>
-                <button className="entrar" onClick={Entrar}>Entrar</button>
+                    <button className="entrar" onClick={Entrar}>Entrar</button>
                 </div>
                 <div className="criar_conta">
                     <a href="../CriarConta">criar conta</a>
-
                 </div>
-
-
             </div>
         </section>
     )
