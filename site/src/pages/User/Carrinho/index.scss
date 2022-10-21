@@ -13,53 +13,9 @@
         font-size: 30px;
         font-family: 'Dela Gothic One', cursive;
     }
-    
-    .div-produto{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-
-        width: 80%;
-        margin-bottom: 7em;
-    }
-    .div-produto > img{
-        border: .5px solid #000000;
-        border-radius: 5px;
-        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    }
-    .div-produto > text{
-        width: 30%;
-        word-break: break-all;
-        font-size: 20px;
-        font-family: 'Dekko', sans-serif;
-    }
-    .div-produto div button, 
-    .div-produto div input {
-        border: .5px solid #000000;
-        background-color: #E52A45;
-        color: #ffffff;
-        font-size: 10px;
-        font-family: 'Dela Gothic One', cursive;
-    }
-    .div-produto div button{
-        height: 40px; width: 40px;
-    }
-    .div-produto div input{
-        height: 36px; width: 50px;
-        text-align: center;
-    }
-    .div-produto div input:focus{
-        outline: none;
-    }
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
-    }
-    .div-produto span{
-        font-size: 20px;
-        font-family: 'Dela Gothic One', cursive;
     }
     .sec-1 hr{
         margin-top: -6em;

@@ -1,10 +1,37 @@
 import "./index.scss";
 
+import Storage from 'local-storage'
+import { BuscarPorID } from '../../../api/AdminAPI'
+import Carrinho from '../../components/carrinhoItem'
+
 import Cabecalho from '../../components/cabecalhoUser';
 import Navs from '../../components/navs';
 import Rodape from '../../components/rodape';
+import { useEffect, useState } from "react";
 
-export default function Carrinho(){
+export default function PageCarrinho(){
+    const [itens, setItens] = useState([]);
+
+    async function CarregarCarrinho(){
+        let carrinho = Storage('carrinho');
+        if (carrinho) {
+            let temp = [];
+
+            for (let produto of carrinho){
+                let p = await BuscarPorID(produto.id);
+                temp.push(...itens, {
+                    produto: p,
+                    qtd: produto.qtd
+                })
+            }
+            console.log(itens);
+            setItens(temp);
+        }
+    }
+
+    useEffect(() => {
+        CarregarCarrinho();
+    }, [])
     
     return(
         <main className="main-carrinho">
@@ -13,21 +40,10 @@ export default function Carrinho(){
             <section className="sec-1">
                 <p> Samurai’s Skate Shop </p>
 
-                <div className="div-produto">
-                    
-                    <img src="../images/4.jpg" alt="" width="270" height="220"/>
-
-                    <text> ROLAMENTO RED BONES</text>
-
-                    <div>
-                        <button> - </button>
-                        <input type="number"/>
-                        <button> + </button>
-                    </div>
-
-                    <span> R$ 199,90 </span>
-                </div>
-
+                {itens.map(item =>
+                    <Carrinho item={item} />
+                )}
+                
                 <hr/>
             </section>
 

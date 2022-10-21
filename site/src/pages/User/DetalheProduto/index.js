@@ -40,8 +40,8 @@ export default function ProdutoDetalhe() {
     }, [])
 
     return (
-        <main>
-            <div>
+        <main className='page-detalhes'>
+            <div className='div-detalhes'>
                 <img src={API_URL + '/' + produto.imagem} alt="" />
                 <p>{produto.nome}</p>
                 <p>{produto.marca}</p>

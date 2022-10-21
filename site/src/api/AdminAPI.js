@@ -45,7 +45,7 @@ export async function AlterarProduto(id, IdMarca, IdCategoria, IdTipo, nome, des
 }
 
 
-/* LISTAR CATEGORIA */
+/* BUSCAR POR ID */
 export async function BuscarPorID (id){
     const resposta = await api.get(`/api/produto/${id}`);
     return resposta.data
