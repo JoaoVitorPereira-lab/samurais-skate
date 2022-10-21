@@ -15,6 +15,7 @@ import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
 import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
+import ProdutoCurtido from './pages/User/ProdutosCurtidos/index.js'
 
 export default function Rotas (){
     return(
@@ -36,6 +37,7 @@ export default function Rotas (){
                 <Route path='/produto/:id/detalhe'      element={<DetalheProduto/>}/>
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
+                <Route path='/ProdutoCurtido'          element={<ProdutoCurtido/>}/>
             </Routes>
         </BrowserRouter>
     )
