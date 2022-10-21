@@ -1,8 +1,19 @@
 import Cabecalho from "../../components/cabecalhoUser/index.js";
+import { useEffect } from 'react'
+import storage from 'local-storage'
 import Rodape from '../../components/rodape/index.js'
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function ProdutoDetalhe() {
+
+  const navigate = useNavigate()
+
+  useEffect(() =>{
+    if(!storage('usuario-logado')){
+        navigate('/Login')
+    }
+},[])
   return (
     <div>
       <div>

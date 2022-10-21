@@ -24,6 +24,7 @@ export default function Rotas (){
                 <Route path='/'                         element={<Landing_Page/>}/>
                 
                 <Route path='/Login'                    element={<Login/>} />
+                <Route path='/CriarConta'               element={<CadastroConta/>} />   
 
                 <Route path='/cadastrarproduto'         element={<CadastrarProduto/>}/>
                 <Route path='/alterarproduto/:idParam'  element={<CadastrarProduto/>}/>
@@ -31,13 +32,12 @@ export default function Rotas (){
 
                 <Route path='/teste'                    element={<Teste/>}/>
                 <Route path='/Login/adm'                element={<LoginAdm/>} />
-                <Route path='/CriarConta'               element={<CadastroConta/>} />   
 
                 <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
                 <Route path='/produto/:id/detalhe'      element={<DetalheProduto/>}/>
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
-                <Route path='/ProdutoCurtido'          element={<ProdutoCurtido/>}/>
+                <Route path='/favoritos'                element={<ProdutoCurtido/>}/>
             </Routes>
         </BrowserRouter>
     )

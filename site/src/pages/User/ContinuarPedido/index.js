@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import storage from 'local-storage'
 import './index.scss'
 
 
@@ -7,9 +9,9 @@ import CardEndereco from '../../components/cardEndereco';
 
 
 export default function ContinuarPedido(){
-    const [mostrar, setMostrar] = useState(false);
+    const navigate = useNavigate();
 
-    const [idEndereco, setIdEndereco] = useState();
+    const [mostrar, setMostrar] = useState(false);
 
     const [enderecos, setEnderecos] = useState([]);
 
@@ -18,13 +20,20 @@ export default function ContinuarPedido(){
     }
 
     async function carregarEnderecos(){
-        const r = await Listar();
+        const id = Storage('usuario-logado').id;
+        const r = await Listar(id);
         setEnderecos(r);
     }
 
     useEffect(() =>{
         carregarEnderecos();
     }, [])
+
+    useEffect(() =>{
+        if(!storage("usuario-logado")){
+            navigate('/Login')
+        }
+    },[])
 
     return(
         <main className='main-continuarPedido'>
@@ -44,7 +53,7 @@ export default function ContinuarPedido(){
                     <p> Endereços </p>
 
                     {enderecos.map(item =>
-                        <CardEndereco item={item} selecionar={setIdEndereco} selecionado={item.id == idEndereco} />
+                        <CardEndereco item={item} />
                     )}
 
                     <div className="containers-endereco">

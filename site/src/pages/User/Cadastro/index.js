@@ -13,6 +13,10 @@ export default function Login() {
     const [mostrarSenha, SetMostrarSenha] = useState(false);
     const navigate = useNavigate()
 
+    function HomeClick(){
+        navigate('/')
+    }
+
     function OcultarSenhaClick(){
         SetMostrarSenha(false)
     }
@@ -37,7 +41,7 @@ export default function Login() {
     return (
         <section className="page-cadastro">
             <div>
-                <img src="../images/logo.png" alt="logo" className="logo" />
+                <img onClick={HomeClick} src="../images/logo.png" alt="logo" className="logo" />
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">
