@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function PageCarrinho(){
     const [itens, setItens] = useState([]);
-    const [subTotal, setSubTotal] = useState();
+    const [qtdProduto, setQtdProduto] = useState(itens.qtd);
 
     async function CarregarCarrinho(){
         let carrinho = Storage('carrinho');
@@ -20,13 +20,41 @@ export default function PageCarrinho(){
 
             for (let produto of carrinho){
                 let p = await BuscarPorID(produto.id);
-                temp.push(...itens, {
+                temp.push({
                     produto: p,
                     qtd: produto.qtd
                 })
             }
             setItens(temp);
         }
+    }
+
+    function calcularValorTotal() {
+        let total = 0;
+        for (let item of itens) {
+            total = total + item.produto.preco * item.qtd;
+        }
+        return total;
+    }
+
+    function removerItem(id) {
+        let carrinho = Storage('carrinho');
+        carrinho = carrinho.filter(item => item.id != id);
+
+        Storage('carrinho', carrinho);
+        CarregarCarrinho();
+    }
+
+    // function remover() {
+    //     removerItem(itens.id);
+    // }
+
+    function calcularSubtotal() {
+        let t = 0;
+        for (let item of itens)
+            t = t + item.produto.preco * item.qtd;
+        
+        return t;
     }
 
     useEffect(() => {
@@ -41,7 +69,12 @@ export default function PageCarrinho(){
                 <p> Samurai’s Skate Shop </p>
 
                 {itens.map(item =>
-                    <Carrinho item={item} />
+                    <div className="excluir">
+                        <Carrinho item={item} />
+                        <div onClick={() => removerItem(item.produto.id)} className="botao-excluir">
+                            Excluir
+                        </div>
+                    </div>
                 )}
                 
                 <hr/>
@@ -59,7 +92,7 @@ export default function PageCarrinho(){
                     <hr/>
                     <div className="div-subtotal">
                         <span> SubTotal </span>
-                        <span> R$ 1049,70 </span>
+                        <span> R$ {calcularSubtotal()} </span>
                     </div>
 
                     <div className="div-frete">
@@ -71,9 +104,7 @@ export default function PageCarrinho(){
                     <div className="div-total">
                         <span> Total do Pedido </span>
                         <div>
-                            <text> R$ 1069,70 </text>
-                            <p> R$ 997,215 no Boleto com desconto </p>
-                            <p> ou 6x sem juros de R$ 174,95 no cartão de crédito </p>
+                            <text> R$ {calcularValorTotal()} </text>
                         </div>
                     </div>
                 </div>
@@ -87,3 +118,8 @@ export default function PageCarrinho(){
         </main>
     )
 }
+
+/*
+    <p> R$ 997,215 no Boleto com desconto </p>
+    <p> ou 6x sem juros de R$ 174,95 no cartão de crédito </p>
+*/

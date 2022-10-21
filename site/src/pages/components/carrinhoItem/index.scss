@@ -1,43 +1,27 @@
+
 .div-produto{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
 
-    width: 80%;
-    margin-bottom: 7em;
-}
-.div-produto > img{
-    border: .5px solid #000000;
-    border-radius: 5px;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.div-produto > text{
-    width: 30%;
-    word-break: break-all;
-    font-size: 20px;
-    font-family: 'Dekko', sans-serif;
-}
-.div-produto div button, 
-.div-produto div input {
-    border: .5px solid #000000;
-    background-color: #E52A45;
-    color: #ffffff;
-    font-size: 10px;
-    font-family: 'Dela Gothic One', cursive;
-}
-.div-produto div button{
-    height: 40px; width: 40px;
-}
-.div-produto div input{
-    height: 36px; width: 50px;
-    text-align: center;
-}
-.div-produto div input:focus{
-    outline: none;
-}
-.div-produto span{
-    font-size: 20px;
-    font-family: 'Dela Gothic One', cursive;
+    width: 85%;
+    margin-top: 6em;
+    margin-left: 1em;
+    .img-produto{
+        border: .5px solid #000000;
+        border-radius: 5px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    .nome-produto{
+        width: 10%;
+        word-break: break-all;
+        font-size: 20px;
+        font-family: 'Dekko', sans-serif;
+    }
+    .preco-produto{
+        font-size: 20px;
+        font-family: 'Dela Gothic One', cursive;
+    }
 }

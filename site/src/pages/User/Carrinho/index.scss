@@ -18,10 +18,28 @@
         -webkit-appearance: none;
     }
     .sec-1 hr{
-        margin-top: -6em;
+        margin-top: 3em;
         width: 90%;
         border: 1px solid #000000;
         transform: rotate(-0.09deg);
+    }
+    .excluir{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+
+        width: 100%;
+    }
+    .botao-excluir{
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer;
+        
+        margin-left: 2em;
+        margin-bottom: -6em;
     }
 /* FINAL SECTION 1 */
 
