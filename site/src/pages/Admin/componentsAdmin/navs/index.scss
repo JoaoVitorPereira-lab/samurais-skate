@@ -18,13 +18,22 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 1.7em 2.5em;
     }
+
+    .navs-produtos:hover{
+        background-color: #292929;
+    }
+    .selecionado{
+        background-color: #292929;
+    }
+
     .navs-produtos span{
         font-family: 'Dela Gothic One', cursive;
         color: #fff;
     }
     .navs-produtos:not(.not){
-        margin-left: 5em;
+        margin-left: 0em;
     }
     .not{
         margin-left: 3em;

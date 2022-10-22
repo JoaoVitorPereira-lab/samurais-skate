@@ -64,10 +64,9 @@ export default function PageConsultarProduto(){
 
     return(
         <main className="page-consultar-produto">
-
             <aside className="comps">
                 <Cabecalho />
-                <Navs />
+                <Navs selecionado='consultar-produto-adm' />
             </aside>
 
             <section className="sec-explicando-page">
@@ -99,7 +98,7 @@ export default function PageConsultarProduto(){
                 
             {produto.map(item =>
                 <div className="div-card-produto">
-                    <div className="div-produto" style={{display: "flex", flexDirection: "column"}}>
+                    <div className="div-produto-card-produto" style={{display: "flex", flexDirection: "column"}}>
                         <text> {item.nome} </text>
                         <text> #0{item.id} </text>
                     </div>

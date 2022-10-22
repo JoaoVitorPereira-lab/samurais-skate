@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 
-export default function App() {
+export default function Navs() {
   return (
     <nav className="navs-container">
 

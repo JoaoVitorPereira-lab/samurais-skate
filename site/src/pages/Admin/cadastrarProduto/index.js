@@ -154,7 +154,7 @@ export default function PageCadastrarProduto(){
         <main className="page-cadastrar-produto">
             <div className="comps">
                 <Cabecalho />
-                <Navs />
+                <Navs selecionado='cadastrar-adm'/>
             </div>
 
             <div className="div-cadastrar">

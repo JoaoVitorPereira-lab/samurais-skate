@@ -1,48 +1,59 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import storage from 'local-storage'
+import Storage from 'local-storage'
 import './index.scss'
 
 
 import { Listar } from '../../../api/EnderecoAPI'
 import CardEndereco from '../../components/cardEndereco';
-
+import ModalEndereco from '../../components/ModalEndereco';
 
 export default function ContinuarPedido(){
     const navigate = useNavigate();
 
     const [mostrar, setMostrar] = useState(false);
 
+    const [exibirEndereco, setExibirEndereco] = useState(false);
     const [enderecos, setEnderecos] = useState([]);
+    const [idEndereco, setIdEndereco] = useState();
 
     function ExibirCardClick(){
         setMostrar(true);
     }
 
+    function OcultarCardClick(){
+        setMostrar(false)
+    }
+
+    function exibirNovoEndereco() {
+        setExibirEndereco(true);
+    }
+
+    function fecharNovoEndereco() {
+        setExibirEndereco(false);
+        carregarEnderecos();
+    }
+
     async function carregarEnderecos(){
         const id = Storage('usuario-logado').id;
         const r = await Listar(id);
+        console.log(r);
         setEnderecos(r);
     }
 
     useEffect(() =>{
         carregarEnderecos();
-    }, [])
-
-    useEffect(() =>{
-        if(!storage("usuario-logado")){
+        if(!Storage("usuario-logado")){
             navigate('/Login')
         }
     },[])
 
-    function OcultarCardClick(){
-        setMostrar(false)
-    }
-
     return(
         <main className='main-continuarPedido'>
+            <ModalEndereco exibir={exibirEndereco} fechar={fecharNovoEndereco} />
+
             <header className="header-pedido">
-                <img src="../images/logo.png" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
+                <img src="/images/logo.png" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
 
                 <div className="div-finalizarpedido">
                     <text> Total: </text>
@@ -56,32 +67,14 @@ export default function ContinuarPedido(){
                 <section className="sec-enderecos">
                     <p> Endereços </p>
 
-                    {enderecos.map(item =>
-                        <CardEndereco item={item} />
-                    )}
-
-                    <div className="containers-endereco">
-                        <div className="div-endereco">
-                            <p className="p-1"> Casa </p>
-                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
-                            <p> 04773-000 - São Paulo/SP </p>
-                        </div>
-
-                        <div className="div-endereco">
-                            <p className="p-1"> Casa </p>
-                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
-                            <p> 04773-000 - São Paulo/SP </p>
-                        </div>
-
-                        <div className="div-endereco">
-                            <p className="p-1"> Casa </p>
-                            <text> Av. Coronel Octaviano de Freitas Costa, 463 - Frei </text>
-                            <p> 04773-000 - São Paulo/SP </p>
-                        </div>
+                    <div className='card-endereco-row'>
+                        {enderecos.map(item =>
+                            <CardEndereco item={item} selecionar={setIdEndereco} selecionado={item.id == idEndereco} />
+                        )}
                     </div>
 
                     <div className="div-button">
-                        <button> NOVO ENDEREÇO </button>
+                        <button onClick={exibirNovoEndereco}> NOVO ENDEREÇO </button>
                     </div>
                 </section>
 

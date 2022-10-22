@@ -47,6 +47,7 @@
     }
 
     .sec-enderecos{
+        flex-wrap: wrap;
         margin-left: 2em;
         padding: 0em 0em 4em 1.5em;
         width: 38%;
@@ -61,8 +62,15 @@
             font-size: 22px;
         }
     }
+    .card-endereco-row{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 120%;
+    }
     .div-button{
         button{
+            cursor: pointer;
             background-color: #E52A45;
             border: transparent;
             border-radius: 10px;
