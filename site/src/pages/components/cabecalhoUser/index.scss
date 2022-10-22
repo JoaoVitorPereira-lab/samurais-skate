@@ -9,11 +9,9 @@
         padding: 0em 2em;
     }
 
-    .infos  {
+    .infos{
         display: flex;
         justify-content: space-between;
-        width: 12vw;
-
     }
 
     .navs-container{
@@ -42,6 +40,7 @@
         }
 
         .navs-produtos:hover{
+            transition: .5s;
             background-color: #292929;
         }
         .selecionado{
@@ -119,11 +118,6 @@
             width: 35px;
             height: 35px;
             cursor: pointer;
-        }
-    
-        infos{
-            background-color: red;
-            width: 100em;
         }
     
     }

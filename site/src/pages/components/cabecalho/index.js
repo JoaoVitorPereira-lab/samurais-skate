@@ -9,7 +9,7 @@ export default function Cabecalho() {
     return (
         <header className="cabecalho-container">
             <div className="div-logo">
-                <img src="/images/logo-branco.gif" alt="logo" className="logo"/>
+                <img src="/images/logo-branco.gif" alt="" className="logo"/>
             </div>
 
             <div className="div-icons">
