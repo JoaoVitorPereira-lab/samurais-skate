@@ -41,7 +41,7 @@ export default function Login() {
     return (
         <section className="page-cadastro">
             <div>
-                <img onClick={HomeClick} src="../images/logo.png" alt="logo" className="logo" />
+                <img onClick={HomeClick} src="/images/logo-branco.gif" alt="logo" className="logo" />
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">

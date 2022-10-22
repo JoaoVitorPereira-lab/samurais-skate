@@ -20,7 +20,7 @@ export default function ProdutoDetalhe() {
         setProduto(r);
         
     }
-console.log(produto)
+
     function adicionarAoCarrinho() {
         let carrinho = []
         if (Storage('carrinho')) {
