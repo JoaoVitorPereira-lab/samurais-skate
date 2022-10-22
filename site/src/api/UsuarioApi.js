@@ -39,7 +39,7 @@ export async function ListarTenis(){
     return resposta.data
 }
 
-//buscar imagem
+//BUSCAR IMAGEM
 export function buscarimagem(imagem){
     return `${api.getUri()}/${imagem}`
 }

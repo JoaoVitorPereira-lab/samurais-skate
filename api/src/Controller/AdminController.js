@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens } from "../repository/AdminRepository.js";
+import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, BuscarPorIDCarrinho } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -95,6 +95,28 @@ server.get('/api/produto/:id', async (req, resp) =>{
   {
       const id = Number(req.params.id);
       const resposta = await BuscarPorID(id);
+
+      if(!resposta)
+        resp.status(404).send([]);
+      else
+        resp.send(resposta);
+  }
+
+  catch(err)
+  {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
+
+
+/* BUSCAR POR ID CARRINHO */
+server.get('/api/carrinho/produto/:id', async (req, resp) =>{
+  try
+  {
+      const id = Number(req.params.id);
+      const resposta = await BuscarPorIDCarrinho(id);
 
       if(!resposta)
         resp.status(404).send([]);

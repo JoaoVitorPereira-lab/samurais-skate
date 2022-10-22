@@ -1,5 +1,6 @@
 import { API_URL } from '../../../api/config'
 import { useState } from 'react'
+import Storage from 'local-storage'
 
 import './index.scss'
 
@@ -8,9 +9,9 @@ export default function Carrinho({ item: { produto: { id, nome, preco, imagem },
 
     function alterarQuantidade(novaQtd) {
         setQtdProduto(novaQtd);
-        
+
         let carrinho = Storage('carrinho');
-        let itemStorage = carrinho.find(item => item.id == item.id);
+        let itemStorage = carrinho.find(item => item.id == id);
         itemStorage.qtd = novaQtd;
 
         Storage('carrinho', carrinho);

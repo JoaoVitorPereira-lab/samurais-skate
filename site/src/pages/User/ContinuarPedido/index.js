@@ -3,19 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import Storage from 'local-storage'
 import './index.scss'
 
-
+import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
 import { Listar } from '../../../api/EnderecoAPI'
 import CardEndereco from '../../components/cardEndereco';
 import ModalEndereco from '../../components/ModalEndereco';
+import { API_URL } from '../../../api/config';
 
 export default function ContinuarPedido(){
-    const navigate = useNavigate();
+    const [enderecos, setEnderecos] = useState([]);
+    const [itens, setItens] = useState([]);
 
     const [mostrar, setMostrar] = useState(false);
 
     const [exibirEndereco, setExibirEndereco] = useState(false);
-    const [enderecos, setEnderecos] = useState([]);
     const [idEndereco, setIdEndereco] = useState();
+
+    console.log(itens);
+
+    const navigate = useNavigate();
 
     function ExibirCardClick(){
         setMostrar(true);
@@ -31,18 +36,50 @@ export default function ContinuarPedido(){
 
     function fecharNovoEndereco() {
         setExibirEndereco(false);
-        carregarEnderecos();
+        CarregarEnderecos();
     }
 
-    async function carregarEnderecos(){
+    async function CarregarEnderecos(){
         const id = Storage('usuario-logado').id;
         const r = await Listar(id);
         console.log(r);
         setEnderecos(r);
     }
 
+    async function CarregarItens(){
+        let carrinho = Storage('carrinho');
+        if (carrinho) {
+            let temp = [];
+
+            for (let produto of carrinho){
+                let p = await BuscarPorIDCarrinho(produto.id);
+                temp.push({
+                    produto: p,
+                    qtd: produto.qtd
+                })
+            }
+            setItens(temp);
+        }
+    }
+
+    function calcularTotal() {
+        let total = 0;
+        for (let item of itens) {
+            total = total + item.produto.preco * item.qtd;
+        }
+        return total + 20;
+    }
+
+    function exibirImagem(item) {
+        if (item.produto.imagem.length > 0)
+            return API_URL + '/' + item.produto.imagem;
+        else
+            return '';
+    }
+
     useEffect(() =>{
-        carregarEnderecos();
+        CarregarItens();
+        CarregarEnderecos();
         if(!Storage("usuario-logado")){
             navigate('/Login')
         }
@@ -53,11 +90,11 @@ export default function ContinuarPedido(){
             <ModalEndereco exibir={exibirEndereco} fechar={fecharNovoEndereco} />
 
             <header className="header-pedido">
-                <img src="/images/logo.png" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
+                <img src="/images/logo-branco.gif" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
 
                 <div className="div-finalizarpedido">
                     <text> Total: </text>
-                    <span> R$ 1029,90 </span>
+                    <span> {calcularTotal()} </span>
 
                     <button> Finalizar Pedido </button>
                 </div>
@@ -142,7 +179,47 @@ export default function ContinuarPedido(){
                         }
                     </div>
                 </section>
+
             </aside>
+
+            <div className='itens'>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {itens.map(item =>
+                            <tr>
+                                <td>
+                                    <div className='celula-item'>
+                                        <img src={exibirImagem(item)} />
+                                        <div>
+                                            <h3> {item.produto.nome} </h3>
+                                            <h4> {item.produto.nmtipo} </h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {item.qtd}
+                                </td>
+                                <td>
+                                    R$ {item.produto.preco}
+                                </td>
+                                <td>
+                                    R$ {item.qtd * item.produto.preco}
+                                </td>
+                            </tr>
+                        )}
+
+                    </tbody>
+                </table>
+            </div>
         </main>
     )
 }

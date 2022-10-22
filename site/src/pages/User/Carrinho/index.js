@@ -1,7 +1,7 @@
 import "./index.scss";
 
 import Storage from 'local-storage'
-import { BuscarPorID } from '../../../api/AdminAPI'
+import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
 import Carrinho from '../../components/carrinhoItem'
 
 import Cabecalho from '../../components/cabecalhoUser';
@@ -12,9 +12,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function PageCarrinho(){
     const [itens, setItens] = useState([]);
-    const [qtdProduto, setQtdProduto] = useState(itens.qtd);
 
     const navigate = useNavigate();
+
+    function qtdItens() {
+        return itens.length;
+    }
 
     async function CarregarCarrinho(){
         let carrinho = Storage('carrinho');
@@ -22,7 +25,7 @@ export default function PageCarrinho(){
             let temp = [];
 
             for (let produto of carrinho){
-                let p = await BuscarPorID(produto.id);
+                let p = await BuscarPorIDCarrinho(produto.id);
                 temp.push({
                     produto: p,
                     qtd: produto.qtd
@@ -101,6 +104,11 @@ export default function PageCarrinho(){
                     <div className="div-frete">
                         <span> Frete </span>
                         <span> R$ 20,00 </span>
+                    </div>
+
+                    <div className="div-frete">
+                        <span> Quantidade de itens </span>
+                        <span> ({qtdItens()} Itens) </span>
                     </div>
                     <hr/>
 

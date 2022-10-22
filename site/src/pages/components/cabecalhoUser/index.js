@@ -54,7 +54,7 @@ export default function CabecalhoUsuarioNavs(props) {
             <div className="div-logo">
 
                 <div>
-                    <img onClick={HomeClick} src="/images/logo.png" width="124.8px" alt=""/>
+                    <img onClick={HomeClick} src="/images/logo-branco.gif" width="128px" height="128px" alt=""/>
                 </div>
 
                 <div className="infos">

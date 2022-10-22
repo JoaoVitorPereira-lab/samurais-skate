@@ -53,6 +53,12 @@ export async function BuscarPorID (id){
     return resposta.data
 }
 
+/* BUSCAR POR ID CARRINHO */
+export async function BuscarPorIDCarrinho (id){
+    const resposta = await api.get(`/api/carrinho/produto/${id}`);
+    return resposta.data
+}
+
 
 /* LISTAR CATEGORIA */
 export async function ListarCategoria(){
