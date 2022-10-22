@@ -69,7 +69,7 @@ console.log(produto)
                         </div>
 
                         <div className='avaliacao'>
-                            <img src="../images/aval3.png" alt="" />
+                            <img src="/images/aval3.png" alt="" />
                         </div>
 
                         <div className='nome-marca'>
@@ -88,7 +88,7 @@ console.log(produto)
 
                         <div className='div-btn-carrinho'>
                             <div>
-                                <img src="../images/Favorite.png" alt="" />
+                                <img src="/images/Favorite.png" alt="" />
                             </div>
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>

@@ -29,4 +29,16 @@ export async function Salvar(idUsuario, endereco){
 
     const [info] = await con.query(comando, [idUsuario, endereco.referencia, endereco.cep, endereco.rua, endereco.numero, endereco.complemento, endereco.bairro, endereco.cidade, endereco.estado]);
     return info.insertId;
-  }
+}
+
+/* REMOVER PRODUTO */
+export async function removerEndereco(idProduto, idUsuario) {
+  const comando = `
+        delete from tb_usuario_endereco
+              where id_usuario_endereco = ?
+                and id_conta_usuario = ?
+  `;
+
+  const [resp] = await con.query(comando, [idProduto, idUsuario])
+  return resp.affectedRows;
+}

@@ -119,8 +119,6 @@ export default function Landing_Page() {
 
             <section className="page">
 
-
-
                 <div> <img src={images7} alt="a" /> </div>
                 <div> <img src={images8} alt="a" /> </div>
                 <div> <img src={images9} alt="a" /> </div>
@@ -164,9 +162,6 @@ export default function Landing_Page() {
             </section>
 
             <Rodape></Rodape>
-
-            
-
 
         </main>
     );

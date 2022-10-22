@@ -20,6 +20,7 @@
     "mysql2": "^2.3.3",
     "nodemailer": "^6.8.0",
     "nodemon": "^2.0.19",
+    "randomstring": "^1.2.3",
     "start": "^5.1.0"
   }
 }

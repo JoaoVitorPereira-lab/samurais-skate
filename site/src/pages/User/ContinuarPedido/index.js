@@ -1,10 +1,15 @@
+import './index.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify'
+
 import Storage from 'local-storage'
-import './index.scss'
 
 import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
 import { Listar } from '../../../api/EnderecoAPI'
+import { SalvarNovoPedido } from '../../../api/PedidoAPI'
+
 import CardEndereco from '../../components/cardEndereco';
 import ModalEndereco from '../../components/ModalEndereco';
 import { API_URL } from '../../../api/config';
@@ -17,6 +22,15 @@ export default function ContinuarPedido(){
 
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
+
+    const [cupom, setCupom] = useState('');
+
+    const [nome, setNome] = useState('');
+    const [numero, setNumero] = useState('');
+    const [vencimento, setVencimento] = useState('');
+    const [cvv, setCvv] = useState('');
+    const [tipo, setTipo] = useState('');
+    const [parcela, setParcela] = useState('');
 
     console.log(itens);
 
@@ -77,12 +91,44 @@ export default function ContinuarPedido(){
             return '';
     }
 
+    async function SalvarPedido() {
+
+        try {
+            let produtos = Storage('carrinho');
+            let id = Storage('usuario-logado').id;
+
+            let pedido =
+            {
+                cupom: cupom,
+                idEndereco: idEndereco,
+                tipoPagamento: 'Cartão',
+                cartao: {
+                    nome: nome,
+                    numero: numero,
+                    vencimento: vencimento,
+                    codSeguranca: cvv,
+                    parcelas: parcela
+                },
+                produtos: produtos
+            }
+
+            const r = await SalvarNovoPedido(id, pedido);
+            toast.dark('Pedido foi inserido com sucesso');
+            Storage('carrinho', []);
+            navigate('/');
+            console.log(r);
+        }
+        catch (err) {
+            toast.error(err.response.data.erro);
+        }
+    }
+
     useEffect(() =>{
-        CarregarItens();
-        CarregarEnderecos();
         if(!Storage("usuario-logado")){
             navigate('/Login')
         }
+        CarregarItens();
+        CarregarEnderecos();
     },[])
 
     return(
@@ -96,7 +142,7 @@ export default function ContinuarPedido(){
                     <text> Total: </text>
                     <span> {calcularTotal()} </span>
 
-                    <button> Finalizar Pedido </button>
+                    <button onClick={SalvarPedido}> Finalizar Pedido </button>
                 </div>
             </header>
 
@@ -137,49 +183,73 @@ export default function ContinuarPedido(){
                     </div>
 
                     <div className="div-cartao-credito">
-                        <h2> Cartões de Crédito </h2>
+                        <h2> Cartão </h2>
                         
                         {mostrar === true &&
                             <button onClick={OcultarCardClick}>
-                                ADICIONAR CARTÃO DE CRÉDITO
+                                ADICIONAR CARTÃO
                             </button>
                         }
 
                         {mostrar === false &&
                             <button onClick={ExibirCardClick}>
-                                ADICIONAR CARTÃO DE CRÉDITO
+                                ADICIONAR CARTÃO
                             </button>
                         }
 
                         {mostrar === true &&
                             <div className="cartao-credito">
                                 <div className="cartao-infos">
-                                    <p className="cartao-p-1"> Número do cartão </p>
-                                    <p> Nome do cartão </p>
+                                    <p className="cartao-p-1"> Nome do cartão </p>
+                                    <p> Número do cartão </p>
                                     <p> Vencimento </p>
-                                    <p> Código de segurança (CVV) </p>
+                                    <p> CVV </p>
+                                    <p> Tipo de Pagamento: </p>
+                                    <p> Parcelas: </p>
                                 </div>
 
                                 <div className="cartao-inputs">
-                                    <input type="number" id="input-1"/>
+                                    <input type="text"   id="input-1" value={nome} onChange={e => setNome(e.target.value)}/>
                                     <br/>
-                                    <input type="text"   id="input-2"/>
+                                    <input type="number" id="input-2" value={numero} onChange={e => setNumero(e.target.value)}/>
                                     <br/>
-                                    <input type="number" id="vencimento-dia"/>
-                                    <input type="number" id="vencimento-ano"/>
+                                    <input type="number" id="vencimento" value={vencimento} onChange={e => setVencimento(e.target.value)}/>
                                     <br/>
-                                    <input type="number" id="code-seg"/>
-                                    <label className="container">
-                                        <input type="checkbox"/>
-                                        <span className="checkmark"></span>
-                                        Usar como meu pagamento padrão
-                                    </label>
+                                    <input type="number" id="cvv" value={cvv} onChange={e => setCvv(e.target.value)}/>
+                                    <br/>
+                                    <div>
+                                        <select value={tipo} onChange={e => setTipo(e.target.value)}   >
+                                            <option disabled hidden selected>Selecione</option>
+                                            <option>Crédito</option>
+                                            <option>Débito</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <select className='select-parcela' value={parcela} onChange={e => setParcela(e.target.value)}  >
+                                            <option disabled hidden selected>Selecione</option>
+                                            <option value={1}>01x à Vista</option>
+                                            <option value={1}>01x sem Juros</option>
+                                            <option value={2}>02x sem Juros</option>
+                                            <option value={3}>03x sem Juros</option>
+                                            <option value={4}>04x sem Juros</option>
+                                            <option value={5}>05x sem Juros</option>
+                                            <option value={6}>06x sem Juros</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         }
                     </div>
-                </section>
 
+                    <div className='div-cupom'>
+                        <h2> Cupom </h2>
+                        <div className='form'>
+                            <div>
+                                <input type='text' value={cupom} onChange={e => setCupom(e.target.value)} />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </aside>
 
             <div className='itens'>

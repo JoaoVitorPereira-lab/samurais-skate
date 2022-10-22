@@ -13,6 +13,6 @@ const con = await mysql.createConnection({
     }
 })
 
-console.log('BD conectado')
+console.log('BD conectado');
 
 export { con }

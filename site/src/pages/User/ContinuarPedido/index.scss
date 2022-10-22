@@ -151,7 +151,7 @@
             border-radius: 10px;
             border: transparent;
 
-            width: 28em;
+            width: 19em;
             height: 3.2em;
             margin-bottom: 1.2em; margin-top: .8em;
 
@@ -164,10 +164,10 @@
     .cartao-credito{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
 
         width: 28em;
-        height: 14em;
+        height: 15em;
 
         background: #EBEBEB;
         border: 1px solid #000000;
@@ -178,22 +178,22 @@
         -webkit-appearance: none;
     }
     .cartao-infos{
-        margin-left: 1em;
+        margin-left: 0em; margin-right: 0; margin-top: 1.2em;
         .cartao-p-1{
-            margin-top: .5em;
+            margin-top: 0em;
         }
         p{
             font-family: 'Dekko', sans-serif;
             font-size: 20px;
 
             width: 9em;
-            margin-bottom: -.8em;
+            margin-bottom: -.9em;
         }
     }
     .cartao-inputs{
-        margin-left: 1em;
+        margin-top: .6em;
     }
-    .cartao-inputs input:not(input[type="checkbox"]){
+    .cartao-inputs input:not(input[type="checkbox"]), select{
         margin-bottom: .8em;
         width: 14.5em;
         height: 1.5em;
@@ -201,37 +201,31 @@
         background: #FFFFFF;
         border: 1px solid #000000;
         border-radius: 5px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     }
-    input:focus{
+    input:focus, select:focus{
         outline: none;
     }
     
     #input-1{
         margin-top: 1em;
     }
-    #vencimento-dia{
-        width: 39px; height: 25px;
+    #input-2{
+        margin-top: .1em;
     }
-    #vencimento-ano{
-        margin-left: .4em;
-        width: 62px; height: 25px;
+    #vencimento{
+        width: 5em; height: 1.5em;
     }
-
-
-    #code-seg{
+    #cvv{
         width: 7.7em;
-        margin-top: .5em;
-    }    
-    .container{
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-
-        font-family: 'Dekko', sans-serif;
-        font-size: 16px;
+        margin-bottom: 1em;
     }
-    .container input{
-        margin-right: .6em;
+    .select-parcela{
+        margin-top: .3em;
+    }
+
+    .div-cupom{
+        margin-top: 2em;
     }
 
 /******************************************************************************/

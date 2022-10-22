@@ -14,3 +14,8 @@ export async function Salvar(idUsuario, referencia, cep, rua, numero, complement
     const r = await api.post('/api/usuario/' + idUsuario + '/endereco', { referencia, cep, rua, numero, complemento, bairro, cidade, estado });
     return r.data;
 }
+
+export async function Deletar(idEndereco, idUsuario){
+    const r = await api.post('/api/endereco/' + idEndereco + '/usuario/' + idUsuario);
+    return r.data;
+}

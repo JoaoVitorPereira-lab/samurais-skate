@@ -132,7 +132,7 @@ export default function PageConsultarProduto(){
                         </button>
 
                         <button className="excluir-button"
-                               onClick={e => {
+                                onClick={e => {
                                           e.stopPropagation();
                                           DeletarProduto(item.id, item.nome);
                                     }}>

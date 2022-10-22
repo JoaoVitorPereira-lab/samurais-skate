@@ -129,32 +129,53 @@ create table tb_pedido_status (
 	IMG_STATUS				varchar(600)
 );
 
+-- Tabela de cupom
+create table tb_cupom (
+	id_cupom			int primary key auto_increment,
+    cod_cupom			varchar(200),
+    vl_cupom			decimal(15,2),
+    qtd_restante		int
+);
+
 -- Tabela do pedido
 create table tb_pedido (
-	ID_PEDIDO				int primary key auto_increment,
-	ID_CONTA_USUARIO		int,
-	ID_USUARIO_ENDERECO		int,
-	ID_PEDIDO_STATUS		int,
-	TP_PAGAMENTO			varchar(100),
-	DT_PEDIDO				date,
-	NR_VALOR				decimal (15, 2),
-    
-    foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO),
-    foreign key (ID_USUARIO_ENDERECO) references tb_usuario_endereco (ID_USUARIO_ENDERECO),
-    foreign key (ID_PEDIDO_STATUS) references tb_pedido_status (ID_PEDIDO_STATUS)
+	id_pedido			int primary key auto_increment,
+    id_conta_usuario	int,
+    id_usuario_endereco	int,
+    id_cupom			int,
+    dt_pedido			datetime,
+    cod_nota_fiscal		varchar(200),
+    tp_frete			varchar(200),
+    vl_frete			decimal(15,2),
+    ds_status			varchar(200),
+    tp_pagamento		varchar(200),
+    foreign key (id_conta_usuario) references tb_conta_usuario (ID_CONTA_USUARIO),
+    foreign key (id_usuario_endereco) references tb_usuario_endereco (id_usuario_endereco),
+    foreign key (id_cupom) references tb_cupom (id_cupom)
+);
+
+-- Tabela do item do pedido
+create table tb_pedido_item (
+	id_pedido_item		int primary key auto_increment,
+    id_pedido			int,
+    id_produto			int,
+    qtd_itens			int,
+    vl_produto			decimal(15,2),
+    foreign key (id_pedido) references tb_pedido (id_pedido),
+    foreign key (id_produto) references tb_produto (id_produto)
 );
 
 -- Tabela de pagamento em cartão
-create table tb_pedido_pag_cartao (
-	ID_PEDIDO_PAG_CARTAO		int primary key auto_increment,
-	ID_PEDIDO					int,
-	NR_CARTAO					int,
-	DT_VENCIMENTO				date,
-	NM_DONO_DO_CARTAO			varchar(100),
-	BT_SALVAR_CARTAO			boolean,
-	NR_VALOR					decimal(15, 2),
-    
-    foreign key (ID_PEDIDO) references tb_pedido (ID_PEDIDO)
+create table tb_pagamento_cartao (
+	id_pagamento_cartao	int primary key auto_increment,
+    id_pedido			int,
+    nm_cartao			varchar(200),
+    nr_cartao			varchar(200),
+    dt_vencimento		varchar(200),
+    cod_seguranca		varchar(200),
+    nr_parcelas			int,
+    ds_forma_pagamento	varchar(200),
+    foreign key (id_pedido) references tb_pedido (id_pedido)
 );
 
 -- Tabela de pagamento boleto
