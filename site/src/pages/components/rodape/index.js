@@ -21,12 +21,14 @@ export default function Rodape(){
                 </div>
             </div>
 
-            <div className='div-rdsc'>
-                <h2 className='h2-rdsc'> Redes Sociais </h2>
+            <div className='div-criadores'>
+                <h2 className='h2-criadores'> Criadores </h2>
 
-                <div className="rdsc">
-                    <img src="/images/instagram.png" alt="" className="instagram-rodape"/>
-                    <img src="/images/facebook.png"  alt="" className="facebook-rodape"/>
+                <div className="nomes-criadores">
+                    <span> João Vitor </span>
+                    <span> João Pedro </span>
+                    <span> Pedro Henrique </span>
+                    <span> Rodrigo Anjos </span>
                 </div>
             </div>
 

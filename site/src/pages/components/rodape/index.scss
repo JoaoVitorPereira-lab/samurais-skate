@@ -61,16 +61,20 @@
     }
 
 /* INICIO div das redes sociais */
-    .div-rdsc{
+    .div-criadores{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .div-rdsc img{
-        width: 3em;  height: 3em;
-    }
-    .facebook-rodape{
-        margin-left: .5em;
+    .nomes-criadores{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        p{
+            font-family: 'Dekko', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+        }
     }
 /* FINAL div das redes sociais */
 
