@@ -19,7 +19,14 @@
     .infos{
         display: flex;
         justify-content: space-between;
+
+        img:hover {
+            scale: 1.05;
+            cursor: pointer;
+        }
     }
+
+
 
     .navs-container{
         display: flex;

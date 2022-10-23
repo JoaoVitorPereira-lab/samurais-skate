@@ -58,7 +58,7 @@ export default function CabecalhoUsuarioNavs(props) {
                 </div>
 
                 <div className="infos">
-                    <img src="/images/lua.png" alt=""/>
+                    <img src="/images/darkmode.png" alt=""/>
 
                     {storage('usuario-logado') && 
                         <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>

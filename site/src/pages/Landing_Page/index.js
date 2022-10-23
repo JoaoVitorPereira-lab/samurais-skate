@@ -139,23 +139,36 @@ export default function Landing_Page() {
 
                 <div className='imgs'>
 
-                    <div>
+                <div>
                     <img src={images13}/>
                     <p></p>
-                    <label className='skate'>Skates Montados</label>
+                    <label className='skate'>
+                        <a href="#">
+                            Skates
+                        </a>
+                    </label>
                     </div>
 
                     <div>
                     <img src={images14}/>
                     <p></p>
-                    <label className='bones'>Bonés</label>
+                    <label className='bones'>
+                        <a href="#">
+                            Bonés
+                        </a>
+                    </label>
                     </div>
 
                     <div>
                     <img src={images15}/>
                     <p></p>
-                    <label className='tenis'>Tênis</label>
+                    <label className='tenis'>
+                        <a href="#">
+                            Tênis
+                        </a>
+                    </label>
                     </div>
+                    
                     
                 </div>
 

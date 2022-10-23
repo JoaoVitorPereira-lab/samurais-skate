@@ -124,42 +124,22 @@ hr {
     flex-direction: row;
     justify-content: space-around;
       
-  
-      @media (max-width:500px){
-        img{
-             margin-top: 2em;
-              margin-left: 2em;
-              width: 50%;
-              height: 50%;
-            }
-        }
-  
-      @media (max-width:464px){
-        img{
-             margin-top: 1em;
-              margin-left: 1em;
-              width: 50%;
-              height: 50%;
-            }
-        }
-  
-        @media (max-width:414px){
-          img{
-               margin-top: 1em;
-                margin-left: 1em;
-                width: 50%;
-                height: 50%;
-              }
-          }
-  
-        @media (max-width:360px){
-          img{
-                margin-top: 1em;
-                margin-left: 1em;
-                width: 50%;
-                height: 50%;
-              }
-          }
+  div:hover {
+
+    scale: 1.05;
+    cursor: pointer;
+    -webkit-transform: scaleX(1.0);
+        transform: scaleX(1.0);
+        -webkit-transition: all 0.3s ease-in 0s;
+        transition: all 0.3s ease-in-out 0s;
+  }
+
+  div:hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+  }
+     
 }
 
 .marca {
@@ -212,9 +192,36 @@ hr {
         flex-direction: row;
         justify-content: space-around;
         font-family: 'DELA GOTHIC ONE', cursive;
-        text-decoration: underline;
+        
         
     }
+
+    a {
+        position: relative;
+        color: #000;
+        text-decoration: none;  
+      }
+
+      a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        left: 0;
+        background-color: #000;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+      }
+
+      a:hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+      }
 }
 
   

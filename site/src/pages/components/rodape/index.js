@@ -5,7 +5,7 @@ export default function Rodape(){
         <section className='rodape-container'>
             <div className="div-separa-container">
                 <div>
-                    <img src="/images/logo-preta.gif" alt="" className="logo-rodape"/>
+                    <img src="/images/logo.png" alt="" className="logo-rodape"/>
                 </div>
 
                 <div className='div-contatos'>
@@ -25,8 +25,8 @@ export default function Rodape(){
                     <h2 className='h2-criadores'> Criadores </h2>
 
                     <div className="nomes-criadores">
-                        <span> João Vitor </span>
-                        <span> João Pedro </span>
+                        <span> João Vitor Pereira </span>
+                        <span> João Pedro Nunes </span>
                         <span> Pedro Henrique </span>
                         <span> Rodrigo Anjos </span>
                     </div>
