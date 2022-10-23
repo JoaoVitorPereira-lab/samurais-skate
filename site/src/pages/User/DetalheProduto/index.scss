@@ -39,7 +39,17 @@
         font-family: 'Dekko';
         color: #000000;
         font-weight: 400;
+        border: solid 1px black;
+        width: fit-content ;
+        height: fit-content;
     }
+
+    .infos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .preco-produto{
         font-family: 'Dekko';
         font-style: normal;

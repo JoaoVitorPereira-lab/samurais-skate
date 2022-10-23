@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 export default function ProdutoDetalhe() {
 
     const [produto, setProduto] = useState([]);
-    const [desconto, setDesconto] = useState(produto.preco);
 
     const { id } = useParams();
 
@@ -41,6 +40,11 @@ export default function ProdutoDetalhe() {
     function desc () {
         let comDesconto = produto.preco * 0.9;
         return comDesconto.toFixed(2);
+    }
+
+    function parc () {
+        let parcelado = produto.preco / 6;
+        return parcelado.toFixed(2);
     }
 
     useEffect(() => {
@@ -82,9 +86,12 @@ export default function ProdutoDetalhe() {
                         </div>
 
                         <div className='nome-marca'>
-                            <p>R${desc()} à vista com desconto</p>
+                            <p>R${desc().replace('.', ',')} à vista com desconto </p>
                         </div>
 
+                        <div className='nome-marca'>
+                            <p>6x sem juros de {parc().replace('.', ',')}</p>
+                        </div>
 
                         <div className='div-btn-carrinho'>
                             <div>
