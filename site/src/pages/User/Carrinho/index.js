@@ -4,8 +4,7 @@ import Storage from 'local-storage'
 import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
 import Carrinho from '../../components/carrinhoItem'
 
-import Cabecalho from '../../components/cabecalhoUser';
-import Navs from '../../components/navs';
+import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

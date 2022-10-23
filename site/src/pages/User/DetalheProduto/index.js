@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Cabecalho from '../../components/cabecalhoUser'
+import Cabecalho from '../../components/cabecalho'
 import { useParams } from 'react-router-dom';
 import { BuscarProdutoPorID } from '../../../api/UsuarioApi';
 import { API_URL } from '../../../api/config';

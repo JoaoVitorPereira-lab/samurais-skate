@@ -1,6 +1,6 @@
 import './index.scss'
 
-import Cabecalho from '../../components/cabecalhoUser'
+import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
 import { ListarTenis, buscarimagem, BuscarTenisPorNome } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'

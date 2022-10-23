@@ -13,6 +13,7 @@ import { SalvarNovoPedido } from '../../../api/PedidoAPI'
 import CardEndereco from '../../components/cardEndereco';
 import ModalEndereco from '../../components/ModalEndereco';
 import { API_URL } from '../../../api/config';
+import Rodape from '../../components/rodape';
 
 export default function ContinuarPedido(){
     const [enderecos, setEnderecos] = useState([]);
@@ -290,6 +291,8 @@ export default function ContinuarPedido(){
                     </tbody>
                 </table>
             </div>
+
+            <Rodape />
         </main>
     )
 }

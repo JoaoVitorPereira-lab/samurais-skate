@@ -1,7 +1,7 @@
-import Cabecalho from "../../components/cabecalhoUser/index.js";
+import Cabecalho from "../../components/cabecalho";
 import { useEffect } from 'react'
 import storage from 'local-storage'
-import Rodape from '../../components/rodape/index.js'
+import Rodape from '../../components/rodape'
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 

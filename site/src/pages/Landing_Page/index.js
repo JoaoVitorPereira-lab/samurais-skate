@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import Cabecalho from '../components/cabecalhoUser'
+import Cabecalho from '../components/cabecalho'
 import Rodape from '../components/rodape'
 
 
