@@ -26,4 +26,13 @@
     .ent{
         margin-right: 1em;
     }
+
+    @media screen and (max-width: 500px){
+        .logo{
+            width: 5em; height: 4.7em;
+        }
+        .icons-header{
+            width: 30px; height: 30px;
+        }
+    }
 }

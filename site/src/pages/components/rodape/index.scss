@@ -4,11 +4,15 @@
     justify-content: center;
     background-color: #E9E9E9;
 
-    h2,
-    h3{
-        font-family: 'Dela Gothic One', sans-serif;
+    h2{
+        font-family: 'Dela Gothic One', cursive;
         font-size: 10px;
         font-weight: 400;
+    }
+    h3{
+        font-family: 'Dekko', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
     }
     span{
         font-family: 'Dekko', sans-serif;
@@ -48,7 +52,11 @@
 
 /* INICIO div de contatos */
     .div-contatos{
+        margin-top: .5em;
         text-align: center;
+    }
+    .email{
+        margin-top: -.5em;
     }
     .div-contatos img{
         width: 2em;  height: 2em;
@@ -65,11 +73,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 1em; margin-bottom: 1em;
     }
     .nomes-criadores{
         display: flex;
         flex-direction: column;
         text-align: center;
+        margin-top: -.5em;
         p{
             font-family: 'Dekko', sans-serif;
             font-size: 20px;
@@ -80,6 +90,15 @@
 
 
 /* INICIO div dos pagamentos */
+    .div-forma-pagamento{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .pag-a-vista{
+        margin-top: -1.5em;
+    }
     .icon-pag-a-vista img{
         width: 3em;  height: 3em;
     }
@@ -110,4 +129,15 @@
         width: 4em;  height: 3em;
     }
 /* FINAL div dos pagamentos */
+
+/*******************************************************************************/
+/* Responsividades */
+    @media screen and (max-width: 1024px){
+        .div-separa-container{
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+
 }

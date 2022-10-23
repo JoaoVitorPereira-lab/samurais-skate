@@ -54,34 +54,34 @@ export default function CabecalhoUsuarioNavs(props) {
             <div className="div-logo">
 
                 <div>
-                    <img onClick={HomeClick} src="/images/logo-branco.gif" width="128px" height="128px" alt=""/>
+                    <img onClick={HomeClick} src="/images/logo-branco.gif" alt="" className='img-logo'/>
                 </div>
 
                 <div className="infos">
-                    <img src="/images/lua.png" width="40px" alt=""/>
+                    <img src="/images/lua.png" alt=""/>
 
                     {storage('usuario-logado') && 
-                        <img onClick={FavoritosClick} src="/images/favoritos.png" width="40px" alt=""/>
+                        <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 
                     {!storage('usuario-logado') &&
-                        <img onClick={Login} src="/images/favoritos.png" width="40px" alt=""/>
+                        <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
 
                     {storage('usuario-logado') &&
-                        <img onClick={SairClick} src="/images/User-logado.png" alt="" width='40px' />
+                        <img onClick={SairClick} src="/images/User-logado.png" alt="" />
                     }
 
                     {!storage('usuario-logado') &&
-                        <img onClick={Login} src="/images/teste-entrar 1.png" width="40px" alt=""/>
+                        <img onClick={Login} src="/images/teste-entrar 1.png" alt=""/>
                     }
 
                     {!storage('usuario-logado') &&
-                        <img onClick={Login} src="/images/carrinho.png" width="40px" alt=""/>
+                        <img onClick={Login} src="/images/carrinho.png" alt=""/>
                     }
 
                     {storage('usuario-logado') &&
-                        <img onClick={CarrinhoClick} src="/images/carrinho.png" width="40px" alt=""/>
+                        <img onClick={CarrinhoClick} src="/images/carrinho.png" alt=""/>
                     }
                 </div>
 

@@ -2,11 +2,18 @@
 
     width: 100%;
 
+    img:not(.img-logo){
+        width: 40px;
+    }
+
     .div-logo {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 0em 2em;
+    }
+    .img-logo{
+        width: 128px; height: 128px;
     }
 
     .infos{
@@ -120,6 +127,14 @@
             cursor: pointer;
         }
     
+    }
+    @media screen and (max-width: 500px){
+        img:not(.img-logo){
+            width: 30px;
+        }
+        .img-logo{
+            width: 100px; height: 100px;
+        }
     }
 }
 
