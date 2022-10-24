@@ -24,7 +24,7 @@
         justify-content: space-between;
         margin-left: 10em;
     }
-    .nome-produto , .nome-marca{
+    .nome-produto {
         font-family: 'Dekko';
         font-style: normal;
         font-weight: 400;
@@ -39,12 +39,13 @@
         font-family: 'Dekko';
         color: #000000;
         font-weight: 400;
-        border: solid 1px black;
+        //border: solid 1px black;
         width: fit-content ;
-        height: fit-content;
+        line-height: 2px;
+        text-align: center;
     }
 
-    .infos{
+    .infos-produto{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -66,6 +67,13 @@
         
     }
 
+    .div-btn-carrinho {
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+        //border: solid 1px green;
+    }
+    
     .btn-carrinho{
         width: 268px;
         height: 54px;
@@ -83,6 +91,16 @@
         text-align: center;
 
         color: #FFFFFF;
+        margin-left: 1em;
+        margin-right: 2em;
     }
-    
+
+    hr {
+        margin-top: 2em;
+        border-width: 1px;
+        width: 100em;
+        height: 2px;
+        border-color: #000;
+        background-color: #000;
+    }
 }

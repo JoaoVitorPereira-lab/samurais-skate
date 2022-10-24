@@ -16,7 +16,9 @@ export default function ProdutoDetalhe() {
 
     async function carregarPagina() {
         const r = await BuscarProdutoPorID(id);
+        console.log(r);
         setProduto(r);
+        
         
     }
 
@@ -66,7 +68,7 @@ export default function ProdutoDetalhe() {
 
                     </div>
 
-                    <div className='infos'>
+                    <div className='infos-produto'>
 
                         <div className='nome-produto'>
                             <p>{produto.nome}</p>
@@ -87,10 +89,7 @@ export default function ProdutoDetalhe() {
 
                         <div className='nome-marca'>
                             <p>R${desc().replace('.', ',')} à vista com desconto </p>
-                        </div>
-
-                        <div className='nome-marca'>
-                            <p>6x sem juros de {parc().replace('.', ',')}</p>
+                            <p>6x sem juros de R${parc().replace('.', ',')}</p>
                         </div>
 
                         <div className='div-btn-carrinho'>
@@ -100,9 +99,14 @@ export default function ProdutoDetalhe() {
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>
 
+                        <div className='quantidade'>
+                            <p>Quantidade: <img src="/images/Subtrair.png"/> <input type="text" min='1' /> <img src="/images/Somar.png"/></p>
+                        </div>
+
                     </div>
 
                 </div>
+                <hr/>
             </div>
         </main>
 
