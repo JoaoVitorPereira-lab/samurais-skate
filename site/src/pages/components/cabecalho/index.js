@@ -1,18 +1,28 @@
 import storage from 'local-storage'
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./index.scss";
 
 export default function CabecalhoUsuarioNavs(props) {
+    const[usuario,setUsuario] = useState('');
+    const[email,setEmail] = useState('');
+    const [popup, setPopUp] = useState(false)
 
     const navigate = useNavigate()
-
     function TenisClick(){
         navigate('/ConsultarTenis')
         
         setTimeout(() => {
             navigate('/'); 
         }, 3000);
+    }
+
+    function MostrarPopUp(){
+        setPopUp(true)
+    }
+    function OcultarPopUp(){
+        setPopUp(false)
     }
 
     function HomeClick(){
@@ -32,8 +42,7 @@ export default function CabecalhoUsuarioNavs(props) {
     }
 
     function SairClick(){
-        storage.remove('usuario-logado')
-        navigate('/Login')
+        return 2
     }
 
     function Login (){
@@ -47,6 +56,13 @@ export default function CabecalhoUsuarioNavs(props) {
             return '';
     }
     
+    useEffect(() =>{
+        if(storage('usuario-logado')){
+            const nome = storage('usuario-logado')
+            setUsuario(nome.nome)
+            setEmail(nome.Email)
+        }
+    },[])
 
     return (
         <main className="header-container">
@@ -68,8 +84,60 @@ export default function CabecalhoUsuarioNavs(props) {
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
 
-                    {storage('usuario-logado') &&
-                        <img onClick={SairClick} src="/images/User-logado.png" alt="" />
+                    {storage('usuario-logado') && popup === false &&
+                    <div className='bolinha'>
+                        <h2 onClick={MostrarPopUp}> {usuario[0]} </h2>
+                    </div>                    
+                    }
+
+                    {popup === true &&
+                    
+                    <div> 
+                        <div className='bolinha'>
+                            <h2 onClick={OcultarPopUp}> {usuario[0]}  </h2>
+                        </div>
+                         <div className='container-popUp'>
+                            
+                            <div className='sair-popUp'>
+
+                                <div className='bolinha' >
+                                    <h2> {usuario[0]} </h2>
+                                </div>
+
+                                <div className='email'>
+                                <h2> {email} </h2>
+                                </div>
+                            </div>
+                            
+                            <div className='sair-popUp'>
+
+                             <div className='img-config-popUp'>
+                                <img src="/images/Services.png" alt="" />
+                             </div>
+
+                                <div>
+                                    <h2 className='config-popUp'> configuracao </h2>
+                                </div>
+                            </div>
+
+                            <div className='sair-popUp'>
+
+                                <div className='img-compras-popUp'>
+
+                                    <img src="/images/Shopping Bag Full.png" alt="" />
+                                </div>
+
+                                <div className='compras-popUp'>
+                                    <h2> Compras </h2>
+                                </div>
+
+                            </div>
+
+                        
+
+                        </div>                        
+                    </div>
+                    
                     }
 
                     {!storage('usuario-logado') &&

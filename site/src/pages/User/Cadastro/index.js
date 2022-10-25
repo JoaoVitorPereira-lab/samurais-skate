@@ -2,6 +2,8 @@ import "./index.scss"
 import { CadastrarLogin, CadastrarConta } from '../../../api/UsuarioApi.js'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
+import LoadingBar from 'react-top-loading-bar'
+
 export default function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -9,9 +11,12 @@ export default function Login() {
     const [sobrenome, setSobrenome] = useState('')
     
     const [erro, setErro] = useState('')
- 
+
+    
+    const[carregando,setCarregando] = useState(false) 
     const [mostrarSenha, SetMostrarSenha] = useState(false);
     const navigate = useNavigate()
+    const ref = useRef()
 
     function HomeClick(){
         navigate('/')
@@ -25,21 +30,25 @@ export default function Login() {
         SetMostrarSenha(true)
     }
     async function CriarConta() {
+        ref.current.continuousStart();
+        setCarregando(true)
         try {
             const r = await CadastrarConta(nome, sobrenome)
             const resp = await CadastrarLogin (email, senha, r.id)
             setTimeout(() => {
-                navigate('/teste'); 
+                navigate('/Login'); 
             }, 3000);
         }
         catch (err) {
           if(err.response.status === 401){
+                ref.current.complete()
                 setErro(err.response.data.Erro) 
             }
         }
     }
     return (
         <section className="page-cadastro">
+            <LoadingBar color="#E52A45" ref={ref}/>
             <div>
                 <img onClick={HomeClick} src="/images/logo-branco.gif" alt="logo" className="logo" />
             </div>

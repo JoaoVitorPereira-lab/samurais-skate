@@ -16,6 +16,7 @@ import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
 import ProdutoCurtido from './pages/User/ProdutosCurtidos/index.js'
+import ConfiguracaoInicial from './pages/User/ConfInicial/index.js'
 
 export default function Rotas (){
     return(
@@ -38,6 +39,7 @@ export default function Rotas (){
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
                 <Route path='/favoritos'                element={<ProdutoCurtido/>}/>
+                <Route path='/Config' element={<ConfiguracaoInicial/>}/>
             </Routes>
         </BrowserRouter>
     )

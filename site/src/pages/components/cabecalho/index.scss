@@ -5,6 +5,10 @@
     img:not(.img-logo){
         width: 40px;
     }
+    .PopUp-contaier h1{
+        position: absolute;
+
+    }
 
     .div-logo {
         display: flex;
@@ -19,6 +23,55 @@
     .infos{
         display: flex;
         justify-content: space-between;
+        width: 10em;
+    }
+
+    .infos h2{
+        font-size: 1.1em;
+        font-family: "Inter", sans-serif;
+        color: #fff;        
+    }
+    .bolinha{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 2.2em; height: 2.2em;
+        background-color: #E52A45;
+        border-radius: 50%;
+        border: 1px solid #000;
+    }
+    .email{
+        margin-left: 0.5em;
+        margin-top: -0.7em;
+    }
+    .container-popUp{
+        display: flex;
+        flex-direction: column;
+        width: 15em;
+        position: absolute;
+        margin-left: -35em;
+        margin-top: -2em;
+        border: 1px solid green;
+    }
+
+    .container-popUp h2{
+        font-family: 'dekko';
+        font-size: 20px;
+        line-height: 29px;
+        color: #000;
+    }
+    .sair-popUp{
+        display: flex;
+        flex-direction: row;
+        margin-top: 1em;
+    }
+    .config-popUp{
+        margin-top: -0.5px;
+        margin-left: 0.5em;
+    }
+    .compras-popUp{
+        margin-left: 0.5em;
     }
     .navs-container-pequena{
         display: none;
