@@ -82,11 +82,11 @@ export default function CabecalhoUsuarioNavs(props) {
                     <img src="/images/darkmode.png" alt=""/>
 
                     {storage('usuario-logado') && 
-                        <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
+                        <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
 
                     {!storage('usuario-logado') &&
-                        <img onClick={Login} src="/images/favoritos.png" alt=""/>
+                        <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 
                     {storage('usuario-logado') && popup === false &&
@@ -96,51 +96,49 @@ export default function CabecalhoUsuarioNavs(props) {
                     }
 
                     {popup === true &&
-                    
-                    <div> 
-                        <div className='bolinha'>
-                            <h2 onClick={OcultarPopUp}> {usuario[0]}  </h2>
+                        <div> 
+                            <div className='bolinha'>
+                                <h2 onClick={OcultarPopUp}> {usuario[0]}  </h2>
+                            </div>
+                            <div className='container-popUp'>
+                                
+                                <div className='sair-popUp' onClick={SairClick}>
+
+                                    <div className='bolinha' >
+                                        <h2> {usuario[0]} </h2>
+                                    </div>
+
+                                    <div className='email'>
+                                    <h2 > {email} </h2>
+                                    < label className="trocar-usuario"> Trocar Usuário </label>
+                                    </div>
+                                </div>
+                                
+                                <div className='sair-popUp' onClick={ConfigClick}>
+
+                                <div className='img-config-popUp'>
+                                    <img src="/images/Services.png" alt="" />
+                                </div>
+
+                                    <div>
+                                        <h2 className='config-popUp' > configuracao </h2>
+                                    </div>
+                                </div>
+
+                                <div className='sair-popUp'>
+
+                                    <div className='img-compras-popUp'>
+
+                                        <img src="/images/Shopping Bag Full.png" alt="" />
+                                    </div>
+
+                                    <div className='compras-popUp'>
+                                        <h2> Compras </h2>
+                                    </div>
+
+                                </div>
+                            </div>                        
                         </div>
-                         <div className='container-popUp'>
-                            
-                            <div className='sair-popUp' onClick={SairClick}>
-
-                                <div className='bolinha' >
-                                    <h2> {usuario[0]} </h2>
-                                </div>
-
-                                <div className='email'>
-                                 <h2 > {email} </h2>
-                                < label className="trocar-usuario"> Trocar Usuário </label>
-                                </div>
-                            </div>
-                            
-                            <div className='sair-popUp' onClick={ConfigClick}>
-
-                             <div className='img-config-popUp'>
-                                <img src="/images/Services.png" alt="" />
-                             </div>
-
-                                <div>
-                                    <h2 className='config-popUp' > configuracao </h2>
-                                </div>
-                            </div>
-
-                            <div className='sair-popUp'>
-
-                                <div className='img-compras-popUp'>
-
-                                    <img src="/images/Shopping Bag Full.png" alt="" />
-                                </div>
-
-                                <div className='compras-popUp'>
-                                    <h2> Compras </h2>
-                                </div>
-
-                            </div>
-                        </div>                        
-                    </div>
-                    
                     }
 
                     {!storage('usuario-logado') &&
