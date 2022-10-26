@@ -25,6 +25,10 @@ export default function CabecalhoUsuarioNavs(props) {
         setPopUp(false)
     }
 
+    function ConfigClick(){
+        navigate('/Config')
+    }
+
     function HomeClick(){
         navigate('/')
     }
@@ -42,7 +46,8 @@ export default function CabecalhoUsuarioNavs(props) {
     }
 
     function SairClick(){
-        return 2
+        storage.remove('usuario-logado')
+        navigate('/Login')
     }
 
     function Login (){
@@ -98,25 +103,26 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                          <div className='container-popUp'>
                             
-                            <div className='sair-popUp'>
+                            <div className='sair-popUp' onClick={SairClick}>
 
                                 <div className='bolinha' >
                                     <h2> {usuario[0]} </h2>
                                 </div>
 
                                 <div className='email'>
-                                <h2> {email} </h2>
+                                 <h2 > {email} </h2>
+                                < label className="trocar-usuario"> Trocar Usuário </label>
                                 </div>
                             </div>
                             
-                            <div className='sair-popUp'>
+                            <div className='sair-popUp' onClick={ConfigClick}>
 
                              <div className='img-config-popUp'>
                                 <img src="/images/Services.png" alt="" />
                              </div>
 
                                 <div>
-                                    <h2 className='config-popUp'> configuracao </h2>
+                                    <h2 className='config-popUp' > configuracao </h2>
                                 </div>
                             </div>
 

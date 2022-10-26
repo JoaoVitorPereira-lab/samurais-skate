@@ -30,6 +30,9 @@
         font-family: "Inter", sans-serif;
         color: #fff;        
     }
+    .infos img{
+        cursor: pointer;
+    }
     .bolinha{
         display: flex;
         justify-content: center;
@@ -39,19 +42,19 @@
         background-color: #E52A45;
         border-radius: 50%;
         border: 1px solid #000;
+
+        cursor: pointer;
     }
     .email{
         margin-left: 0.5em;
-        margin-top: -0.7em;
     }
     .container-popUp{
         display: flex;
         flex-direction: column;
-        width: 15em;
+        width: fit-content;
         position: absolute;
         margin-left: -35em;
         margin-top: -2em;
-        border: 1px solid green;
     }
 
     .container-popUp h2{
@@ -63,10 +66,12 @@
     .sair-popUp{
         display: flex;
         flex-direction: row;
-        margin-top: 1em;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid  #D9D9D9;
+        height: 3.5em;
     }
     .config-popUp{
-        margin-top: -0.5px;
         margin-left: 0.5em;
     }
     .compras-popUp{
@@ -180,7 +185,13 @@
         height: 35px;
         cursor: pointer;
     }
-
+    
+    .trocar-usuario{
+        font-size: 15px;
+        color: #C4C4C4;
+        position: absolute;
+        margin-top: -1.5em;
+    }
     @media screen and (max-width: 500px){
         img:not(.img-logo){
             width: 30px;
