@@ -1,8 +1,8 @@
-import storage from 'local-storage'
-import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import "./index.scss";
+import storage from 'local-storage';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { slide as Menu } from "react-burger-menu";
 
 export default function CabecalhoUsuarioNavs(props) {
     const[usuario,setUsuario] = useState('');
@@ -132,9 +132,6 @@ export default function CabecalhoUsuarioNavs(props) {
                                 </div>
 
                             </div>
-
-                        
-
                         </div>                        
                     </div>
                     
@@ -203,40 +200,42 @@ export default function CabecalhoUsuarioNavs(props) {
             
             <nav className="navs-container-pequena">
                 <div className="div-navs">
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('skate')}>
-                        <div className="navs-produtos not">
-                            <img src="/images/skate.png" className="imgs-nav" alt=""/>
-                            <span> Skate </span>
-                        </div>
-                    </Link>
+                    <Menu>
+                        <Link to='/consultartenis' className={verificarMenuSelecionado('skate')}>
+                            <div className="navs-produtos not">
+                                <img src="/images/skate.png" className="imgs-nav" alt=""/>
+                                <span> Skate </span>
+                            </div>
+                        </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('tenis')}>
-                        <div className="navs-produtos" onClick={TenisClick}>
-                            <img src="/images/tenis.png" className="imgs-nav" alt=""/>
-                            <span> Tênis </span>
-                        </div>
-                    </Link>
+                        <Link to='/consultartenis' className={verificarMenuSelecionado('tenis')}>
+                            <div className="navs-produtos" onClick={TenisClick}>
+                                <img src="/images/tenis.png" className="imgs-nav" alt=""/>
+                                <span> Tênis </span>
+                            </div>
+                        </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('bone')}>
-                        <div className="navs-produtos">
-                            <img src="/images/bone.png" className="imgs-nav" alt=""/>
-                            <span> Boné </span>
-                        </div>
-                    </Link>
+                        <Link to='/consultartenis' className={verificarMenuSelecionado('bone')}>
+                            <div className="navs-produtos">
+                                <img src="/images/bone.png" className="imgs-nav" alt=""/>
+                                <span> Boné </span>
+                            </div>
+                        </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('acessorios')}>
-                        <div className="navs-produtos">
-                            <img src="/images/acessorios.png" className="imgs-nav" alt=""/>
-                            <span> Acessórios </span>
-                        </div>
-                    </Link>
+                        <Link to='/consultartenis' className={verificarMenuSelecionado('acessorios')}>
+                            <div className="navs-produtos">
+                                <img src="/images/acessorios.png" className="imgs-nav" alt=""/>
+                                <span> Acessórios </span>
+                            </div>
+                        </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('promocao')}>
-                        <div className="navs-produtos">
-                            <img src="/images/promocoes.png" className="imgs-nav" alt=""/>
-                            <span> Promoções </span>
-                        </div>
-                    </Link>
+                        <Link to='/consultartenis' className={verificarMenuSelecionado('promocao')}>
+                            <div className="navs-produtos">
+                                <img src="/images/promocoes.png" className="imgs-nav" alt=""/>
+                                <span> Promoções </span>
+                            </div>
+                        </Link>
+                    </Menu>
                 </div>
 
                 <div className="div-buscar">
