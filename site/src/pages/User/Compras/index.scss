@@ -1,0 +1,66 @@
+.main-compras{
+    display: flex;
+    flex-direction: column;
+
+    .div-compras{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 50em;
+        border: 2px solid #000;
+        margin-top: 20em;
+        margin-left: 25em;
+    }
+    .esquerda-compras{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+    }
+    .direita-compra{
+        display: flex;
+        flex-direction: column;
+        margin-right: 1em;
+    }
+    .nome-pedido{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 34px;
+        text-align: center;
+        margin-top: -2em;
+    }
+    .status-pedido{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 29px;
+        text-align: center
+    }
+    .verpedido-pedido{
+        font-family: 'Dela Gothic One';
+        cursor: pointer;
+        text-decoration: underline;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 22px;
+        
+        text-align: center;
+
+        color: #E52A45;
+    }
+    .Valor-pedido{
+        font-family: 'Timmana';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 39px;
+        text-align: center;
+
+        color: #E52A45;
+    }
+}

@@ -1,0 +1,72 @@
+.main-dados{
+    display: flex;
+    flex-direction: column;
+
+    .div-dados{
+        position: absolute;
+        margin-top: 17em;
+        margin-left: 20em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .div-dados h1{
+        font-family: 'Dela Gothic One';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .div-dados label{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+    }
+    .titulo-dados{
+        width: 50em;
+        border-bottom: 1px solid #000;
+    }
+
+    .infos-dados{
+        margin-top: 2em;
+    }
+
+    .infos-dados label{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .infos-dados input{
+        margin-left: 2em;
+    }
+
+    .nome-dados input{
+        margin-left: 5.3em;
+    }
+
+    .email-dados input{
+        margin-left: 5.3em;
+    }
+    .senha-dados input{
+        margin-left: 5.1em;
+    }
+
+    .botao-dados{
+        margin-top: 1em;
+    }
+    
+    button{
+        border: none;
+        background: #E52A45;
+        padding: 0.5em;
+        border-radius: 0.3em;
+        font-family: 'Dekko';
+        font-size: 15px;
+        color: #fff;
+    }
+
+}
