@@ -77,11 +77,11 @@ export default function CabecalhoUsuarioNavs(props) {
                 <div className="infos">
                     <img src="/images/darkmode.png" alt=""/>
 
-                    {storage('usuario-logado') && 
+                    {!storage('usuario-logado') && 
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
 
-                    {!storage('usuario-logado') &&
+                    {storage('usuario-logado') &&
                         <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 

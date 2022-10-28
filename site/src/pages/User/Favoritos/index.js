@@ -7,7 +7,7 @@ import Storage from 'local-storage'
 import Favoritos from '../../components/favoritosItem'
 import Cabecalho from "../../components/cabecalho";
 import Rodape from '../../components/rodape'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ProdutoDetalhe() {
 
@@ -38,13 +38,18 @@ export default function ProdutoDetalhe() {
         CarregarFavoritos();
     }
 
+    function BuscarProdutoFavorito(id){
+        if(id){
+            navigate(`/produto/${id}/detalhe`)
+        }
+    }
+
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (!Storage('usuario-logado')) {
+        if (Storage('usuario-logado') === undefined) {
             navigate('/Login')
         }
-
         CarregarFavoritos();
     }, [])
     
@@ -61,8 +66,8 @@ export default function ProdutoDetalhe() {
                 </div>
 
                 {itens.map(item =>
-                    <div className="excluir">
-                        <Favoritos item={item} />
+                    <div className="excluir" onClick={() => BuscarProdutoFavorito(item.produto.id)}>
+                        <Favoritos item={item}/>
                         <div className="coracao">
                             <img className="img-coracao" src="../images/Heart.png" alt="" />
                             <div onClick={() => removerItem(item.produto.id)} className="botao-excluir">
@@ -71,6 +76,7 @@ export default function ProdutoDetalhe() {
                         </div>
                     </div>
                 )}
+
             </main>
 
             <Rodape />
