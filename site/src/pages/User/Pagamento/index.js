@@ -15,17 +15,25 @@ export default function Pagamento() {
   const[usuario,setUsuario] = useState()
   const[cartao,setCartao] = useState([])
   
-  async function BuscarCartoes (){
+  useEffect(() =>{
+    if(storage('usuario-logado')){
+      const nome = storage('usuario-logado')
+      setUsuario(nome.id)
+  }
+  })
 
+  function Pegarid(){
+      const nome = storage('usuario-logado')
+      setUsuario(nome.id)
+  }
+  
+  
+  async function BuscarCartoes (){
     const resposta = await BuscarCartao(usuario)
     setCartao(resposta)
   }
  
   useEffect(() =>{
-    if(storage('usuario-logado')){
-        const nome = storage('usuario-logado')
-        setUsuario(nome.id)
-    }
     BuscarCartoes();
 },[])
 
