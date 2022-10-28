@@ -11,6 +11,8 @@ import { toast } from 'react-toastify'
 export default function ProdutoDetalhe() {
 
     const [produto, setProduto] = useState([]);
+    const [descricao, setDescricao] = useState(true);
+    const [avaliacao, setAvaliacao] = useState(false);
 
     const { id } = useParams();
 
@@ -63,6 +65,16 @@ export default function ProdutoDetalhe() {
     function parc () {
         let parcelado = produto.preco / 6;
         return parcelado.toFixed(2);
+    }
+
+    function descClick() {
+        setDescricao(true);
+        setAvaliacao(false)
+    }
+
+    function avalClick() {
+        setAvaliacao(true);
+        setDescricao(false);
     }
 
     useEffect(() => {
@@ -119,6 +131,27 @@ export default function ProdutoDetalhe() {
 
                 </div>
                 <hr/>
+                <div className='descs'>
+                    <label className='descricao'>
+                                <li onClick={descClick}>
+                                    Descrição
+                                </li>
+                    </label>
+                    <label>
+                                <li onClick={avalClick}>
+                                    Avaliações
+                                </li>
+                    </label>
+                </div>
+                <div className='descs-txt'>
+                    {descricao === true &&
+                        <p>{produto.descricao}</p>
+                    }
+                    {avaliacao === true &&
+                        <p>ksajfgusyfud</p>
+                    }
+                </div>
+
             </div>
         </main>
 
