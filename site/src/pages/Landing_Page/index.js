@@ -112,7 +112,7 @@ export default function Landing_Page() {
 
             <section className='marca'>
                 <div >
-                    <h1 className='titulo'>Nossas Marcas</h1>
+                    <h1 className='titulo-marca'>Nossas Marcas</h1>
                 </div>
             </section>
 
