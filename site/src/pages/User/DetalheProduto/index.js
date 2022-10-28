@@ -99,10 +99,6 @@ export default function ProdutoDetalhe() {
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>
 
-                        <div className='quantidade'>
-                            <p>Quantidade: <img src="/images/Subtrair.png"/> <input type="text" min='1' /> <img src="/images/Somar.png"/></p>
-                        </div>
-
                     </div>
 
                 </div>

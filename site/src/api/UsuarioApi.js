@@ -56,3 +56,32 @@ export async function BuscarProdutoPorID(id){
     return resposta.data;
 }
 
+// BUSCAR AVALIAÇÃO
+export async function buscarAvaliacao(id) {
+    const resposta = await api.get(`/produto/${id}/avaliacao`);
+    return resposta.data;
+}
+
+//Listar Produtos do Skate
+export async function ListarSkate(){
+    const resposta = await api.get('/api/produtos/skate')
+    return resposta.data
+}
+
+//Listar Produtos do Boné
+export async function ListarBone(){
+    const resposta = await api.get('/api/produtos/bone')
+    return resposta.data
+}
+
+//Listar Produtos do Acessório
+export async function ListarAcessorios(){
+    const resposta = await api.get('/api/produtos/acessorios')
+    return resposta.data
+}
+
+//Listar Produtos em Promoção
+export async function ListarPromocoes(){
+    const resposta = await api.get('/api/produtos/promocoes')
+    return resposta.data
+}

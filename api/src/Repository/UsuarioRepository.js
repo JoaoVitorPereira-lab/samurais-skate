@@ -89,3 +89,79 @@ export async function BuscarNomePorID (id){
   const [linhas] = await con.query(comando, [id]);
   return linhas[0];
 }
+
+/* Buscar média de avaliações */
+
+export async function buscarAvaliacao (id) {
+  const comando = `select format(avg(nr_estrela), 1)  avaliacao,
+                    tb_produto.id_produto		id
+                  from tb_produto_avaliacao
+                  inner join tb_produto on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+                  where tb_produto.id_tipo = ?
+                  group by tb_produto.id_produto`
+  
+  const [resposta] = await con.query(comando, [id]);
+  return resposta;
+}
+
+export async function ConsultarSkate() {
+  const comando = `select nm_produto      produto, 
+                  nr_preco                preco, 
+                  tb_tipo.id_tipo         tipo, 
+                  id_tipo_skate           tipoSkate, 
+                  id_categoria            categoria, 
+                  bt_importado            importado, 
+                  ds_imagem               imagem, 
+                  tb_produto.id_produto   id
+  from tb_produto
+    join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+    join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+  where nm_tipo = "Skate"`
+            
+  const [resposta] = await con.query(comando);
+  return resposta;
+}
+
+export async function ConsultarBone() {
+  const comando = `select nm_produto              produto, 
+  nr_preco                preco,  
+  tb_tipo.id_tipo         tipo, 
+  ds_imagem               imagem, 
+  tb_produto.id_produto   id
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Boné"`
+            
+  const [resposta] = await con.query(comando);
+  return resposta;
+}
+
+export async function ConsultarAcessorios() {
+  const comando = `select nm_produto              produto, 
+  nr_preco                preco,  
+  tb_tipo.id_tipo         tipo, 
+  ds_imagem               imagem, 
+  tb_produto.id_produto   id
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Acessórios"`
+            
+  const [resposta] = await con.query(comando);
+  return resposta;
+}
+
+export async function Promocoes() {
+  const comando = `select nm_produto        produto, 
+                   nr_preco                 preco, 
+                   id_tipo                  tipo, 
+                   ds_imagem                imagem, 
+                   tb_produto.id_produto    id
+  from tb_produto
+    join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+  where bt_promocao = 1`
+            
+  const [resposta] = await con.query(comando);
+  return resposta;
+}

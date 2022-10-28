@@ -12,6 +12,11 @@ import LoginAdm from './pages/Admin/LoginAdm/index.js'
 import CadastroConta from './pages/User/Cadastro/index.js'
 
 import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
+import ConsultarSkate from './pages/User/consultarSkate/index.js'
+import ConsultarBone from './pages/User/consultarBone/index.js'
+import ConsultarAcessorio from './pages/User/consultarAcessorio/index.js'
+import Promocoes from './pages/User/Promocoes/index.js'
+
 import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
@@ -34,6 +39,11 @@ export default function Rotas (){
                 <Route path='/Login/adm'                element={<LoginAdm/>} />
 
                 <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
+                <Route path='/ConsultarSkate'           element={<ConsultarSkate/>}/>
+                <Route path='/ConsultarBone'            element={<ConsultarBone/>}/>
+                <Route path='/ConsultarAcessorios'      element={<ConsultarAcessorio/>}/>
+                <Route path='/Promocoes'                element={<Promocoes/>}/>
+
                 <Route path='/produto/:id/detalhe'      element={<DetalheProduto/>}/>
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>

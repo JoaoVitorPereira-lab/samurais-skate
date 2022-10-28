@@ -2,10 +2,10 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarTenis, buscarimagem, buscarAvaliacao } from '../../../api/UsuarioApi';
+import { ListarAcessorios, buscarimagem, buscarAvaliacao } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 
-export default function ConsultarTenis() {
+export default function ConsultarAcessorio() {
 
     const [produto, setProduto] = useState([]);
     const [aval, setAval] = useState([]);
@@ -14,7 +14,7 @@ export default function ConsultarTenis() {
     const navigate = useNavigate();
 
     async function CarregarProdutos() {
-        const resp = await ListarTenis();
+        const resp = await ListarAcessorios();
         setProduto(resp);
         
     }
@@ -36,11 +36,11 @@ export default function ConsultarTenis() {
     
 
     return (
-        <main className='tenis-container'>
+        <main className='acessorio-container'>
 
             <Cabecalho value={busca} selecionado='tenis' />
 
-            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / TÊNIS</span></h1>
+            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / BONÉ</span></h1>
 
             <div className='contents'>
                 <div className="filtros">

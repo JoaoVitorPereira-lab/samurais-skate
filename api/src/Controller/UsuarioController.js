@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, buscarAvaliacao, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -139,6 +139,69 @@ server.post('/api/email', (req,resp) => {
         return resp.status(200).send('Email enviado com sucesso')
     })
 
+})
+
+//Buscar a média de avaliação
+
+server.get('/produto/:id/avaliacao', async (req, resp) => {
+    try {
+        const id = Number(req.params.id);
+  
+        const resposta = await buscarAvaliacao(id);
+  
+        if(!resposta)
+          resp.status(404).send([]);
+        else
+          resp.send(resposta);
+    } catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/api/produtos/skate', async (req, resp) =>{
+    try {
+        const resposta = await ConsultarSkate();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/api/produtos/bone', async (req, resp) =>{
+    try {
+        const resposta = await ConsultarBone();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/api/produtos/acessorios', async (req, resp) =>{
+    try {
+        const resposta = await ConsultarAcessorios();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/api/produtos/promocoes', async (req, resp) =>{
+    try {
+        const resposta = await Promocoes();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
 })
 
 export default server;
