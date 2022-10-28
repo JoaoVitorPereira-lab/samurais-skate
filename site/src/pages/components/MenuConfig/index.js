@@ -56,7 +56,7 @@ export default function Menu() {
             <img src="./images/Credit Card.png" alt="" />
           </div>
           <div className="div-texto">
-            <label> Pagamento </label>
+            <label> Cartões </label>
           </div>
         </div>
 
