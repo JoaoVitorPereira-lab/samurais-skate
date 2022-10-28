@@ -47,7 +47,7 @@ export default function ProdutoDetalhe() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (Storage('usuario-logado') === undefined) {
+        if (!Storage('usuario-logado')) {
             navigate('/Login')
         }
         CarregarFavoritos();

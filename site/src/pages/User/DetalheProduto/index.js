@@ -33,7 +33,10 @@ export default function ProdutoDetalhe() {
             Storage('carrinho', carrinho);
         }
 
-        toast.dark('Produto adicionado ao carrinho')
+        if(!Storage('usuario-logado'))
+            toast.error('Produto não pode ser adicionado');
+        else
+            toast.dark('Produto adicionado ao carrinho')
     }
 
     function adicionarAoFavoritos() {
