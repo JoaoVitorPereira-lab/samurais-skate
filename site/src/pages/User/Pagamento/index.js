@@ -1,9 +1,16 @@
 import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
+import { useState } from "react";
 
 import "./index.scss";
+
 export default function Pagamento() {
+  const[nome,setNome] = useState()
+  const[numero,setNumero] = useState()
+  const[vencimeto,setVencimento] = useState()
+  const[cvv,setCvv] = useState()
+
   return (
     <main className="main-pagamento">
       <Cabecalho />
