@@ -6,6 +6,7 @@ import 'dotenv/config'
 import usuarioController from './controller/usuarioController.js'
 import adminController from './controller/adminController.js'
 import enderecoController from './Controller/enderecoController.js'
+import favoritosController from './Controller/FavoritosController.js'
 import pedidoController from './Controller/pedidoController.js'
 
 // Configurando o Server
@@ -17,6 +18,7 @@ server.use(express.json())
 server.use(usuarioController)
 server.use(adminController)
 server.use(enderecoController)
+server.use(favoritosController)
 server.use(pedidoController)
 
 

@@ -137,6 +137,15 @@ create table tb_cupom (
     qtd_restante		int
 );
 
+create table tb_cartao(
+	id_cartao		int primary key auto_increment,
+    nm_cartao		varchar(20),
+    ds_numero		varchar(16),
+    dt_vencimento	date,
+    ds_cvv			varchar(3)
+);
+
+
 -- Tabela do pedido
 create table tb_pedido (
 	id_pedido			int primary key auto_increment,
@@ -167,14 +176,12 @@ create table tb_pedido_item (
 
 -- Tabela de pagamento em cartão
 create table tb_pagamento_cartao (
-	id_pagamento_cartao	int primary key auto_increment,
-    id_pedido			int,
-    nm_cartao			varchar(200),
-    nr_cartao			varchar(200),
-    dt_vencimento		varchar(200),
-    cod_seguranca		varchar(200),
-    nr_parcelas			int,
-    ds_forma_pagamento	varchar(200),
+	id_pagamento_cartao		int primary key auto_increment,
+    id_pedido				int,
+	id_cartao				int,
+    nr_parcelas				int,
+    ds_forma_pagamento		varchar(200),
+    foreign key (id_cartao) references tb_cartao (id_cartao),
     foreign key (id_pedido) references tb_pedido (id_pedido)
 );
 

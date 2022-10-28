@@ -199,7 +199,7 @@ export default function PageCadastrarProduto(){
                                 />
 
                                 <label for="preco" id="titulos" className="sla"> Preço: </label>
-                                <input type="number" id="preco" placeholder="R$ 000,00"
+                                <input min={0}type="number"  id="preco" placeholder="R$ 000,00"
                                        value={preco} 
                                        onChange={e => setPreco(e.target.value)}
                                 />
@@ -239,7 +239,7 @@ export default function PageCadastrarProduto(){
 
                             <div className="div-infos-3">
                                 <label id="titulos"> Estoque: </label>
-                                <input type="number" 
+                                <input min={0} type="number" 
                                        id="estoque" 
                                        value={estoque} 
                                        onChange={e=> setEstoque(Number(e.target.value))}

@@ -2,8 +2,11 @@
 
     width: 100%;
 
-    img:not(.img-logo){
+    .infos img:not(.img-logo){
         width: 40px;
+    }
+    .PopUp-contaier h1{
+        position: absolute;
     }
 
     .div-logo {
@@ -19,6 +22,68 @@
     .infos{
         display: flex;
         justify-content: space-between;
+        width: 10em;
+    }
+
+    .infos h2{
+        font-size: 1.1em;
+        font-family: "Inter", sans-serif;
+        color: #fff;        
+    }
+    .infos img{
+        cursor: pointer;
+    }
+    .bolinha{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+
+        width: 2.2em; height: 2.2em;
+        background-color: #E52A45;
+        border-radius: 50%;
+        border: 1px solid #000;
+
+        cursor: pointer;
+    }
+    .email{
+        margin-left: 0.5em;
+    }
+    .container-popUp{
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        position: absolute;
+        margin-left: -35em;
+        margin-top: -2em;
+    }
+
+    .container-popUp h2{
+        font-family: 'dekko';
+        font-size: 20px;
+        line-height: 29px;
+        color: #000;
+        user-select: none;
+    }
+    .sair-popUp{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid  #D9D9D9;
+        height: 3.5em;
+    }
+
+    .sair-popUp:hover{
+        cursor: pointer;
+        background-color: #e0d9d9;
+    }
+
+    .config-popUp{
+        margin-left: 0.5em;
+    }
+    .compras-popUp{
+        margin-left: 0.5em;
     }
     .navs-container-pequena{
         display: none;
@@ -32,105 +97,111 @@
         width: 100%;
         min-height: 8em;
         background-color: #E52A45;
-    
-        .div-navs{
-            display: flex;
-            flex-direction: row;
-            width: 40em;
-            justify-content: space-between;
-        }
-    
-        .navs-produtos{
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.7em 2em;
-        }
-
-        .navs-produtos:hover{
-            transition: .5s;
-            background-color: #292929;
-        }
-        .selecionado{
-            background-color: #292929;
-        }
-
-        .navs-produtos span{
-            font-family: 'Dela Gothic One', cursive;
-            color: #fff;
-        }
-        .navs-produtos:not(.not){
-            margin-left: 0em;
-        }
-        .not{
-            margin-left: 1.5em;
-        }
-        .imgs-nav{
-            width: 50px; height: 50px;
-        }
-    
-        .div-buscar{
-            display: flex;
-            flex-direction: row;
-            position: relative;
-    
-            margin-top: .5em;
-            margin-right: 5em;
-        }
-        .div-buscar::before{
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 3px;
-            background: #000;
-            transform: scaleX(0);
-            transform-origin: center;
-            transform-origin: left;
-            transition: transform .25s;
-        }
-        .div-buscar:focus-within::before{
-            transform: scale(1);
-        }
-    
-        .buscar-input::placeholder{
-            color: #000;
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-        }
-        .buscar-input{
-            color: #000;
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            border: 0 #fff;
-            border-radius: 5px;
-            padding-left: 1em;
-            padding-right: 2em;
-    
-            width: 246px;
-            height: 50px;
-        }
-        .buscar-input:focus {
-            color: #000;
-            font-family: 'Inter', sans-serif;
-            font-size: 20px;
-            box-shadow: none;
-            outline: 0;
-        }
-    
-        .buscar-img{
-            margin-left: -2.5em;
-            margin-top: .5em;
-    
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-    
+    }
+    .div-navs{
+        display: flex;
+        flex-direction: row;
+        width: 40em;
+        justify-content: space-between;
     }
 
+    .navs-produtos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.7em 2em;
+    }
+
+    .navs-produtos:hover{
+        transition: .5s;
+        background-color: #292929;
+    }
+    .selecionado{
+        background-color: #292929;
+    }
+
+    .navs-produtos span{
+        font-family: 'Dela Gothic One', cursive;
+        color: #fff;
+        user-select: none
+    }
+    .navs-produtos:not(.not){
+        margin-left: 0em;
+    }
+    .not{
+        margin-left: 1.5em;
+    }
+    .imgs-nav{
+        width: 50px; height: 50px;
+        user-select: none;
+    }
+    
+
+    .div-buscar{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+
+        margin-top: .5em;
+        margin-right: 5em;
+    }
+    .div-buscar::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: #000;
+        transform: scaleX(0);
+        transform-origin: center;
+        transform-origin: left;
+        transition: transform .25s;
+    }
+    .div-buscar:focus-within::before{
+        transform: scale(1);
+    }
+
+    .buscar-input::placeholder{
+        color: #000;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+    }
+    .buscar-input{
+        color: #000;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        border: 0 #fff;
+        border-radius: 5px;
+        padding-left: 1em;
+        padding-right: 2em;
+
+        width: 246px;
+        height: 50px;
+    }
+    .buscar-input:focus {
+        color: #000;
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        box-shadow: none;
+        outline: 0;
+    }
+
+    .buscar-img{
+        margin-left: -2.5em;
+        margin-top: .5em;
+
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+    }
+    
+    .trocar-usuario{
+        font-size: 15px;
+        color: #C4C4C4;
+        position: absolute;
+        margin-top: -1.5em;
+    }
     @media screen and (max-width: 500px){
         img:not(.img-logo){
             width: 30px;
@@ -143,6 +214,16 @@
     @media screen and (max-width: 1200px){
         .navs-container-grande{
             display: none;
+        }
+        .navs-container-pequena{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
+            width: 10em;
+            min-height: 8em; height: 10em;
+            background-color: #E52A45;
         }
     }
 }

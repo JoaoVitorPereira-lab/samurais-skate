@@ -1,0 +1,176 @@
+.main-pagamento{
+    display: flex;
+    flex-direction: column;
+
+    .div-pagamento{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        margin-top: 17em;
+        margin-left: 20em;
+    }
+    .div-pagamento h1{
+        
+        font-family: 'Dela Gothic One';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 29px;
+    }
+
+    
+    .div-pagamento label{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    
+    .div-titulo-pagamento{
+        width: 50em;
+        border-bottom: 1px solid #000;
+    }
+
+    .div-cartoes-pagamento{
+        display: flex;
+        flex-direction: row;
+    }
+    .div-column-pagamento{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .div-cartoes-pagamento h2{
+        font-family: 'Dela Gothic One';
+        cursor: pointer;
+        font-style: normal;
+        font-size: 25px;
+
+        color: #E52A45;
+    }
+
+    .div-cartoes-cadastrados{
+        width: 10em;
+        align-items: center;
+        background: #FFFFFF;
+        border: 1px solid #000000;
+        box-shadow: 6px 10px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+    }
+
+    .div-cartoes-cadastrados h3{
+        text-align: center;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #E52A45;
+    }
+
+    .div-cartoes-cadastrados:hover{
+        background-color: #e0d9d9;
+        cursor: pointer;
+    }
+
+    .div-cadastrar-cartao button{
+        position: absolute;
+        border: none;
+        border: 1px solid #000;
+        border-radius: 5px;
+        font-size: 16px;
+        font-family: 'Inter';
+        color: #E52A45;
+        padding: 0.3em;
+        margin-top: 1em;
+        margin-left: -2em;
+    }
+    .div-cadastrar-cartao button:hover{
+        background-color: #e0d9d9;
+    }
+    .linha{
+        background-color: #000;
+        height: 20em;
+        margin-top: 1.7em;
+        width: 1px;
+        position: absolute;
+        margin-left: 20em;
+        }
+
+        .cartao-credito{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+    
+            width: 28em;
+            height: 13em;
+    
+            background: #EBEBEB;
+            border: 1px solid #000000;
+            border-radius: 10px;
+        }
+
+        .cartao-infos{
+            margin-left: 0em; margin-right: 0; margin-top: 1.2em;
+            .cartao-p-1{
+                margin-top: -0.5em;
+            }
+            p{
+                font-family: 'Dekko', sans-serif;
+                font-size: 20px;
+    
+                width: 9em;
+                margin-bottom: -.9em;
+            }
+        }
+        .cartao-inputs{
+            margin-top: .6em;
+        }
+        .cartao-inputs input:not(input[type="checkbox"]), select{
+            margin-bottom: .8em;
+            width: 14.5em;
+            height: 1.5em;
+    
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            border-radius: 5px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        input:focus, select:focus{
+            outline: none;
+        }
+        
+        #input-1{
+            margin-top: 1em;
+        }
+        #input-2{
+            margin-top: .1em;
+        }
+        #vencimento{
+            width: 5em; height: 1.5em;
+        }
+        #cvv{
+            width: 7.7em;
+            margin-bottom: 1em;
+        }
+        .select-parcela{
+            margin-top: .3em;
+        }
+    
+        .div-cupom{
+            margin-top: 2em;
+        }
+
+        .div-cadastrar-cartao{
+            margin-left: 15em;
+            margin-top: 5em;
+        }
+
+        .div-cadastrar-cartao h2{
+            margin-top: -2em;
+        }
+        
+
+}

@@ -21,6 +21,12 @@ import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
 import ProdutoCurtido from './pages/User/ProdutosCurtidos/index.js'
+import ConfiguracaoInicial from './pages/User/ConfInicial/index.js'
+import CentraldeAjuda from './pages/User/CentraldeAjuda/index.js'
+import Compras from './pages/User/Compras/index.js'
+import Dados from './pages/User/Dados/index.js'
+import Endereco from './pages/User/Endereco/index.js'
+import Pagamento from './pages/User/Pagamento/index.js'
 
 export default function Rotas (){
     return(
@@ -48,6 +54,13 @@ export default function Rotas (){
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
                 <Route path='/favoritos'                element={<ProdutoCurtido/>}/>
+                <Route path='/Config'                   element={<ConfiguracaoInicial/>}/>
+                <Route path='/CentralAjuda'             element={<CentraldeAjuda/>}/>
+                <Route path='/Compras'                  element={<Compras/>}/>
+                <Route path='/Dados'                    element={<Dados/>}/>
+                <Route path='/Endereco'                 element={<Endereco/>}/>
+                <Route path='/Pagamento'                element={<Pagamento/>}/>
+
             </Routes>
         </BrowserRouter>
     )
