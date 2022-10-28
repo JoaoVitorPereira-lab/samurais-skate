@@ -18,8 +18,6 @@ export default function ProdutoDetalhe() {
         const r = await BuscarProdutoPorID(id);
         console.log(r);
         setProduto(r);
-        
-        
     }
 
     function adicionarAoCarrinho() {
@@ -37,6 +35,22 @@ export default function ProdutoDetalhe() {
         }
 
         toast.dark('Produto adicionado ao carrinho')
+    }
+
+    function adicionarAoFavoritos() {
+        let favoritos = []
+        if (Storage('favoritos')) {
+            favoritos = Storage('favoritos');
+        }
+        if (!favoritos.find(item => item.id == - id)) {
+            favoritos.push({
+                id: id
+            })
+
+            Storage('favoritos', favoritos);
+        }
+
+        toast.dark('Produto adicionado aos favoritos')
     }
 
     function desc () {
@@ -93,7 +107,7 @@ export default function ProdutoDetalhe() {
                         </div>
 
                         <div className='div-btn-carrinho'>
-                            <div>
+                            <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
                                 <img src="/images/Favorite.png" alt="" />
                             </div>
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>

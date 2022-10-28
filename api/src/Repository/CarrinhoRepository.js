@@ -1,7 +1,7 @@
 import { con } from "./connection.js";
 
 /* BUSCAR POR ID */
-export async function BuscarPorIDFavoritos(id){
+export async function BuscarPorIDCarrinho(id){
     const comando = 
     `SELECT tb_produto.id_produto   id,
             nm_marca 		            nmmarca,

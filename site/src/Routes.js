@@ -20,7 +20,7 @@ import Promocoes from './pages/User/Promocoes/index.js'
 import DetalheProduto from './pages/User/DetalheProduto/index.js'
 import Carrinho from './pages/User/Carrinho/index.js'
 import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
-import ProdutoCurtido from './pages/User/ProdutosCurtidos/index.js'
+import Favoritos from './pages/User/Favoritos/index.js'
 import ConfiguracaoInicial from './pages/User/ConfInicial/index.js'
 import CentraldeAjuda from './pages/User/CentraldeAjuda/index.js'
 import Compras from './pages/User/Compras/index.js'
@@ -53,7 +53,7 @@ export default function Rotas (){
                 <Route path='/produto/:id/detalhe'      element={<DetalheProduto/>}/>
                 <Route path='/carrinho'                 element={<Carrinho/>}/>
                 <Route path='/ContinuarPedido'          element={<ContinuarPedido/>}/>
-                <Route path='/favoritos'                element={<ProdutoCurtido/>}/>
+                <Route path='/favoritos'                element={<Favoritos/>}/>
                 <Route path='/Config'                   element={<ConfiguracaoInicial/>}/>
                 <Route path='/CentralAjuda'             element={<CentraldeAjuda/>}/>
                 <Route path='/Compras'                  element={<Compras/>}/>

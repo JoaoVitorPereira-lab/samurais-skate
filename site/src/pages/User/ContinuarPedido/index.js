@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 import Storage from 'local-storage'
 
-import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
+import { BuscarPorIDCarrinho } from '../../../api/CarrinhoAPI'
 import { Listar } from '../../../api/EnderecoAPI'
 import { SalvarNovoPedido } from '../../../api/PedidoAPI'
 

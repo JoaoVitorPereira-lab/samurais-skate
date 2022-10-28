@@ -1,7 +1,7 @@
 import "./index.scss";
 
 import Storage from 'local-storage'
-import { BuscarPorIDCarrinho } from '../../../api/AdminAPI'
+import { BuscarPorIDCarrinho } from '../../../api/CarrinhoAPI'
 import Carrinho from '../../components/carrinhoItem'
 
 import Cabecalho from '../../components/cabecalho';

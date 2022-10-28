@@ -11,11 +11,7 @@ export default function CabecalhoUsuarioNavs(props) {
 
     const navigate = useNavigate()
     function TenisClick(){
-        navigate('/ConsultarTenis')
-        
-        setTimeout(() => {
-            navigate('/'); 
-        }, 3000);
+        navigate('/ConsultarTenis');
     }
 
     function MostrarPopUp(){
@@ -158,7 +154,7 @@ export default function CabecalhoUsuarioNavs(props) {
 
             <nav className="navs-container-grande">
                 <div className="div-navs">
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('skate')}>
+                    <Link to='/consultarskate' className={verificarMenuSelecionado('skate')}>
                         <div className="navs-produtos not">
                             <img src="/images/skate.png" className="imgs-nav" alt=""/>
                             <span> Skate </span>
@@ -172,21 +168,21 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                     </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('bone')}>
+                    <Link to='/consultarbone' className={verificarMenuSelecionado('bone')}>
                         <div className="navs-produtos">
                             <img src="/images/bone.png" className="imgs-nav" alt=""/>
                             <span> Boné </span>
                         </div>
                     </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('acessorios')}>
+                    <Link to='/consultaracessorios' className={verificarMenuSelecionado('acessorios')}>
                         <div className="navs-produtos">
                             <img src="/images/acessorios.png" className="imgs-nav" alt=""/>
                             <span> Acessórios </span>
                         </div>
                     </Link>
 
-                    <Link to='/consultartenis' className={verificarMenuSelecionado('promocao')}>
+                    <Link to='/promocoes' className={verificarMenuSelecionado('promocoes')}>
                         <div className="navs-produtos">
                             <img src="/images/promocoes.png" className="imgs-nav" alt=""/>
                             <span> Promoções </span>
@@ -205,7 +201,7 @@ export default function CabecalhoUsuarioNavs(props) {
             <nav className="navs-container-pequena">
                 <div className="div-navs">
                     <Menu>
-                        <Link to='/consultartenis' className={verificarMenuSelecionado('skate')}>
+                        <Link to='/consultarskate' className={verificarMenuSelecionado('skate')}>
                             <div className="navs-produtos not">
                                 <img src="/images/skate.png" className="imgs-nav" alt=""/>
                                 <span> Skate </span>
@@ -219,21 +215,21 @@ export default function CabecalhoUsuarioNavs(props) {
                             </div>
                         </Link>
 
-                        <Link to='/consultartenis' className={verificarMenuSelecionado('bone')}>
+                        <Link to='/consultarbone' className={verificarMenuSelecionado('bone')}>
                             <div className="navs-produtos">
                                 <img src="/images/bone.png" className="imgs-nav" alt=""/>
                                 <span> Boné </span>
                             </div>
                         </Link>
 
-                        <Link to='/consultartenis' className={verificarMenuSelecionado('acessorios')}>
+                        <Link to='/consultaracessorios' className={verificarMenuSelecionado('acessorios')}>
                             <div className="navs-produtos">
                                 <img src="/images/acessorios.png" className="imgs-nav" alt=""/>
                                 <span> Acessórios </span>
                             </div>
                         </Link>
 
-                        <Link to='/consultartenis' className={verificarMenuSelecionado('promocao')}>
+                        <Link to='/consultarPromocoes' className={verificarMenuSelecionado('promocoes')}>
                             <div className="navs-produtos">
                                 <img src="/images/promocoes.png" className="imgs-nav" alt=""/>
                                 <span> Promoções </span>

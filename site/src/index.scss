@@ -6,6 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fdfdfd;
+  overflow-x: hidden;
+}
+
+.titulo{
+  font-size: 20px;
 }
 
 button{

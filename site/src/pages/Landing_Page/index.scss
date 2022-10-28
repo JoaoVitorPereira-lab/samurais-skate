@@ -1,229 +1,219 @@
-.paf {
+.landing-page {
+    .paf {
+        div {
+            text-align: center;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: 800px;
+        }
 
 
+        @media (max-width:500px) {
+            .paf {
+                margin-bottom: 4em;
+            }
 
-    div {
+            img {
+                margin-top: 1em;
+                margin-left: 1em;
+                width: 94%;
+                height: 100%;
+            }
+        }
+
+
+        @media (max-width:464px) {
+            .paf {
+                margin-bottom: 4em;
+            }
+
+            img {
+                margin-top: 1em;
+                margin-left: 1em;
+                width: 94%;
+                height: 100%;
+            }
+        }
+
+        @media (max-width:414px) {
+            .paf {
+                margin-bottom: 4em;
+            }
+
+            img {
+                margin-top: 1em;
+                margin-left: 1em;
+                width: 92%;
+                height: 100%;
+            }
+        }
+
+        @media (max-width:360px) {
+            .paf {
+                margin-bottom: 4em;
+            }
+
+            img {
+                margin-top: 1em;
+                margin-left: 1em;
+                width: 90%;
+                height: 100%;
+            }
+        }
+    }
+
+    .aviso {
         text-align: center;
-
-        width: 100%;
-        height: 100%;
-
-
     }
 
 
-    img {
-
-        width: 100%;
-        height: 800px;
-
-    }
-
-
-    @media (max-width:500px) {
-        .paf {
-            margin-bottom: 4em;
-        }
-
-        img {
-            margin-top: 1em;
-            margin-left: 1em;
-            width: 94%;
-            height: 100%;
-        }
-    }
-
-
-    @media (max-width:464px) {
-        .paf {
-            margin-bottom: 4em;
-        }
-
-        img {
-            margin-top: 1em;
-            margin-left: 1em;
-            width: 94%;
-            height: 100%;
-        }
-    }
-
-    @media (max-width:414px) {
-        .paf {
-            margin-bottom: 4em;
-        }
-
-        img {
-            margin-top: 1em;
-            margin-left: 1em;
-            width: 92%;
-            height: 100%;
-        }
-    }
-
-    @media (max-width:360px) {
-        .paf {
-            margin-bottom: 4em;
-        }
-
-        img {
-            margin-top: 1em;
-            margin-left: 1em;
-            width: 90%;
-            height: 100%;
-        }
-    }
-}
-
-.aviso {
-    text-align: center;
-}
-
-
-.info {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 3em;
-
-.entrega {
-    display: flex;
-    flex-direction: column;
-   
-
- .carro {
-        height: 50px;
-        width: 50px;
-        position: absolute;
-    }
-
-    .vermelho,
-    .txt {
-        margin-left: 4em; 
-    }
-
-    .vermelho {
-        color: #E52A45;
-    }
-}
-}
-
-
-hr {
-    margin-top: 2em;
-    border-width: 1px;
-    border-color: #000;
-    background-color: #000;
-}
-
-
-.page{
-  
-    margin-top: 2em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-      
-  div:hover {
-
-    scale: 1.05;
-    cursor: pointer;
-    -webkit-transform: scaleX(1.0);
-        transform: scaleX(1.0);
-        -webkit-transition: all 0.3s ease-in 0s;
-        transition: all 0.3s ease-in-out 0s;
-  }
-
-  div:hover:before {
-        visibility: visible;
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-  }
-     
-}
-
-.marca {
-    display: flex;
-    justify-content: center;
-    padding: 3em;
-
-    .titulo {
-        text-align: center;
-        font-family: 'DELA GOTHIC ONE', cursive;
-        font-size: 46px;
-        font-weight: bold;
-    }
-  }
-
-  
-.texto{
-    text-align: center;
-
-    .titulo {
-        text-align: center;
-        font-family: 'DELA GOTHIC ONE', cursive;
-        font-size: 50px;
-        font-weight: bold;
-    }
-
-    .subtitulo {
-        font-family: 'INTER' , sans-serif;
-        font-size: 20px;
-        width: 7px;
-    }
-}
-
-.part5 {
-    margin-top: 7em;
-    margin-bottom: 12em;
-
-    .imgs {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .skate,
-    .tenis,
-    .bones {
-        font-size: 30px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        font-family: 'DELA GOTHIC ONE', cursive;
-        
-        
-    }
-
-    a {
+    .info {
         position: relative;
-        color: #000;
-        text-decoration: none;  
-      }
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 3em;
 
-      a:before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 3px;
-        bottom: 0;
-        left: 0;
+    .entrega {
+        display: flex;
+        flex-direction: column;
+    
+
+    .carro {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+        }
+
+        .vermelho,
+        .txt {
+            margin-left: 4em; 
+        }
+
+        .vermelho {
+            color: #E52A45;
+        }
+    }
+    }
+
+
+    hr {
+        margin-top: 2em;
+        border-width: 1px;
+        border-color: #000;
         background-color: #000;
-        visibility: hidden;
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transition: all 0.3s ease-in-out 0s;
-        transition: all 0.3s ease-in-out 0s;
-      }
+    }
 
-      a:hover:before {
-        visibility: visible;
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-      }
+
+    .page{
+    
+        margin-top: 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    div:hover {
+
+        scale: 1.05;
+        cursor: pointer;
+        -webkit-transform: scaleX(1.0);
+            transform: scaleX(1.0);
+            -webkit-transition: all 0.3s ease-in 0s;
+            transition: all 0.3s ease-in-out 0s;
+    }
+
+    div:hover:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    }
+        
+    }
+
+    .marca {
+        display: flex;
+        justify-content: center;
+        padding: 3em;
+
+        .titulo {
+            text-align: center;
+            font-family: 'DELA GOTHIC ONE', cursive;
+            font-size: 46px;
+            font-weight: bold;
+        }
+    }
+
+    
+    .texto{
+        text-align: center;
+
+        .titulo {
+            text-align: center;
+            font-family: 'DELA GOTHIC ONE', cursive;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .subtitulo {
+            font-family: 'INTER' , sans-serif;
+            font-size: 20px;
+            width: 7px;
+        }
+    }
+
+    .part5 {
+        margin-top: 7em;
+        margin-bottom: 12em;
+
+        .imgs {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .skate,
+        .tenis,
+        .bones {
+            font-size: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            font-family: 'DELA GOTHIC ONE', cursive;
+            
+            
+        }
+
+        a {
+            position: relative;
+            color: #000;
+            text-decoration: none;  
+        }
+
+        a:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            visibility: hidden;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        a:hover:before {
+            visibility: visible;
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+        }
+    }
 }
-
-  
-
-

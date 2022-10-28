@@ -38,9 +38,9 @@ export default function ConsultarAcessorio() {
     return (
         <main className='acessorio-container'>
 
-            <Cabecalho value={busca} selecionado='tenis' />
+            <Cabecalho value={busca} selecionado='acessorios' />
 
-            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / BONÉ</span></h1>
+            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / ACESSÓRIOS</span></h1>
 
             <div className='contents'>
                 <div className="filtros">

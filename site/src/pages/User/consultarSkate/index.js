@@ -38,7 +38,7 @@ export default function ConsultarSkate() {
     return (
         <main className='skate-container'>
 
-            <Cabecalho value={busca} selecionado='tenis' />
+            <Cabecalho value={busca} selecionado='skate' />
 
             <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / SKATE</span></h1>
 

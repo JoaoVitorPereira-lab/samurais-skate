@@ -7,6 +7,7 @@ import usuarioController from './controller/usuarioController.js'
 import adminController from './controller/adminController.js'
 import enderecoController from './Controller/enderecoController.js'
 import favoritosController from './Controller/FavoritosController.js'
+import carrinhoController from './Controller/CarrinhoController.js'
 import pedidoController from './Controller/pedidoController.js'
 
 // Configurando o Server
@@ -19,6 +20,7 @@ server.use(usuarioController)
 server.use(adminController)
 server.use(enderecoController)
 server.use(favoritosController)
+server.use(carrinhoController)
 server.use(pedidoController)
 
 

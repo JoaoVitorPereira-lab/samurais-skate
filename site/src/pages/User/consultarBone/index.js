@@ -38,7 +38,7 @@ export default function ConsultarBone() {
     return (
         <main className='bone-container'>
 
-            <Cabecalho value={busca} selecionado='tenis' />
+            <Cabecalho value={busca} selecionado='bone' />
 
             <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / BONÉ</span></h1>
 

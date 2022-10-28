@@ -1,13 +1,13 @@
 import { Router } from "express";
-import { BuscarPorIDFavoritos } from "../Repository/FavoritosRepository.js";
+import { BuscarPorIDCarrinho } from "../Repository/CarrinhoRepository.js";
 
 const server = Router();
 
-server.get('/api/favoritos/produto/:id', async (req, resp) =>{
+server.get('/api/carrinho/produto/:id', async (req, resp) =>{
     try
     {
         const id = Number(req.params.id);
-        const resposta = await BuscarPorIDFavoritos(id);
+        const resposta = await BuscarPorIDCarrinho(id);
   
         if(!resposta)
           resp.status(404).send([]);

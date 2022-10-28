@@ -38,9 +38,9 @@ export default function Promocoes() {
     return (
         <main className='promocao-container'>
 
-            <Cabecalho value={busca} selecionado='tenis' />
+            <Cabecalho value={busca} selecionado='promocoes' />
 
-            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / BONÉ</span></h1>
+            <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / PROMOÇOES</span></h1>
 
             <div className='contents'>
                 <div className="filtros">
