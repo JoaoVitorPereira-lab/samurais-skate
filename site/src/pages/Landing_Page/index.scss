@@ -140,7 +140,7 @@
         justify-content: center;
         padding: 3em;
 
-        .titulo {
+        .titulo-marca {
             text-align: center;
             font-family: 'DELA GOTHIC ONE', cursive;
             font-size: 46px;
@@ -169,12 +169,15 @@
     .part5 {
         margin-top: 7em;
         margin-bottom: 12em;
+        
 
         .imgs {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
+            height: 343px;
+            
         }
 
         .skate,
