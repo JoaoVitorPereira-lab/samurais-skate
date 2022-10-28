@@ -165,3 +165,11 @@ export async function Promocoes() {
   const [resposta] = await con.query(comando);
   return resposta;
 }
+
+export async function ListarNomeCartao(id){
+  const comando = `select nm_cartao	nome
+  from tb_cartao
+where id_login_usuario =?`
+  const[resposta] = await con.query(comando,[id])
+  return resposta; 
+}

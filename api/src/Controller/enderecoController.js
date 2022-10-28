@@ -5,7 +5,7 @@ const server = Router();
 
 server.get('/api/usuario/:id/endereco', async (req, resp) =>{
     try {
-        const id = req.params.id;
+        const {id}= req.params;
 
         const r = await Listar(id);
 

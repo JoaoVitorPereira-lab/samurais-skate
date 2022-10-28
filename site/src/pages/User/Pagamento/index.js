@@ -1,7 +1,9 @@
 import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import storage from 'local-storage'
+import { BuscarCartao } from '../../../api/UsuarioApi'
 
 import "./index.scss";
 
@@ -10,6 +12,22 @@ export default function Pagamento() {
   const[numero,setNumero] = useState()
   const[vencimeto,setVencimento] = useState()
   const[cvv,setCvv] = useState()
+  const[usuario,setUsuario] = useState()
+  const[cartao,setCartao] = useState([])
+  
+  async function BuscarCartoes (){
+
+    const resposta = await BuscarCartao(usuario)
+    setCartao(resposta)
+  }
+ 
+  useEffect(() =>{
+    if(storage('usuario-logado')){
+        const nome = storage('usuario-logado')
+        setUsuario(nome.id)
+    }
+    BuscarCartoes();
+},[])
 
   return (
     <main className="main-pagamento">
@@ -23,12 +41,20 @@ export default function Pagamento() {
 
         <div className="div-cartoes-pagamento">
           <div className="div-column-pagamento">
-            <h2> Cadastrados: </h2>
-            <div className="div-cartoes-cadastrados">
-              <h3> Inter </h3>
+              <div className="nomes">
+              <h2> Cadastrados: </h2>
+              {cartao.map(item =>
+                <div className="div-cartoes-cadastrados">
+                  <h3> {item.nome} </h3>
+                </div>
+                )}
+              
+             </div>
+            
             </div>
-            <div className="linha"> </div>
-          </div>
+            
+          
+            <div className="linha"> </div>  
           <div className="div-cadastrar-cartao">
             <h2> Cadastrar: </h2>
             <div className="cartao-credito">

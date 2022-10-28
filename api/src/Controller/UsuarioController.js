@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, buscarAvaliacao, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes} from '../repository/usuarioRepository.js'
+import { ListarNomeCartao,CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, buscarAvaliacao, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -204,4 +204,16 @@ server.get('/api/produtos/promocoes', async (req, resp) =>{
     }
 })
 
+server.get('/api/cartao/:id/nome', async (req,resp) =>{
+    try {
+        const {id} = req.params;
+
+        const r = await ListarNomeCartao(id);
+        resp.send(r)
+    } catch (err) {
+        resp.status(400).send({
+            erro:err.message
+        })
+    }
+})
 export default server;
