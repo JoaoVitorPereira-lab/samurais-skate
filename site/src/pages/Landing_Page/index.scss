@@ -189,13 +189,15 @@
             
         }
 
-        a {
+        li{
+            cursor: pointer;
             position: relative;
             color: #000;
-            text-decoration: none;  
+            text-decoration: none;
+            list-style-type: none
         }
 
-        a:before {
+        li:before {
             content: "";
             position: absolute;
             width: 100%;
@@ -210,7 +212,7 @@
             transition: all 0.3s ease-in-out 0s;
         }
 
-        a:hover:before {
+        li:hover:before {
             visibility: visible;
             -webkit-transform: scaleX(1);
             transform: scaleX(1);

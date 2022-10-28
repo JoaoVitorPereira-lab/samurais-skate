@@ -30,6 +30,7 @@ export default function PageConsultarProduto(){
 
     async function CarregarProdutos(){
         const resp = await ConsultarProduto();
+        console.log(resp);
         setProduto(resp); 
     }
 

@@ -1,6 +1,6 @@
 import './index.scss'
 import { useRef, useState } from "react"
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { toast } from 'react-toastify'
 import Carousel from "react-multi-carousel";
@@ -138,43 +138,40 @@ export default function Landing_Page() {
             <section className='part5'>
 
                 <div className='imgs'>
+                    <Link to='/consultarskate'>
+                        <img src={images13}/>
+                        <p></p>
+                        <label className='skate'>
+                            <li>
+                                Skates
+                            </li>
+                        </label>
+                    </Link>
 
-                <div>
-                    <img src={images13}/>
-                    <p></p>
-                    <label className='skate'>
-                        <a href="#">
-                            Skates
-                        </a>
-                    </label>
-                    </div>
+                    <Link to='/consultarbone'>
+                        <img src={images14}/>
+                        <p></p>
+                        <label className='bones'>
+                            <li>
+                                Bonés
+                            </li>
+                        </label>
+                    </Link>
 
-                    <div>
-                    <img src={images14}/>
-                    <p></p>
-                    <label className='bones'>
-                        <a href="#">
-                            Bonés
-                        </a>
-                    </label>
-                    </div>
-
-                    <div>
-                    <img src={images15}/>
-                    <p></p>
-                    <label className='tenis'>
-                        <a href="#">
-                            Tênis
-                        </a>
-                    </label>
-                    </div>
-                    
-                    
+                    <Link to='/consultartenis'>
+                        <img src={images15}/>
+                        <p></p>
+                        <label className='tenis'>
+                            <li>
+                                Tênis
+                            </li>
+                        </label>
+                    </Link>
                 </div>
 
             </section>
 
-            <Rodape></Rodape>
+            <Rodape />
 
         </main>
     );
