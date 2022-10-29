@@ -117,9 +117,11 @@ create table tb_produto_curtido (
 	ID_PRODUTO_CURTIDO 	int primary key auto_increment,
 	ID_PRODUTO				int,
     ID_CONTA_USUARIO		int,
+    ID_IMAGEM_PRODUTO		int,
     
     foreign key (ID_CONTA_USUARIO) references tb_conta_usuario (ID_CONTA_USUARIO),
-    foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
+    foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO),
+    foreign key (ID_IMAGEM_PRODUTO) references tb_imagem_produto (ID_IMAGEM_PRODUTO)
 );
 
 -- Tabela do status do pedido
