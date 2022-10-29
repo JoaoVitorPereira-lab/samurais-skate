@@ -141,7 +141,7 @@
         content: "";
         position: absolute;
         width: 100%;
-        height: 3px;
+        height: 2px;
         bottom: -2px;
         left: 0;
         background: #000;
@@ -158,10 +158,7 @@
         transform: scaleX(1);
     }
 
-
     .descs-txt {
         align-self: flex-start;
     }
-
-    
 }
