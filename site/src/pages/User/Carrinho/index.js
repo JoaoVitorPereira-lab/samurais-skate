@@ -1,13 +1,15 @@
 import "./index.scss";
 
 import Storage from 'local-storage'
+import { toast } from 'react-toastify'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { BuscarPorIDCarrinho } from '../../../api/CarrinhoAPI'
 import Carrinho from '../../components/carrinhoItem'
 
 import Cabecalho from '../../components/cabecalho';
 import Rodape from '../../components/rodape';
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function PageCarrinho(){
     const [itens, setItens] = useState([]);
@@ -47,7 +49,13 @@ export default function PageCarrinho(){
         carrinho = carrinho.filter(item => item.id != id);
 
         Storage('carrinho', carrinho);
-        CarregarCarrinho();
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Carrinho vazio, coloque um item no carrinho')
+            navigate('/')
+        }
+        else{
+            CarregarCarrinho();
+        }
     }
 
     // function remover() {
@@ -56,14 +64,20 @@ export default function PageCarrinho(){
 
     function calcularSubtotal() {
         let t = 0;
-        for (let item of itens)
+        for (let item of itens){
             t = t + item.produto.preco * item.qtd;
-        
+        }
         return t;
     }
 
     useEffect(() => {
-        CarregarCarrinho();
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Coloque um item no carrinho')
+            navigate('/')
+        }
+        else{
+            CarregarCarrinho();
+        }
     }, [])
     
     return(

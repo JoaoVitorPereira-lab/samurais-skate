@@ -37,7 +37,7 @@ export default function Carrinho({ item: { produto: { id, nome, preco, imagem },
                 <option>5</option>
             </select>
 
-            <span className='preco-produto'> {preco} </span>
+            <span className='preco-produto'> {preco.replace(".", ",")} </span>
         </div>
     )
 }

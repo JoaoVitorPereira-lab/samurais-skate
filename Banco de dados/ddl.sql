@@ -156,8 +156,6 @@ create table tb_pedido (
     id_cupom			int,
     dt_pedido			datetime,
     cod_nota_fiscal		varchar(200),
-    tp_frete			varchar(200),
-    vl_frete			decimal(15,2),
     ds_status			varchar(200),
     tp_pagamento		varchar(200),
     foreign key (id_conta_usuario) references tb_conta_usuario (ID_CONTA_USUARIO),
