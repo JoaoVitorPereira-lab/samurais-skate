@@ -72,7 +72,7 @@ export default function PageCarrinho(){
 
     useEffect(() => {
         if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Coloque um item no carrinho')
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
         else{

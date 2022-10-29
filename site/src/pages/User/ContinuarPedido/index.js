@@ -129,7 +129,7 @@ export default function ContinuarPedido(){
             navigate('/Login')
         }
         if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Coloque um item no carrinho')
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
         CarregarItens();
