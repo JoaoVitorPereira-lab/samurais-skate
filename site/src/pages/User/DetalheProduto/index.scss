@@ -5,25 +5,31 @@
     flex-direction: column;
     align-items: center;
     .Nome-samurais{
-        position: absolute;
-        width: 607px;
-        height: 67px;
-        left: 401px;
+        
 
         font-family: 'Dela Gothic One';
         font-style: normal;
         font-weight: 400;
-        font-size: 46px;
+        font-size: 40px;
         line-height: 67px;
     }
     .div-detalhes{
         display: flex;
         flex-direction: row;
-        margin-top: 20em;
+        margin-top: 5em;
         width: 50em;
         justify-content: space-between;
         margin-left: 10em;
     }
+
+    .div-detalhes-pai {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 76%;
+        border: solid 1px black;
+    }
+
     .nome-produto {
         font-family: 'Dekko';
         font-style: normal;
@@ -101,9 +107,58 @@
     hr {
         margin-top: 2em;
         border-width: 1px;
-        width: 100em;
+        width: 100%;
         height: 2px;
         border-color: #000;
         background-color: #000;
+    }
+
+    .descs {
+        display: flex;
+        align-self: flex-start;
+        font-family: 'Dela Gothic One';
+        font-size: 17px;
+    }
+
+    .descs label {
+        margin: 0em 1em
+    }
+
+    .descricao {
+        margin: 0em 1em 0em 0em !important;
+    }
+
+    li{
+        cursor: pointer;
+        position: relative;
+        color: #000;
+        text-decoration: none;
+        list-style-type: none;
+        
+    }
+
+    li:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: #000;
+        visibility: hidden;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    li:hover:before {
+        visibility: visible;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+
+    .descs-txt {
+        align-self: flex-start;
     }
 }

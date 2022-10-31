@@ -4,9 +4,9 @@ export default function Rodape(){
     return(
         <section className='rodape-container'>
             <div className="div-separa-container">
-                <div>
+                <a href="/">
                     <img src="/images/logo.png" alt="" className="logo-rodape"/>
-                </div>
+                </a>
 
                 <div className='div-contatos'>
                     <h2 className='h2-contatos'> Contatos </h2>

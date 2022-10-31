@@ -24,7 +24,6 @@ server.post('/api/pedido/:idUsuario', async (req, resp) => {
 
         resp.status(204).send();
     } catch (err) {
-        console.log(err);
         resp.status(400).send({
             erro: err.message
         })

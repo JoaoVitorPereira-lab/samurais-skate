@@ -1,6 +1,6 @@
 import './index.scss'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify'
 
@@ -128,6 +128,10 @@ export default function ContinuarPedido(){
         if(!Storage("usuario-logado")){
             navigate('/Login')
         }
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
+            navigate('/')
+        }
         CarregarItens();
         CarregarEnderecos();
     },[])
@@ -137,7 +141,9 @@ export default function ContinuarPedido(){
             <ModalEndereco exibir={exibirEndereco} fechar={fecharNovoEndereco} />
 
             <header className="header-pedido">
-                <img src="/images/logo-branco.gif" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
+                <Link to='/'>
+                    <img src="/images/logo-branco.gif" alt="" width="200" height="200" style={{ marginLeft: 40 }}/>
+                </Link>
 
                 <div className="div-finalizarpedido">
                     <text> Total: </text>

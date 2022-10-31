@@ -19,27 +19,21 @@
     }
     .sec-1 hr{
         margin-top: 3em;
-        width: 90%;
+        width: 95%;
         border: 1px solid #000000;
         transform: rotate(-0.09deg);
     }
-    .excluir{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
 
+    .sec-carrinho-item{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
         width: 100%;
     }
-    .botao-excluir{
-        font-size: 14px;
-        text-transform: uppercase;
-        font-weight: 700;
-        text-decoration: underline;
-        cursor: pointer;
-        
-        margin-left: 2em;
-        margin-bottom: -6em;
+    .div-carrinho-item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 /* FINAL SECTION 1 */
 
@@ -110,30 +104,105 @@
         font-size: 22px;
         font-family: 'Dela Gothic One', cursive;
     }
-    .div-total div > p{
-        line-height: .1em;
-        font-size: 14px;
-        font-family: 'Dekko', sans-serif;
-    }
 /* FINAL SECTION 2 */
 
 
 /* COMEÇO SECTION 3 */
 
     .sec-3 button{
-        width: 15em;
-        height: 3em;
-        margin: 1em 4.4em 10em 0;
+        width: 17em;
+        height: 3.5em;
+        margin: 1em 5.9em 10em 0;
         float: right;
 
         background-color: #E52A45;
         border: transparent;
         border-radius: .5em;
-
+    }
+    .sec-3 button span{
         font-size: 18px;
         font-family: 'Dela Gothic One', cursive;
         color: #ffffff;
     }
 
 /* FINAL SECTION 3 */
+
+/* RESPONSIVIDADE */
+
+    @media screen and (max-width: 1024px) {
+        .sec-carrinho-item{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-right: 3em;
+        }
+
+        .div-right > text,
+        .div-left span{
+            font-size: 18px;
+        }
+        .div-right span,
+        .div-left p,
+        .div-total > span,
+        .sec-3 button span{
+            font-size: 16px;
+        }
+        .div-right hr{
+            width: 450px;
+        }
+        .div-total > div{
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+        }
+        .div-total div > text{
+            font-size: 20px;
+        }
+
+        .sec-3 button{
+            width: 16em;
+            margin: 1em 6em 10em 0;
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        .sec-2{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .div-left{
+            width: 90%;
+            margin-left: 0;
+        }
+
+        .div-right{
+            width: 90%;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .div-right hr{
+            margin-top: .8em;
+            width: 100%;
+        }
+
+        .sec-3 button{
+            width: 16em;
+            margin: 1em 1em 10em 0;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .sec-carrinho-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-right: 0;
+        }
+        .sec-1 > p{
+            font-size: 20px;
+        }
+    }
 }

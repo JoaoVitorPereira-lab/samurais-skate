@@ -200,7 +200,7 @@ export default function CabecalhoUsuarioNavs(props) {
             
             <nav className="navs-container-pequena">
                 <div className="div-navs">
-                    <Menu>
+                    <Menu pageWrapId={"page-wrap"} outerContainerId={"App"} className="aa">
                         <Link to='/consultarskate' className={verificarMenuSelecionado('skate')}>
                             <div className="navs-produtos not">
                                 <img src="/images/skate.png" className="imgs-nav" alt=""/>
@@ -237,9 +237,10 @@ export default function CabecalhoUsuarioNavs(props) {
                         </Link>
                     </Menu>
                 </div>
+                
 
                 <div className="div-buscar">
-                    <input type="text" className="buscar-input" placeholder="Buscar" value={props.value} onChange={props.change} />
+                    <input type="text" className="buscar-input" placeholder="Buscar" onChange={props.change} />
                     <div>
                         <img src="/images/buscar.png" className="buscar-img" alt="" onClick={Search} />
                     </div>

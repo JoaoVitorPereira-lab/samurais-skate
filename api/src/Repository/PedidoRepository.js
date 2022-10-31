@@ -37,8 +37,8 @@ export async function inserirPagamento(idPedido, novoPagamento) {
                 nr_cartao,
                 dt_vencimento,
                 cod_seguranca,
-                nr_parcelas,
-                ds_forma_pagamento
+                ds_forma_pagamento,
+                nr_parcelas
             )
             VALUES (?, ?, ?, ?, ?, ?, ?);
     `

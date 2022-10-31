@@ -197,14 +197,6 @@
         position: absolute;
         margin-top: -1.5em;
     }
-    @media screen and (max-width: 500px){
-        img:not(.img-logo){
-            width: 30px;
-        }
-        .img-logo{
-            width: 100px; height: 100px;
-        }
-    }
 
     @media screen and (max-width: 1200px){
         .navs-container-grande{
@@ -216,9 +208,114 @@
             justify-content: space-between;
             align-items: center;
             
-            width: 10em;
-            min-height: 8em; height: 10em;
+            width: 100%;
+            min-height: 8em;
             background-color: #E52A45;
+        }
+
+        .navs-produtos{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .navs-produtos span{
+            font-family: 'Dela Gothic One', cursive;
+            color: #fff;
+            font-size: 16px;
+            margin-left: 1em;
+        }
+        .imgs-nav{
+            width: 30px; height: 30px;
+            user-select: none;
+        }
+
+        .bm-burger-bars {
+            background: #ffffff;
+        }
+        .bm-cross-button {
+            margin-top: -11em;
+        }
+        .bm-cross {
+            background: #ffffff;
+        }
+        .bm-burger-button {
+            position: relative;
+            margin-top: -3em;
+            width: 36px;
+            height: 30px;
+            left: 36px;
+            top: 36px;
+        }
+        .bm-menu {
+            background: #E52A45;
+            margin-top: -11.1em;
+            padding: 2.5em 0 0 0;
+        }
+        .div-buscar{
+            margin-right: 2.5em;
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        img:not(.img-logo, .buscar-img){
+            width: 30px;
+        }
+        .img-logo{
+            width: 100px; height: 100px;
+        }
+
+        .div-buscar{
+            display: flex;
+            flex-direction: row;
+            position: relative;
+    
+            margin-top: .5em;
+        }
+        .buscar-input{
+            padding-right: 3em;
+            width: 150px;
+            height: 45px;
+        }
+        .buscar-input,
+        .buscar-input::placeholder,
+        .buscar-input:focus {
+            font-size: 16px;
+        }
+        .buscar-img{
+            margin-top: .5em;
+            width: 30px;
+            height: 30px;
+        }
+
+        
+        .navs-container-pequena .bm-menu {
+            background: #E52A45;
+            margin-top: -9.4em;
+            padding: 2.5em 0 0 0;
+        }
+        .navs-container-pequena .bm-cross-button {
+            margin-top: -9.4em;
+        }
+    }
+
+    @media screen and (max-width: 360px){
+        .div-buscar{
+            margin-right: 1.5em;
+        }
+        .buscar-input{
+            padding-right: 3em;
+            width: 120px;
+            height: 45px;
+        }
+        .buscar-input,
+        .buscar-input::placeholder,
+        .buscar-input:focus {
+            font-size: 16px;
+        }
+        .buscar-img{
+            margin-top: .5em;
+            width: 30px;
+            height: 30px;
         }
     }
 }

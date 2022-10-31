@@ -85,3 +85,9 @@ export async function ListarPromocoes(){
     const resposta = await api.get('/api/produtos/promocoes')
     return resposta.data
 }
+
+//Buscar Nome Cartões
+export async function BuscarCartao(id){
+    const resposta = await api.get('/api/cartao/' + id + '/nome')
+    return resposta.data
+}
