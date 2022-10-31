@@ -44,24 +44,6 @@ export default function PageCarrinho(){
         return total + 20;
     }
 
-    function removerItem(id) {
-        let carrinho = Storage('carrinho');
-        carrinho = carrinho.filter(item => item.id != id);
-
-        Storage('carrinho', carrinho);
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Carrinho vazio, coloque um item no carrinho')
-            navigate('/')
-        }
-        else{
-            CarregarCarrinho();
-        }
-    }
-
-    // function remover() {
-    //     removerItem(itens.id);
-    // }
-
     function calcularSubtotal() {
         let t = 0;
         for (let item of itens){
@@ -87,14 +69,11 @@ export default function PageCarrinho(){
             <section className="sec-1">
                 <p> Samurai’s Skate Shop </p>
 
-                {itens.map(item =>
-                    <div className="excluir">
-                        <Carrinho item={item} />
-                        <div onClick={() => removerItem(item.produto.id)} className="botao-excluir">
-                            Excluir
-                        </div>
-                    </div>
-                )}
+                <section className="sec-carrinho-item">
+                    {itens.map(item =>
+                        <Carrinho item={item} toast={toast} navigate={navigate} CarregarCarrinho={CarregarCarrinho()}/>
+                    )}
+                </section>
                 
                 <hr/>
             </section>
@@ -141,7 +120,7 @@ export default function PageCarrinho(){
                         } catch (err) {
                                 
                         }
-                    }}> Fechar Pedido </button>
+                    }}> <span>Fechar Pedido</span> </button>
             </section>
 
             <Rodape />
