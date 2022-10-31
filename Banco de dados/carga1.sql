@@ -1,5 +1,23 @@
 use samuraisdb;
 
+select nm_produto	nome,
+	   nr_preco		preco,
+       ds_imagem	imagem
+  from tb_produto_curtido
+  join tb_produto 			on tb_produto_curtido.id_produto 		= tb_produto.id_produto
+  join tb_imagem_produto 	on tb_produto_curtido.id_imagem_produto = tb_imagem_produto.id_imagem_produto
+ where id_conta_usuario = 1;
+
+select dt_pedido		dt,
+	   cod_nota_fiscal	codigo,
+       ds_status		stts,
+	   nm_usuario		nome
+  from tb_pedido
+  join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario;
+
+select * from tb_pedido;
+select * from tb_produto;
+
 -- ADMIN
 insert into tb_admin (ds_email, ds_senha)
 			 values ('admin@admin.com', 'pedroatacantedohexa');

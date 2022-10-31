@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Landing_Page  from './pages/Landing_Page/index.js'
+import LandingPage  from './pages/Landing_Page/index.js'
 
 import Login from './pages/User/Login'
 
 import CadastrarProduto from './pages/Admin/cadastrarProduto'
 import ConsultarProduto from './pages/Admin/consultarProduto'
+import ConsultarPedido from './pages/Admin/consultarPedido'
 
 import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
@@ -32,7 +33,7 @@ export default function Rotas (){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/'                         element={<Landing_Page/>}/>
+                <Route path='/'                         element={<LandingPage/>}/>
                 
                 <Route path='/Login'                    element={<Login/>} />
                 <Route path='/CriarConta'               element={<CadastroConta/>} />   
@@ -40,6 +41,7 @@ export default function Rotas (){
                 <Route path='/cadastrarproduto'         element={<CadastrarProduto/>}/>
                 <Route path='/alterarproduto/:idParam'  element={<CadastrarProduto/>}/>
                 <Route path='/consultarproduto'         element={<ConsultarProduto/>}/>
+                <Route path='/consultarpedido'          element={<ConsultarPedido/>}/>
 
                 <Route path='/teste'                    element={<Teste/>}/>
                 <Route path='/Login/adm'                element={<LoginAdm/>} />
