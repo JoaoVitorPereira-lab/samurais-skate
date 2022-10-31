@@ -9,7 +9,7 @@ import Cabecalho from "../../components/cabecalho";
 import Rodape from '../../components/rodape'
 import { Link, useNavigate } from "react-router-dom";
 
-export default function ProdutoDetalhe() {
+export default function Favoritos() {
 
     const [itens, setItens] = useState([]);
 
