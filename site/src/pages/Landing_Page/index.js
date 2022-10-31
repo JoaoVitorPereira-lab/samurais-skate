@@ -1,4 +1,5 @@
 import './index.scss'
+import './1200.scss'
 import { useRef, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
@@ -67,7 +68,7 @@ export default function Landing_Page() {
                     draggable={false}
 
                     responsive={responsive}
-                    ssr={true} // means to render carousel on server-side.
+                    ssr={true}
 
 
                     infinite={true}
