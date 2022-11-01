@@ -105,20 +105,56 @@ select id_admin    id
    
 -- ------------------------------------------------
 
--- CONSULTAR TENIS (USER)
+-- CONSULTAR SKATE (USER)
 
-select nm_produto, nr_preco, nr_estrela, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
-from tb_produto_avaliacao
-	join tb_produto on tb_produto.id_produto = tb_produto_avaliacao.id_produto
+select nm_produto, nr_preco, tb_tipo.id_tipo, id_tipo_skate, id_categoria, bt_importado, ds_imagem, tb_produto.id_produto 
+from tb_produto
 	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
 	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "";
+where nm_tipo = "Skate";
 
--- Consultar tenis por nome
-select nm_produto ,
-	   nr_preco, vl_avaliacao, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto
-  from tb_produto
-join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
-join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Tênis"
-and nm_produto like '%a%';
+-- CONSULTAR TENIS (USER)
+
+select nm_produto, nr_preco, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
+from tb_produto
+	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Tênis";
+
+-- CONSULTAR BONÉ (USER)
+
+select nm_produto, nr_preco, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
+from tb_produto
+	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Boné";
+
+-- CONSULTAR ACESSÓRIOS (USER)
+
+select nm_produto, nr_preco, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
+from tb_produto
+	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where nm_tipo = "Acessórios";
+
+-- CONSULTAR PROMOÇÕES (USER)
+
+select nm_produto, nr_preco, id_tipo, ds_imagem, tb_produto.id_produto 
+from tb_produto
+	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+where bt_promocao = 1;
+
+-- avaliacao
+select format(avg(nr_estrela), 1)  avaliacao,
+		tb_produto.id_produto		id
+	from tb_produto_avaliacao
+inner join tb_produto on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+	where tb_produto.id_tipo = 3
+group by tb_produto.id_produto;
+
+-- avaliacao(detalhe)
+select nm_usuario, nm_sobrenome, nr_estrela, ds_avaliacao 
+	from tb_produto_avaliacao
+inner join tb_conta_usuario on tb_conta_usuario.id_conta_usuario = tb_produto_avaliacao.id_conta_usuario
+	where tb_conta_usuario.id_conta_usuario = 1;
+
