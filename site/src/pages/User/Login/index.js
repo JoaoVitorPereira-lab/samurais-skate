@@ -1,9 +1,10 @@
 import "./index.scss"
 import { EntrarLogin } from '../../../api/UsuarioApi.js'
-import strorage from 'local-storage'
+import storage from 'local-storage'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
+import { LoginAdm } from "../../../api/AdminAPI"
 
 
 export default function Login() {
@@ -34,16 +35,26 @@ export default function Login() {
         setCarregando(true);
 
         try {
-            const r = await EntrarLogin(email, senha)
-            strorage('usuario-logado', r)
+            const r = await LoginAdm(email, senha)
+            storage('admin-logado', r)
             setTimeout(() => {
-                navigate('/'); 
+                navigate('/cadastrarProduto'); 
             }, 3000);
         }
         catch (err) {
-          if(err.response.status === 401){
-                ref.current.complete()
-                setErro(err.response.data.Erro)
+
+            try {
+                const r = await EntrarLogin(email, senha);
+                storage('usuario-logado', r)
+                setTimeout(() => {
+                    navigate('/'); 
+                }, 3000);
+            } 
+            catch (err2) {
+                if(err2.response.status === 401){
+                    ref.current.complete()
+                    setErro(err2.response.data.Erro)
+                }
             }
         }
     }

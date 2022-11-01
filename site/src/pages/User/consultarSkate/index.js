@@ -19,21 +19,18 @@ export default function ConsultarSkate() {
         
     }
 
-    async function CarregarAvaliacoes() {
-        const resp = await buscarAvaliacao(produto[0].tipo);
-        setAval(resp);
-    }
+   
 
     useEffect(() => {
         CarregarProdutos();
-        CarregarAvaliacoes();
+        
     }, [])
 
     function AbrirDetalhes(id) {
         navigate('/produto/' + id + '/detalhe')
     }
 
-    
+    console.log(produto);
 
     return (
         <main className='skate-container'>
@@ -51,7 +48,7 @@ export default function ConsultarSkate() {
                         <div className='div-produto' onClick={() => AbrirDetalhes(item.id)}>
                             <img src={buscarimagem(item.imagem)} height='100px' width="auto" />
                             <h3 className='largura-h3'>{item.produto}</h3>
-                            <img src="../images/aval3.png" alt="" />
+                            {buscarAvaliacao(item.id)}
                             <h4>por: R${item.preco.replace(".", ",")}</h4>
                         </div>
                     )}
