@@ -173,3 +173,12 @@ where id_login_usuario =?`
   const[resposta] = await con.query(comando,[id])
   return resposta; 
 }
+
+export async function CadastrarCartao (novoCartao){
+  const comando = `INSERT INTO tb_cartao (id_login_usuario, nm_cartao, ds_numero, dt_vencimento, ds_cvv)
+                   VALUES (?, ?, ?, ?, ?);`
+  const [resposta] = await con.query (comando,[novoCartao.id, novoCartao.nome, novoCartao.numero,novoCartao.vencimento, novoCartao.cvv])
+  novoCartao.id = resposta.insertId;
+
+  return novoCartao;
+}

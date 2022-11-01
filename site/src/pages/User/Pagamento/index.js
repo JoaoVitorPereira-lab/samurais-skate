@@ -3,7 +3,8 @@ import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 import { useState, useEffect } from "react";
 import storage from 'local-storage'
-import { BuscarCartao } from '../../../api/UsuarioApi'
+import { BuscarCartao, CadastrarCartao } from '../../../api/UsuarioApi'
+import { toast } from "react-toastify"
 
 import "./index.scss";
 
@@ -14,6 +15,7 @@ export default function Pagamento() {
   const[cvv,setCvv] = useState()
   const[usuario,setUsuario] = useState()
   const[cartao,setCartao] = useState([])
+  const [id,setId] = useState(0)
   
   useEffect(() =>{
     if(storage('usuario-logado')){
@@ -32,10 +34,33 @@ export default function Pagamento() {
     const resposta = await BuscarCartao(usuario)
     setCartao(resposta)
   }
- 
-  useEffect(() =>{
-    BuscarCartoes();
-},[])
+
+  async function CadstrarCartaoClick (){
+    try {
+     const novoCartao = await CadastrarCartao (usuario,nome,numero,vencimeto,cvv)
+     console.log(novoCartao)
+     
+     toast.dark('Cartão cadastrado com sucesso 🚀'); 
+
+      setId(novoCartao.id);
+    } 
+    
+    catch (err) {
+      if (err.response)
+          toast.dark(err.response.data.erro)
+      else {
+          toast.dark(err.message)
+      }
+  }
+  }      
+    
+   
+  
+    
+      useEffect(() =>{
+        Pegarid();
+        BuscarCartoes();
+    },[])
 
   return (
     <main className="main-pagamento">
@@ -50,7 +75,7 @@ export default function Pagamento() {
         <div className="div-cartoes-pagamento">
           <div className="div-column-pagamento">
               <div className="nomes">
-              <h2> Cadastrados: </h2>
+              <h2> Cadstrados: </h2>
               {cartao.map(item =>
                 <div className="div-cartoes-cadastrados">
                   <h3> {item.nome} </h3>
@@ -74,17 +99,17 @@ export default function Pagamento() {
               </div>
 
               <div className="cartao-inputs">
-                <input  type="text" />
+                <input value={nome}  type="text" maxlength="10" onChange={e => setNome(e.target.value)}/>
                 <br />
-                <input className="input-numero" type="number" />
+                <input value={numero} className="input-numero" type="number"  minLength={1} maxLength={16} onChange={e => setNumero(e.target.value)}/>
                 <br />
-                <input className="input-vencimeto" type="number" />
+                <input value={vencimeto} className="input-vencimeto" type="text" maxLength={5} onChange={e => setVencimento (e.target.value)} />
                 <br />
-                <input type="text" />
+                <input value={cvv} type="number" min={1} max={3} onChange={e => setCvv(e.target.value)}/>
                 <br />
                 <div>
                     <div className="botao-cadastro-cartao">
-                        <button> Salvar </button>
+                        <button onClick={CadstrarCartaoClick}> Salvar </button>
                     </div>                  
                 </div>
               </div>

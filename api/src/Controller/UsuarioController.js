@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { ListarNomeCartao,CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, buscarAvaliacao, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes} from '../repository/usuarioRepository.js'
+import { ListarNomeCartao,CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, buscarAvaliacao, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, CadastrarCartao} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -216,4 +216,32 @@ server.get('/api/cartao/:id/nome', async (req,resp) =>{
         })
     }
 })
+
+server.post('/api/cartao', async (req, resp) => {
+    try {
+      const novoCartao = req.body;
+      
+  
+      if (!novoCartao.nome) throw new Error("Nome do cartão é obrigatório!");
+  
+      if (!novoCartao.numero || novoCartao.numero <= 0) throw new Error("Numero do cartao é obrigatória!");
+  
+      if (!novoCartao.id) throw new Error("id do usuário é obrigatório!");
+  
+      if (!novoCartao.vencimento) throw new Error("Vencimento do cartão é obrigatório!");
+  
+      if (!novoCartao.cvv) throw new Error("cvv do cartão é obrigatório!");
+  
+     const resposta = await CadastrarCartao (novoCartao)
+      
+      resp.send(resposta);
+    } 
+    catch (err) {
+      resp.status(400).send({
+        erro: err.message,
+      });
+    }
+  });
+
+
 export default server;
