@@ -173,3 +173,21 @@ export async function CadastrarCartao (novoCartao){
 
   return novoCartao;
 }
+
+export async function AlterarInfosConta (infos,id){
+  const comando =`update tb_conta_usuario
+                  set nm_usuario = ?,
+                      nm_sobrenome = ?
+                  where id_conta_usuario = ?`
+  const [resposta] = await con.query(comando,[infos.nome, infos.sobrenome, id])
+  return resposta.affectedRows;
+}
+
+export async function AlterarInfosLogin (infos,id){
+  const comando = `update tb_login_usuario
+                   set ds_email = ?,
+                       ds_senha = ?
+                   where id_login_usuario = ?`
+  const [resposta] = await con.query(comando,[infos.email, infos.senha, id])
+  return resposta.affectedRows;
+}

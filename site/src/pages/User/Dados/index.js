@@ -3,7 +3,10 @@ import Rodape from '../../components/rodape'
 import Menu from '../../components/MenuConfig'
 import storage from 'local-storage'
 import { useState,useEffect } from 'react'
+import { AtualizarConta,AtualizarLogin, EntrarLogin } from '../../../api/UsuarioApi'
 
+import { toast } from 'react-toastify'
+ 
 import './index.scss'
 
 export default function Dados(){
@@ -12,6 +15,27 @@ export default function Dados(){
     const[email,setEmail] = useState()
     const[senha,setSenha] = useState()
     const[usuario,setUsuario] = useState([])
+
+
+    async function AlterarInfosClick(){
+        try {
+            const NovoLogin = await AtualizarLogin (usuario.id, email, senha)
+            const NovaConta = await AtualizarConta (usuario.id, nome, sobrenome)
+            const alterarStorage = await EntrarLogin (email,senha)
+
+            storage('usuario-logado',alterarStorage )
+
+            toast.dark("Informações Atualizadas!")
+        } 
+        
+        catch (err) {
+            if (err.response)
+            toast.dark(err.response.data.erro)
+            else {
+                toast.dark(err.message)
+            }            
+        }
+    }
 
     useEffect(() =>{
         if(storage('usuario-logado')){
@@ -50,7 +74,7 @@ export default function Dados(){
                 </div>
 
                 <div className='botao-dados'>
-                    <button> Alterar </button>
+                    <button onClick={AlterarInfosClick}> Alterar </button>
                 </div>
 
             </div>

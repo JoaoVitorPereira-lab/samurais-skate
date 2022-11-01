@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { ListarNomeCartao,CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, CadastrarCartao} from '../repository/usuarioRepository.js'
+import { ListarNomeCartao,CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, CadastrarCartao, AlterarInfosConta, AlterarInfosLogin} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -225,6 +225,52 @@ server.post('/api/cartao', async (req, resp) => {
       });
     }
   });
+
+  server.put('/api/usuario/conta/:id', async (req,resp) => {
+    try {
+        const infos = req.body;
+        const {id} = req.params;
+
+        if(!infos.sobrenome) throw new Error ("Dígite um sobrenome!")
+
+        const resposta = await AlterarInfosConta (infos,id)
+
+        
+      if(resposta != 1)
+        throw new Error('Conta não pode ser alterada!');
+          else
+      resp.sendStatus(204)
+        
+    } 
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })        
+    }
+})
+
+server.put('/api/usuario/login/:id', async (req,resp) => {
+    try {
+        const infos = req.body;
+        const {id} = req.params;
+        
+        if(!infos.senha) throw new Error ("Dígite uma senha")
+        
+        const resposta = await AlterarInfosLogin (infos,id)
+
+        
+      if(resposta != 1)
+        throw new Error('Conta não pode ser alterada!');
+          else
+      resp.sendStatus(204)
+        
+    } 
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })        
+    }
+})
 
 
 export default server;

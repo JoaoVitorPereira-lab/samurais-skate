@@ -105,3 +105,21 @@ export async function CadastrarCartao(id,nome,numero, vencimento, cvv){
 
     return resposta.data;
 }
+
+//Atualizar Infos Conta
+export async function AtualizarConta(id,nome,sobrenome){
+    const resposta = await api.put (`/api/usuario/conta/${id}`,{
+        nome:nome,
+        sobrenome:sobrenome
+    })
+    return resposta.data
+}
+
+//Atualizar Infos Login
+export async function AtualizarLogin(id,email,senha){
+    const resposta = await api.put (`/api/usuario/login/${id}`,{
+        email:email,
+        senha:senha
+    })
+    return resposta.data
+}

@@ -1,6 +1,13 @@
 create database samuraisdb;
 use samuraisdb;
 
+
+select * from tb_login_usuario;
+select * from tb_conta_usuario;
+select * from tb_login_usuario;
+select * from tb_conta_usuario;
+
+select * from tb_cartao;
 -- Tabela do Admin
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,
@@ -141,10 +148,12 @@ create table tb_cupom (
 
 create table tb_cartao(
 	id_cartao		int primary key auto_increment,
+    id_login_usuario	int,
     nm_cartao		varchar(20),
     ds_numero		varchar(16),
-    dt_vencimento	date,
-    ds_cvv			varchar(3)
+    dt_vencimento	varchar(10),
+    ds_cvv			varchar(3),
+  foreign key (id_login_usuario) references tb_login_usuario (id_login_USUARIO)
 );
 
 
