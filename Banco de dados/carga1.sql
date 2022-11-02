@@ -16,6 +16,7 @@ select dt_pedido		dt,
   join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario;
 
 select * from tb_pedido;
+select * from tb_pedido_item;
 select * from tb_produto;
 
 -- ADMIN

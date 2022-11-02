@@ -7,6 +7,7 @@ import Login from './pages/User/Login'
 import CadastrarProduto from './pages/Admin/cadastrarProduto'
 import ConsultarProduto from './pages/Admin/consultarProduto'
 import ConsultarPedido from './pages/Admin/consultarPedido'
+import DetalhePedido from './pages/Admin/detalhePedido'
 
 import Teste from './pages/User/Login/teste'
 import LoginAdm from './pages/Admin/LoginAdm/index.js'
@@ -41,7 +42,8 @@ export default function Rotas (){
                 <Route path='/cadastrarproduto'         element={<CadastrarProduto/>}/>
                 <Route path='/alterarproduto/:idParam'  element={<CadastrarProduto/>}/>
                 <Route path='/consultarproduto'         element={<ConsultarProduto/>}/>
-                <Route path='/consultarpedido'          element={<ConsultarPedido/>}/>
+                <Route path='/consultarpedidos'         element={<ConsultarPedido/>}/>
+                <Route path='/detalhepedido'            element={<DetalhePedido/>}/>
 
                 <Route path='/teste'                    element={<Teste/>}/>
                 <Route path='/Login/adm'                element={<LoginAdm/>} />

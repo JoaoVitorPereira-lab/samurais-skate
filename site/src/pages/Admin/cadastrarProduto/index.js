@@ -5,10 +5,11 @@ import { toast } from "react-toastify"
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, ListarCategoria, ListarTipos, ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate, BuscarImagem } from "../../../api/AdminAPI";
+import { CadastrarProduto, enviarimagem, AlterarProduto, BuscarPorID, BuscarImagem, ListarCategoria } from "../../../api/AdminAPI";
+import { ListarMarcas, ListarTipos, ListarTiposSkate } from "../../../api/ListarAPI";
+import { API_URL } from "../../../api/config";
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import { API_URL } from "../../../api/config";
 
 export default function PageCadastrarProduto(){
     const [Tipos, setTipos] = useState([]);
@@ -119,6 +120,7 @@ export default function PageCadastrarProduto(){
                     await enviarimagem(idParam, imagem)
                 }
                 toast.success('Produto alterado com sucesso 🚀');
+                navigate('/consultarproduto')
             }
         } catch (err) {
             if(err.response)

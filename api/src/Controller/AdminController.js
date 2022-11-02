@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, InserirProduto, Marca, SalvarImagem, Tipos, TiposSkate,Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens } from "../repository/AdminRepository.js";
+import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -155,66 +155,6 @@ server.post('/api/admin/:id/imagem', upload.single("imgproduto"), async (req, re
     }
   }
 );
-
-
-/* INSERIR CATEGORIA */
-server.get ('/api/categoria', async (req,resp) =>{
-  try{ 
-  const resposta = await Categoria();
-
-  resp.status(200).send(resposta)
-} catch(err){
-  resp.status(400).send({
-      Erro:err.message
-  })
-}
-})
-
-
-/* INSERIR TIPO */
-server.get ('/api/tipo', async (req,resp) =>{
-  try{ 
-  const resposta = await Tipos();
-
-  resp.status(200).send(resposta)
-}
-catch(err){
-  resp.status(400).send({
-      Erro:err.message
-  })
-}
-})
-
-
-/* INSERIR MARCA */
-server.get('/api/marca', async (req,resp) =>{
-  try {
-    const resposta = await Marca()
-
-    resp.status(200).send(resposta)
-    
-  } catch (err) {
-    resp.status(400).send({
-      Erro:err.message
-    })    
-  }
-})
-
-
-/* INSERIR TIPOS DO SKATE */
-server.get('/api/tipo/skate' , async (req,resp) =>{
-  try {
-    const resposta = await TiposSkate ()
-    
-    resp.status(200).send(resposta)
-  } 
-  
-  catch (err) {
-    resp.status(400).send({
-      Erro:err.message
-    })
-  }
-})
 
 
 /* FAZER LOGIN */

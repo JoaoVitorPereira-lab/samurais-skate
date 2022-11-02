@@ -110,7 +110,7 @@ export default function ContinuarPedido(){
                 produtos: produtos
             }
 
-            const r = await SalvarNovoPedido(id, pedido);
+            await SalvarNovoPedido(id, pedido);
             toast.dark('Pedido foi inserido com sucesso');
             Storage('carrinho', []);
             navigate('/');
