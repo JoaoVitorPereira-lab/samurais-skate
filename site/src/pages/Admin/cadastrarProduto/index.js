@@ -7,12 +7,10 @@ import Cabecalho from '../componentsAdmin/cabecalho';
 
 import { CadastrarProduto, ListarCategoria, ListarTipos, ListarMarcas, enviarimagem, AlterarProduto, BuscarPorID, ListarTiposSkate, BuscarImagem } from "../../../api/AdminAPI";
 import { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { API_URL } from "../../../api/config";
 
 export default function PageCadastrarProduto(){
-
-
     const [Tipos, setTipos] = useState([]);
     const [Marcas,setMarcas] = useState([]);
     const [Categoria,setCategoria] = useState([]);
@@ -30,11 +28,13 @@ export default function PageCadastrarProduto(){
     const [importado, setImportado] = useState(false); 
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
-    const [estoque, setEstoque] = useState('');
+    const [estoque, setEstoque] = useState(0);
 
     const [id, setId] = useState(0);
 
     const { idParam } = useParams();
+
+    const navigate = useNavigate()
 
     function MostrarImagem(){
         if(typeof (imagem) === 'object'){
@@ -108,7 +108,9 @@ export default function PageCadastrarProduto(){
 
                 await enviarimagem(novoProduto.id, imagem);
             
+                navigate('/consultarproduto')
                 setId(novoProduto.id)
+
                 toast.success('Produto cadastrado com sucesso 🚀');
             }
             else{
@@ -116,13 +118,13 @@ export default function PageCadastrarProduto(){
                 if(typeof(imagem) == 'object'){
                     await enviarimagem(idParam, imagem)
                 }
-                toast.success('Agendamento alterado com sucesso 🚀');
+                toast.success('Produto alterado com sucesso 🚀');
             }
         } catch (err) {
             if(err.response)
-                alert(err.response.data.erro);  
+                toast.error(err.response.data.erro);  
             else{
-                alert(err.message);
+                toast.error(err.message);
             }
         }
         

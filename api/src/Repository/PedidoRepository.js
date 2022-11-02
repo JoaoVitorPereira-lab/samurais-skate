@@ -24,9 +24,7 @@ export async function inserirPedido(novoPedido) {
         novoPedido.tipoPagamento
     ]);
 
-    if(!novoPedido.idEndereco){ throw new Error('Você precisa escolher um endereço'); }
-    else
-        return info.insertId;
+    return info.insertId;
 }
 
 export async function inserirPagamento(idPedido, novoPagamento) {

@@ -1,8 +1,9 @@
 import { API_URL } from '../../../api/config'
+import { useNavigate } from "react-router-dom";
 
 import './index.scss'
 
-export default function Favoritos({ item: { produto: { nome, preco, imagem } } } ) {
+export default function Favoritos({ item: { produto: { id, nome, preco, imagem } } } ) {
 
     function exibirImagem() {
         if (imagem) {
@@ -10,8 +11,16 @@ export default function Favoritos({ item: { produto: { nome, preco, imagem } } }
         }
     }
 
+    function BuscarProdutoFavorito(id){
+        if(id){
+            navigate(`/produto/${id}/detalhe`)
+        }
+    }
+
+    const navigate = useNavigate()
+
     return (
-        <div className="card-produtos-curtidos">
+        <div className="card-produtos-curtidos" onClick={() => BuscarProdutoFavorito(id)}>
             <div className="img-produto">
                 <img
                     className="produtos-imgs"

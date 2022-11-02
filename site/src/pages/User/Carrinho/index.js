@@ -52,13 +52,26 @@ export default function PageCarrinho(){
         return t;
     }
 
-    useEffect(() => {
+    function removerItem(id) {
+        let carrinho = Storage('carrinho');
+        carrinho = carrinho.filter(item => item.id != id);
+
+        Storage('carrinho', carrinho);
+        CarregarCarrinho();
+        toast.dark(`Produto removido do carrinho com sucesso!`);
+
         if(!Storage('carrinho') || Storage('carrinho').length === 0){
             toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
-        else{
-            CarregarCarrinho();
+    }
+
+    useEffect(() => {
+        CarregarCarrinho();
+
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
+            navigate('/')
         }
     }, [])
     
@@ -71,7 +84,12 @@ export default function PageCarrinho(){
 
                 <section className="sec-carrinho-item">
                     {itens.map(item =>
-                        <Carrinho item={item} toast={toast} navigate={navigate} CarregarCarrinho={CarregarCarrinho()}/>
+                        <div className="div-carrinho-item">
+                            <Carrinho item={item}/>
+                            <button onClick={() => removerItem(item.produto.id)} className="botao-excluir">
+                                Excluir
+                            </button>
+                        </div>
                     )}
                 </section>
                 

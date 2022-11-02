@@ -7,7 +7,7 @@ const upload = multer({ dest: "storage/imgproduto" });
 
 
 /* CADASTRAR NOVO PRODUTO */
-server.post('/api/admin/produto', async (req, resp) => {
+server.post('/api/produto', async (req, resp) => {
   try {
     const novoproduto = req.body;
 

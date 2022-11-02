@@ -33,8 +33,6 @@ export default function ContinuarPedido(){
     const [tipo, setTipo] = useState('');
     const [parcela, setParcela] = useState('');
 
-    console.log(itens);
-
     const navigate = useNavigate();
 
     function ExibirCardClick(){
@@ -93,7 +91,6 @@ export default function ContinuarPedido(){
     }
 
     async function SalvarPedido() {
-
         try {
             let produtos = Storage('carrinho');
             let id = Storage('usuario-logado').id;
@@ -117,7 +114,6 @@ export default function ContinuarPedido(){
             toast.dark('Pedido foi inserido com sucesso');
             Storage('carrinho', []);
             navigate('/');
-            console.log(r);
         }
         catch (err) {
             toast.error(err.response.data.erro);
@@ -127,10 +123,6 @@ export default function ContinuarPedido(){
     useEffect(() =>{
         if(!Storage("usuario-logado")){
             navigate('/Login')
-        }
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Carrinho vazio, Coloque um item no carrinho')
-            navigate('/')
         }
         CarregarItens();
         CarregarEnderecos();

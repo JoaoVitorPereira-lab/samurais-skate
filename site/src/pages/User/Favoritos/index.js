@@ -7,7 +7,8 @@ import Storage from 'local-storage'
 import Favoritos from '../../components/favoritosItem'
 import Cabecalho from "../../components/cabecalho";
 import Rodape from '../../components/rodape'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Fav() {
 
@@ -25,8 +26,10 @@ export default function Fav() {
                 })
             }
             setItens(temp);
-            console.log(temp);
-            console.log(itens);
+        }
+        if(favoritos.length === 0){
+            toast.error('Favoritos vazio, Coloque um item nos favoritos')
+            navigate('/')
         }
     }
 
@@ -36,21 +39,22 @@ export default function Fav() {
 
         Storage('favoritos', favoritos);
         CarregarFavoritos();
-    }
+        toast.dark(`Produto removido dos favoritos com sucesso!`)
 
-    function BuscarProdutoFavorito(id){
-        if(id){
-            navigate(`/produto/${id}/detalhe`)
+        if(favoritos.length === 0){
+            toast.error('Favoritos vazio, Coloque um item nos favoritos')
+            navigate('/')
         }
     }
 
     const navigate = useNavigate()
 
     useEffect(() => {
+        CarregarFavoritos();
+        
         if (!Storage('usuario-logado')) {
             navigate('/Login')
         }
-        CarregarFavoritos();
     }, [])
     
     return (
@@ -66,7 +70,7 @@ export default function Fav() {
                 </div>
 
                 {itens.map(item =>
-                    <div className="excluir" onClick={() => BuscarProdutoFavorito(item.produto.id)}>
+                    <div className="excluir">
                         <Favoritos item={item}/>
                         <div className="coracao">
                             <img className="img-coracao" src="../images/Heart.png" alt="" />

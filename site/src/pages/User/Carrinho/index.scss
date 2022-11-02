@@ -33,7 +33,31 @@
     .div-carrinho-item{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
+    }
+    .botao-excluir{
+        background-color: #E52A45;
+        border: transparent;
+        border-radius: 10px;
+        width: 8em;
+        height: 3em;
+
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: #FFFFFF;
+        /* color: #E52A45;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer; */
+
+        margin-right: 8em; margin-top: 7em;
     }
 /* FINAL SECTION 1 */
 
@@ -136,6 +160,17 @@
             justify-content: space-around;
             margin-right: 3em;
         }
+        .div-carrinho-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 50%;
+        }
+        .botao-excluir{
+            margin-left: 11em; margin-top: 0;
+        }
 
         .div-right > text,
         .div-left span{
@@ -194,13 +229,45 @@
         }
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 720px) {
         .sec-carrinho-item{
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            margin-right: 0;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
+        .div-carrinho-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .sec-carrinho-item{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .div-carrinho-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .botao-excluir{
+            margin-left: 0; margin-top: 0; margin-right: -3.4em;
+        }
+
         .sec-1 > p{
             font-size: 20px;
         }

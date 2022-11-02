@@ -4,7 +4,7 @@ import Storage from 'local-storage'
 
 import './index.scss'
 
-export default function Carrinho({ item: { produto: { id, nome, preco, imagem }, qtd } }, toast, navigate, CarregarCarrinho, item ) {
+export default function Carrinho({ item: { produto: { id, nome, preco, imagem }, qtd } }) {
     const [qtdProduto, setQtdProduto] = useState(qtd);
 
     function alterarQuantidade(novaQtd) {
@@ -20,20 +20,6 @@ export default function Carrinho({ item: { produto: { id, nome, preco, imagem },
     function exibirImagem() {
         if (imagem) {
             return API_URL + '/' + imagem; 
-        }
-    }
-
-    function removerItem(id) {
-        let carrinho = Storage('carrinho');
-        carrinho = carrinho.filter(item => item.id != id);
-
-        Storage('carrinho', carrinho);
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Carrinho vazio, coloque um item no carrinho')
-            navigate('/')
-        }
-        else{
-            CarregarCarrinho();
         }
     }
 
@@ -55,10 +41,6 @@ export default function Carrinho({ item: { produto: { id, nome, preco, imagem },
                 </select>
 
                 <span className='preco-produto'> {preco.replace(".", ",")} </span>
-            
-                <div onClick={() => removerItem(id)} className="botao-excluir">
-                    Excluir
-                </div>
             </div>
         </div>
     )

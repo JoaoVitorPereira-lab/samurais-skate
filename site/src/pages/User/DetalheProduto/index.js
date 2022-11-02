@@ -22,39 +22,49 @@ export default function ProdutoDetalhe() {
     }
 
     function adicionarAoCarrinho() {
-        let carrinho = []
-        if (Storage('carrinho')) {
+
+        let carrinho = [];
+        
+        if(!Storage('usuario-logado')){
+            toast.error('Produto não pode ser adicionado, Logue com um usuário');
+        }
+        if(Storage('carrinho')) {
             carrinho = Storage('carrinho');
         }
-        if (!carrinho.find(item => item.id == - id)) {
+        if(carrinho.find(item => item.id == id)){
+            toast.error('Produto já está no carrinho')
+        }
+        else if (!carrinho.find(item => item.id == - id)) {
             carrinho.push({
                 id: id,
                 qtd: 1
             })
 
             Storage('carrinho', carrinho);
-        }
-
-        if(!Storage('usuario-logado'))
-            toast.error('Produto não pode ser adicionado');
-        else
             toast.dark('Produto adicionado ao carrinho')
+        }
     }
 
     function adicionarAoFavoritos() {
         let favoritos = []
-        if (Storage('favoritos')) {
+
+        if(!Storage('usuario-logado'))
+            toast.error('Produto não pode ser adicionado, Logue com um usuário');
+
+        if(Storage('favoritos')) {
             favoritos = Storage('favoritos');
         }
-        if (!favoritos.find(item => item.id == - id)) {
+        if(favoritos.find(item => item.id == id)){
+            toast.error('Produto já está nos favoritos')
+        }
+        else if(!favoritos.find(item => item.id == - id)) {
             favoritos.push({
                 id: id
             })
 
             Storage('favoritos', favoritos);
+            toast.dark('Produto adicionado aos favoritos')
         }
-
-        toast.dark('Produto adicionado aos favoritos')
     }
 
     function desc () {

@@ -5,6 +5,7 @@
     align-items: center;
     text-align: center;
     
+    width: 80%;
     margin-top: 6em;
 
     .div-infos-carrinho-item{
@@ -12,7 +13,7 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        width: 100%;
+        width: 70%;
     }
     .img-produto{
         // border: .5px solid #000000;
@@ -36,38 +37,24 @@
         width: 2.5em; height: 2.5em;
     }
 
-    .botao-excluir{
-        color: #E52A45;
-        font-size: 14px;
-        text-transform: uppercase;
-        font-weight: 700;
-        text-decoration: underline;
-        cursor: pointer;
-    }
-
     @media screen and (max-width: 1024px) {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: flex-start;
-        text-align: start;
+        align-items: center;
+        text-align: center;
         flex-wrap: wrap;
-        width: 40%;
+        width: 100%;
 
         .div-infos-carrinho-item{
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
             margin-left: 3em;
         }
         .img-produto{
-            // border: .5px solid #000000;
-            margin-left: 4em;
             width: 200px; height: 150px;
-            border: transparent;
-            border-radius: 5px;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
         .nome-produto{
             width: 100%;
@@ -90,21 +77,27 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: flex-start;
-        text-align: start;
-        flex-wrap: nowrap;
-        width: 40%;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+        width: 100%;
 
         .div-infos-carrinho-item{
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            margin-left: 0;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-left: 3em;
         }
         .img-produto{
             width: 160px; height: 130px;
-            margin-left: 10em; margin-right: 1em;
+        }
+        .nome-produto{
+            width: 100%;
+            word-break: break-all;
+            font-size: 20px;
+            font-family: 'Dekko', sans-serif;
         }
     }
 }

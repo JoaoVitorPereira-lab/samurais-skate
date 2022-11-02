@@ -34,13 +34,18 @@ export function criarNovoPedido(idUsuario, idCupom, info) {
     let agora = new Date();
     let notaFiscal = criarNotaFiscal();
 
-    return {
-        idUsuario: idUsuario,
-        idEndereco: info.idEndereco,
-        idCupom: idCupom,
-        data: agora,
-        notaFiscal: notaFiscal,
-        status: 'Confirmando Pagamento',
-        tipoPagamento: 'Cartão'
+    if(!info.idEndereco){
+       throw new Error('Você precisa escolher um endereço');
+    }
+    else{
+        return {
+            idUsuario: idUsuario,
+            idEndereco: info.idEndereco,
+            idCupom: idCupom,
+            data: agora,
+            notaFiscal: notaFiscal,
+            status: 'Confirmando Pagamento',
+            tipoPagamento: 'Cartão'
+        }
     }
 }
