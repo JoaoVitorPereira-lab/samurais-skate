@@ -36,7 +36,7 @@ export async function Marca(){
 export async function TiposSkate(){
   const comando = ` Select id_tipo_skate      id,
                            nm_tipo_skate      nome
-                      from tb_skate`
+                      from tb_tipo_skate`
   const [resposta] = await con.query(comando)
   return resposta
 }
