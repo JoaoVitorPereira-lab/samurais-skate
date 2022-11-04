@@ -46,6 +46,7 @@ export default function Login() {
             try {
                 const r = await EntrarLogin(email, senha);
                 storage('usuario-logado', r)
+                storage('favoritos', [])
                 setTimeout(() => {
                     navigate('/'); 
                 }, 3000);

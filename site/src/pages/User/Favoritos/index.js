@@ -55,6 +55,11 @@ export default function Fav() {
         if (!Storage('usuario-logado')) {
             navigate('/Login')
         }
+
+        if(!Storage('favoritos') || Storage('favoritos').length === 0){
+            toast.error('Favoritos vazio, Coloque um item no favoritos')
+            navigate('/')
+        }
     }, [])
     
     return (

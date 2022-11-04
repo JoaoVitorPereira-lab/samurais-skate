@@ -59,15 +59,14 @@ export default function PageCarrinho(){
         Storage('carrinho', carrinho);
         CarregarCarrinho();
         toast.dark(`Produto removido do carrinho com sucesso!`);
-
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
-            toast.error('Carrinho vazio, Coloque um item no carrinho')
-            navigate('/')
-        }
     }
 
     useEffect(() => {
         CarregarCarrinho();
+
+        if (!Storage('usuario-logado')) {
+            navigate('/Login')
+        }
 
         if(!Storage('carrinho') || Storage('carrinho').length === 0){
             toast.error('Carrinho vazio, Coloque um item no carrinho')

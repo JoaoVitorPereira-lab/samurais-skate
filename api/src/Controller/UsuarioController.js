@@ -200,7 +200,7 @@ server.get('/api/cartao/:id/nome', async (req,resp) =>{
     }
 })
 
-server.post('/api/cartao', async (req, resp) => {
+server.post('/api/cartaoo', async (req, resp) => {
     try {
       const novoCartao = req.body;
       
