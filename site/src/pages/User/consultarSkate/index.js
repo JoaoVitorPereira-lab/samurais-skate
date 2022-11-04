@@ -48,7 +48,7 @@ export default function ConsultarSkate() {
                         <div className='div-produto' onClick={() => AbrirDetalhes(item.id)}>
                             <img src={buscarimagem(item.imagem)} height='100px' width="auto" />
                             <h3 className='largura-h3'>{item.produto}</h3>
-                            {buscarAvaliacao(item.id)}
+                            {item.avaliacao}
                             <h4>por: R${item.preco.replace(".", ",")}</h4>
                         </div>
                     )}
