@@ -3,7 +3,7 @@ import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 import { useState, useEffect } from "react";
 import storage from 'local-storage'
-import { BuscarCartao, CadastrarCartao } from '../../../api/UsuarioApi'
+import { BuscarCartao, CadastrarCartao } from '../../../api/CartaoAPI'
 import { toast } from "react-toastify"
 
 import "./index.scss";
@@ -27,6 +27,7 @@ export default function Pagamento() {
   function Pegarid(){
       const nome = storage('usuario-logado')
       setUsuario(nome.id)
+      console.log(setUsuario)
   }
   
   
@@ -35,12 +36,11 @@ export default function Pagamento() {
     setCartao(resposta)
   }
 
-  async function CadstrarCartaoClick (){
+  async function CadastrarCartaoClick (){
     try {
-     const novoCartao = await CadastrarCartao (usuario,nome,numero,vencimeto,cvv)
-     console.log(novoCartao)
+      const novoCartao = await CadastrarCartao (usuario,nome,numero,vencimeto,cvv)
      
-     toast.dark('Cartão cadastrado com sucesso 🚀'); 
+      toast.dark('Cartão cadastrado com sucesso 🚀'); 
 
       setId(novoCartao.id);
     } 
@@ -57,10 +57,10 @@ export default function Pagamento() {
    
   
     
-      useEffect(() =>{
+    useEffect(() =>{
         Pegarid();
         BuscarCartoes();
-    },[])
+    },  [cartao] )
 
   return (
     <main className="main-pagamento">
@@ -75,12 +75,12 @@ export default function Pagamento() {
         <div className="div-cartoes-pagamento">
           <div className="div-column-pagamento">
               <div className="nomes">
-              <h2> Cadstrados: </h2>
+              <h2> Cadastrados: </h2>
               {cartao.map(item =>
                 <div className="div-cartoes-cadastrados">
                   <h3> {item.nome} </h3>
                 </div>
-                )}
+              )}
               
              </div>
             
@@ -109,7 +109,7 @@ export default function Pagamento() {
                 <br />
                 <div>
                     <div className="botao-cadastro-cartao">
-                        <button onClick={CadstrarCartaoClick}> Salvar </button>
+                        <button onClick={CadastrarCartaoClick}> Salvar </button>
                     </div>                  
                 </div>
               </div>

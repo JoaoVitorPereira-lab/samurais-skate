@@ -1,0 +1,105 @@
+.comp-modal-endereco {
+    .modal-endereco {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        min-height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+
+    #lb {
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-weight: 100;
+        text-align: end;
+
+        min-width: 8em;
+    }
+
+    .form{
+        padding-left: 0em; padding-right: 3em;
+    }
+
+    .div-form{
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    .div-form input{
+        width: 20em; height: 1.5em;
+        margin-bottom: .4em;
+    }
+
+    .div-form-select{
+        display: flex;
+        justify-content: flex-start;
+        text-align: center;
+        align-items: center;
+    }
+    .div-form-select-1{
+        margin-bottom: .4em;
+    }
+    .div-form-select select{
+        margin-left: 1em; margin-bottom: 0em;
+    }
+
+    visibility: hidden;
+
+    .exibir {
+        visibility: visible !important;
+    }
+
+    .h1-conteudo{
+        font-family: 'Dela Gothic One', cursive;
+        font-size: 24px;
+        font-weight: 100;
+        margin-top: 0em; margin-bottom: 1.5em;
+    }
+
+    .conteudo {
+        position: relative;
+        width: 465px; height: 24em;
+        padding: 20px 20px 35px 20px;
+        margin: 10px;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    .btn button{
+        cursor: pointer;
+        background-color: #E52A45;
+        border: transparent;
+        border-radius: 20px;
+        width: 7em;
+        height: 3em;
+
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+
+        color: #FFFFFF;
+    }
+
+    @media (max-width: 425px) {
+        #lb {
+            min-width: auto;
+        }
+        .conteudo {
+            overflow: scroll;
+            height: 80vh;
+            top: 0px;
+        }
+    }
+
+
+}

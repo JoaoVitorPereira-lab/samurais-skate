@@ -12,14 +12,18 @@ import { SalvarNovoPedido } from '../../../api/PedidoAPI'
 
 import CardEndereco from '../../components/cardEndereco';
 import ModalEndereco from '../../components/ModalEndereco';
+import ModalCartao from '../../components/ModalCartao';
 import { API_URL } from '../../../api/config';
 import Rodape from '../../components/rodape';
+import { BuscarCartao } from '../../../api/CartaoAPI';
 
 export default function ContinuarPedido(){
     const [enderecos, setEnderecos] = useState([]);
     const [itens, setItens] = useState([]);
+    const [usuario, setUsuario] = useState([]);
 
-    const [mostrar, setMostrar] = useState(false);
+    const [cartao, setCartao] = useState([]);
+    const [exibirCartao, setExibirCartao] = useState(false);
 
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
@@ -35,14 +39,6 @@ export default function ContinuarPedido(){
 
     const navigate = useNavigate();
 
-    function ExibirCardClick(){
-        setMostrar(true);
-    }
-
-    function OcultarCardClick(){
-        setMostrar(false)
-    }
-
     function exibirNovoEndereco() {
         setExibirEndereco(true);
     }
@@ -50,6 +46,15 @@ export default function ContinuarPedido(){
     function fecharNovoEndereco() {
         setExibirEndereco(false);
         CarregarEnderecos();
+    }
+
+    function exibirNovoCartao() {
+        setExibirCartao(true);
+    }
+
+    function fecharNovoCartao() {
+        setExibirCartao(false);
+        CarregarCartoes();
     }
 
     async function CarregarEnderecos(){
@@ -120,17 +125,31 @@ export default function ContinuarPedido(){
         }
     }
 
+    function PegarUsuario(){
+        const usuarioLogado = Storage('usuario-logado')
+        setUsuario(usuarioLogado)
+    }
+    
+    async function CarregarCartoes(){
+      const resposta = await BuscarCartao(usuario.id)
+      setCartao(resposta)
+    }
+
     useEffect(() =>{
         if(!Storage("usuario-logado")){
             navigate('/Login')
         }
+        PegarUsuario();
+        CarregarCartoes();
+
         CarregarItens();
         CarregarEnderecos();
-    },[])
+    }, [cartao])
 
     return(
         <main className='main-continuarPedido'>
             <ModalEndereco exibir={exibirEndereco} fechar={fecharNovoEndereco} />
+            <ModalCartao   exibir={exibirCartao}   fechar={fecharNovoCartao} />
 
             <header className="header-pedido">
                 <Link to='/'>
@@ -183,61 +202,16 @@ export default function ContinuarPedido(){
 
                     <div className="div-cartao-credito">
                         <h2> Cartão </h2>
-                        
-                        {mostrar === true &&
-                            <button onClick={OcultarCardClick}>
-                                ADICIONAR CARTÃO
-                            </button>
-                        }
 
-                        {mostrar === false &&
-                            <button onClick={ExibirCardClick}>
-                                ADICIONAR CARTÃO
-                            </button>
-                        }
-
-                        {mostrar === true &&
-                            <div className="cartao-credito">
-                                <div className="cartao-infos">
-                                    <p className="cartao-p-1"> Nome do cartão </p>
-                                    <p> Número do cartão </p>
-                                    <p> Vencimento </p>
-                                    <p> CVV </p>
-                                    <p> Tipo de Pagamento: </p>
-                                    <p> Parcelas: </p>
-                                </div>
-
-                                <div className="cartao-inputs">
-                                    <input type="text"   id="input-1" value={nome} onChange={e => setNome(e.target.value)}/>
-                                    <br/>
-                                    <input type="number" id="input-2" value={numero} onChange={e => setNumero(e.target.value)}/>
-                                    <br/>
-                                    <input type="number" id="vencimento" value={vencimento} onChange={e => setVencimento(e.target.value)}/>
-                                    <br/>
-                                    <input type="number" id="cvv" value={cvv} onChange={e => setCvv(e.target.value)}/>
-                                    <br/>
-                                    <div>
-                                        <select value={tipo} onChange={e => setTipo(e.target.value)}   >
-                                            <option disabled hidden selected>Selecione</option>
-                                            <option>Crédito</option>
-                                            <option>Débito</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <select className='select-parcela' value={parcela} onChange={e => setParcela(e.target.value)}  >
-                                            <option disabled hidden selected>Selecione</option>
-                                            <option value={1}>01x à Vista</option>
-                                            <option value={1}>01x sem Juros</option>
-                                            <option value={2}>02x sem Juros</option>
-                                            <option value={3}>03x sem Juros</option>
-                                            <option value={4}>04x sem Juros</option>
-                                            <option value={5}>05x sem Juros</option>
-                                            <option value={6}>06x sem Juros</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        {cartao.map(item =>
+                            <div className="div-cartoes-cadastrados">
+                                <h3> {item.nome} </h3>
                             </div>
-                        }
+                        )}
+
+                        <button onClick={exibirNovoCartao}>
+                            ADICIONAR CARTÃO
+                        </button>
                     </div>
 
                     <div className='div-cupom'>

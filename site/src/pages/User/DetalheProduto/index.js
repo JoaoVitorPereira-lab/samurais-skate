@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Cabecalho from '../../components/cabecalho'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { BuscarProdutoPorID } from '../../../api/UsuarioApi';
 import { API_URL } from '../../../api/config';
 import './index.scss'
@@ -9,6 +9,9 @@ import Storage from 'local-storage'
 import { toast } from 'react-toastify'
 
 export default function ProdutoDetalhe() {
+
+    const navigate = useNavigate()
+    const favoritos = Storage('favoritos');
 
     const [produto, setProduto] = useState([]);
     const [descricao, setDescricao] = useState(true);
@@ -46,14 +49,10 @@ export default function ProdutoDetalhe() {
     }
 
     function adicionarAoFavoritos() {
-        let favoritos = []
 
         if(!Storage('usuario-logado'))
             toast.error('Produto não pode ser adicionado, Logue com um usuário');
 
-        if(Storage('favoritos')) {
-            favoritos = Storage('favoritos');
-        }
         if(favoritos.find(item => item.id == id)){
             toast.error('Produto já está nos favoritos')
         }
@@ -89,7 +88,7 @@ export default function ProdutoDetalhe() {
 
     useEffect(() => {
         carregarPagina();
-    }, [])
+    }, [ Storage('favoritos') ])
 
     return (
         <main className='page-detalhes'>
@@ -131,9 +130,19 @@ export default function ProdutoDetalhe() {
                         </div>
 
                         <div className='div-btn-carrinho'>
-                            <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
-                                <img src="/images/Favorite.png" alt="" />
-                            </div>
+
+                            {!favoritos.find(item => item.id == id) &&
+                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+                                    <img src="/images/Favorite.png" alt="" width="50" height="50"/>
+                                </div>
+                            }
+
+                            {favoritos.find(item => item.id == id) && 
+                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+                                    <img src="/images/heart.png" alt="" width="50" height="50" />
+                                </div>
+                            }
+    
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>
 

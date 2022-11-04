@@ -86,26 +86,6 @@ export async function ListarPromocoes(){
     return resposta.data
 }
 
-//Buscar Nome Cartões
-export async function BuscarCartao(id){
-    const resposta = await api.get('/api/cartao/' + id + '/nome')
-    return resposta.data
-}
-
-//Cadastrar Cartão
-
-export async function CadastrarCartao(id,nome,numero, vencimento, cvv){
-    const resposta = await api.post('/api/cartao' ,{
-        id: id,
-        nome: nome,
-        numero: numero,
-        vencimento:vencimento,
-        cvv: cvv
-    })
-
-    return resposta.data;
-}
-
 //Atualizar Infos Conta
 export async function AtualizarConta(id,nome,sobrenome){
     const resposta = await api.put (`/api/usuario/conta/${id}`,{
