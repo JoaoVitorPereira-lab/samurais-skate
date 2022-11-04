@@ -12,13 +12,14 @@ export async function BuscarCartao(id){
 }
 
 
-export async function CadastrarCartao(id,nome,numero, vencimento, cvv){
+export async function CadastrarCartao(id, nome, numero, vencimento, cvv, parcela){
     const resposta = await api.post('/api/cartaoo' ,{
         id: id,
         nome: nome,
         numero: numero,
         vencimento:vencimento,
-        cvv: cvv
+        cvv: cvv,
+        parcela: parcela
     })
 
     return resposta.data;
