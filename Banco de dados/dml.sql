@@ -113,6 +113,22 @@ from tb_produto
 	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
 where nm_tipo = "Skate";
 
+select nm_produto                        produto, 
+                          nr_preco                          preco, 
+                          tb_tipo.id_tipo                   tipo, 
+                          format(avg(nr_estrela), 1)        avaliacao, 
+                          id_tipo_skate                     tipoSkate, 
+                          id_categoria                      categoria, 
+                          bt_importado                      importado, 
+                          ds_imagem                         imagem, 
+                          tb_produto.id_produto             id 
+                  from tb_produto
+                    join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+                    join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+                    join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+                  where nm_tipo = "Skate"
+                  group by tb_produto.id_produto;
+
 -- CONSULTAR TENIS (USER)
 
 select nm_produto, nr_preco, tb_tipo.id_tipo, ds_imagem, tb_produto.id_produto 
@@ -149,8 +165,7 @@ select format(avg(nr_estrela), 1)  avaliacao,
 		tb_produto.id_produto		id
 	from tb_produto_avaliacao
 inner join tb_produto on tb_produto_avaliacao.id_produto = tb_produto.id_produto
-	where tb_produto.id_tipo = 3
-group by tb_produto.id_produto;
+	where tb_produto.id_produto = 2;
 
 -- avaliacao(detalhe)
 select nm_usuario, nm_sobrenome, nr_estrela, ds_avaliacao 

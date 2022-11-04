@@ -2,12 +2,6 @@ create database samuraisdb;
 use samuraisdb;
 
 
-select * from tb_login_usuario;
-select * from tb_conta_usuario;
-select * from tb_login_usuario;
-select * from tb_conta_usuario;
-
-select * from tb_cartao;
 -- Tabela do Admin
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,

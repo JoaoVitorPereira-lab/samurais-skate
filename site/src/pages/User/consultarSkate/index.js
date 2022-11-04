@@ -1,8 +1,9 @@
 import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
+import Avaliacao from '../../components/Avaliacao'
 import { useEffect, useState } from 'react'
-import { ListarSkate, buscarimagem, buscarAvaliacao } from '../../../api/UsuarioApi';
+import { ListarSkate, buscarimagem } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 
 export default function ConsultarSkate() {
@@ -48,7 +49,7 @@ export default function ConsultarSkate() {
                         <div className='div-produto' onClick={() => AbrirDetalhes(item.id)}>
                             <img src={buscarimagem(item.imagem)} height='100px' width="auto" />
                             <h3 className='largura-h3'>{item.produto}</h3>
-                            {item.avaliacao}
+                            <Avaliacao aval={item.avaliacao} />
                             <h4>por: R${item.preco.replace(".", ",")}</h4>
                         </div>
                     )}

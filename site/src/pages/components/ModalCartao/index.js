@@ -75,7 +75,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                         <div className='div-form'>
                             <label id="lb"></label>
                             <div className='btn div-form'>
-                                <button onClick={salvarEndereco}> Salvar </button>
+                                <button> Salvar </button>
                             </div>
                         </div>
                     </div>
