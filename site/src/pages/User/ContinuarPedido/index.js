@@ -105,13 +105,7 @@ export default function ContinuarPedido(){
                 cupom: cupom,
                 idEndereco: idEndereco,
                 tipoPagamento: 'Cartão',
-                cartao: {
-                    nome: nome,
-                    numero: numero,
-                    vencimento: vencimento,
-                    codSeguranca: cvv,
-                    parcelas: parcela
-                },
+                cartao: cartao,
                 produtos: produtos
             }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.scss'
-import { Salvar } from '../../../api/EnderecoAPI';
+import { CadastrarCartao } from '../../../api/CartaoAPI';
 import Storage from 'local-storage'
 import { toast } from 'react-toastify'
 
@@ -16,7 +16,7 @@ export default function ModalEndereco({ exibir, fechar }) {
     async function salvarCartao() {
         try {
             const id = Storage('usuario-logado').id;
-            const r = await Salvar();
+            const r = await CadastrarCartao(id, nome, numero, vencimento, cvv, parcela);
             toast.dark('Cartão salvo');
 
             fechar();
@@ -28,10 +28,10 @@ export default function ModalEndereco({ exibir, fechar }) {
 
 
     return (
-        <div className='comp-modal-endereco'>
-            <div className={`modal-endereco ${exibir ? 'exibir' : ''}`}>
+        <div className='comp-modal-cartao'>
+            <div className={`modal-cartao ${exibir ? 'exibir' : ''}`}>
                 <div className='conteudo'>
-                    <h1 className='h1-conteudo'> Novo Endereço </h1>
+                    <h1 className='h1-conteudo'> Novo Cartão </h1>
 
                     <div className='form'>
                         <div className='div-form'>
@@ -52,7 +52,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                         </div>
                         <div className='div-form-select div-form-select-1'>
                             <label id="lb"> Tipo: </label>
-                            <select value={tipo} onChange={e => setTipo(e.target.value)}   >
+                            <select value={tipo} onChange={e => setTipo(e.target.value)}>
                                 <option disabled hidden selected>Selecione</option>
                                 <option>Crédito</option>
                                 <option>Débito</option>
@@ -62,7 +62,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                             <label id="lb"> Parcela: </label>
                             <select className='select-parcela' value={parcela} onChange={e => setParcela(e.target.value)}  >
                                 <option disabled hidden selected>Selecione</option>
-                                <option value={1}>01x à Vista</option>
+                                <option value={0}>01x à Vista</option>
                                 <option value={1}>01x sem Juros</option>
                                 <option value={2}>02x sem Juros</option>
                                 <option value={3}>03x sem Juros</option>
@@ -75,7 +75,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                         <div className='div-form'>
                             <label id="lb"></label>
                             <div className='btn div-form'>
-                                <button onClick={salvarEndereco}> Salvar </button>
+                                <button onClick={salvarCartao}> Salvar </button>
                             </div>
                         </div>
                     </div>
