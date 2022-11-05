@@ -34,6 +34,11 @@ export default function PageCarrinho(){
             }
             setItens(temp);
         }
+        
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
+            navigate('/')
+        }
     }
 
     function calcularValorTotal() {
@@ -57,8 +62,8 @@ export default function PageCarrinho(){
         carrinho = carrinho.filter(item => item.id != id);
 
         Storage('carrinho', carrinho);
-        CarregarCarrinho();
         toast.dark(`Produto removido do carrinho com sucesso!`);
+        CarregarCarrinho();
     }
 
     useEffect(() => {

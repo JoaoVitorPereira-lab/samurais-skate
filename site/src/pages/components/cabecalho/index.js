@@ -7,7 +7,7 @@ import { slide as Menu } from "react-burger-menu";
 export default function CabecalhoUsuarioNavs(props) {
     const[usuario,setUsuario] = useState('');
     const[email,setEmail] = useState('');
-    const [popup, setPopUp] = useState(false)
+    const[popup, setPopUp] = useState(false)
 
     const navigate = useNavigate()
     function TenisClick(){
@@ -86,15 +86,15 @@ export default function CabecalhoUsuarioNavs(props) {
                     }
 
                     {storage('usuario-logado') && popup === false &&
-                    <div className='bolinha'>
-                        <h2 onClick={MostrarPopUp}> {usuario[0]} </h2>
-                    </div>                    
+                        <div className='bolinha' onClick={MostrarPopUp}>
+                            <h2> {usuario[0]} </h2>
+                        </div>                    
                     }
 
                     {popup === true &&
-                        <div> 
-                            <div className='bolinha'>
-                                <h2 onClick={OcultarPopUp}> {usuario[0]}  </h2>
+                        <div className="div-popup"> 
+                            <div className='bolinha' onClick={OcultarPopUp}>
+                                <h2> {usuario[0]}  </h2>
                             </div>
                             <div className='container-popUp'>
                                 

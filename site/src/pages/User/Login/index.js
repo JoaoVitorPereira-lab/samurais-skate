@@ -1,11 +1,13 @@
 import "./index.scss"
+
 import { EntrarLogin } from '../../../api/UsuarioApi.js'
+import { LoginAdm } from "../../../api/AdminAPI"
+
 import storage from 'local-storage'
 import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
-import { LoginAdm } from "../../../api/AdminAPI"
-
+import { toast } from "react-toastify"
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -13,10 +15,11 @@ export default function Login() {
     const [erro, setErro] = useState('')
  
     const [mostrarSenha, SetMostrarSenha] = useState(false);
-  
-  
+
     const [carregando, setCarregando] = useState(false)
+
     const navigate = useNavigate()
+
     const ref = useRef()
 
     function HomeClick(){
@@ -47,8 +50,10 @@ export default function Login() {
                 const r = await EntrarLogin(email, senha);
                 storage('usuario-logado', r)
                 storage('favoritos', [])
+                storage('carrinho', [])
                 setTimeout(() => {
-                    navigate('/'); 
+                    navigate('/');
+                    toast.dark(`Usuário ${storage('usuario-logado').nome} logado`)
                 }, 3000);
             } 
             catch (err2) {
@@ -68,7 +73,7 @@ export default function Login() {
             </div>
             <div className="barra_lateral"></div>
             <div className="botoes">
-                <h1     className="titulo">Entrar</h1>
+                <h1 className="titulo">Entrar</h1>
                 <div className="cx1">
                     <h6>E-mail</h6>
                     <input className="email" type="text" value={email} placeholder="Ex: user@user.com" onChange={e => setEmail(e.target.value)}/>
@@ -98,7 +103,7 @@ export default function Login() {
                             {erro}
                         </span>
                     </div>
-                    <button className="entrar" onClick={Entrar}>Entrar</button>
+                    <button className="entrar" onClick={Entrar}> Entrar </button>
                 </div>
                 <div className="criar_conta">
                     <a href="../CriarConta">criar conta</a>

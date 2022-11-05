@@ -9,6 +9,7 @@ import enderecoController from './Controller/enderecoController.js'
 import favoritosController from './Controller/FavoritosController.js'
 import carrinhoController from './Controller/CarrinhoController.js'
 import pedidoController from './Controller/pedidoController.js'
+import cartaoController from './Controller/CartaoController.js'
 import consultasController from './Controller/ConsultasController.js'
 import ConsultarPedidoController from './Controller/ConsultarPedidosController.js'
 
@@ -24,6 +25,7 @@ server.use(enderecoController)
 server.use(favoritosController)
 server.use(carrinhoController)
 server.use(pedidoController)
+server.use(cartaoController)
 server.use(consultasController)
 server.use(ConsultarPedidoController)
 

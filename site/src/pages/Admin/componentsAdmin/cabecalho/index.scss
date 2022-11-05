@@ -4,6 +4,10 @@
     justify-content: space-around;
     align-items: center;
 
+    a, .bolinha{
+        cursor: pointer;
+    }
+
     img{
         width: 8em; height: 8em;
         margin-left: -2em;

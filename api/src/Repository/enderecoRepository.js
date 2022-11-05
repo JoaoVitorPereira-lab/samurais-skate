@@ -18,14 +18,14 @@ export async function Listar(idUsuario){
     
     const [registros] = await con.query(comando, [idUsuario]);
     return registros;
-  }
+}
   
   
 /* Salvar Endereços */
 export async function Salvar(idUsuario, endereco){
     const comando = 
     `insert into tb_usuario_endereco (id_conta_usuario, ds_referencia, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
-                                values (?, ?, ?, ?, ?, ?, ?, ?, ?); `;
+                              values (?, ?, ?, ?, ?, ?, ?, ?, ?); `;
 
     const [info] = await con.query(comando, [idUsuario, endereco.referencia, endereco.cep, endereco.rua, endereco.numero, endereco.complemento, endereco.bairro, endereco.cidade, endereco.estado]);
     return info.insertId;
@@ -33,12 +33,12 @@ export async function Salvar(idUsuario, endereco){
 
 /* REMOVER PRODUTO */
 export async function removerEndereco(idProduto, idUsuario) {
-  const comando = `
-        delete from tb_usuario_endereco
-              where id_usuario_endereco = ?
-                and id_conta_usuario = ?
-  `;
+    const comando = `
+          delete from tb_usuario_endereco
+                where id_usuario_endereco = ?
+                  and id_conta_usuario = ?
+    `;
 
-  const [resp] = await con.query(comando, [idProduto, idUsuario])
-  return resp.affectedRows;
+    const [resp] = await con.query(comando, [idProduto, idUsuario])
+    return resp.affectedRows;
 }

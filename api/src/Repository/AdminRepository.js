@@ -110,7 +110,9 @@ export async function SalvarImagem (imagem, id) {
 /* FAZER LOGIN */
 export async function Login(email, senha) {
     const comando =
-        `select id_admin    id
+        `select id_admin        id,
+                nm_admin        nome,
+                ds_sobrenome    sobrenome
            from tb_admin
           where ds_email    = ?
             and 

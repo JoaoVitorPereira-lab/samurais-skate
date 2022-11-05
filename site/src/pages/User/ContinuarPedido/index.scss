@@ -42,15 +42,16 @@
     .aside-lado-a-lado{
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        width: 100%;
         margin-top: 2em;
         margin-bottom: 2em;
     }
 
     .sec-enderecos{
         flex-wrap: wrap;
-        margin-left: 2em;
         padding: 0em 0em 4em 1.5em;
-        width: 38%;
+        width: 40%;
 
         background: #FFFFFF;
         border: transparent;
@@ -66,7 +67,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 120%;
+        width: 100%;
     }
     .div-button{
         button{
@@ -91,7 +92,7 @@
     .sec-pagamento{
         margin-left: 2.5em;
         padding: 0em 0em 1.5em 1.5em;
-        width: 50%;
+        width: 45%;
 
         background: #FFFFFF;
         border: transparent;
@@ -158,6 +159,13 @@
             color: #FFFFFF;
             font-family: 'Dela Gothic One', cursive;
             font-size: 12px;
+        }
+
+        .card-cartao-row{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
         }
     }
 

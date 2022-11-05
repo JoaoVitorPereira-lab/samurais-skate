@@ -27,28 +27,20 @@ export async function inserirPedido(novoPedido) {
     return info.insertId;
 }
 
-export async function inserirPagamento(idPedido, novoPagamento) {
+export async function inserirPagamento(idPedido, idCartao, parcelas) {
     const comando = `
             INSERT INTO tb_pagamento_cartao (
                 id_pedido,
-                nm_cartao,
-                nr_cartao,
-                dt_vencimento,
-                cod_seguranca,
-                ds_forma_pagamento,
+                id_cartao,
                 nr_parcelas
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?);
+            VALUES (?, ?, ?);
     `
 
     const [info] = await con.query(comando, [
         idPedido,
-        novoPagamento.nome,
-        novoPagamento.numero,
-        novoPagamento.vencimento,
-        novoPagamento.codSeguranca,
-        novoPagamento.parcelas,
-        novoPagamento.formaPagamento
+        idCartao,
+        parcelas
     ]);
     
     return info.affectedRows;

@@ -8,6 +8,7 @@ import Cabecalho from '../componentsAdmin/cabecalho';
 import { CadastrarProduto, enviarimagem, AlterarProduto, BuscarPorID, BuscarImagem, ListarCategoria } from "../../../api/AdminAPI";
 import { ListarMarcas, ListarTipos, ListarTiposSkate } from "../../../api/ListarAPI";
 import { API_URL } from "../../../api/config";
+import Storage from "local-storage";
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -35,7 +36,7 @@ export default function PageCadastrarProduto(){
 
     const { idParam } = useParams();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     function MostrarImagem(){
         if(typeof (imagem) === 'object'){
@@ -87,18 +88,6 @@ export default function PageCadastrarProduto(){
         setTiposSkate(resp)
     }
 
-
-    useEffect(() =>{
-        if(idParam){
-            CarregarProduto();
-        }
-        CarregarCategorias()
-        CarregarTipos()
-        CarregarMarcas()
-        CarregartiposSkate()
-    },[] )
-
-
     async function salvarClick(){
         try {
             if(!imagem)
@@ -149,10 +138,21 @@ export default function PageCadastrarProduto(){
     function EscolherImagem() {
         document.getElementById('ClickFoto').click();
     }
-
+    
     useEffect(() =>{
+        if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
+            toast.dark('Área apenas para administradores')
+            navigate('/')
+        }
+        if(idParam){
+            CarregarProduto();
+        }
+        CarregarCategorias()
+        CarregarTipos()
+        CarregarMarcas()
+        CarregartiposSkate()
         MostrarImagem()
-    },[imagem])
+    }, [imagem])
 
     return(
         <main className="page-cadastrar-produto">

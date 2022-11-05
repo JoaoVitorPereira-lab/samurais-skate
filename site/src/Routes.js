@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import LandingPage  from './pages/Landing_Page/index.js'
+import LandingPage  from './pages/Landing_Page'
 
 import Login from './pages/User/Login'
 
@@ -9,26 +9,24 @@ import ConsultarProduto from './pages/Admin/consultarProduto'
 import ConsultarPedido from './pages/Admin/consultarPedido'
 import DetalhePedido from './pages/Admin/detalhePedido'
 
-import Teste from './pages/User/Login/teste'
-import LoginAdm from './pages/Admin/LoginAdm/index.js'
-import CadastroConta from './pages/User/Cadastro/index.js'
+import CriarConta from './pages/User/CriarConta'
 
-import ConsultarTenis from './pages/User/ConsultarTênis/index.js'
-import ConsultarSkate from './pages/User/consultarSkate/index.js'
-import ConsultarBone from './pages/User/consultarBone/index.js'
-import ConsultarAcessorio from './pages/User/consultarAcessorio/index.js'
-import Promocoes from './pages/User/Promocoes/index.js'
+import ConsultarTenis from './pages/User/ConsultarTênis'
+import ConsultarSkate from './pages/User/consultarSkate'
+import ConsultarBone from './pages/User/consultarBone'
+import ConsultarAcessorio from './pages/User/consultarAcessorio'
+import Promocoes from './pages/User/Promocoes'
 
-import DetalheProduto from './pages/User/DetalheProduto/index.js'
-import Carrinho from './pages/User/Carrinho/index.js'
-import ContinuarPedido from './pages/User/ContinuarPedido/index.js'
-import Favoritos from './pages/User/Favoritos/index.js'
-import ConfiguracaoInicial from './pages/User/ConfInicial/index.js'
-import CentraldeAjuda from './pages/User/CentraldeAjuda/index.js'
-import Compras from './pages/User/Compras/index.js'
-import Dados from './pages/User/Dados/index.js'
-import Endereco from './pages/User/Endereco/index.js'
-import Pagamento from './pages/User/Pagamento/index.js'
+import DetalheProduto from './pages/User/DetalheProduto'
+import Carrinho from './pages/User/Carrinho'
+import ContinuarPedido from './pages/User/ContinuarPedido'
+import Favoritos from './pages/User/Favoritos'
+import ConfiguracaoInicial from './pages/User/ConfInicial'
+import CentraldeAjuda from './pages/User/CentraldeAjuda'
+import Compras from './pages/User/Compras'
+import Dados from './pages/User/Dados'
+import Endereco from './pages/User/Endereco'
+import Pagamento from './pages/User/Pagamento'
 
 export default function Rotas (){
     return(
@@ -37,16 +35,13 @@ export default function Rotas (){
                 <Route path='/'                         element={<LandingPage/>}/>
                 
                 <Route path='/Login'                    element={<Login/>} />
-                <Route path='/CriarConta'               element={<CadastroConta/>} />   
+                <Route path='/CriarConta'               element={<CriarConta/>} />   
 
                 <Route path='/cadastrarproduto'         element={<CadastrarProduto/>}/>
                 <Route path='/alterarproduto/:idParam'  element={<CadastrarProduto/>}/>
                 <Route path='/consultarproduto'         element={<ConsultarProduto/>}/>
                 <Route path='/consultarpedidos'         element={<ConsultarPedido/>}/>
                 <Route path='/detalhepedido'            element={<DetalhePedido/>}/>
-
-                <Route path='/teste'                    element={<Teste/>}/>
-                <Route path='/Login/adm'                element={<LoginAdm/>} />
 
                 <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
                 <Route path='/ConsultarSkate'           element={<ConsultarSkate/>}/>

@@ -4,7 +4,7 @@ import { useRef, useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 
-export default function Login() {
+export default function CriarContaa() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [nome, setNome] = useState('')

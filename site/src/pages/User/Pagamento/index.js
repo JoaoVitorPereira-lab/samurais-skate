@@ -11,7 +11,7 @@ import "./index.scss";
 export default function Pagamento() {
   const[nome,setNome] = useState()
   const[numero,setNumero] = useState()
-  const[vencimeto,setVencimento] = useState()
+  const[vencimento,setVencimento] = useState()
   const[cvv,setCvv] = useState()
   const[usuario,setUsuario] = useState()
   const[cartao,setCartao] = useState([])
@@ -38,7 +38,7 @@ export default function Pagamento() {
 
   async function CadastrarCartaoClick (){
     try {
-      const novoCartao = await CadastrarCartao (usuario,nome,numero,vencimeto,cvv)
+      const novoCartao = await CadastrarCartao (usuario,nome,numero,vencimento,cvv)
      
       toast.dark('Cartão cadastrado com sucesso 🚀'); 
 
@@ -103,7 +103,7 @@ export default function Pagamento() {
                 <br />
                 <input value={numero} className="input-numero" type="number"  minLength={1} maxLength={16} onChange={e => setNumero(e.target.value)}/>
                 <br />
-                <input value={vencimeto} className="input-vencimeto" type="text" maxLength={5} onChange={e => setVencimento (e.target.value)} />
+                <input value={vencimento} className="input-vencimeto" type="text" maxLength={5} onChange={e => setVencimento (e.target.value)} />
                 <br />
                 <input value={cvv} type="number" min={1} max={3} onChange={e => setCvv(e.target.value)}/>
                 <br />

@@ -1,12 +1,18 @@
 import "./index.scss";
 
+import { toast } from "react-toastify"
+import Storage from "local-storage";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { useEffect, useState } from "react";
 import { ListarPedidosAdm } from "../../../api/PedidoAdminAPI";
 
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
+
+    const navigate = useNavigate()
 
     async function CarregarPedidos(){
         const resp = await ListarPedidosAdm()
@@ -14,6 +20,11 @@ export default function PageCadastrarProduto(){
     }
 
     useEffect(() => {
+        if(!Storage('admin-logado')){
+            toast.dark('Área apenas para administradores')
+            navigate('/')
+        }
+
         CarregarPedidos()
     }, [])
 

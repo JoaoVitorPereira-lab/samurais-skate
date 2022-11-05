@@ -7,6 +7,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Storage from "local-storage";
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
@@ -18,10 +19,6 @@ export default function PageConsultarProduto(){
 
     const [produto, setProduto] = useState([]);
     const [filtro, setFiltro] = useState('');
-
-    useEffect(() => {
-        CarregarProdutos();
-    })
 
     async function EditarProduto(id) {
         navigate(`/alterarproduto/`+id)
@@ -61,6 +58,15 @@ export default function PageConsultarProduto(){
             ]
         })
     }
+
+    useEffect(() => {
+        if(!Storage('admin-logado')){
+            toast.dark('Área apenas para administradores')
+            navigate('/')
+        }
+
+        CarregarProdutos();
+    }, [])
 
     return(
         <main className="page-consultar-produto">

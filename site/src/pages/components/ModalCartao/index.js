@@ -11,12 +11,11 @@ export default function ModalEndereco({ exibir, fechar }) {
     const [vencimento, setVencimento] = useState('');
     const [cvv, setCvv] = useState('');
     const [tipo, setTipo] = useState('');
-    const [parcela, setParcela] = useState('');
 
     async function salvarCartao() {
         try {
             const id = Storage('usuario-logado').id;
-            const r = await CadastrarCartao(id, nome, numero, vencimento, cvv, parcela);
+            await CadastrarCartao(id, nome, numero, vencimento, cvv, tipo);
             toast.dark('Cartão salvo');
 
             fechar();
@@ -58,19 +57,6 @@ export default function ModalEndereco({ exibir, fechar }) {
                                 <option>Débito</option>
                             </select>
                         </div>
-                        <div className='div-form-select div-form-select-2'>
-                            <label id="lb"> Parcela: </label>
-                            <select className='select-parcela' value={parcela} onChange={e => setParcela(e.target.value)}  >
-                                <option disabled hidden selected>Selecione</option>
-                                <option value={0}>01x à Vista</option>
-                                <option value={1}>01x sem Juros</option>
-                                <option value={2}>02x sem Juros</option>
-                                <option value={3}>03x sem Juros</option>
-                                <option value={4}>04x sem Juros</option>
-                                <option value={5}>05x sem Juros</option>
-                                <option value={6}>06x sem Juros</option>
-                            </select>
-                        </div>
 
                         <div className='div-form'>
                             <label id="lb"></label>
@@ -84,3 +70,19 @@ export default function ModalEndereco({ exibir, fechar }) {
         </div>
     )
 }
+
+/* 
+<div className='div-form-select div-form-select-2'>
+    <label id="lb"> Parcela: </label>
+    <select className='select-parcela' value={parcela} onChange={e => setParcela(e.target.value)}  >
+        <option disabled hidden selected>Selecione</option>
+        <option value={0}>01x à Vista</option>
+        <option value={1}>01x sem Juros</option>
+        <option value={2}>02x sem Juros</option>
+        <option value={3}>03x sem Juros</option>
+        <option value={4}>04x sem Juros</option>
+        <option value={5}>05x sem Juros</option>
+        <option value={6}>06x sem Juros</option>
+    </select>
+</div> 
+*/

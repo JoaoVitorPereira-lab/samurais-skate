@@ -1,4 +1,4 @@
-.comp-card-endereco {
+.comp-card-cartao {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -16,21 +16,21 @@
     box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 
-    .referencia{
-        font-family: 'Inter', sans-serif;
+    .nome-cartao{
+        font-family: 'Dekko', cursive;
         font-weight: 600;
         font-size: 16px;
     }
-    .cep{
-        color: #474747;
-        font-family: 'Inter', sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-    }
-    .end{
+    .numero-cartao{
         color: #3f3f3f;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Dekko', sans-serif;
         font-size: 16px;
         font-weight: 400;
+    }
+    .tipo-cartao{
+        color: #474747;
+        font-family: 'Dekko', cursive;
+        font-weight: 400;
+        font-size: 16px;
     }
 }

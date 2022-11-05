@@ -21,31 +21,19 @@ export function criarNotaFiscal() {
 }
 
 
-export function lerValorFrete(frete) {
-    if (frete === 'Normal')
-        return 10.0;
-    else
-        return 25.0;
-}
-
-
 export function criarNovoPedido(idUsuario, idCupom, info) {
     
     let agora = new Date();
     let notaFiscal = criarNotaFiscal();
-
-    if(!info.idEndereco){
-       throw new Error('Você precisa escolher um endereço');
+    
+    return {
+        idUsuario: idUsuario,
+        idEndereco: info.idEndereco,
+        idCupom: idCupom,
+        data: agora,
+        notaFiscal: notaFiscal,
+        status: 'Confirmando Pagamento',
+        tipoPagamento: 'Cartão'
     }
-    else{
-        return {
-            idUsuario: idUsuario,
-            idEndereco: info.idEndereco,
-            idCupom: idCupom,
-            data: agora,
-            notaFiscal: notaFiscal,
-            status: 'Confirmando Pagamento',
-            tipoPagamento: 'Cartão'
-        }
-    }
+    
 }

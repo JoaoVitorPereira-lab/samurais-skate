@@ -7,35 +7,32 @@ import { toast } from 'react-toastify'
 import Storage from 'local-storage'
 
 import { BuscarPorIDCarrinho } from '../../../api/CarrinhoAPI'
-import { Listar } from '../../../api/EnderecoAPI'
 import { SalvarNovoPedido } from '../../../api/PedidoAPI'
+import { Listar } from '../../../api/EnderecoAPI'
+import { BuscarCartao } from '../../../api/CartaoAPI';
 
+import CardCartao from '../../components/cardCartao';
 import CardEndereco from '../../components/cardEndereco';
+
 import ModalEndereco from '../../components/ModalEndereco';
 import ModalCartao from '../../components/ModalCartao';
+
 import { API_URL } from '../../../api/config';
 import Rodape from '../../components/rodape';
-import { BuscarCartao } from '../../../api/CartaoAPI';
 
 export default function ContinuarPedido(){
     const [enderecos, setEnderecos] = useState([]);
     const [itens, setItens] = useState([]);
-    const [usuario, setUsuario] = useState([]);
 
     const [cartao, setCartao] = useState([]);
+    const [idCartao, setIdCartao] = useState();
     const [exibirCartao, setExibirCartao] = useState(false);
 
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
 
     const [cupom, setCupom] = useState('');
-
-    const [nome, setNome] = useState('');
-    const [numero, setNumero] = useState('');
-    const [vencimento, setVencimento] = useState('');
-    const [cvv, setCvv] = useState('');
-    const [tipo, setTipo] = useState('');
-    const [parcela, setParcela] = useState('');
+    const [parcelas, setParcelas] = useState('');
 
     const navigate = useNavigate();
 
@@ -60,8 +57,13 @@ export default function ContinuarPedido(){
     async function CarregarEnderecos(){
         const id = Storage('usuario-logado').id;
         const r = await Listar(id);
-        console.log(r);
         setEnderecos(r);
+    }
+
+    async function CarregarCartoes(){
+        const id = Storage('usuario-logado').id;
+        const r = await BuscarCartao(id)
+        setCartao(r)
     }
 
     async function CarregarItens(){
@@ -105,7 +107,8 @@ export default function ContinuarPedido(){
                 cupom: cupom,
                 idEndereco: idEndereco,
                 tipoPagamento: 'Cartão',
-                cartao: cartao,
+                idCartao: idCartao,
+                parcelas: parcelas,
                 produtos: produtos
             }
 
@@ -119,26 +122,20 @@ export default function ContinuarPedido(){
         }
     }
 
-    function PegarUsuario(){
-        const usuarioLogado = Storage('usuario-logado')
-        setUsuario(usuarioLogado)
-    }
-    
-    async function CarregarCartoes(){
-      const resposta = await BuscarCartao(usuario.id)
-      setCartao(resposta)
-    }
-
     useEffect(() =>{
         if(!Storage("usuario-logado")){
             navigate('/Login')
         }
-        PegarUsuario();
-        CarregarCartoes();
 
+        CarregarCartoes();
         CarregarItens();
         CarregarEnderecos();
-    }, [cartao])
+
+        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+            toast.error('Carrinho vazio, Coloque um item no carrinho')
+            navigate('/')
+        }
+    },[])
 
     return(
         <main className='main-continuarPedido'>
@@ -197,15 +194,32 @@ export default function ContinuarPedido(){
                     <div className="div-cartao-credito">
                         <h2> Cartão </h2>
 
-                        {cartao.map(item =>
-                            <div className="div-cartoes-cadastrados">
-                                <h3> {item.nome} </h3>
-                            </div>
-                        )}
+                        <div className='card-cartao-row'>
+                            {cartao.map(item =>
+                                <CardCartao item={item} selecionar={setIdCartao} selecionado={item.id == idCartao} />
+                            )}
+                        </div>
 
                         <button onClick={exibirNovoCartao}>
                             ADICIONAR CARTÃO
                         </button>
+                        
+                        {idCartao != undefined &&
+                            <div className='div-cupom'>
+                                <h2> Parcelamento </h2>
+                                <div className='form'>
+                                <select className='select-parcela' value={parcelas} onChange={e => setParcelas(e.target.value)}  >
+                                    <option disabled hidden selected>Selecione</option>
+                                    <option value={1}>01x sem Juros</option>
+                                    <option value={2}>02x sem Juros</option>
+                                    <option value={3}>03x sem Juros</option>
+                                    <option value={4}>04x sem Juros</option>
+                                    <option value={5}>05x sem Juros</option>
+                                    <option value={6}>06x sem Juros</option>
+                                </select>
+                                </div>
+                            </div>
+                        }
                     </div>
 
                     <div className='div-cupom'>
