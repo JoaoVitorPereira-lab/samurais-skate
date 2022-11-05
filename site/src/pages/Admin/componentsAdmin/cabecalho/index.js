@@ -6,10 +6,13 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import Storage from 'local-storage'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 export default function Cabecalho(){
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+
     const navigate = useNavigate();
 
     function IrParaHome(nome){
@@ -52,11 +55,19 @@ export default function Cabecalho(){
         })
     }
 
-    useEffect(() =>{
-        if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
-            toast.dark('Área apenas para administradores')
-            navigate('/')
-        }
+    function PegarNomeAdmin(){
+        const r = Storage('admin-logado').nome
+        setNome(r);
+    }
+
+    function PegarSobrenomeAdmin(){
+        const r = Storage('admin-logado').sobrenome
+        setSobrenome(r);
+    }
+
+    useEffect(() => {
+        PegarNomeAdmin();
+        PegarSobrenomeAdmin();
     }, [])
 
     return(
@@ -64,20 +75,20 @@ export default function Cabecalho(){
             <a onClick=
                 {e => {
                     e.stopPropagation();
-                    IrParaHome(Storage('admin-logado').nome);
+                    IrParaHome(nome);
                 }}
             >
                 <img src="/images/logo-branco.gif" alt=""/>
             </a>
-            <p> Seja bem-vindo, {Storage('admin-logado').nome + ' ' + Storage('admin-logado').sobrenome} </p>
+            <p> Seja bem-vindo, {nome + ' ' + sobrenome} </p>
             <div className="bolinha"
                  onClick=
                  {e => {
                      e.stopPropagation();
-                     sairAdmin(Storage('admin-logado').nome);
+                     sairAdmin(nome);
                  }}
             >
-                <span> {Storage('admin-logado').nome[0]} </span>
+                <span> {nome.toUpperCase()[0]} </span>
             </div>
         </div>
     );

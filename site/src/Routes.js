@@ -29,6 +29,9 @@ import Endereco from './pages/User/Endereco'
 import Pagamento from './pages/User/Pagamento'
 
 export default function Rotas (){
+
+    
+
     return(
         <BrowserRouter>
             <Routes>

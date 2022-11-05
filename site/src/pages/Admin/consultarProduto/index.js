@@ -60,7 +60,7 @@ export default function PageConsultarProduto(){
     }
 
     useEffect(() => {
-        if(!Storage('admin-logado')){
+        if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
             toast.dark('Área apenas para administradores')
             navigate('/')
         }

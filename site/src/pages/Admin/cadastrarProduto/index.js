@@ -138,21 +138,26 @@ export default function PageCadastrarProduto(){
     function EscolherImagem() {
         document.getElementById('ClickFoto').click();
     }
+
+    useEffect(() => {
+        MostrarImagem()
+    }, [imagem])
     
     useEffect(() =>{
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
             toast.dark('Área apenas para administradores')
             navigate('/')
         }
-        if(idParam){
-            CarregarProduto();
-        }
+
         CarregarCategorias()
         CarregarTipos()
         CarregarMarcas()
         CarregartiposSkate()
-        MostrarImagem()
-    }, [imagem])
+
+        if(idParam){
+            CarregarProduto();
+        }
+    }, [])
 
     return(
         <main className="page-cadastrar-produto">

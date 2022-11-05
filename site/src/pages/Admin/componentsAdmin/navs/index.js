@@ -14,13 +14,6 @@ export default function Navs(props) {
         <nav className="comp-navs">
 
             <div className="div-navs">
-                <Link to='/asdasdas' className={verificarMenuSelecionado('home-adm')}>
-                    <div className="navs-produtos not">
-                        <img src="../images/home.png" className="imgs-nav" alt="" />
-                        <span> Home </span>
-                    </div>
-                </Link>
-
                 <Link to='/cadastrarproduto' className={verificarMenuSelecionado('cadastrar-adm')}>
                     <div className="navs-produtos">
                         <img src="../images/cadastrar.png" className="imgs-nav" alt="" />
