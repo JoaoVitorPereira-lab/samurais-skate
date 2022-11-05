@@ -1,5 +1,4 @@
 import './index.scss'
-import './1200.scss'
 import { useRef, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
@@ -125,7 +124,7 @@ export default function Landing_Page() {
                 <div> <img src={images9} alt="a" /> </div>
                 <div> <img src={images10} alt="a" /> </div>
                 <div> <img src={images11} alt="a" /> </div>
-                <div> <img src={images12} alt="b" /> </div>
+                <div> <img src={images12} alt="a" /> </div>
 
             </section>
 

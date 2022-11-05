@@ -198,10 +198,17 @@
         margin-top: -1.5em;
     }
 
-    @media screen and (max-width: 1200px){
+    @media (min-width: 1199px) and (max-width:1300px){
+
+        .img-logo{
+            width: 128px; height: 128px;
+            margin-left: 4em;
+        }
+
         .navs-container-grande{
             display: none;
         }
+
         .navs-container-pequena{
             display: flex;
             flex-direction: row;
