@@ -129,6 +129,7 @@ export default function PageCadastrarProduto(){
         setId(0);
         setPromocao(false);
 
+        setImagem();
         setIdTipoSkate('Tipo do Skate');
         setIdCategoria('Categoria');
         setIdTipos('Tipos');

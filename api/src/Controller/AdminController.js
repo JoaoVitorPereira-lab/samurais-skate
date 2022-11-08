@@ -164,7 +164,7 @@ server.post('/api/login/adm', async (req,resp) =>{
       const {email, senha} = req.body;
 
       const resposta = await Login(email, senha)
-      if(!resposta) throw new Error("Credencias INVÁLIDAS")
+      if(!resposta) throw new Error("Credencias inválidas")
       
       resp.status(200).send(resposta)
   } 

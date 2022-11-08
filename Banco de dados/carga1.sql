@@ -1,45 +1,9 @@
 use samuraisdb;
 
-select nm_produto	nome,
-	   nr_preco		preco,
-       ds_imagem	imagem
-  from tb_produto_curtido
-  join tb_produto 			on tb_produto_curtido.id_produto 		= tb_produto.id_produto
-  join tb_imagem_produto 	on tb_produto_curtido.id_imagem_produto = tb_imagem_produto.id_imagem_produto
- where id_conta_usuario = 1;
-
-select dt_pedido		dt,
-	   cod_nota_fiscal	codigo,
-       ds_status		stts,
-	   nm_usuario		nome
-  from tb_pedido
-  join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario;
-
-select * from tb_pedido;
-select * from tb_pedido_item;
-select * from tb_produto;
-
 -- ADMIN
 insert into tb_admin (ds_email, ds_senha)
 			 values ('admin@admin.com', 'pedroatacantedohexa');
 
--- USUARIO
-insert into tb_conta_usuario (nm_usuario, nm_sobrenome)
-			 values ('leo', 'natel');
-
-select ds_referencia	referencia,
-	   ds_cep			cep,
-	   nm_rua			rua,
-       nr_numero		numero,
-       ds_complemento	complemento,
-       ds_bairro		bairro,
-       ds_cidade		cidade,
-       ds_estado		estado
-  from tb_usuario_endereco
- where id_conta_usuario = 1;
- 
-insert into tb_usuario_endereco (id_conta_usuario, ds_referencia, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
-						 values (1, 'MyHome', '04843-460', 'rua uraba', 7, 'Casa2', 'Grajaú', 'São Paulo', 'São Paulo');
              
 -- INSERIR TIPO SKATE
 insert into tb_tipo_skate (nm_tipo_skate)
@@ -112,3 +76,50 @@ insert into tb_categoria (nm_categoria)
 			 values ('Semi-Profissional');             
 insert into tb_categoria (nm_categoria)
 			 values ('Profissional');
+
+
+select nm_produto	nome,
+	   nr_preco		preco,
+       ds_imagem	imagem
+  from tb_produto_curtido
+  join tb_produto 			on tb_produto_curtido.id_produto 		= tb_produto.id_produto
+  join tb_imagem_produto 	on tb_produto_curtido.id_imagem_produto = tb_imagem_produto.id_imagem_produto
+ where id_conta_usuario = 1;
+
+select dt_pedido		dt,
+	   cod_nota_fiscal	codigo,
+       ds_status		stts,
+	   nm_usuario		nome
+  from tb_pedido
+  join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario;
+
+select id_pedido_item		nome,
+	   ds_imagem			imagem,
+	   nm_produto			nome_produto,
+       DATE_FORMAT (dt_pedido, '%d-%m-%y') AS data,
+       nr_preco				valor,
+       cod_nota_fiscal		codigo
+  from tb_pedido_item
+  join tb_pedido 			on tb_pedido_item.id_pedido = tb_pedido.id_pedido
+  join tb_produto 			on tb_pedido_item.id_produto = tb_produto.id_produto
+  join tb_imagem_produto 	on tb_produto.id_produto  = tb_imagem_produto.id_produto
+ where tb_pedido_item.id_pedido = 1;
+
+select * from tb_pedido;
+select * from tb_pedido_item;
+select * from tb_produto;
+
+
+select ds_referencia	referencia,
+	   ds_cep			cep,
+	   nm_rua			rua,
+       nr_numero		numero,
+       ds_complemento	complemento,
+       ds_bairro		bairro,
+       ds_cidade		cidade,
+       ds_estado		estado
+  from tb_usuario_endereco
+ where id_conta_usuario = 1;
+ 
+insert into tb_usuario_endereco (id_conta_usuario, ds_referencia, ds_cep, nm_rua, nr_numero, ds_complemento, ds_bairro, ds_cidade, ds_estado)
+						 values (1, 'MyHome', '04843-460', 'rua uraba', 7, 'Casa2', 'Grajaú', 'São Paulo', 'São Paulo');
