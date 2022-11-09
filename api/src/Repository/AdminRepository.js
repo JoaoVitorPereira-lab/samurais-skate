@@ -145,3 +145,7 @@ export async function removerProdutoImagens(idProduto) {
     const [resp] = await con.query(comando, [idProduto])
     return resp.affectedRows;
 }
+
+export async function  atualizarStatus (idPedido, status){
+    const comando = `  `
+}

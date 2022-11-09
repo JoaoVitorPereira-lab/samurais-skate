@@ -193,4 +193,21 @@ server.delete('/api/produto/:id', async (req, resp) => {
   }
 })
 
+server.put('/api/produto/status:id', async (req,resp) =>{
+  try {
+
+    const {id} = req.params;
+    const status = req.body;
+
+    if(!status) throw new Error ("Coloque um status!")
+
+    resp.status(200).send()
+    
+  }
+   catch (err) {
+    resp.status(400).send({
+      Erro: err.message
+    })
+  }
+})
 export default server;
