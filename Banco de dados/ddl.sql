@@ -2,6 +2,12 @@ create database samuraisdb;
 use samuraisdb;
 
 
+-- Tabela dos tipos de produto
+create table tb_tipo (
+	ID_TIPO 			int primary key auto_increment,
+ 	NM_TIPO				varchar(100)
+);
+
 -- Tabela do Admin
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,
@@ -48,19 +54,16 @@ create table tb_usuario_endereco (
 -- Tabela da marca
 create table tb_marca (
 	ID_MARCA	int primary key auto_increment,
-	NM_MARCA	varchar(100)
+    id_tipo 	int,
+	NM_MARCA	varchar(100),
+    
+    foreign key (id_tipo) references tb_tipo (id_tipo)
 );
 
 -- Tabela da categoria
 create table tb_categoria (
 	ID_CATEGORIA		int primary key auto_increment,
 	NM_CATEGORIA		varchar(100)
-);
-
--- Tabela dos tipos de produto
-create table tb_tipo (
-	ID_TIPO 			int primary key auto_increment,
- 	NM_TIPO				varchar(100)
 );
 
 -- tabela tipo skate
@@ -84,6 +87,7 @@ create table tb_produto	(
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),
     NR_ESTOQUE			int,
+    ds_status			varchar(50),	
     
     foreign key (ID_MARCA) references tb_marca (ID_MARCA),
     foreign key (ID_CATEGORIA) references tb_categoria (ID_CATEGORIA),
@@ -126,11 +130,7 @@ create table tb_produto_curtido (
 );
 
 -- Tabela do status do pedido
-create table tb_pedido_status (
-	ID_PEDIDO_STATUS		int primary key auto_increment,
-	NM_STATUS				varchar(100),
-	IMG_STATUS				varchar(600)
-);
+
 
 -- Tabela de cupom
 create table tb_cupom (
@@ -159,7 +159,6 @@ create table tb_pedido (
     id_cupom			int,
     dt_pedido			datetime,
     cod_nota_fiscal		varchar(200),
-    ds_status			varchar(200),
     tp_pagamento		varchar(200),
     foreign key (id_conta_usuario) references tb_conta_usuario (ID_CONTA_USUARIO),
     foreign key (id_usuario_endereco) references tb_usuario_endereco (id_usuario_endereco),
