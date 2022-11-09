@@ -103,7 +103,7 @@ export default function CabecalhoUsuarioNavs(props) {
                                         <text> {usuario[0]} </text>
                                     </div>
 
-                                    <div className='email div-right'>
+                                    <div className='email'>
                                         <h2> {email} </h2>
                                         <text className="trocar-usuario"> Trocar Usuário </text>
                                     </div>
@@ -120,7 +120,7 @@ export default function CabecalhoUsuarioNavs(props) {
                                     </div>
                                 </div>
 
-                                <div className='sair-popUp'>
+                                <div className='sair-popUp div-compras'>
 
                                     <div className='img-compras-popUp'>
 
