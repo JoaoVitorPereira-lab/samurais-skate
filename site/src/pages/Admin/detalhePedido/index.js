@@ -12,11 +12,11 @@ import { toast } from "react-toastify"
 import Storage from "local-storage";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Detalhes, Remover } from "../../../api/PedidoAdminAPI";
+import { Detalhes, InfoUser, Remover, AlterarStatus } from "../../../api/PedidoAdminAPI";
 
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
-
+    const [usuario, setUsuario] = useState([]);
     const navigate = useNavigate();
 
     const { id } = useParams();
@@ -24,6 +24,11 @@ export default function PageCadastrarProduto(){
     async function CarregarDetalhePedido(){
         const resp = await Detalhes(id)
         setPedido(resp)
+    }
+
+    async function CarregarUsuario(){
+        const resp = await InfoUser(id)
+        setUsuario(resp)
     }
 
     async function DeletarPedido(id) {
@@ -57,12 +62,19 @@ export default function PageCadastrarProduto(){
         return total + 20;
     }
 
+    function Statusup(){
+        const resp = AlterarStatus(id);
+        return resp;
+    }
+
+
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
             toast.dark('Área apenas para administradores')
             navigate('/')
         }
         
+        CarregarUsuario();
         CarregarDetalhePedido();
     }, [])
 
@@ -76,7 +88,9 @@ export default function PageCadastrarProduto(){
 
             <div className="tite">
                 <hr />
-                <h2> Pedido do <span> Bruno Oliveira </span> </h2>
+                {usuario.map(item =>
+                    <h2> Pedido do <span> {item.nome} {item.sobrenome} </span> </h2>
+                )}
             </div>
 
             {pedido.map(item =>
