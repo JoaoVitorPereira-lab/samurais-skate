@@ -1,21 +1,26 @@
 .main-endereco{
     display: flex;
     flex-direction: column;
+    width: 100%;
+
+    .sec-row{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5em;
+    }
 
     .div-endereco{
         display: flex;
         flex-direction: column;
-        position: absolute;
-        margin-top: 17em;
-        margin-left: 20em;
+        width: 70%;
+        margin-left: 5em;
     }
 
     .titulo-enderecos h1{
         font-family: 'Dela Gothic One';
         font-style: normal;
         font-weight: 400;
-        font-size: 30px;
-        line-height: 29px;
+        font-size: 24px;
     }
     .titulo-enderecos label{
         font-family: 'Dekko';
@@ -25,60 +30,20 @@
         line-height: 23px;
     }
     .titulo-enderecos{
-        width: 50em;
+        width: 95%;
         border-bottom: 1px solid #000;
     }
-    .infos-endereco{
-        font-family: 'Dekko';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 29px;
-        margin-bottom: -2em;
-        color: #000000;
-    }
-    .infos-endereco-botoes{
-        display: flex;
-        justify-content: space-between;
-        font-family: 'Dekko';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 29px;
-        margin-bottom: -2em;
-        color: #000000;
-        height: 3.2em;
-    }
 
-    .div-botoes{
+    .card-endereco{
         display: flex;
         flex-direction: row;
-        margin-top: 3em;
-        margin-right: 35em;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 2em;
     }
-    
-    .editar{
-        border: none;
-        background: #FFFFFF;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
-        color: #E52A45;
-        margin-right: 2em;
-    }
-    .excluir{
-        background: #FFFFFF;
-        border: none;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
-        color: #E52A45;
-    }
-    .infos-total{
-        display: flex;
-        flex-direction: column;
-    }
+
     .add-endereco button{
         border:  1px solid #000;
-        margin-top: 2em;
         background-color: #E52A45;
         color: #FFFFFF;
         font-size: 1em;

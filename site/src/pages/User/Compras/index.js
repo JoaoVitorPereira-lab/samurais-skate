@@ -5,44 +5,57 @@ import Rodape from "../../components/rodape";
 import './index.scss'
 
 export default function Compras() {
-  return (
-    <main className="main-compras">
-      <Cabecalho />
-      <Menu />
+	return (
+		<main className="main-compras">
+			<Cabecalho />
 
-      <div className="div-compras">
+			<section className="sec-row">
+				<Menu />
 
-        <div className="esquerda-compras">
+				<div className="div-card">
+					<section className="sec-1">
+						<div className="esquerda-card">
+							<div className="nome-pedido">
+								<h2> Pedido de Bruno de Oliveira </h2>
+							</div>
 
-            <div className="nome-pedido">
-             <h3> Pedido de Pedro </h3>
-            </div>
+							<div className="ver-pedido">
+								<text> Ver pedido completo </text>
+							</div>
+						</div>
 
-            <div className="verpedido-pedido">
-             <h3> Ver pedido </h3>
-             <div className="linha-verpedido"> </div>
-            </div>
+						<div className="direita-card">
+							<div className="status-pedido">
+								<img src="/images/em-preparacao.png" alt=""/>
+								<h2> Aguardando Pagamento </h2>
+							</div>
 
-        </div>
+							<div className="valor-pedido">
+								<text> R$239,90 </text>
+							</div>
+						</div>
+					</section>
 
-        <div className="direita-compra">
+					<section className="sec-2">
+						<div className="div-2">
+							<hr/>
+						</div>
 
-             <div className="status-pedido">
-                 <h3> Status </h3>
-             </div>
+						<div className="div-dir">
+							<div className="div-chegara">
+								<text> O produto deve chegar em 00/00/00 </text>
+							</div>
 
-        
+							<div className="div-total-cancelar">
+								<text> Total do pedido:  &nbsp; <span> R$ 239,90 </span> </text>
+								<button className="btn-cancelar"> Cancelar pedido </button>
+							</div>
+						</div>
+					</section>
+				</div>
 
-            <div className="Valor-pedido">
-                <h3> R$239,90 </h3>
-             </div>
-
-        </div>
-
-      </div>
-
-      <Rodape />
-      
-    </main>
-  );
+			</section>
+			<Rodape />
+		</main>
+	);
 }

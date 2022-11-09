@@ -99,24 +99,23 @@ export default function CabecalhoUsuarioNavs(props) {
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
-
                                     <div className='bolinha' >
-                                        <h2> {usuario[0]} </h2>
+                                        <text> {usuario[0]} </text>
                                     </div>
 
-                                    <div className='email'>
-                                    <h2 > {email} </h2>
-                                    < label className="trocar-usuario"> Trocar Usuário </label>
+                                    <div className='email div-right'>
+                                        <h2> {email} </h2>
+                                        <text className="trocar-usuario"> Trocar Usuário </text>
                                     </div>
                                 </div>
                                 
                                 <div className='sair-popUp' onClick={ConfigClick}>
 
-                                <div className='img-config-popUp'>
-                                    <img src="/images/Services.png" alt="" />
-                                </div>
+                                    <div className='img-config-popUp'>
+                                        <img src="/images/Services.png" alt="" />
+                                    </div>
 
-                                    <div>
+                                    <div className="div-right">
                                         <h2 className='config-popUp' > configuracao </h2>
                                     </div>
                                 </div>
@@ -128,7 +127,7 @@ export default function CabecalhoUsuarioNavs(props) {
                                         <img src="/images/Shopping Bag Full.png" alt="" />
                                     </div>
 
-                                    <div className='compras-popUp'>
+                                    <div className='compras-popUp div-right'>
                                         <h2> Compras </h2>
                                     </div>
 

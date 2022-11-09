@@ -44,7 +44,7 @@ export default function Rotas (){
                 <Route path='/alterarproduto/:idParam'  element={<CadastrarProduto/>}/>
                 <Route path='/consultarproduto'         element={<ConsultarProduto/>}/>
                 <Route path='/consultarpedidos'         element={<ConsultarPedido/>}/>
-                <Route path='/detalhepedido'            element={<DetalhePedido/>}/>
+                <Route path='/detalhe/pedido/:id'        element={<DetalhePedido/>}/>
 
                 <Route path='/ConsultarTenis'           element={<ConsultarTenis/>}/>
                 <Route path='/ConsultarSkate'           element={<ConsultarSkate/>}/>

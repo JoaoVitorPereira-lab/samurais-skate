@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { ConsultarPedido, DetalhePedido } from "../Repository/ConsultarPedidosRepository.js";
+import { Consultar, Detalhe, removerItemPedido, removerPagamentoCartao, removerPedido } from "../Repository/ConsultarPedidosRepository.js";
 
 const server = Router();
 
-/* CONSULTAR Pedido */
+/* CONSULTAR PEDIDO */
 server.get('/api/admin/pedidos' , async (req, resp) =>{
   try {
-    const resposta = await ConsultarPedido()
-    
-    resp.status(200).send(resposta)
+      const resposta = await Consultar()
+      
+      resp.status(200).send(resposta)
   } 
   
   catch (err) {
@@ -20,11 +20,10 @@ server.get('/api/admin/pedidos' , async (req, resp) =>{
 
 
 /* DETALHE DO PEDIDO */
-server.get('/api/pedido/:id', async (req, resp) =>{
-  try
-  {
+server.get('/detalhe/pedido/:id', async (req, resp) =>{
+  try{
       const id = Number(req.params.id);
-      const resposta = await DetalhePedido(id);
+      const resposta = await Detalhe(id);
 
       if(!resposta)
         resp.status(404).send([]);
@@ -34,6 +33,25 @@ server.get('/api/pedido/:id', async (req, resp) =>{
 
   catch(err)
   {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
+
+
+/* REMOVER PEDIDO */
+server.delete('/api/pedido/:id', async (req, resp) => {
+  try {
+      const id = Number(req.params.id);
+
+      await removerPagamentoCartao(id);
+      await removerItemPedido(id);
+      await removerPedido(id);
+
+      resp.status(204).send();
+  }
+  catch (err) {
       resp.status(400).send({
           erro: err.message
       })

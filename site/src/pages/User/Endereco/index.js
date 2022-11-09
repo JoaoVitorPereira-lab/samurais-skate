@@ -1,100 +1,72 @@
 import Cabecalho from '../../components/cabecalho'
 import Menu from '../../components/MenuConfig'
 import Rodape from '../../components/rodape'
-import {Listar } from '../../../api/EnderecoAPI'
+import { Listar } from '../../../api/EnderecoAPI'
 import storage from 'local-storage'
 import ModalEndereco from '../../components/ModalEndereco'
 
 import './index.scss'
 import { useState, useEffect } from 'react';
+import CardEndereco from '../../components/cardEndereco'
+import Storage from 'local-storage'
 
-export default function Endereco (){
+export default function Endereco() {
 
-    const[exibirEndereco,setExibirEndereco] = useState(false)
-    const[usuario,setUsuario]= useState([])
-    const[endereco,setEndereco] = useState ([])
-    
-    function exibirNovoEnderecoClick(){
-        setExibirEndereco(true)
+    const [exibirEndereco, setExibirEndereco] = useState(false)
+    const [usuario, setUsuario] = useState([])
+    const [endereco, setEndereco] = useState([])
+    const [idCartao, setIdCartao] = useState();
+
+    function exibirNovoEndereco() {
+        setExibirEndereco(true);
     }
 
     function fecharNovoEndereco() {
         setExibirEndereco(false);
+        ListarEnderecos();
     }
 
-    async function  ListarEnderecos(){
-        const resposta = await Listar(usuario.id)
-        setEndereco(resposta)
+    async function ListarEnderecos() {
+        const id = Storage('usuario-logado').id;
+        const r = await Listar(id);
+        setEndereco(r);
     }
 
-    useEffect(() =>{
-        if(storage('usuario-logado')){
+    useEffect(() => {
+        if (storage('usuario-logado')) {
             const nome = storage('usuario-logado')
             setUsuario(nome)
         }
         ListarEnderecos();
-    },[])
+    }, [])
 
-    return(
+    return (
         <main className='main-endereco'>
             <ModalEndereco exibir={exibirEndereco} fechar={fecharNovoEndereco} />
-            <Cabecalho/>
-            <Menu/>
-            {exibirEndereco === true 
-            }
-            {exibirEndereco === false &&
-            <div className='div-endereco'>
-            <div className='titulo-enderecos'>
-                <h1> Meus Endereços </h1>
-                <label> Gerencie seus endereços </label>
-            </div>
-            {endereco.map(item =>
-            <div className='infos-total'>
-            <div className='div-esquerda'>
+            <Cabecalho />
 
-                <div className='infos-endereco-botoes'>
-                    <h4> {item.referencia} | {item.cep} </h4>
-                    <div className='div-botoes'>
+            <section className='sec-row'>
+                <Menu />
 
-                        <div>
-                            <button className='editar'> Editar </button>
-                        </div>
+                <div className='div-endereco'>
+                    <div className='titulo-enderecos'>
+                        <h1> Meus Endereços </h1>
+                        <label> Gerencie seus endereços </label>
+                    </div>
 
-                        <div >
-                            <button className='excluir'> Excluir </button>
-                        </div>
+                    <div className='card-endereco'>
+                        {endereco.map(item =>
+                            <CardEndereco item={item} selecionar={setIdCartao} selecionado={item.id == idCartao} />
+                        )}
+                    </div>
 
+                    <div className='add-endereco'>
+                        <button onClick={exibirNovoEndereco}> Adicionar endereco </button>
                     </div>
                 </div>
+            </section>
 
-
-                <div className='infos-endereco'>
-                    <h4> {item.rua} </h4>
-                </div>
-
-                <div className='infos-endereco'>
-                    <h4> {item.numero}, {item.bairro}</h4>
-                </div>
-
-                <div className='infos-endereco'>
-                    <h4> {item.cidade} | {item.estado} </h4>
-                </div>
-                
-                <div className='infos-endereco'>
-                    <h4> {item.complemento}   </h4>
-                </div>
-                
-            </div>
-        </div>            
-            )}
-            
-            <div className='add-endereco'>
-            <button onClick={exibirNovoEnderecoClick}> Adicionar endereco </button>
-            </div>
-        </div>            
-            }
-            
-            <Rodape/>  
+            <Rodape />
         </main>
     )
 }

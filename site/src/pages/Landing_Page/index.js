@@ -1,8 +1,5 @@
 import './index.scss'
 
-import Storage from 'local-storage'
-import { useEffect } from 'react'
-
 import { useRef, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
@@ -34,13 +31,6 @@ import images15 from './images/tenis_para_andar_de_skate.png'
 
 export default function Landing_Page() {
 
-    useEffect(() => {
-        Storage('admin-logado', [])
-        Storage('favoritos', [])
-        Storage('carrinho', [])
-    })
-
-    const navigate = useNavigate()
     const ref = useRef()
 
     const responsive = {

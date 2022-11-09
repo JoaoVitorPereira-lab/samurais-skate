@@ -1,5 +1,4 @@
 .header-container {
-
     width: 100%;
 
     .infos img:not(.img-logo){
@@ -33,18 +32,24 @@
     .infos img{
         cursor: pointer;
     }
+
     .bolinha{
         display: flex;
         justify-content: center;
         align-items: center;
         user-select: none;
 
-        width: 2.2em; height: 2.2em;
+        width: 2.5em; height: 2.5em;
         background-color: #E52A45;
         border-radius: 50%;
-        border: 1px solid #000;
+        border: transparent;
 
         cursor: pointer;
+    }
+    .bolinha text, .bolinha h2{
+        color: #ffffff;
+        font-family: 'Dekko', cursive;
+        font-size: 20px;
     }
     .email{
         margin-left: 0.5em;
@@ -52,9 +57,9 @@
     .container-popUp{
         display: flex;
         flex-direction: column;
-        width: fit-content;
         position: absolute;
-        margin-left: -5em;
+        margin-left: -16em;
+        width: 17em;
     }
 
     .container-popUp h2{
@@ -67,10 +72,14 @@
     .sair-popUp{
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: center; text-align: center;
         background-color: #fff;
         border-bottom: 1px solid  #D9D9D9;
-        height: 3.5em;
+        padding-left: 1em;
+        height: 3.5em; width: 100%;
+    }
+    .div-right{
+        padding-left: 1em;
     }
 
     .sair-popUp:hover{
