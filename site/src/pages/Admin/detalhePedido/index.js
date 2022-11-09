@@ -12,7 +12,7 @@ import { toast } from "react-toastify"
 import Storage from "local-storage";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Detalhes, Remover } from "../../../api/PedidoAdminAPI";
+import { Detalhes, Remover,AlterarStatus } from "../../../api/PedidoAdminAPI";
 
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
@@ -56,6 +56,12 @@ export default function PageCadastrarProduto(){
         }
         return total + 20;
     }
+
+    function Statusup(){
+        const resp = AlterarStatus(id);
+        return resp;
+    }
+
 
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
