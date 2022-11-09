@@ -24,6 +24,7 @@ import Favoritos from './pages/User/Favoritos'
 import ConfiguracaoInicial from './pages/User/ConfInicial'
 import CentraldeAjuda from './pages/User/CentraldeAjuda'
 import Compras from './pages/User/Compras'
+import VerPedido from './pages/User/VerPedido'
 import Dados from './pages/User/Dados'
 import Endereco from './pages/User/Endereco'
 import Pagamento from './pages/User/Pagamento'
@@ -59,6 +60,7 @@ export default function Rotas (){
                 <Route path='/Config'                   element={<ConfiguracaoInicial/>}/>
                 <Route path='/CentralAjuda'             element={<CentraldeAjuda/>}/>
                 <Route path='/Compras'                  element={<Compras/>}/>
+                <Route path='/VerPedido'                element={<VerPedido/>}/>
                 <Route path='/Dados'                    element={<Dados/>}/>
                 <Route path='/Endereco'                 element={<Endereco/>}/>
                 <Route path='/Pagamento'                element={<Pagamento/>}/>

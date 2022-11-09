@@ -5,7 +5,15 @@
     .sec-row{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         width: 100%;
+    }
+    .sec-card{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+        margin-bottom: 5em;
     }
     .div-card{
         display: flex;

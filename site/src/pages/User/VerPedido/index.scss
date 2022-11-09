@@ -1,0 +1,71 @@
+.main-compras{
+    .itens{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        font-family: 'Dekko', sans-serif;
+        font-style: normal;
+
+        width: 100%;
+        margin-bottom: 10em;
+    }
+    table {
+        width: 95%;
+        border-collapse: collapse;
+        font-weight: 700;
+        margin-top: 50px;
+    }
+    th{
+        font-family: 'Dekko', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        font-style: normal;
+        color: #000000;
+        padding: 20px 10px;
+        text-align: center;
+        border-bottom: 1px solid #cfcfcf;
+    }
+    td {
+        padding: 20px 10px;
+        text-align: center;
+        border-bottom: 1px solid #cfcfcf;
+        color: #767676;
+    }
+    tr th:first-child {
+        text-align: left;
+    }
+    th {
+        font-weight: 500;
+        border-bottom: 1px solid #b4b4b4;
+    }
+
+    th:first-child {
+        width: 50%;
+    }
+
+    .celula-item {
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+    .celula-item h3 {
+        font-family: 'Dekko', sans-serif;
+        font-size: 22px;
+        font-weight: 500;
+        font-style: normal;
+
+        margin: 2px 0px;
+        color: #575757;
+    }
+    .celula-item img {
+        width: 10em;
+        height: 100px;
+        margin-right: 15px;
+    }
+    .celula-item h4 {
+        margin-top: 0em;
+        color: #808080;
+        font-weight: 500;
+    }
+}

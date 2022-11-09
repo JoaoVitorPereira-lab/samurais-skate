@@ -1,7 +1,28 @@
 import { Router } from "express";
-import { Consultar, Detalhe, removerItemPedido, removerPagamentoCartao, removerPedido } from "../Repository/ConsultarPedidosRepository.js";
+import { Consultar, Detalhe, InfosUsuario, removerItemPedido, removerPagamentoCartao, removerPedido } from "../Repository/ConsultarPedidosRepository.js";
 
 const server = Router();
+
+/* INFOS DO USUÁRIO */
+server.get('/api/info/usuario/:id', async (req, resp) =>{
+  try{
+      const id = Number(req.params.id);
+      const resposta = await InfosUsuario(id);
+
+      if(!resposta)
+        resp.status(404).send([]);
+      else
+        resp.status(200).send(resposta)
+  }
+
+  catch(err)
+  {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
+
 
 /* CONSULTAR PEDIDO */
 server.get('/api/admin/pedidos' , async (req, resp) =>{

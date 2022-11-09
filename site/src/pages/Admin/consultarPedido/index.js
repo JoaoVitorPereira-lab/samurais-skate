@@ -1,7 +1,5 @@
 import "./index.scss";
 
-
-
 import { toast } from "react-toastify"
 
 import Storage from "local-storage";
