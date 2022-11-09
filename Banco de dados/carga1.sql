@@ -1,8 +1,8 @@
 use samuraisdb;
 
 -- ADMIN
-insert into tb_admin (ds_email, ds_senha)
-			 values ('admin@admin.com', 'pedroatacantedohexa');
+insert into tb_admin (`nm_admin`, `ds_sobrenome`, `DS_EMAIL`, `DS_SENHA`) 
+		VALUES ('pedro', 'henrique', 'admin@admin.com', 'pedroatacantedohexa');
 
              
 -- INSERIR TIPO SKATE

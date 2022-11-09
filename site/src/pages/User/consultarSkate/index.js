@@ -42,7 +42,8 @@ export default function ConsultarSkate() {
 
             <div className='contents'>
                 <div className="filtros">
-
+                    <h1>Filtrar Por:</h1>
+                    <input type="checkbox">Equipamento de Proteção</input>
                 </div>
                 <div className='produtos'>
                     {produto.map(item =>
