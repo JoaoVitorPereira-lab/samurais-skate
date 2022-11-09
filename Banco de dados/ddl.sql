@@ -5,6 +5,8 @@ use samuraisdb;
 -- Tabela do Admin
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,
+    nm_admin		varchar(100),
+      ds_sobrenome  varchar(100),
       DS_EMAIL		varchar(100),
       DS_SENHA      varchar(100)
 );

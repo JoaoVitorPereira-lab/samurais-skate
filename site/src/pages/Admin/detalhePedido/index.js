@@ -47,6 +47,16 @@ export default function PageCadastrarProduto(){
         })
     }
 
+    function calcularTotal() {
+        let total = 0;
+        for (let item of pedido) {
+            total = total + Number(item.valor);
+            console.log(total);
+            console.log(item.valor);
+        }
+        return total + 20;
+    }
+
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
             toast.dark('Área apenas para administradores')
@@ -107,7 +117,7 @@ export default function PageCadastrarProduto(){
             )}
 
             <div className="div-final">
-                <text> Total: R$200,00 </text>
+                <text> Total: {calcularTotal()} </text>
 
                 <div className="div-btns">
                     <button onClick={e => {
