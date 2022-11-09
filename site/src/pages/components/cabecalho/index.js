@@ -25,6 +25,10 @@ export default function CabecalhoUsuarioNavs(props) {
         navigate('/Config')
     }
 
+    function ComprasClick(){
+        navigate('/compras')
+    }
+
     function HomeClick(){
         navigate('/')
     }
@@ -120,7 +124,7 @@ export default function CabecalhoUsuarioNavs(props) {
                                     </div>
                                 </div>
 
-                                <div className='sair-popUp div-compras'>
+                                <div className='sair-popUp div-compras' onClick={ComprasClick}>
 
                                     <div className='img-compras-popUp'>
 
