@@ -15,9 +15,9 @@ export async function Listar(){
     return resposta.data;
 }
 
-/* OLHAR DETALHES DO PEDIDO */
+/* OLHAR DETALHES DO PEDIDO ADMIN*/
 export async function Detalhes(id){
-    const resposta = await api.get('/detalhe/pedido/' + id);
+    const resposta = await api.get(`/detalhe/pedido/admin/${id}`);
     return resposta.data;
 }
 

@@ -4,11 +4,11 @@ import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
 import { API_URL } from '../../../api/config';
-import { Detalhes } from "../../../api/PedidoAdminAPI";
 import { toast } from "react-toastify"
 import Storage from 'local-storage';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { DetalhesPedido } from '../../../api/UsuarioApi';
 
 export default function Compras() {
     const [pedido, setPedido] = useState([]);
@@ -17,7 +17,7 @@ export default function Compras() {
     const { id } = useParams();
 
     async function CarregarDetalhePedido(){
-        const resp = await Detalhes(id)
+        const resp = await DetalhesPedido(id)
         setPedido(resp)
     }
 

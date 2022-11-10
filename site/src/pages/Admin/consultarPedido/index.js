@@ -12,6 +12,7 @@ import { Listar } from "../../../api/PedidoAdminAPI";
 
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
+    
 
     const navigate = useNavigate()
 
@@ -21,7 +22,7 @@ export default function PageCadastrarProduto(){
     }
 
     function AbrirDetalhes(id) {
-        navigate(`/detalhe/pedido/` + id)
+        navigate(`/detalhe/pedido/admin/${id}`)
     }
 
     useEffect(() => {
@@ -43,6 +44,7 @@ export default function PageCadastrarProduto(){
 
             <section className="section-cards-pedidos">
                 {pedido.map(item =>
+                
                     <div className="card-pedido">
                         <div className="div-1">
                             <div className="div-letra-nome">

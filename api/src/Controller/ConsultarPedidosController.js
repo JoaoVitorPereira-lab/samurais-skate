@@ -24,7 +24,7 @@ server.get('/api/info/usuario/:id', async (req, resp) =>{
 })
 
 
-/* CONSULTAR PEDIDO */
+/* CONSULTAR PEDIDO ADMIN */
 server.get('/api/admin/pedidos' , async (req, resp) =>{
   try {
       const resposta = await Consultar()
@@ -41,7 +41,7 @@ server.get('/api/admin/pedidos' , async (req, resp) =>{
 
 
 /* DETALHE DO PEDIDO */
-server.get('/detalhe/pedido/:id', async (req, resp) =>{
+server.get('/detalhe/pedido/admin/:id', async (req, resp) =>{
   try{
       const id = Number(req.params.id);
       const resposta = await Detalhe(id);
@@ -78,5 +78,27 @@ server.delete('/api/pedido/:id', async (req, resp) => {
       })
   }
 })
+
+
+/* DETALHE DO PEDIDO */
+server.get('/detalhe/pedido/usuario/:id', async (req, resp) =>{
+  try{
+      const id = Number(req.params.id);
+      const resposta = await Detalhe(id);
+
+      if(!resposta)
+        resp.status(404).send([]);
+      else
+        resp.send(resposta);
+  }
+
+  catch(err)
+  {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
+
 
 export default server;
