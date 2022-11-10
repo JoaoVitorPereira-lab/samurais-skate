@@ -2,8 +2,6 @@ import './index.scss'
 
 import { useRef, useState } from "react"
 import { Link, useNavigate } from 'react-router-dom'
-import LoadingBar from 'react-top-loading-bar'
-import { toast } from 'react-toastify'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -16,6 +14,10 @@ import Rodape from '../components/rodape'
 import images1 from './images/1.jpg'
 import images2 from './images/2.jpg'
 import images3 from './images/3.png'
+
+// *FIM DAS IMGS CARROSSEL* //
+
+
 import images4 from './images/entrega.png'
 import images5 from './images/cartao.png'
 import images6 from './images/pix.png'
@@ -96,7 +98,7 @@ export default function Landing_Page() {
 
                 <div className='entrega'>
                     <img className='carro' src={images5} />
-                    <label className='vermelho'>PARCELE SUAS COMPRAR</label>
+                    <label className='vermelho'>PARCELE SUAS COMPRAS</label>
                     <label className='txt'>em até 6x sem juros</label>
                 </div>
 
