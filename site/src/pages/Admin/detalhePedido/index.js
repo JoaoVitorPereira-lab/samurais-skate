@@ -56,8 +56,6 @@ export default function PageCadastrarProduto(){
         let total = 0;
         for (let item of pedido) {
             total = total + Number(item.valor);
-            console.log(total);
-            console.log(item.valor);
         }
         return total + 20;
     }
@@ -131,7 +129,7 @@ export default function PageCadastrarProduto(){
             )}
 
             <div className="div-final">
-                <text> Total: {calcularTotal()} </text>
+                <text> Total: R$ {calcularTotal()} </text>
 
                 <div className="div-btns">
                     <button onClick={e => {

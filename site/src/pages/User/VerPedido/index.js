@@ -3,18 +3,49 @@ import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 import { API_URL } from '../../../api/config';
 import { toast } from "react-toastify"
 import Storage from 'local-storage';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { DetalhesPedido } from '../../../api/UsuarioApi';
 
-export default function Compras() {
+import { DetalhesPedido } from '../../../api/UsuarioApi';
+import { Remover } from "../../../api/PedidoAdminAPI";
+
+export default function VerPedido() {
     const [pedido, setPedido] = useState([]);
 
     const navigate = useNavigate();
     const { id } = useParams();
+
+    async function DeletarPedido(id) {
+        confirmAlert({
+            title: 'Cancelar/Deletar Pedido',
+            message: `Deseja cancelar/deletar o pedido ${id}?`,
+            buttons: [
+                {
+                    label: 'Sim',
+                    onClick: async () => {
+                        const resposta = await Remover(id);
+
+                        toast.dark('pedido removido com sucesso!');
+                        navigate('/consultarpedidos');
+                    }
+                },
+                {
+                    label: 'Não'
+                }
+            ]
+        })
+    }
+
+    function Voltar(id) {
+        navigate('/compras')
+    }
 
     async function CarregarDetalhePedido(){
         const resp = await DetalhesPedido(id)
@@ -30,21 +61,18 @@ export default function Compras() {
     }
 
     useEffect(() => {
-        if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
-            toast.dark('Área apenas para administradores')
-            navigate('/')
-        }
-        
         CarregarDetalhePedido();
     }, [])
 
 	return (
-		<main className="main-compras">
+		<main className="main-verpedido">
 			<Cabecalho />
 
-			<section className="sec-row">
-				<Menu />
-
+			<section className="sec-row-2">
+                <div className="tite">
+                    <hr />
+                    <h2> Seu pedido </h2>
+                </div>
                 {pedido.map(item =>
                     <div className='itens'>
                         <table>
@@ -81,6 +109,23 @@ export default function Compras() {
                     </div>
                 )}
 			</section>
+
+            <div className="div-final">
+                <text> Total: R$ {calcularTotal()} </text>
+
+                <div className="div-btns">
+                    <button onClick={e => {
+                                        e.stopPropagation();
+                                        DeletarPedido(id);
+                                    }}
+                    > 
+                        Cancelar Pedido 
+                    </button>
+                    <button onClick={() => Voltar()}>
+                        Voltar
+                    </button>
+                </div>
+            </div>
 			<Rodape />
 		</main>
 	);

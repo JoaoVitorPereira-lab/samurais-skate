@@ -35,7 +35,7 @@ export default function Menu() {
       <div className="infos-div">
         <div className="compras-config" onClick={ComprasClick}>
           <div>
-            <img src="./images/Wallet.png" alt="" />
+            <img src="/images/Wallet.png" alt="" />
           </div>
           <div className="div-texto">
             <label> Compras </label>
@@ -44,7 +44,7 @@ export default function Menu() {
 
         <div className="compras-config" onClick={MeusDadosClick}>
           <div>
-            <img src="./images/Microsoft Admin.png" alt="" />
+            <img src="/images/Microsoft Admin.png" alt="" />
           </div>
           <div className="div-texto">
             <label> Meus Dados </label>
@@ -53,7 +53,7 @@ export default function Menu() {
 
         <div className="compras-config" onClick={PagamentoClick}>
           <div>
-            <img src="./images/Credit Card.png" alt="" />
+            <img src="/images/Credit Card.png" alt="" />
           </div>
           <div className="div-texto">
             <label> Cartões </label>
@@ -62,7 +62,7 @@ export default function Menu() {
 
         <div className="compras-config" onClick={EnderecoClick}>
           <div>
-            <img src="./images/Location.png" alt="" />
+            <img src="/images/Location.png" alt="" />
           </div>
           <div className="div-texto">
             <label> Endereço </label>
@@ -71,7 +71,7 @@ export default function Menu() {
 
         <div className="compras-config" onClick={CentraldeAjudaClick}>
           <div>
-            <img src="./images/Online Support.png" alt="" />
+            <img src="/images/Online Support.png" alt="" />
           </div>
           <div className="div-texto">
             <label> Central de Ajuda </label>

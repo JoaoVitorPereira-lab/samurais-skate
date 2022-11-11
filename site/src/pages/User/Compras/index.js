@@ -4,14 +4,13 @@ import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
-import Storage from "local-storage";
-import { toast } from "react-toastify"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Listar } from "../../../api/PedidoAdminAPI";
+import { Detalhes, Listar } from "../../../api/PedidoAdminAPI";
 
 export default function Compras() {
 	const [pedido, setPedido] = useState([]);
+	const [valor, setValor] = useState([]);
 
     const navigate = useNavigate()
 
@@ -21,11 +20,19 @@ export default function Compras() {
     }
 
     function AbrirDetalhes(id) {
-        navigate(`/verpedido/` + id)
+        navigate(`/detalhe/pedido/usuario/${id}`)
+    }
+
+	function calcularTotal() {
+        let total = 0;
+        for (let item of valor) {
+            total = total + Number(item.valor);
+        }
+        return total + 20;
     }
 
     useEffect(() => {
-        CarregarPedidos()
+        CarregarPedidos();
     }, [])
 
 	return (
@@ -36,12 +43,17 @@ export default function Compras() {
 				<Menu />
 
 				<section className='sec-card'>
+					{pedido.length == 0 &&
+						<div>
+							<p> loremsad asdasd asd asd asd as as dasdasdasda asd sadasd asd </p>
+						</div>
+					}
 					{pedido.map(item =>
 						<div className="div-card">
 							<section className="sec-1">
 								<div className="esquerda-card">
 									<div className="nome-pedido">
-										<h2> Pedido de Bruno de Oliveira </h2>
+										<h2> Pedido de {item.nome} {item.sobrenome} </h2>
 									</div>
 
 									<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
@@ -55,8 +67,8 @@ export default function Compras() {
 										<h2> Aguardando Pagamento </h2>
 									</div>
 
-									<div className="valor-pedido">
-										<text> R$239,90 </text>
+									<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+										<text> Ver Valor </text>
 									</div>
 								</div>
 							</section>
@@ -68,11 +80,10 @@ export default function Compras() {
 
 								<div className="div-dir">
 									<div className="div-chegara">
-										<text> O produto deve chegar em 00/00/00 </text>
+										<text> O produto pedido dia {item.data} </text>
 									</div>
 
 									<div className="div-total-cancelar">
-										<text> Total do pedido:  &nbsp; <span> R$ 239,90 </span> </text>
 										<button className="btn-cancelar"> Cancelar pedido </button>
 									</div>
 								</div>

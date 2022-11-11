@@ -13,7 +13,6 @@ import { Listar } from "../../../api/PedidoAdminAPI";
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
     
-
     const navigate = useNavigate()
 
     async function CarregarPedidos(){

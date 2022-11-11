@@ -98,13 +98,13 @@ export default function CabecalhoUsuarioNavs(props) {
                     {popup === true &&
                         <div className="div-popup"> 
                             <div className='bolinha' onClick={OcultarPopUp}>
-                                <h2> {usuario[0]}  </h2>
+                                <h2> {usuario[0].toUpperCase()}  </h2>
                             </div>
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
                                     <div className='bolinha' >
-                                        <text> {usuario[0]} </text>
+                                        <text> {usuario[0].toUpperCase()} </text>
                                     </div>
 
                                     <div className='email'>
@@ -120,7 +120,7 @@ export default function CabecalhoUsuarioNavs(props) {
                                     </div>
 
                                     <div className="div-right">
-                                        <h2 className='config-popUp' > configuracao </h2>
+                                        <h2 className='config-popUp' > Configuração </h2>
                                     </div>
                                 </div>
 
