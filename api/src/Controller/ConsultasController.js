@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, Marca, Tipos, TiposSkate } from "../repository/ConsultasRepository.js";
+import { Categoria, Marca, MarcaSkate, Tipos, TiposSkate } from "../repository/ConsultasRepository.js";
 
 const server = Router();
 
@@ -36,6 +36,20 @@ catch(err){
 server.get('/api/marca', async (req,resp) =>{
   try {
     const resposta = await Marca()
+
+    resp.status(200).send(resposta)
+    
+  } catch (err) {
+    resp.status(400).send({
+      Erro:err.message
+    })    
+  }
+})
+
+/* CONSULTAR MARCA Skate */
+server.get('/api/marca/skate', async (req,resp) =>{
+  try {
+    const resposta = await MarcaSkate()
 
     resp.status(200).send(resposta)
     

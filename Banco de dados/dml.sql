@@ -90,11 +90,22 @@ SELECT id_marca		id,
 	   nm_marca		nome
   FROM tb_marca;
 -- ----------------------------------------------  
+-- CONSULTAR MARCA por id
+SELECT nm_marca
+  FROM tb_marca
+	where id_tipo = 1;
+-- ---------------------------------------------- 
 
 -- CONSULTAR TIPOS DO SKATE
 SELECT id_tipo_skate      id,
 	   nm_tipo_skate      nome
   FROM tb_tipo_skate;
+-- ----------------------------------------------
+
+-- REMOVER AVALIAÇÃO 
+delete from tb_produto_avaliacao
+		where id_produto = 1;
+
 -- ----------------------------------------------
   
 -- EFETUAR LOGIN
@@ -106,13 +117,6 @@ select id_admin    id
 -- ------------------------------------------------
 
 -- CONSULTAR SKATE (USER)
-
-select nm_produto, nr_preco, tb_tipo.id_tipo, id_tipo_skate, id_categoria, bt_importado, ds_imagem, tb_produto.id_produto 
-from tb_produto
-	join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
-	join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Skate";
-
 select nm_produto                        produto, 
                           nr_preco                          preco, 
                           tb_tipo.id_tipo                   tipo, 
@@ -121,13 +125,15 @@ select nm_produto                        produto,
                           id_categoria                      categoria, 
                           bt_importado                      importado, 
                           ds_imagem                         imagem, 
-                          tb_produto.id_produto             id 
+                          tb_produto.id_produto             id,
+                          id_marca							marca
                   from tb_produto
                     join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
                     join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-                    join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+                    left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
                   where nm_tipo = "Skate"
                   group by tb_produto.id_produto;
+
 
 -- CONSULTAR TENIS (USER)
 

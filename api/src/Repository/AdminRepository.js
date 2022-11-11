@@ -146,6 +146,16 @@ export async function removerProdutoImagens(idProduto) {
     return resp.affectedRows;
 }
 
+/* REMOVER AVALIAÇÃO DO PRODUTO */
+export async function removerProdutoAval(idProduto) {
+    const comando = `
+        delete from tb_produto_avaliacao
+        where id_produto = ?
+    `
+    const [resp] = await con.query(comando, [idProduto])
+    return resp.affectedRows;
+}
+
 export async function  atualizarStatus(idPedido, status){
     console.log(idPedido, status)
     const comando = `

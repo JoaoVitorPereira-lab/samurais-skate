@@ -16,6 +16,12 @@ export async function ListarMarcas(){
     return resposta.data
 }
 
+/* LISTAR MARCAS Skate */
+export async function ListarMarcaskate(){
+    const resposta = await api.get('/api/marca/skate')
+    return resposta.data
+}
+
 /* LISTAR TIPOS DE SKATE */
 export async function ListarTiposSkate(){
     const resposta = await api.get('/api/tipo/skate')

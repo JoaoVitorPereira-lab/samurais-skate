@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, atualizarStatus } from "../repository/AdminRepository.js";
+import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, atualizarStatus, removerProdutoAval } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -183,6 +183,7 @@ server.delete('/api/produto/:id', async (req, resp) => {
 
       await removerProdutoImagens(id);
       await removerProduto(id);
+      await removerProdutoAval(id);
 
       resp.status(204).send();
   }
