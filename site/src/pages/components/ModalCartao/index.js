@@ -12,6 +12,31 @@ export default function ModalEndereco({ exibir, fechar }) {
     const [cvv, setCvv] = useState('');
     const [tipo, setTipo] = useState('');
 
+    function formatNCartao(v) {
+        v = v.replace(/\D/g,""); // Permite apenas dígitos
+        v = v.replace(/(\d{4})/g, "$1-"); // Coloca um ponto a cada 4 caracteres
+        v = v.replace(/\.$/, ""); // Remove o ponto se estiver sobrando
+        v = v.substring(0, 19)// Limita o tamanho
+
+        return v;
+    }
+
+    function formatVencCartao(v) {
+        v = v.replace(/\D/g, ""); // Permite apenas dígitos
+        v = v.replace(/(\d{2})/g, "$1/"); // Coloca um ponto a cada 4 caracteres
+        v = v.substring(0, 5)// Limita o tamanho
+
+        return v;
+    }
+
+    function formatCvv(v) {
+        v = v.replace(/\D/g, "");
+        v = v.replace(/(\d{3})/g, "$1/");
+        v = v.substring(0, 3);
+
+        return v;
+    }
+
     async function salvarCartao() {
         try {
             const id = Storage('usuario-logado').id;
@@ -39,15 +64,15 @@ export default function ModalEndereco({ exibir, fechar }) {
                         </div>
                         <div className='div-form'>
                             <label id="lb"> N° do Cartão: </label>
-                            <input type='text' value={numero}  onChange={e => setNumero(e.target.value)}  />
+                            <input type='text' value={numero}  onChange={e => setNumero(formatNCartao(e.target.value))}  />
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Vencimento: </label>
-                            <input type='text' value={vencimento}  onChange={e => setVencimento(e.target.value)}  />
+                            <input type='text' value={vencimento}  onChange={e => setVencimento(formatVencCartao(e.target.value))}  />
                         </div>
                         <div className='div-form'>
                             <label id="lb"> CVV: </label>
-                            <input type='number' value={cvv}  onChange={e => setCvv(e.target.value)}  />
+                            <input type='number' value={cvv}  onChange={e => setCvv(formatCvv(e.target.value))}  />
                         </div>
                         <div className='div-form-select div-form-select-1'>
                             <label id="lb"> Tipo: </label>

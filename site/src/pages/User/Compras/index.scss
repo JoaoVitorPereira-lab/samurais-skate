@@ -2,6 +2,26 @@
     display: flex;
     flex-direction: column;
 
+    .tite{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 6em; margin-top: .8em; margin-bottom: -3em;
+    }
+    .tite hr{
+        border: none;
+        border-radius: .5em;
+        background-color: #E52A45;
+        margin: 0;
+        height: 2em; width: .4em;
+    }
+    .tite h2{
+        font-family: "Dela Gothic One", cursive;
+        font-size: 18px;
+        margin-left: 1em;
+    }
+
     .sec-row{
         display: flex;
         flex-direction: row;
@@ -10,10 +30,16 @@
     }
     .sec-card{
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         width: 80%;
         margin-bottom: 5em;
+    }
+    .card-pedido{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: 1em;
     }
     .div-card{
         display: flex;

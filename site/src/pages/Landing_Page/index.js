@@ -1,7 +1,7 @@
 import './index.scss'
 
-import { useRef, useState } from "react"
-import { Link, useNavigate } from 'react-router-dom'
+import { useRef} from "react"
+import { Link} from 'react-router-dom'
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 

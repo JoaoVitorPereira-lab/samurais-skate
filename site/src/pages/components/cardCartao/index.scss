@@ -33,4 +33,18 @@
         font-weight: 400;
         font-size: 16px;
     }
+
+    .div-editar-deletar{
+        margin-left: -.5em;
+    }
+    .div-editar-deletar button{
+        width: 2em; height: 2em;
+        cursor: pointer;
+
+        border: transparent;
+        background-color: inherit;
+    }
+    .editar-button{
+        margin-right: .2em;
+    }
 }
