@@ -89,22 +89,22 @@ export default function CabecalhoUsuarioNavs(props) {
                         <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 
-                    {storage('usuario-logado') && popup === false &&
+                    {storage('usuario-logado').id >= 1 && popup === false &&
                         <div className='bolinha' onClick={MostrarPopUp}>
-                            <h2> {usuario[0]} </h2>
+                            <h2> {usuario.toUpperCase()[0]} </h2>
                         </div>                    
                     }
 
                     {popup === true &&
                         <div className="div-popup"> 
                             <div className='bolinha' onClick={OcultarPopUp}>
-                                <h2> {usuario[0].toUpperCase()}  </h2>
+                                <h2> {usuario.toUpperCase()[0]}  </h2>
                             </div>
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
                                     <div className='bolinha' >
-                                        <text> {usuario[0].toUpperCase()} </text>
+                                        <text> {usuario.toUpperCase()[0]} </text>
                                     </div>
 
                                     <div className='email'>
@@ -140,7 +140,7 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                     }
 
-                    {!storage('usuario-logado') &&
+                    {!storage('usuario-logado') || storage('usuario-logado').length === 0 &&
                         <img onClick={Login} src="/images/teste-entrar 1.png" alt=""/>
                     }
 

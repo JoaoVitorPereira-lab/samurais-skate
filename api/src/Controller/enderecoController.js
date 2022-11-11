@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Listar, removerEndereco, Salvar } from "../Repository/EnderecoRepository.js";
+import { Listar, remover, Salvar } from "../Repository/EnderecoRepository.js";
 
 const server = Router();
 
@@ -43,12 +43,11 @@ server.post('/api/usuario/:id/endereco', async (req, resp) =>{
 })
 
 
-server.delete('/api/endereco/:idendereco/usuario/:idusuario', async (req, resp) => {
+server.delete('/api/remover/endereco/:id', async (req, resp) => {
     try {
-        const idEndereco = req.params.idendereco;
-        const idUsuario = req.params.idusuario;
+        const id = Number(req.params.id);
   
-        await removerEndereco(idEndereco, idUsuario);
+        await remover(id);
   
         resp.status(204).send();
     }
@@ -57,6 +56,6 @@ server.delete('/api/endereco/:idendereco/usuario/:idusuario', async (req, resp) 
             erro: err.message
         })
     }
-  })
+})
 
 export default server;

@@ -43,54 +43,56 @@ export default function Compras() {
 				<Menu />
 
 				<section className='sec-card'>
-					{pedido.length == 0 &&
-						<div>
-							<p> loremsad asdasd asd asd asd as as dasdasdasda asd sadasd asd </p>
-						</div>
-					}
-					{pedido.map(item =>
-						<div className="div-card">
-							<section className="sec-1">
-								<div className="esquerda-card">
-									<div className="nome-pedido">
-										<h2> Pedido de {item.nome} {item.sobrenome} </h2>
+					<div className="tite">
+						<hr />
+						<h2> Seu pedido </h2>
+					</div>
+
+					<div className="card-pedido">
+						{pedido.map(item =>
+							<div className="div-card">
+								<section className="sec-1">
+									<div className="esquerda-card">
+										<div className="nome-pedido">
+											<h2> Pedido de {item.nome} {item.sobrenome} </h2>
+										</div>
+
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+											<text> Ver pedido completo </text>
+										</div>
 									</div>
 
-									<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
-										<text> Ver pedido completo </text>
+									<div className="direita-card">
+										<div className="status-pedido">
+											<img src="/images/em-preparacao.png" alt=""/>
+											<h2> Aguardando Pagamento </h2>
+										</div>
+
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+											<text> Ver Valor </text>
+										</div>
 									</div>
-								</div>
+								</section>
 
-								<div className="direita-card">
-									<div className="status-pedido">
-										<img src="/images/em-preparacao.png" alt=""/>
-										<h2> Aguardando Pagamento </h2>
-									</div>
-
-									<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
-										<text> Ver Valor </text>
-									</div>
-								</div>
-							</section>
-
-							<section className="sec-2">
-								<div className="div-2">
-									<hr/>
-								</div>
-
-								<div className="div-dir">
-									<div className="div-chegara">
-										<text> O produto pedido dia {item.data} </text>
+								<section className="sec-2">
+									<div className="div-2">
+										<hr/>
 									</div>
 
-									<div className="div-total-cancelar">
-										<button className="btn-cancelar"> Cancelar pedido </button>
+									<div className="div-dir">
+										<div className="div-chegara">
+											<text> O produto pedido dia {item.data} </text>
+										</div>
+
+										<div className="div-total-cancelar">
+											<button className="btn-cancelar"> Cancelar pedido </button>
+										</div>
 									</div>
-								</div>
-							</section>
-						</div>
-						
-					)}
+								</section>
+							</div>
+							
+						)}
+					</div>
 				</section>
 			</section>
 			<Rodape />

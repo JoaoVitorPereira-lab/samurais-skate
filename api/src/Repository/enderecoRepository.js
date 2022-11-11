@@ -31,14 +31,13 @@ export async function Salvar(idUsuario, endereco){
     return info.insertId;
 }
 
-/* REMOVER PRODUTO */
-export async function removerEndereco(idProduto, idUsuario) {
+/* REMOVER ENDEREÇO */
+export async function remover(idEndereco) {
     const comando = `
-          delete from tb_usuario_endereco
-                where id_usuario_endereco = ?
-                  and id_conta_usuario = ?
+        delete from tb_usuario_endereco
+            where id_usuario_endereco = ?
     `;
-
-    const [resp] = await con.query(comando, [idProduto, idUsuario])
+  
+    const [resp] = await con.query(comando, [idEndereco])
     return resp.affectedRows;
 }

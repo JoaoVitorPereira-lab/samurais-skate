@@ -43,12 +43,15 @@
     }
 
     .add-endereco button{
-        border:  1px solid #000;
         background-color: #E52A45;
+        border-radius: 10px;
+        border: transparent;
+
+        width: 19em;
+        height: 3.2em;
+
         color: #FFFFFF;
-        font-size: 1em;
-        font-family: 'Inter';
-        padding: 0.5em;
-        border-radius: 5px;
+        font-family: 'Dela Gothic One', cursive;
+        font-size: 12px;
     }
 }

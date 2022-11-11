@@ -50,13 +50,18 @@ export default function ProdutoDetalhe() {
 
     function adicionarAoFavoritos() {
 
-        if(!Storage('usuario-logado'))
+        let favoritos = [];
+        
+        if(!Storage('usuario-logado')){
             toast.error('Produto não pode ser adicionado, Logue com um usuário');
-
+        }
+        if(Storage('favoritos')) {
+            favoritos = Storage('favoritos');
+        }
         if(favoritos.find(item => item.id == id)){
             toast.error('Produto já está nos favoritos')
         }
-        else if(!favoritos.find(item => item.id == - id)) {
+        else if (!favoritos.find(item => item.id == - id)) {
             favoritos.push({
                 id: id
             })
@@ -88,7 +93,7 @@ export default function ProdutoDetalhe() {
 
     useEffect(() => {
         carregarPagina();
-    }, [ Storage('favoritos') ])
+    }, [])
 
     return (
         <main className='page-detalhes'>
@@ -131,17 +136,9 @@ export default function ProdutoDetalhe() {
 
                         <div className='div-btn-carrinho'>
 
-                            {!favoritos.find(item => item.id == id) &&
-                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
-                                    <img src="/images/Favorite.png" alt="" width="50" height="50"/>
-                                </div>
-                            }
-
-                            {favoritos.find(item => item.id == id) && 
-                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
-                                    <img src="/images/heart.png" alt="" width="50" height="50" />
-                                </div>
-                            }
+                            <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+                                <img src="/images/heart.png" alt="" width="50" height="50" />
+                            </div>
     
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>
@@ -176,3 +173,11 @@ export default function ProdutoDetalhe() {
 
     );
 }
+
+/*
+{!favoritos.find(item => item.id == - id) &&
+    <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+        <img src="/images/Favorite.png" alt="" width="50" height="50"/>
+    </div>
+}
+*/

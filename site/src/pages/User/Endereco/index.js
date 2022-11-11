@@ -13,7 +13,6 @@ import Storage from 'local-storage'
 export default function Endereco() {
 
     const [exibirEndereco, setExibirEndereco] = useState(false)
-    const [usuario, setUsuario] = useState([])
     const [endereco, setEndereco] = useState([])
     const [idCartao, setIdCartao] = useState();
 
@@ -33,12 +32,8 @@ export default function Endereco() {
     }
 
     useEffect(() => {
-        if (storage('usuario-logado')) {
-            const nome = storage('usuario-logado')
-            setUsuario(nome)
-        }
         ListarEnderecos();
-    }, [])
+    }, [endereco])
 
     return (
         <main className='main-endereco'>
@@ -61,7 +56,7 @@ export default function Endereco() {
                     </div>
 
                     <div className='add-endereco'>
-                        <button onClick={exibirNovoEndereco}> Adicionar endereco </button>
+                        <button onClick={exibirNovoEndereco}> ADICIONAR ENDEREÇO </button>
                     </div>
                 </div>
             </section>

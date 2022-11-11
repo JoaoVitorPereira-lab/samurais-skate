@@ -22,3 +22,14 @@ export async function Salvar(novoCartao){
     novoCartao.id = resposta.insertId;
     return novoCartao;
 }
+
+/* REMOVER PEDIDO */
+export async function remover(idCartao) {
+    const comando = `
+        delete from tb_cartao
+            where id_cartao = ?
+    `;
+  
+    const [resp] = await con.query(comando, [idCartao])
+    return resp.affectedRows;
+  }

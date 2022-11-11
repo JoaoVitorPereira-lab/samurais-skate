@@ -24,3 +24,9 @@ export async function CadastrarCartao(id, nome, numero, vencimento, cvv, tipo){
 
     return resposta.data;
 }
+
+
+export async function RemoverCartao(id) {
+    const r = await api.delete('/api/remover/cartao/' + id);
+    return r.data;
+} 

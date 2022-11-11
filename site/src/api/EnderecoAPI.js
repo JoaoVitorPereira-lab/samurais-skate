@@ -15,7 +15,7 @@ export async function Salvar(idUsuario, referencia, cep, rua, numero, complement
     return r.data;
 }
 
-export async function Deletar(idEndereco, idUsuario){
-    const r = await api.post('/api/endereco/' + idEndereco + '/usuario/' + idUsuario);
+export async function RemoverEndereco(id) {
+    const r = await api.delete('/api/remover/endereco/' + id);
     return r.data;
-}
+} 
