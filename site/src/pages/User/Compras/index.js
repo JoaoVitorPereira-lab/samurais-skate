@@ -1,48 +1,101 @@
+import './index.scss'
+
 import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
-import './index.scss'
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Detalhes, Listar } from "../../../api/PedidoAdminAPI";
 
 export default function Compras() {
-  return (
-    <main className="main-compras">
-      <Cabecalho />
-      <Menu />
+	const [pedido, setPedido] = useState([]);
+	const [valor, setValor] = useState([]);
 
-      <div className="div-compras">
+    const navigate = useNavigate()
 
-        <div className="esquerda-compras">
+    async function CarregarPedidos(){
+        const resp = await Listar()
+        setPedido(resp)
+    }
 
-            <div className="nome-pedido">
-             <h3> Pedido de Pedro </h3>
-            </div>
+    function AbrirDetalhes(id) {
+        navigate(`/detalhe/pedido/usuario/${id}`)
+    }
 
-            <div className="verpedido-pedido">
-             <h3> Ver pedido </h3>
-             <div className="linha-verpedido"> </div>
-            </div>
+	function calcularTotal() {
+        let total = 0;
+        for (let item of valor) {
+            total = total + Number(item.valor);
+        }
+        return total + 20;
+    }
 
-        </div>
+    useEffect(() => {
+        CarregarPedidos();
+    }, [])
 
-        <div className="direita-compra">
+	return (
+		<main className="main-compras">
+			<Cabecalho />
 
-             <div className="status-pedido">
-                 <h3> Status </h3>
-             </div>
+			<section className="sec-row">
+				<Menu />
 
-        
+				<section className='sec-card'>
+					<div className="tite">
+						<hr />
+						<h2> Seu pedido </h2>
+					</div>
 
-            <div className="Valor-pedido">
-                <h3> R$239,90 </h3>
-             </div>
+					<div className="card-pedido">
+						{pedido.map(item =>
+							<div className="div-card">
+								<section className="sec-1">
+									<div className="esquerda-card">
+										<div className="nome-pedido">
+											<h2> Pedido de {item.nome} {item.sobrenome} </h2>
+										</div>
 
-        </div>
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+											<text> Ver pedido completo </text>
+										</div>
+									</div>
 
-      </div>
+									<div className="direita-card">
+										<div className="status-pedido">
+											<img src="/images/em-preparacao.png" alt=""/>
+											<h2> Aguardando Pagamento </h2>
+										</div>
 
-      <Rodape />
-      
-    </main>
-  );
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+											<text> Ver Valor </text>
+										</div>
+									</div>
+								</section>
+
+								<section className="sec-2">
+									<div className="div-2">
+										<hr/>
+									</div>
+
+									<div className="div-dir">
+										<div className="div-chegara">
+											<text> O produto pedido dia {item.data} </text>
+										</div>
+
+										<div className="div-total-cancelar">
+											<button className="btn-cancelar"> Cancelar pedido </button>
+										</div>
+									</div>
+								</section>
+							</div>
+							
+						)}
+					</div>
+				</section>
+			</section>
+			<Rodape />
+		</main>
+	);
 }

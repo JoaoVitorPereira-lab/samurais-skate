@@ -2,65 +2,159 @@
     display: flex;
     flex-direction: column;
 
-    .div-compras{
-        position: absolute;
+    .tite{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        margin-left: 6em; margin-top: .8em; margin-bottom: -3em;
+    }
+    .tite hr{
+        border: none;
+        border-radius: .5em;
+        background-color: #E52A45;
+        margin: 0;
+        height: 2em; width: .4em;
+    }
+    .tite h2{
+        font-family: "Dela Gothic One", cursive;
+        font-size: 18px;
+        margin-left: 1em;
+    }
+
+    .sec-row{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .sec-card{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin-bottom: 5em;
+    }
+    .card-pedido{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+    .div-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        min-width: 40%;
+        width: 70%;
+        height: 14.6em;
+        margin-left: 6em; margin-top: 4.5em;
+        padding: 0em 2em;
+
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .sec-1{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
-        width: 50em;
-        border: 2px solid #000;
-        margin-top: 20em;
-        margin-left: 25em;
+        width: 98%;
     }
-    .esquerda-compras{
-        display: flex;
-        flex-direction: column;
-        margin-left: 1em;
-    }
-    .direita-compra{
-        display: flex;
-        flex-direction: column;
-        margin-right: 1em;
-    }
-    .nome-pedido{
-        font-family: 'Dekko';
-        font-style: normal;
+
+    .nome-pedido h2{
+        font-family: "Dekko", cursive;
         font-weight: 400;
-        font-size: 23px;
-        line-height: 34px;
+        font-size: 20px;
+    }
+    .ver-pedido{
+        cursor: pointer;
+    }
+    .ver-pedido text{
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 15px;
+        text-decoration: underline;
+        color: #E52A45;
+    }
+
+    .direita-card{
         text-align: center;
-        margin-top: -2em;
     }
     .status-pedido{
-        font-family: 'Dekko';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 29px;
-        text-align: center
-    }
-    .verpedido-pedido{
-        font-family: 'Dela Gothic One';
-        cursor: pointer;
-        text-decoration: underline;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 22px;
-        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         text-align: center;
-
+    }
+    .status-pedido img{
+        width: 30px; height: 30px;
+        margin-right: .3em;
+    }
+    .status-pedido h2{
+        font-family: "Dekko", cursive;
+        font-weight: 400;
+        font-size: 20px;
+    }
+    .valor-pedido text{
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 16px;
         color: #E52A45;
     }
-    .Valor-pedido{
-        font-family: 'Timmana';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 39px;
-        text-align: center;
 
+/********************************************************************************************************/
+
+    .sec-2{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+    }
+    .div-dir{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .div-2{
+        display: flex;
+        flex-direction: column;
+    }
+    .div-2 hr{
+        width: 100%;
+    }
+
+    .div-chegara text{
+        font-family: 'Dekko', cursive;
+        font-weight: 400;
+        font-size: 16px;
+        color: #6D6C6C;
+    }
+
+    .div-total-cancelar{
+        text-align: center;
+        align-items: center;
+    }
+    .div-total-cancelar text{
+        font-family: 'Dekko', cursive;
+        font-weight: 400;
+        font-size: 16px;
+    }
+    .div-total-cancelar span{
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 14px;
         color: #E52A45;
+    }
+    .btn-cancelar{
+        margin-left: 1em; margin-right: 1em;
+        padding: 0em .5em;
+        border: transparent; border-radius: 5px;
+        background-color: #E52A45;
+
+        text-align: center;
+        font-family: 'Dekko', cursive;
+        font-weight: 400;
+        font-size: 16px;
+        color: #FFFFFF;
     }
 }

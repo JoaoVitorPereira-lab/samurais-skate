@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Listar, Salvar } from "../Repository/CartaoRepository.js";
+import { Listar, remover, Salvar } from "../Repository/CartaoRepository.js";
 const server = Router();
 
 server.get('/api/cartao/:id', async (req,resp) =>{
@@ -41,5 +41,21 @@ server.post('/api/cartao', async (req, resp) => {
       });
     }
   });
+
+
+server.delete('/api/remover/cartao/:id', async (req, resp) => {
+  try {
+      const id = Number(req.params.id);
+
+      await remover(id);
+
+      resp.status(204).send();
+  }
+  catch (err) {
+      resp.status(400).send({
+          erro: err.message
+      })
+  }
+})
 
 export default server;

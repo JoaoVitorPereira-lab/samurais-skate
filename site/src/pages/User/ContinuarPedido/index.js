@@ -203,8 +203,8 @@ export default function ContinuarPedido(){
                         <button onClick={exibirNovoCartao}>
                             ADICIONAR CARTÃO
                         </button>
-                        
-                        {idCartao != undefined &&
+
+                        {idCartao &&
                             <div className='div-cupom'>
                                 <h2> Parcelamento </h2>
                                 <div className='form'>

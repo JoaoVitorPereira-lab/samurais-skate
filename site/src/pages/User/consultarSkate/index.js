@@ -5,26 +5,31 @@ import Avaliacao from '../../components/Avaliacao'
 import { useEffect, useState } from 'react'
 import { ListarSkate, buscarimagem } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
+import { ListarMarcaskate } from '../../../api/ListarAPI';
 
 export default function ConsultarSkate() {
 
     const [produto, setProduto] = useState([]);
     const [aval, setAval] = useState([]);
     const [busca, setBusca] = useState('');
+    const [marca, setMarca] = useState([]);
 
     const navigate = useNavigate();
 
     async function CarregarProdutos() {
         const resp = await ListarSkate();
         setProduto(resp);
-        
+
     }
 
-   
+    async function CarregarMarcas() {
+        const resp = await ListarMarcaskate();
+        setMarca(resp);
+    }
 
     useEffect(() => {
         CarregarProdutos();
-        
+        CarregarMarcas();
     }, [])
 
     function AbrirDetalhes(id) {
@@ -42,8 +47,15 @@ export default function ConsultarSkate() {
 
             <div className='contents'>
                 <div className="filtros">
+                    <h1>Filtrar Por:</h1>
+                    {marca.map(item =>
+                        <div>
+                            <input type="checkbox" /> <label>{item.nm_marca}</label>
+                        </div>
+                    )}
 
                 </div>
+
                 <div className='produtos'>
                     {produto.map(item =>
                         <div className='div-produto' onClick={() => AbrirDetalhes(item.id)}>

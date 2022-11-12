@@ -7,7 +7,7 @@
 
     padding: .2em 1em;
     width: 180px;
-    height: 124px;
+    height: 154px;
 
     color: #000000;
     word-wrap: break-word;
@@ -32,5 +32,20 @@
         font-family: 'Inter', sans-serif;
         font-size: 16px;
         font-weight: 400;
+    }
+    
+
+    .div-editar-deletar{
+        margin-left: -.5em;
+    }
+    .div-editar-deletar button{
+        width: 2em; height: 2em;
+        cursor: pointer;
+
+        border: transparent;
+        background-color: inherit;
+    }
+    .editar-button{
+        margin-right: .2em;
     }
 }

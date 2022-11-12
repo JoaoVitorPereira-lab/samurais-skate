@@ -19,24 +19,24 @@
         width: 100%;
         height: fit-content;
         justify-content: center;
-        
+        align-items: flex-start;
     }
 
     .filtros {
         display: flex;
         flex-direction: column;
-
-    }
-
-    .filtro-marca {
-        display: flex;
-        flex-direction: column;
+        margin-left: 1em;
+        width: 15em;
+        //border: solid 1px red;
     }
 
     .produtos {
         display: flex;
+        justify-content: left;
         flex-wrap: wrap;
         margin: 0em 1em;
+        //border: solid 1px green;
+        
     }
 
     .div-produto {
@@ -59,6 +59,14 @@
         font-weight: 400;
         color: #E52A45;
         font-size: 1.5em;
+    }
+
+    .filtros h1 {
+        font-family: 'Dela Gothic One';
+    }
+
+    .filtros label {
+        font-family: 'Dekko';
     }
 
 }

@@ -1,11 +1,26 @@
 import { con } from './connection.js'
 
 /* CONSULTAR PEDIDO */
-export async function ConsultarPedido(){
+export async function InfosUsuario(id){
   const comando = 
-  `select nm_usuario    nome,
+  `select id_pedido     id,
+          nm_usuario    nome,
+          nm_sobrenome  sobrenome
+     from tb_pedido
+     join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
+    where tb_pedido.id_pedido = ?
+  `;
+  const [resposta] = await con.query(comando, [id]);
+  return resposta;
+}
+
+/* CONSULTAR PEDIDO */
+export async function Consultar(){
+  const comando = 
+  `select id_pedido     id,
+          nm_usuario    nome,
           nm_sobrenome  sobrenome,
-          DATE_FORMAT (dt_pedido, '%d-%m-%y') AS data,
+          DATE_FORMAT   (dt_pedido, '%d-%m-%y') AS data,
           ds_status	    status
      from tb_pedido
      join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
@@ -15,13 +30,13 @@ export async function ConsultarPedido(){
 }
 
 /* DETALHE DO PEDIDO */
-export async function DetalhePedido(id){
+export async function Detalhe(id){
   const comando = 
   `select id_pedido_item		nome,
           ds_imagem			    imagem,
           nm_produto			  nome_produto,
           DATE_FORMAT       (dt_pedido, '%d-%m-%y') AS data,
-          nr_preco				   valor,
+          nr_preco				  valor,
           cod_nota_fiscal		codigo
      from tb_pedido_item
      join tb_pedido 			    on tb_pedido_item.id_pedido   = tb_pedido.id_pedido
@@ -32,4 +47,40 @@ export async function DetalhePedido(id){
 
   const [resposta] = await con.query(comando, [id]);
   return resposta;
+}
+
+
+/* REMOVER PEDIDO */
+export async function removerPedido(idProduto) {
+  const comando = `
+      delete from tb_pedido 
+            where id_pedido = ?
+  `
+
+  const [resp] = await con.query(comando, [idProduto])
+  return resp.affectedRows;
+}
+
+
+/* REMOVER PAGAMENTO */
+export async function removerPagamentoCartao(idProduto) {
+  const comando = `
+      delete from tb_pagamento_cartao
+            where id_pedido = ?
+  `
+
+  const [resp] = await con.query(comando, [idProduto])
+  return resp.affectedRows;
+}
+
+
+/* REMOVER PAGAMENTO */
+export async function removerItemPedido(idProduto) {
+  const comando = `
+      delete from tb_pedido_item
+            where id_pedido = ?
+  `
+
+  const [resp] = await con.query(comando, [idProduto])
+  return resp.affectedRows;
 }

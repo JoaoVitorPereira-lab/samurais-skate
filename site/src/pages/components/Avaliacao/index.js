@@ -5,7 +5,7 @@ export default function Estrela(props) {
     return(
         <main>
 
-            {props.aval == 0 &&
+            {props.aval == 0 || !props.aval &&
                 <img src="/images/aval0.png" alt="" />
             }
             {props.aval > 0 && props.aval <= 1 &&

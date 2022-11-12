@@ -25,6 +25,10 @@ export default function CabecalhoUsuarioNavs(props) {
         navigate('/Config')
     }
 
+    function ComprasClick(){
+        navigate('/compras')
+    }
+
     function HomeClick(){
         navigate('/')
     }
@@ -85,50 +89,49 @@ export default function CabecalhoUsuarioNavs(props) {
                         <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 
-                    {storage('usuario-logado') && popup === false &&
+                    {storage('usuario-logado').id >= 1 && popup === false &&
                         <div className='bolinha' onClick={MostrarPopUp}>
-                            <h2> {usuario[0]} </h2>
+                            <h2> {usuario.toUpperCase()[0]} </h2>
                         </div>                    
                     }
 
                     {popup === true &&
                         <div className="div-popup"> 
                             <div className='bolinha' onClick={OcultarPopUp}>
-                                <h2> {usuario[0]}  </h2>
+                                <h2> {usuario.toUpperCase()[0]}  </h2>
                             </div>
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
-
                                     <div className='bolinha' >
-                                        <h2> {usuario[0]} </h2>
+                                        <text> {usuario.toUpperCase()[0]} </text>
                                     </div>
 
                                     <div className='email'>
-                                    <h2 > {email} </h2>
-                                    < label className="trocar-usuario"> Trocar Usuário </label>
+                                        <h2> {email} </h2>
+                                        <text className="trocar-usuario"> Trocar Usuário </text>
                                     </div>
                                 </div>
                                 
                                 <div className='sair-popUp' onClick={ConfigClick}>
 
-                                <div className='img-config-popUp'>
-                                    <img src="/images/Services.png" alt="" />
-                                </div>
+                                    <div className='img-config-popUp'>
+                                        <img src="/images/Services.png" alt="" />
+                                    </div>
 
-                                    <div>
-                                        <h2 className='config-popUp' > configuracao </h2>
+                                    <div className="div-right">
+                                        <h2 className='config-popUp' > Configuração </h2>
                                     </div>
                                 </div>
 
-                                <div className='sair-popUp'>
+                                <div className='sair-popUp div-compras' onClick={ComprasClick}>
 
                                     <div className='img-compras-popUp'>
 
                                         <img src="/images/Shopping Bag Full.png" alt="" />
                                     </div>
 
-                                    <div className='compras-popUp'>
+                                    <div className='compras-popUp div-right'>
                                         <h2> Compras </h2>
                                     </div>
 
@@ -137,7 +140,7 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                     }
 
-                    {!storage('usuario-logado') &&
+                    {!storage('usuario-logado') || storage('usuario-logado').length === 0 &&
                         <img onClick={Login} src="/images/teste-entrar 1.png" alt=""/>
                     }
 

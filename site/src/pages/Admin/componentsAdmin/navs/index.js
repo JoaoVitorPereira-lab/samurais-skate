@@ -16,21 +16,21 @@ export default function Navs(props) {
             <div className="div-navs">
                 <Link to='/cadastrarproduto' className={verificarMenuSelecionado('cadastrar-adm')}>
                     <div className="navs-produtos">
-                        <img src="../images/cadastrar.png" className="imgs-nav" alt="" />
+                        <img src="/images/cadastrar.png" className="imgs-nav" alt="" />
                         <span> Cadastrar </span>
                     </div>
                 </Link>
 
                 <Link to='/consultarproduto' className={verificarMenuSelecionado('consultar-produto-adm')}>
                     <div className="navs-produtos">
-                        <img src="../images/skate.png" className="imgs-nav" alt="" />
+                        <img src="/images/skate.png" className="imgs-nav" alt="" />
                         <span> Produtos </span>
                     </div>
                 </Link>
 
                 <Link to='/consultarpedidos' className={verificarMenuSelecionado('pedido-adm')}>
                     <div className="navs-produtos">
-                        <img src="../images/pedidos.png" className="imgs-nav" alt="" />
+                        <img src="/images/pedidos.png" className="imgs-nav" alt="" />
                         <span> Pedidos </span>
                     </div>
                 </Link>
@@ -39,7 +39,7 @@ export default function Navs(props) {
             <div className="div-buscar">
                 <input type="text" className="buscar-input" placeholder="Buscar pedido" />
                 <div>
-                    <img src="../images/buscar.png" className="buscar-img" alt="" />
+                    <img src="/images/buscar.png" className="buscar-img" alt="" />
                 </div>
             </div>
 

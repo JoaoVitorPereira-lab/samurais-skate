@@ -31,6 +31,16 @@ export async function Marca(){
   return resposta 
 }
 
+/* CONSULTAR MARCA Skate */
+export async function MarcaSkate(){
+  const comando = ` SELECT nm_marca
+  FROM tb_marca
+	where id_tipo = 1
+  `
+  const [resposta] = await con.query(comando)
+  return resposta 
+}
+
 
 /* CONSULTAR TIPOS DO SKATE */
 export async function TiposSkate(){

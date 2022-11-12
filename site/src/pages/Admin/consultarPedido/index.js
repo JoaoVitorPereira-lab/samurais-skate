@@ -1,22 +1,27 @@
 import "./index.scss";
 
 import { toast } from "react-toastify"
+
 import Storage from "local-storage";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import { ListarPedidosAdm } from "../../../api/PedidoAdminAPI";
+import { Listar } from "../../../api/PedidoAdminAPI";
 
 export default function PageCadastrarProduto(){
     const [pedido, setPedido] = useState([]);
-
+    
     const navigate = useNavigate()
 
     async function CarregarPedidos(){
-        const resp = await ListarPedidosAdm()
+        const resp = await Listar()
         setPedido(resp)
+    }
+
+    function AbrirDetalhes(id) {
+        navigate(`/detalhe/pedido/admin/${id}`)
     }
 
     useEffect(() => {
@@ -38,6 +43,7 @@ export default function PageCadastrarProduto(){
 
             <section className="section-cards-pedidos">
                 {pedido.map(item =>
+                
                     <div className="card-pedido">
                         <div className="div-1">
                             <div className="div-letra-nome">
@@ -58,7 +64,9 @@ export default function PageCadastrarProduto(){
                                 <p> Status: {item.status} </p>
                             </div>
 
-                            <button className="btn-ver-pedido">
+                            <button className="btn-ver-pedido"
+                                    onClick={() => AbrirDetalhes(item.id)}
+                            >
                                 Ver Pedido
                             </button>
                         </div>

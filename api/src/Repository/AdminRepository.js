@@ -145,3 +145,24 @@ export async function removerProdutoImagens(idProduto) {
     const [resp] = await con.query(comando, [idProduto])
     return resp.affectedRows;
 }
+
+/* REMOVER AVALIAÇÃO DO PRODUTO */
+export async function removerProdutoAval(idProduto) {
+    const comando = `
+        delete from tb_produto_avaliacao
+        where id_produto = ?
+    `
+    const [resp] = await con.query(comando, [idProduto])
+    return resp.affectedRows;
+}
+
+export async function  atualizarStatus(idPedido, status){
+    console.log(idPedido, status)
+    const comando = `
+    update tb_pedido
+    set ds_status = ?
+    where id_pedido = ?
+    `
+    const [resposta] = await con.query (comando,[status, idPedido])
+    return resposta.affectedRows;
+}

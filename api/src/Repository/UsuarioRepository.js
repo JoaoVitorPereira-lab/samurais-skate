@@ -101,11 +101,12 @@ export async function ConsultarSkate() {
                           id_categoria                      categoria, 
                           bt_importado                      importado, 
                           ds_imagem                         imagem, 
-                          tb_produto.id_produto             id 
+                          tb_produto.id_produto             id,
+                          id_marca                          marca 
                   from tb_produto
                     join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
                     join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-                    join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+                    left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
                   where nm_tipo = "Skate"
                   group by tb_produto.id_produto`
 

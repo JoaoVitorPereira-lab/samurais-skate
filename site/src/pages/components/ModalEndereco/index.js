@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './index.scss'
 import { Salvar } from '../../../api/EnderecoAPI';
 import Storage from 'local-storage'
@@ -7,13 +7,20 @@ import { toast } from 'react-toastify'
 export default function ModalEndereco({ exibir, fechar }) {
 
     const [referencia, setReferencia] = useState('');
-    const [cep, setCEP] = useState('');
+    const [cep, setCep] = useState('');
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [complemento, setComplemento] = useState('');
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
+    const [a, setA] = useState('');
+
+    function formatCep(cep) {
+        return cep.replace(/\D/g, '')
+                  .replace(/(\d{5})(\d)/, '$1-$2')
+                  .replace(/(-\d{3})\d+?$/, '$1')
+    }
 
     async function salvarEndereco() {
         try {
@@ -26,8 +33,7 @@ export default function ModalEndereco({ exibir, fechar }) {
         catch (err) {
             toast.error(err.response.data.erro);
         }
-    }   
-
+    }
 
     return (
         <div className='comp-modal-endereco'>
@@ -45,11 +51,11 @@ export default function ModalEndereco({ exibir, fechar }) {
                         </div>
                         <div className='div-form'>
                             <label id="lb"> CEP: </label>
-                            <input type='text' value={cep}  onChange={e => setCEP(e.target.value)}  />
+                            <input type='text' value={cep}  onChange={e => setCep(formatCep(e.target.value))}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Rua: </label>
-                            <input type='text' value={rua}  onChange={e => setRua(e.target.value)}  />
+                            <input type='text' value={rua} onChange={e => setRua(e.target.value)}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Número: </label>
