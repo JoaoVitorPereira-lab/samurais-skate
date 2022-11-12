@@ -33,8 +33,8 @@ export default function PageCadastrarProduto(){
 
     async function DeletarPedido(id) {
         confirmAlert({
-            title: 'Cancelar/Deletar Pedido',
-            message: `Deseja cancelar/deletar o pedido ${id}?`,
+            title: 'Cancelar Pedido',
+            message: `Deseja cancelar o pedido ${id}?`,
             buttons: [
                 {
                     label: 'Sim',
@@ -60,11 +60,10 @@ export default function PageCadastrarProduto(){
         return total + 20;
     }
 
-    function Statusup(){
+    function AlterarStatus(){
         const resp = AlterarStatus(id);
         return resp;
     }
-
 
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {

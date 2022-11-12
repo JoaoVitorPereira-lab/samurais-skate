@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, atualizarStatus, removerProdutoAval } from "../repository/AdminRepository.js";
+import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, removerProdutoAval } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -73,12 +73,9 @@ server.put('/api/admin/:id', async (req, resp) => {
       if(resposta != 1)
           throw new Error('Produto não pode ser alterado. ');
       else
-          resp.sendStatus(204)
-          
-  }
-  catch(err)
+          resp.status(204).send(resposta)
+  } catch(err)
   {
-      console.log(err)
       resp.status(400).send({
           erro: err.message
       })
@@ -194,22 +191,4 @@ server.delete('/api/produto/:id', async (req, resp) => {
   }
 })
 
-server.put('/api/produto/status/:id', async (req,resp) =>{
-  try {
-
-    const { id } = req.params;
-    const status = req.body.status;
-
-    const resposta = await atualizarStatus(id,status)
-    console.log(resposta)
-
-    resp.status(204).send()
-    
-  }
-   catch (err) {
-    resp.status(400).send({
-      Erro: err.message
-    })
-  }
-})
 export default server;
