@@ -4,31 +4,24 @@ import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Detalhes, Listar } from "../../../api/PedidoAdminAPI";
+import { ConsultarPedido } from "../../../api/UsuarioApi";
+import Storage from 'local-storage';
 
 export default function Compras() {
 	const [pedido, setPedido] = useState([]);
-	const [valor, setValor] = useState([]);
 
     const navigate = useNavigate()
 
     async function CarregarPedidos(){
-        const resp = await Listar()
+		const r = Storage('usuario-logado').id;
+        const resp = await ConsultarPedido(r)
         setPedido(resp)
     }
 
-    function AbrirDetalhes(id) {
-        navigate(`/detalhe/pedido/usuario/${id}`)
-    }
-
-	function calcularTotal() {
-        let total = 0;
-        for (let item of valor) {
-            total = total + Number(item.valor);
-        }
-        return total + 20;
+    function AbrirDetalhes(idPedido, idUser) {
+        navigate('/detalhe/pedido/' + idPedido + '/usuario/' + idUser)
     }
 
     useEffect(() => {
@@ -45,7 +38,7 @@ export default function Compras() {
 				<section className='sec-card'>
 					<div className="tite">
 						<hr />
-						<h2> Seu pedido </h2>
+						<h2> Seus pedidos </h2>
 					</div>
 
 					<div className="card-pedido">
@@ -57,7 +50,7 @@ export default function Compras() {
 											<h2> Pedido de {item.nome} {item.sobrenome} </h2>
 										</div>
 
-										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id, item.idUser)}>
 											<text> Ver pedido completo </text>
 										</div>
 									</div>

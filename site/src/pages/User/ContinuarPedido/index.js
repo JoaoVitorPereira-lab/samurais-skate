@@ -135,7 +135,7 @@ export default function ContinuarPedido(){
             toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
-    },[])
+    },[enderecos, cartao])
 
     return(
         <main className='main-continuarPedido'>

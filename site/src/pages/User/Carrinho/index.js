@@ -34,8 +34,7 @@ export default function PageCarrinho(){
             }
             setItens(temp);
         }
-        
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+        if(carrinho.length === 0){
             toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
@@ -73,7 +72,7 @@ export default function PageCarrinho(){
             navigate('/Login')
         }
 
-        if(!Storage('carrinho') || Storage('carrinho').length === 0){
+        if(!Storage('carrinho')){
             toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }

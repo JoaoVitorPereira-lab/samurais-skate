@@ -60,7 +60,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                     <div className='form'>
                         <div className='div-form'>
                             <label id="lb"> Nome do cartão: </label>
-                            <input type='text' value={nome} onChange={e => setNome(e.target.value)} />
+                            <input type='text' value={nome} onChange={e => setNome(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> N° do Cartão: </label>

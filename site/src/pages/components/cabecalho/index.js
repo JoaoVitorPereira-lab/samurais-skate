@@ -79,8 +79,6 @@ export default function CabecalhoUsuarioNavs(props) {
                 </div>
 
                 <div className="infos">
-                    <img src="/images/darkmode.png" alt=""/>
-
                     {!storage('usuario-logado') && 
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
@@ -89,7 +87,7 @@ export default function CabecalhoUsuarioNavs(props) {
                         <img onClick={FavoritosClick} src="/images/favoritos.png"  alt=""/>
                     }
 
-                    {storage('usuario-logado').id >= 1 && popup === false &&
+                    {storage('usuario-logado') && popup === false &&
                         <div className='bolinha' onClick={MostrarPopUp}>
                             <h2> {usuario.toUpperCase()[0]} </h2>
                         </div>                    
@@ -140,7 +138,7 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                     }
 
-                    {!storage('usuario-logado') || storage('usuario-logado').length === 0 &&
+                    {!storage('usuario-logado') && popup === false &&
                         <img onClick={Login} src="/images/teste-entrar 1.png" alt=""/>
                     }
 

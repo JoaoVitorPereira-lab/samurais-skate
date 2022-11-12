@@ -28,13 +28,13 @@ export default function ProdutoDetalhe() {
 
         let carrinho = [];
         
-        if(!Storage('usuario-logado')){
-            toast.error('Produto não pode ser adicionado, Logue com um usuário');
-        }
         if(Storage('carrinho')) {
             carrinho = Storage('carrinho');
         }
-        if(carrinho.find(item => item.id == id)){
+        if(!Storage('usuario-logado')){
+            toast.error('Produto não pode ser adicionado, Logue com um usuário');
+        }
+        else if(carrinho.find(item => item.id == id)){
             toast.error('Produto já está no carrinho')
         }
         else if (!carrinho.find(item => item.id == - id)) {
@@ -52,13 +52,13 @@ export default function ProdutoDetalhe() {
 
         let favoritos = [];
         
-        if(!Storage('usuario-logado')){
-            toast.error('Produto não pode ser adicionado, Logue com um usuário');
-        }
         if(Storage('favoritos')) {
             favoritos = Storage('favoritos');
         }
-        if(favoritos.find(item => item.id == id)){
+        if(!Storage('usuario-logado')){
+            toast.error('Produto não pode ser adicionado, Logue com um usuário');
+        }
+        else if(favoritos.find(item => item.id == id)){
             toast.error('Produto já está nos favoritos')
         }
         else if (!favoritos.find(item => item.id == - id)) {
@@ -93,7 +93,7 @@ export default function ProdutoDetalhe() {
 
     useEffect(() => {
         carregarPagina();
-    }, [])
+    }, [favoritos])
 
     return (
         <main className='page-detalhes'>
@@ -136,9 +136,17 @@ export default function ProdutoDetalhe() {
 
                         <div className='div-btn-carrinho'>
 
-                            <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
-                                <img src="/images/heart.png" alt="" width="50" height="50" />
-                            </div>
+                            {!favoritos.find(item => item.id == id) &&
+                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+                                    <img src="/images/Favorite.png" alt="" width="50" height="50"/>
+                                </div>
+                            }
+
+                            {favoritos.find(item => item.id == id) && 
+                                <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
+                                    <img src="/images/heart.png" alt="" width="50" height="50" />
+                                </div>
+                            }
     
                             <button className='btn-carrinho' onClick={adicionarAoCarrinho}>Carrinho</button>
                         </div>

@@ -14,12 +14,16 @@ export default function ModalEndereco({ exibir, fechar }) {
     const [bairro, setBairro] = useState('');
     const [cidade, setCidade] = useState('');
     const [estado, setEstado] = useState('');
-    const [a, setA] = useState('');
 
     function formatCep(cep) {
         return cep.replace(/\D/g, '')
                   .replace(/(\d{5})(\d)/, '$1-$2')
                   .replace(/(-\d{3})\d+?$/, '$1')
+    }
+
+    function formatNum(num) {
+        return num.replace(/\D/g, '')
+                  .replace(/(\d{7})(\d)/, '$1')
     }
 
     async function salvarEndereco() {
@@ -44,7 +48,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                     <div className='form'>
                         <div className='div-form'>
                             <label id="lb"> Referência: </label>
-                            <input type='text' value={referencia} onChange={e => setReferencia(e.target.value)} />
+                            <input type='text' value={referencia} onChange={e => setReferencia(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> &nbsp; </label>
@@ -55,30 +59,30 @@ export default function ModalEndereco({ exibir, fechar }) {
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Rua: </label>
-                            <input type='text' value={rua} onChange={e => setRua(e.target.value)}/>
+                            <input type='text' value={rua} onChange={e => setRua(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Número: </label>
-                            <input type='number' value={numero}  onChange={e => setNumero(e.target.value)}  />
+                            <input type='text' value={numero}  onChange={e => setNumero(formatNum(e.target.value))}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Complemento: </label>
-                            <input type='text' value={complemento}  onChange={e => setComplemento(e.target.value)}  />
+                            <input type='text' value={complemento}  onChange={e => setComplemento(e.target.value)} maxLength={30}/>
+                        </div>
+                        <div className='div-form'>
+                            <label id="lb"> Bairro: </label>
+                            <input type='text' value={bairro}  onChange={e => setBairro(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> &nbsp; </label>
                         </div>
                         <div className='div-form'>
-                            <label id="lb"> Bairro: </label>
-                            <input type='text' value={bairro}  onChange={e => setBairro(e.target.value)}  />
-                        </div>
-                        <div className='div-form'>
                             <label id="lb"> Cidade: </label>
-                            <input type='text' value={cidade}  onChange={e => setCidade(e.target.value)}  />
+                            <input type='text' value={cidade}  onChange={e => setCidade(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"> Estado: </label>
-                            <input type='text' value={estado}  onChange={e => setEstado(e.target.value)}  />
+                            <input type='text' value={estado}  onChange={e => setEstado(e.target.value)} maxLength={30}/>
                         </div>
                         <div className='div-form'>
                             <label id="lb"></label>

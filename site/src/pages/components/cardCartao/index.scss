@@ -1,13 +1,14 @@
 .comp-card-cartao {
     cursor: pointer;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-right: 1.3em; margin-bottom: 2em;
 
-    padding: .2em 1em;
+    padding: .2em 1em 1em;
     width: 180px;
-    height: 124px;
+    height: fit-content;
 
     color: #000000;
     word-wrap: break-word;
@@ -16,26 +17,37 @@
     box-shadow: 0px 10px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
 
+    .div-infos-cartao{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        margin-top: .5em;
+    }
+
     .nome-cartao{
         font-family: 'Dekko', cursive;
         font-weight: 600;
         font-size: 16px;
+        width: 10em;
     }
     .numero-cartao{
         color: #3f3f3f;
         font-family: 'Dekko', sans-serif;
         font-size: 16px;
         font-weight: 400;
+        width: 11em;
     }
     .tipo-cartao{
         color: #474747;
         font-family: 'Dekko', cursive;
         font-weight: 400;
         font-size: 16px;
+        width: 8em;
     }
 
     .div-editar-deletar{
-        margin-left: -.5em;
+        width: 10%;
     }
     .div-editar-deletar button{
         width: 2em; height: 2em;
@@ -43,8 +55,5 @@
 
         border: transparent;
         background-color: inherit;
-    }
-    .editar-button{
-        margin-right: .2em;
     }
 }

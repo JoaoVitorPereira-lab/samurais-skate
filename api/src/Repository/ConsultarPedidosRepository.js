@@ -20,7 +20,7 @@ export async function Consultar(){
   `select id_pedido     id,
           nm_usuario    nome,
           nm_sobrenome  sobrenome,
-          DATE_FORMAT   (dt_pedido, '%d-%m-%y') AS data,
+          DATE_FORMAT   (dt_pedido, '%d-%m-%y às %Hh%i') AS data,
           ds_status	    status
      from tb_pedido
      join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
@@ -35,7 +35,7 @@ export async function Detalhe(id){
   `select id_pedido_item		nome,
           ds_imagem			    imagem,
           nm_produto			  nome_produto,
-          DATE_FORMAT       (dt_pedido, '%d-%m-%y') AS data,
+          DATE_FORMAT       (dt_pedido, '%d-%m-%y às %Hh%i') AS data,
           nr_preco				  valor,
           cod_nota_fiscal		codigo
      from tb_pedido_item

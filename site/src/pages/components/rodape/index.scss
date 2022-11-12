@@ -14,7 +14,7 @@
         font-size: 20px;
         font-weight: 500;
     }
-    span{
+    span, text{
         font-family: 'Dekko', sans-serif;
         font-size: 16px;
         font-weight: 400;
@@ -60,11 +60,11 @@
     .div-contatos img{
         width: 2em;  height: 2em;
     }
-    .div-contatos span:not(.span-telefone){
+    .div-contatos span{
         margin-left: 1em;
     }
-    .span-telefone{
-        margin-left: 2em;
+    .text-telefone{
+        margin-left: 2.6em;
     }
 
 /* INICIO div das redes sociais */

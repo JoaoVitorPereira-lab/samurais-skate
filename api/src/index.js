@@ -12,6 +12,7 @@ import pedidoController from './Controller/pedidoController.js'
 import cartaoController from './Controller/CartaoController.js'
 import consultasController from './Controller/ConsultasController.js'
 import ConsultarPedidoController from './Controller/ConsultarPedidosController.js'
+import MensagemController from './Controller/MensagemController.js'
 
 // Configurando o Server
 const server = express();
@@ -28,6 +29,7 @@ server.use(pedidoController)
 server.use(cartaoController)
 server.use(consultasController)
 server.use(ConsultarPedidoController)
+server.use(MensagemController)
 
 
 //Liberar rota para a imagem

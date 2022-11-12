@@ -145,7 +145,7 @@ create table tb_cupom (
 create table tb_cartao(
 	id_cartao		int primary key auto_increment,
     id_login_usuario	int,
-    nm_cartao		varchar(20),
+    nm_cartao		varchar(100),
     ds_numero		varchar(16),
     dt_vencimento	varchar(10),
     ds_cvv			varchar(3),

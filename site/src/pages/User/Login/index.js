@@ -13,9 +13,7 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [erro, setErro] = useState('')
- 
     const [mostrarSenha, SetMostrarSenha] = useState(false);
-
     const [carregando, setCarregando] = useState(false)
 
     const navigate = useNavigate()
@@ -33,6 +31,7 @@ export default function Login() {
     function OcultarSenhaClick(){
         SetMostrarSenha(false)
     }
+
     async function Entrar() {
         ref.current.continuousStart();
         setCarregando(true);
@@ -41,8 +40,8 @@ export default function Login() {
             const r = await LoginAdm(email, senha)
             storage('admin-logado', r)
             setTimeout(() => {
-                navigate('/cadastrarProduto'); 
-            }, 3000);
+                navigate('/consultarproduto'); 
+            }, 2000);
         }
         catch (err) {
 
@@ -69,7 +68,9 @@ export default function Login() {
             <div>
                 <img onClick={HomeClick} src="/images/logo-branco.gif" alt="logo" className="logo" />
             </div>
+            
             <div className="barra_lateral"></div>
+
             <div className="botoes">
                 <h1 className="titulo">Entrar</h1>
                 <div className="cx1">
@@ -80,21 +81,20 @@ export default function Login() {
                 <div className="cx2">
                     <h6>Senha</h6>
                     {!mostrarSenha &&
-                    <input className="senha" type="password" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
+                        <input className="senha" type="password" value={senha} placeholder="1234..." onChange={e => setSenha(e.target.value)}></input>
                     }
                     {mostrarSenha &&
-                    
-                    <input className="senha" type="text" value={senha} onChange={e => setSenha(e.target.value)}></input>
-                    
+                        <input className="senha" type="text" value={senha} onChange={e => setSenha(e.target.value)}></input>
                     }
                     {!mostrarSenha &&
-                    <img className="olho_mostrar_senha" src="../images/olho sem x.png" onClick={MostrarSenhaClick} />                    
+                        <img className="olho_mostrar_senha" src="../images/olho sem x.png" onClick={MostrarSenhaClick} />                    
                     }
                     {mostrarSenha &&
-                    <img className="olho_mostrar_senha" src="../images/olho com x.png" onClick={OcultarSenhaClick}/>
+                        <img className="olho_mostrar_senha" src="../images/olho com x.png" onClick={OcultarSenhaClick}/>
                     }
                     <a className="esqueceu">Esqueceu a senha?</a>
                 </div>
+
                 <div className="botao">
                     <div>
                         <span className="ERRO">
@@ -103,6 +103,7 @@ export default function Login() {
                     </div>
                     <button className="entrar" onClick={Entrar}> Entrar </button>
                 </div>
+
                 <div className="criar_conta">
                     <a href="../CriarConta">criar conta</a>
                 </div>

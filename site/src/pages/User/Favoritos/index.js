@@ -38,13 +38,8 @@ export default function Fav() {
         favoritos = favoritos.filter(item => item.id != id);
 
         Storage('favoritos', favoritos);
+        toast.dark(`Produto removido dos favoritos com sucesso!`);
         CarregarFavoritos();
-        toast.dark(`Produto removido dos favoritos com sucesso!`)
-
-        if(favoritos.length === 0){
-            toast.error('Favoritos vazio, Coloque um item nos favoritos')
-            navigate('/')
-        }
     }
 
     const navigate = useNavigate()
@@ -56,7 +51,7 @@ export default function Fav() {
             navigate('/Login')
         }
 
-        if(!Storage('favoritos') || Storage('favoritos').length === 0){
+        if(!Storage('favoritos')){
             toast.error('Favoritos vazio, Coloque um item no favoritos')
             navigate('/')
         }

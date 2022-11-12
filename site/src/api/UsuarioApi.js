@@ -105,7 +105,13 @@ export async function AtualizarLogin(id,email,senha){
 }
 
 /* OLHAR DETALHES DO PEDIDO USUÁRIO*/
-export async function DetalhesPedido(id){
-    const resposta = await api.get(`/detalhe/pedido/usuario/${id}`);
+export async function DetalhesPedido(idPedido, idUsuario){
+    const resposta = await api.get('/detalhe/pedido/' + idPedido + '/usuario/' + idUsuario);
+    return resposta.data;
+}
+
+/* CONSULTAR PEDIDO DO USUÁRIO*/
+export async function ConsultarPedido(id){
+    const resposta = await api.get('/pedido/' + id + '/usuario');
     return resposta.data;
 }

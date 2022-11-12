@@ -60,7 +60,7 @@ export default function Rotas (){
                 <Route path='/Config'                       element={<ConfiguracaoInicial/>}/>
                 <Route path='/CentralAjuda'                 element={<CentraldeAjuda/>}/>
                 <Route path='/Compras'                      element={<Compras/>}/>
-                <Route path='/detalhe/pedido/usuario/:id'   element={<VerPedido/>}/>
+                <Route path='/detalhe/pedido/:idPedido/usuario/:idUser'  element={<VerPedido/>}/>
                 <Route path='/Dados'                        element={<Dados/>}/>
                 <Route path='/Endereco'                     element={<Endereco/>}/>
                 <Route path='/Pagamento'                    element={<Pagamento/>}/>

@@ -1,5 +1,8 @@
 import './index.scss'
 
+import { useEffect } from 'react';
+import Storage from 'local-storage';
+
 import { useRef} from "react"
 import { Link} from 'react-router-dom'
 import Carousel from "react-multi-carousel";
@@ -34,6 +37,15 @@ import images15 from './images/tenis_para_andar_de_skate.png'
 export default function Landing_Page() {
 
     const ref = useRef()
+
+    useEffect(() => {
+        if(!Storage('carrinho')){
+            Storage('carrinho', [])
+        }
+        if(!Storage('favoritos')){
+            Storage('favoritos', [])
+        }
+    }, [])
 
     const responsive = {
         desktop: {

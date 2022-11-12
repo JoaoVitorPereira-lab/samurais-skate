@@ -1,12 +1,10 @@
 import './index.scss'
-
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { RemoverCartao } from '../../../api/CartaoAPI';
 import { toast } from "react-toastify"
 
 export default function CardCartao({ item: { id, nome, numero, tipoCartao }, selecionar, selecionado }) {
-
 
     async function DeletarCartao(id, nome) {
         confirmAlert({
@@ -16,8 +14,7 @@ export default function CardCartao({ item: { id, nome, numero, tipoCartao }, sel
                 {
                     label: 'Sim',
                     onClick: async () => {
-                        const resposta = await RemoverCartao(id, nome);
-
+                        await RemoverCartao(id, nome);
                         toast.dark('🔥 Cartão removido');
                     }
                 },
@@ -33,11 +30,13 @@ export default function CardCartao({ item: { id, nome, numero, tipoCartao }, sel
              onClick={() => selecionar(id)}
              style={{ borderColor: selecionado ? '#E52A45' : '' }}
         >
-            <div className='nome-cartao'>{nome}</div>
-            <div className='numero-cartao'> {numero} </div>
-            <div className='tipo-cartao'> {tipoCartao} </div>
+            <div className='div-infos-cartao'>
+                <span className='nome-cartao'>{nome}</span>
+                <div className='numero-cartao'> {numero} </div>
+                <div className='tipo-cartao'> {tipoCartao} </div>
+            </div>
 
-            <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
+            <div className="div-editar-deletar">
                 <button className="excluir-button"
                         onClick={e => {
                                 e.stopPropagation();

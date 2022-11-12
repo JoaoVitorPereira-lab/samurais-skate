@@ -4,8 +4,6 @@ import { acharCupom, criarNovoPedido } from "../Service/NovoProdutoServices.js";
 import { BuscarPorID } from "../Repository/AdminRepository.js";
 const server = Router();
 
-
-
 server.post('/api/pedido/:idUsuario', async (req, resp) => {
     try {
         const { idUsuario } = req.params;

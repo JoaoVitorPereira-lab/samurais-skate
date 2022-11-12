@@ -13,11 +13,11 @@ export default function Rodape(){
 
                     <div className="contato email">
                         <img src="/images/email.png" alt=""/>
-                        <span> skatesup@gmail.com </span>
+                        <span> samuraisskateshop@gmail.com </span>
                     </div>
                     <div className="contato telefone">
                         <img src="/images/telefone.png" alt=""/>
-                        <span className="span-telefone"> (11) 94002-8922 </span>
+                        <text className="text-telefone"> (11) 94002-8922 </text>
                     </div>
                 </div>
 

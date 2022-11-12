@@ -20,7 +20,7 @@ export default function VerPedido() {
     const [pedido, setPedido] = useState([]);
 
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { idPedido, idUser } = useParams();
 
     async function DeletarPedido(id) {
         confirmAlert({
@@ -43,12 +43,12 @@ export default function VerPedido() {
         })
     }
 
-    function Voltar(id) {
+    function Voltar() {
         navigate('/compras')
     }
 
     async function CarregarDetalhePedido(){
-        const resp = await DetalhesPedido(id)
+        const resp = await DetalhesPedido(idPedido, idUser)
         setPedido(resp)
     }
 
@@ -71,7 +71,7 @@ export default function VerPedido() {
 			<section className="sec-row-2">
                 <div className="tite">
                     <hr />
-                    <h2> Seu pedido </h2>
+                    <h2> Detalhe do seu pedido {pedido.nome_produto}</h2>
                 </div>
                 {pedido.map(item =>
                     <div className='itens'>
@@ -116,7 +116,7 @@ export default function VerPedido() {
                 <div className="div-btns">
                     <button onClick={e => {
                                         e.stopPropagation();
-                                        DeletarPedido(id);
+                                        DeletarPedido(idPedido);
                                     }}
                     > 
                         Cancelar Pedido 

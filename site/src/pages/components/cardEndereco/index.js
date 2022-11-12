@@ -1,5 +1,4 @@
 import './index.scss'
-
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { toast } from "react-toastify"
@@ -15,8 +14,7 @@ export default function CardEndereco({ item: { id, referencia, cep, rua, bairro,
                 {
                     label: 'Sim',
                     onClick: async () => {
-                        const resposta = await RemoverEndereco(id, nome);
-
+                        await RemoverEndereco(id, nome);
                         toast.dark('🔥 Endereço removido');
                     }
                 },
@@ -32,11 +30,13 @@ export default function CardEndereco({ item: { id, referencia, cep, rua, bairro,
              onClick={() => selecionar(id)}
              style={{ borderColor: selecionado ? '#E52A45' : '' }}
         >
-            <div className='referencia'>{referencia}</div>
-            <div className='end'>{rua}, {numero} - {complemento}</div>
-            <div className='cep'>{cep} - {bairro}, {cidade}/{estado}</div>
-        
-            <div className="div-editar-deletar" style={{display: "flex", flexDirection: "row"}}>
+            <div className='div-infos-endereco'>
+                <div className='referencia'>{referencia}</div>
+                <div className='end'>{rua}, {numero} - {complemento}</div>
+                <div className='cep'>{cep} - {bairro}, {cidade}/{estado}</div>
+            </div>
+
+            <div className="div-editar-deletar">
                 <button className="excluir-button"
                         onClick={e => {
                                 e.stopPropagation();

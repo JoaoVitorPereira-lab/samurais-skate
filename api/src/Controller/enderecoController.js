@@ -27,7 +27,6 @@ server.post('/api/usuario/:id/endereco', async (req, resp) =>{
         if (!endereco.cep) throw new Error("CEP é obrigatório!");
         if (!endereco.rua) throw new Error("Rua é obrigatória!");
         if (!endereco.numero) throw new Error("Número é obrigatório!");
-        if (!endereco.complemento) throw new Error("Complemento é obrigatório!");
         if (!endereco.bairro) throw new Error("Bairro é obrigatório!");
         if (!endereco.cidade) throw new Error("Cidade é obrigatório!");
         if (!endereco.estado) throw new Error("Estado é obrigatório!");

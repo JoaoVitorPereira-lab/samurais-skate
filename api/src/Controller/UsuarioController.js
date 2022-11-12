@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -107,7 +107,6 @@ server.get('/produto/:id/detalhe', async (req, resp) =>{
     }
 })
 
-
 //Enviar email após o cadastro
 server.post('/api/email', (req,resp) => {
     let dados = req.body;
@@ -140,8 +139,6 @@ server.post('/api/email', (req,resp) => {
     })
 
 })
-
-
 
 server.get('/api/produtos/skate', async (req, resp) =>{
     try {
@@ -187,7 +184,7 @@ server.get('/api/produtos/promocoes', async (req, resp) =>{
     }
 })
 
-  server.put('/api/usuario/conta/:id', async (req,resp) => {
+server.put('/api/usuario/conta/:id', async (req,resp) => {
     try {
         const infos = req.body;
         const {id} = req.params;
@@ -233,5 +230,47 @@ server.put('/api/usuario/login/:id', async (req,resp) => {
     }
 })
 
+server.get('/pedido/:id/usuario', async (req, resp) =>{
+    try
+    {
+        const id =  Number(req.params.id);
+  
+        const resposta = await ConsultarPedido(id);
+  
+        if(!resposta)
+          resp.status(404).send([]);
+        else
+          resp.send(resposta);
+    }
+  
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/detalhe/pedido/:idPedido/usuario/:idUser', async (req, resp) =>{
+    try
+    {
+        const IdPedido = Number(req.params.idPedido);
+        const IdUser = Number(req.params.idUser);
+  
+        const resposta = await DetalhePedido(IdPedido, IdUser);
+  
+        if(!resposta)
+          resp.status(404).send([]);
+        else
+          resp.send(resposta);
+    }
+  
+    catch(err)
+    {
+        resp.status(400).send({
+            erro: err.message
+        })
+    }
+})
 
 export default server;
