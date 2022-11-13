@@ -106,7 +106,7 @@ export default function VerPedido() {
                                         R$ {item.valor}
                                     </td>
                                     <td>
-                                        {item.codigo}
+                                        #00{item.idProduto}
                                     </td>
                                 </tr>
                             </tbody>

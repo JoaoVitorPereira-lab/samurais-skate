@@ -15,10 +15,16 @@ import { Detalhes, InfoUser } from "../../../api/PedidoAdminAPI";
 export default function PageDetalheProduto(){
     const [pedido, setPedido] = useState([]);
     const [usuario, setUsuario] = useState([]);
+    const [status, setStatus] = useState(false);
     const [exibirStatus, setExibirStatus] = useState(false);
 
     const navigate = useNavigate();
     const { id } = useParams();
+
+    function PegarStatus(){
+        const stts = pedido.map(item => item.status);
+        setStatus(stts)
+    }
 
     async function CarregarDetalhePedido(){
         const resp = await Detalhes(id)
@@ -38,6 +44,10 @@ export default function PageDetalheProduto(){
         return total + 20;
     }
 
+    function Voltar() {
+        navigate('/consultarpedidos')
+    }
+
     function exibirNovoStatus() {
         setExibirStatus(true);
     }
@@ -54,7 +64,8 @@ export default function PageDetalheProduto(){
         
         CarregarUsuario();
         CarregarDetalhePedido();
-    }, [])
+        PegarStatus();
+    }, [status])
 
     return(
         <main className="page-detalhe-pedido">
@@ -100,7 +111,7 @@ export default function PageDetalheProduto(){
                                     R$ {item.valor}
                                 </td>
                                 <td>
-                                    {item.codigo}
+                                    #00{item.idProduto}
                                 </td>
                             </tr>
                         </tbody>
@@ -113,8 +124,13 @@ export default function PageDetalheProduto(){
                 <text> Total: R$ {calcularTotal()} </text>
 
                 <div className="div-btns">
-                    <button onClick={exibirNovoStatus}>
-                        Alterar Status
+                    {status != "Cancelado" &&
+                        <button onClick={exibirNovoStatus}>
+                            Alterar Status
+                        </button>
+                    }
+                    <button onClick={() => Voltar()}>
+                        Voltar
                     </button>
                 </div>
             </div>

@@ -2,7 +2,7 @@ use samuraisdb;
 
 -- ADMIN
 insert into tb_admin (`nm_admin`, `ds_sobrenome`, `DS_EMAIL`, `DS_SENHA`) 
-		VALUES ('O hexa', 'vem', 'admin@admin.com', 'pedroatacantedohexa');
+		VALUES ('Admin', '1', 'admin@admin.com', '1234');
 
              
 -- INSERIR TIPO SKATE

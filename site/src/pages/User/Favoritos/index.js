@@ -73,7 +73,7 @@ export default function Fav() {
                     <div className="excluir">
                         <Favoritos item={item}/>
                         <div className="coracao">
-                            <img className="img-coracao" src="../images/Heart.png" alt="" />
+                            <img className="img-coracao" src="../images/coracao-vermelho.png" alt="" />
                             <div onClick={() => removerItem(item.produto.id)} className="botao-excluir">
                                 Excluir
                             </div>
