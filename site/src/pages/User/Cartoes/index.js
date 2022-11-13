@@ -41,10 +41,10 @@ export default function Pagamento() {
         <main className="main-pagamento">
             <ModalCartao   exibir={exibirCartao}   fechar={fecharNovoCartao} />
 
-            <Cabecalho />
+            <Cabecalho/>
             
             <section className="sec-row-3">
-                <Menu />
+                <Menu selecionado='cartoes'/>
 
                 <div className="div-pagamento">
                     <div className="div-titulo-pagamento">

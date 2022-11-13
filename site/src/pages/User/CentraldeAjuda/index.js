@@ -6,7 +6,7 @@ export default function CantralAjuda (){
     return(
         <main className="main-ajuda">
             <Cabecalho/>
-            <Menu/>
+            <Menu selecionado='ajuda'/>
             <Rodape/>
         </main>
     )

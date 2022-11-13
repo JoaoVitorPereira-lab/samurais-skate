@@ -4,7 +4,7 @@ import { atualizarStatus } from "../Repository/StatusRepository.js";
 const server = Router();
 
 /* ALTERAR STATUS DO PRODUTO */
-server.put('/api/produto/status/:id', async (req,resp) =>{
+server.put('/api/pedido/status/:id', async (req,resp) =>{
   try {
     const { id } = req.params;
     const status = req.body.status;

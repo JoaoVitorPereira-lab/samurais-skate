@@ -41,7 +41,7 @@ export default function Endereco() {
             <Cabecalho />
 
             <section className='sec-row'>
-                <Menu />
+                <Menu selecionado='endereco'/>
 
                 <div className='div-endereco'>
                     <div className='titulo-enderecos'>

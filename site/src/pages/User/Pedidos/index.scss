@@ -2,12 +2,26 @@
     display: flex;
     flex-direction: column;
 
+    .sec-row{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .sec-card{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        margin-bottom: 5em;
+    }
+    
     .tite{
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        margin-left: 6em; margin-top: .8em; margin-bottom: -3em;
+        margin-left: 4em; margin-top: .8em; margin-bottom: -3em;
     }
     .tite hr{
         border: none;
@@ -22,18 +36,6 @@
         margin-left: 1em;
     }
 
-    .sec-row{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-    }
-    .sec-card{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        margin-bottom: 5em;
-    }
     .card-pedido{
         display: flex;
         flex-direction: row;
@@ -49,7 +51,7 @@
         min-width: 40%;
         width: 70%;
         height: 14.6em;
-        margin-left: 6em; margin-top: 4.5em;
+        margin-left: 4em; margin-top: 4.5em;
         padding: 0em 2em;
 
         background-color: #FFFFFF;
@@ -79,7 +81,7 @@
     }
 
     .direita-card{
-        text-align: center;
+        text-align: end;
     }
     .status-pedido{
         display: flex;

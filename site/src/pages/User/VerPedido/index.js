@@ -1,6 +1,5 @@
 import './index.scss'
 import Cabecalho from "../../components/cabecalho";
-import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
 import { confirmAlert } from 'react-confirm-alert'; 
@@ -8,32 +7,37 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 import { API_URL } from '../../../api/config';
 import { toast } from "react-toastify"
-import Storage from 'local-storage';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { DetalhesPedido } from '../../../api/UsuarioApi';
-import { Remover } from "../../../api/PedidoAdminAPI";
+import { AlterarStatus } from '../../../api/StatusAPI';
 
 export default function VerPedido() {
     const [pedido, setPedido] = useState([]);
+    const [status, setStatus] = useState('');
 
     const navigate = useNavigate();
     const { idPedido, idUser } = useParams();
 
-    async function DeletarPedido(id) {
+    function PegarStatus(){
+        const stts = pedido.map(item => item.status);
+        setStatus(stts)
+    }
+
+    async function CancelarPedido(id) {
         confirmAlert({
-            title: 'Cancelar/Deletar Pedido',
-            message: `Deseja cancelar/deletar o pedido ${id}?`,
+            title: 'Cancelar Pedido',
+            message: `Deseja cancelar o pedido ${id}?`,
             buttons: [
                 {
                     label: 'Sim',
                     onClick: async () => {
-                        const resposta = await Remover(id);
+                        await AlterarStatus(id, "Cancelado");
 
-                        toast.dark('pedido removido com sucesso!');
-                        navigate('/consultarpedidos');
+                        toast.dark('pedido cancelado com sucesso!');
+                        navigate('/pedidos');
                     }
                 },
                 {
@@ -44,7 +48,7 @@ export default function VerPedido() {
     }
 
     function Voltar() {
-        navigate('/compras')
+        navigate('/pedidos')
     }
 
     async function CarregarDetalhePedido(){
@@ -62,7 +66,8 @@ export default function VerPedido() {
 
     useEffect(() => {
         CarregarDetalhePedido();
-    }, [])
+        PegarStatus();
+    }, [status])
 
 	return (
 		<main className="main-verpedido">
@@ -71,7 +76,7 @@ export default function VerPedido() {
 			<section className="sec-row-2">
                 <div className="tite">
                     <hr />
-                    <h2> Detalhe do seu pedido {pedido.nome_produto}</h2>
+                    <h2> Detalhe do seu pedido: <span className="span-status"> {status} </span> </h2>
                 </div>
                 {pedido.map(item =>
                     <div className='itens'>
@@ -114,13 +119,15 @@ export default function VerPedido() {
                 <text> Total: R$ {calcularTotal()} </text>
 
                 <div className="div-btns">
-                    <button onClick={e => {
-                                        e.stopPropagation();
-                                        DeletarPedido(idPedido);
-                                    }}
-                    > 
-                        Cancelar Pedido 
-                    </button>
+                    {status != "Cancelado" &&
+                        <button onClick={e => {
+                                            e.stopPropagation();
+                                            CancelarPedido(idPedido);
+                                        }}
+                        > 
+                            Cancelar Pedido 
+                        </button>
+                    }
                     <button onClick={() => Voltar()}>
                         Voltar
                     </button>

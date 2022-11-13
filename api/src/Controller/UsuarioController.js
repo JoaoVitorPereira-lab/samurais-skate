@@ -255,7 +255,7 @@ server.get('/detalhe/pedido/:idPedido/usuario/:idUser', async (req, resp) =>{
     try
     {
         const IdPedido = Number(req.params.idPedido);
-        const IdUser = Number(req.params.idUser);
+        const IdUser   = Number(req.params.idUser);
   
         const resposta = await DetalhePedido(IdPedido, IdUser);
   

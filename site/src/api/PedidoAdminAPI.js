@@ -25,10 +25,4 @@ export async function Detalhes(id){
 export async function Remover(id) {
     const r = await api.delete('/api/pedido/' + id);
     return r.data;
-} 
-
-/* ALTERAR STATUS */
-export async function AlterarStatus(id){
-    const r = await api.put('/api/produto/status/' + id);
-    return r.data;
 }
