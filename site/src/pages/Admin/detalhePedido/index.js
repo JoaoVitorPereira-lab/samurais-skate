@@ -2,7 +2,7 @@ import "./index.scss";
 
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
-import ModalStatus from "../../components/ModalStatus";
+import ModalStatus from "../componentsAdmin/ModalStatus";
 
 import { useEffect, useState } from "react";
 import { API_URL } from '../../../api/config';

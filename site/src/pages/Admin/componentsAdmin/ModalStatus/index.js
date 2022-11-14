@@ -1,17 +1,25 @@
 import './index.scss'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { AlterarStatus } from '../../../api/StatusAPI';
+import { AlterarStatus } from '../../../../api/StatusAPI';
+import { useNavigate } from 'react-router-dom';
 
 export default function ModalStatus({ id, exibir, fechar }) {
-    const [status, setStatus] = useState('');
+    const [status, setStatus] = useState();
+
+    const navigate = useNavigate();
 
     async function MudarStatus() {
         try {
-            await AlterarStatus(id, status);
-            toast.dark('Status modificado com sucesso!!!');
-
-            fechar();
+            if(status === undefined){
+                toast.error('Escolha um status!!!')
+            }
+            else{
+                await AlterarStatus(id, status);
+                toast.dark('Status modificado com sucesso!!!');
+                navigate('/consultarpedidos');
+                fechar();
+            }
         }
         catch (err) {
             toast.error(err.response.data.erro);
