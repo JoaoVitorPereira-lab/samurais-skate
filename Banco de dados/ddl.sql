@@ -133,14 +133,6 @@ create table tb_produto_curtido (
 -- Tabela do status do pedido
 
 
--- Tabela de cupom
-create table tb_cupom (
-	id_cupom			int primary key auto_increment,
-    cod_cupom			varchar(200),
-    vl_cupom			decimal(15,2),
-    qtd_restante		int
-);
-
 create table tb_cartao (
 	id_cartao			int primary key auto_increment,
     id_login_usuario	int,
@@ -158,7 +150,6 @@ create table tb_pedido (
 	id_pedido			int primary key auto_increment,
     id_conta_usuario	int,
     id_usuario_endereco	int,
-    id_cupom			int,
     dt_pedido			datetime,
     cod_nota_fiscal		varchar(200),
     tp_pagamento		varchar(200),

@@ -24,35 +24,35 @@
 
 
 /* COMEÇO CAIXA DE BUSCA */
-.caixa-busca {
-    display: flex;
-    justify-content: space-between;
+    .caixa-busca {
+        display: flex;
+        justify-content: space-between;
 
-    background-color: #fff;
-    border-radius: 9px;
-    border: 1px solid #696969;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
-    padding: 10px 20px;
-    width: 30%;
-    margin-top: 1em;
-    margin-bottom: 5em;
-}
-.caixa-busca input {
-    background: none;
-    border: none;
-    padding: 0px;
-    width: 100%;
-}
-.caixa-busca input:focus{
-    outline: none;
-}
-.caixa-busca img{
-    width: 30px; height: 30px;
-    cursor: pointer;
-    position: relative;
-    right: -7px;
-}
+        background-color: #fff;
+        border-radius: 9px;
+        border: 1px solid #696969;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        
+        padding: 10px 20px;
+        width: 30%;
+        margin-top: 1em;
+        margin-bottom: 5em;
+    }
+    .caixa-busca input {
+        background: none;
+        border: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .caixa-busca input:focus{
+        outline: none;
+    }
+    .caixa-busca img{
+        width: 30px; height: 30px;
+        cursor: pointer;
+        position: relative;
+        right: -7px;
+    }
 /* FIM CAIXA DE BUSCA */
 
 
@@ -67,9 +67,9 @@
         padding: 1.5em 1.5em;
         width: 65%;
 
-        border: 1px solid #696969;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 15px;
     }
     .div-produto-card-produto{
         width: 11.2em;

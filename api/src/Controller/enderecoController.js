@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Listar, remover, Salvar } from "../Repository/EnderecoRepository.js";
+import { Listar, remover, removerEnderecoPedido, Salvar } from "../Repository/EnderecoRepository.js";
 
 const server = Router();
 
@@ -46,8 +46,10 @@ server.delete('/api/remover/endereco/:id', async (req, resp) => {
     try {
         const id = Number(req.params.id);
   
+        
         await remover(id);
-  
+        await removerEnderecoPedido(id);
+
         resp.status(204).send();
     }
     catch (err) {

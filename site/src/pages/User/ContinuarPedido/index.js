@@ -31,7 +31,6 @@ export default function ContinuarPedido(){
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
 
-    const [cupom, setCupom] = useState('');
     const [parcelas, setParcelas] = useState('');
 
     const navigate = useNavigate();
@@ -104,7 +103,6 @@ export default function ContinuarPedido(){
 
             let pedido =
             {
-                cupom: cupom,
                 idEndereco: idEndereco,
                 tipoPagamento: 'Cartão',
                 idCartao: idCartao,
@@ -220,15 +218,6 @@ export default function ContinuarPedido(){
                                 </div>
                             </div>
                         }
-                    </div>
-
-                    <div className='div-cupom'>
-                        <h2> Cupom </h2>
-                        <div className='form'>
-                            <div>
-                                <input type='text' value={cupom} onChange={e => setCupom(e.target.value)} />
-                            </div>
-                        </div>
                     </div>
                 </section>
             </aside>

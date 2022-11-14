@@ -5,7 +5,6 @@ export async function inserirPedido(novoPedido) {
         INSERT INTO tb_pedido (
             id_conta_usuario,
             id_usuario_endereco,
-            id_cupom,
             dt_pedido,
             cod_nota_fiscal,
             ds_status,
@@ -17,7 +16,6 @@ export async function inserirPedido(novoPedido) {
     const [info] = await con.query(comando, [
         novoPedido.idUsuario,
         novoPedido.idEndereco,
-        novoPedido.idCupom,
         novoPedido.data,
         novoPedido.notaFiscal,
         novoPedido.status,

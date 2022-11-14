@@ -24,7 +24,7 @@ export async function Salvar(novoCartao){
 }
 
 /* REMOVER PEDIDO */
-export async function remover(idCartao) {
+export async function removerCartao(idCartao) {
     const comando = `
         delete from tb_cartao
             where id_cartao = ?
@@ -32,4 +32,15 @@ export async function remover(idCartao) {
   
     const [resp] = await con.query(comando, [idCartao])
     return resp.affectedRows;
-  }
+}
+
+/* REMOVER PEDIDO */
+export async function removerPagamentoCartao(idCartao) {
+    const comando = `
+        delete from tb_pagamento_cartao
+              where id_cartao = ?
+    `;
+  
+    const [resp] = await con.query(comando, [idCartao])
+    return resp.affectedRows;
+}

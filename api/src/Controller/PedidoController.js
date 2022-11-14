@@ -13,7 +13,6 @@ server.post('/api/pedido/:idUsuario', async (req, resp) => {
         if(!info.idCartao) throw new Error('Você precisa escolher um cartão');
         if(!info.parcelas) throw new Error('Você precisa escolher o parcelamento');
         
-        const idCupom = await acharCupom(info.cupom);
         const novoPedido = criarNovoPedido(idUsuario, idCupom, info);
 
         const idPedidoCriado = await inserirPedido(novoPedido);
