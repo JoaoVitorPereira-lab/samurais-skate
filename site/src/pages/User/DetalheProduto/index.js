@@ -144,7 +144,7 @@ export default function ProdutoDetalhe() {
 
                             {favoritos.find(item => item.id == id) && 
                                 <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
-                                    <img src="/images/heart.png" alt="" width="50" height="50" />
+                                    <img src="/images/coracao-vermelho.png" alt=""/>
                                 </div>
                             }
     

@@ -1,10 +1,8 @@
 import "./index.scss";
 
-import { confirmAlert } from 'react-confirm-alert'; 
-import 'react-confirm-alert/src/react-confirm-alert.css';
-
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
+import ModalStatus from "../componentsAdmin/ModalStatus";
 
 import { useEffect, useState } from "react";
 import { API_URL } from '../../../api/config';
@@ -12,14 +10,21 @@ import { toast } from "react-toastify"
 import Storage from "local-storage";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { Detalhes, InfoUser, Remover, AlterarStatus } from "../../../api/PedidoAdminAPI";
+import { Detalhes, InfoUser } from "../../../api/PedidoAdminAPI";
 
-export default function PageCadastrarProduto(){
+export default function PageDetalheProduto(){
     const [pedido, setPedido] = useState([]);
     const [usuario, setUsuario] = useState([]);
-    const navigate = useNavigate();
+    const [status, setStatus] = useState(false);
+    const [exibirStatus, setExibirStatus] = useState(false);
 
+    const navigate = useNavigate();
     const { id } = useParams();
+
+    function PegarStatus(){
+        const stts = pedido.map(item => item.status);
+        setStatus(stts)
+    }
 
     async function CarregarDetalhePedido(){
         const resp = await Detalhes(id)
@@ -31,27 +36,6 @@ export default function PageCadastrarProduto(){
         setUsuario(resp)
     }
 
-    async function DeletarPedido(id) {
-        confirmAlert({
-            title: 'Cancelar Pedido',
-            message: `Deseja cancelar o pedido ${id}?`,
-            buttons: [
-                {
-                    label: 'Sim',
-                    onClick: async () => {
-                        const resposta = await Remover(id);
-
-                        toast.dark('pedido removido com sucesso!');
-                        navigate('/consultarpedidos');
-                    }
-                },
-                {
-                    label: 'Não'
-                }
-            ]
-        })
-    }
-
     function calcularTotal() {
         let total = 0;
         for (let item of pedido) {
@@ -60,9 +44,16 @@ export default function PageCadastrarProduto(){
         return total + 20;
     }
 
-    function AlterarStatus(){
-        const resp = AlterarStatus(id);
-        return resp;
+    function Voltar() {
+        navigate('/consultarpedidos')
+    }
+
+    function exibirNovoStatus() {
+        setExibirStatus(true);
+    }
+
+    function fecharNovoStatus() {
+        setExibirStatus(false);
     }
 
     useEffect(() => {
@@ -73,10 +64,12 @@ export default function PageCadastrarProduto(){
         
         CarregarUsuario();
         CarregarDetalhePedido();
-    }, [])
+        PegarStatus();
+    }, [status])
 
     return(
         <main className="page-detalhe-pedido">
+            <ModalStatus exibir={exibirStatus}  fechar={fecharNovoStatus} id={id}/>
 
             <div className="comps">
                 <Cabecalho />
@@ -118,7 +111,7 @@ export default function PageCadastrarProduto(){
                                     R$ {item.valor}
                                 </td>
                                 <td>
-                                    {item.codigo}
+                                    #00{item.idProduto}
                                 </td>
                             </tr>
                         </tbody>
@@ -131,14 +124,14 @@ export default function PageCadastrarProduto(){
                 <text> Total: R$ {calcularTotal()} </text>
 
                 <div className="div-btns">
-                    <button onClick={e => {
-                                        e.stopPropagation();
-                                        DeletarPedido(id);
-                                    }}
-                    > 
-                        Cancelar Pedido 
+                    {status != "Cancelado" &&
+                        <button onClick={exibirNovoStatus}>
+                            Alterar Status
+                        </button>
+                    }
+                    <button onClick={() => Voltar()}>
+                        Voltar
                     </button>
-                    <button> Alterar Status </button>
                 </div>
             </div>
 

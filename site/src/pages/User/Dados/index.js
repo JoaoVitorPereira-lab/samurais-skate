@@ -46,7 +46,7 @@ export default function Dados(){
     return(
         <main className='main-dados'>
             <Cabecalho/>
-            <Menu/>
+            <Menu selecionado='dados'/>
             <div className='div-dados'>
 
                 <div className='titulo-dados'>

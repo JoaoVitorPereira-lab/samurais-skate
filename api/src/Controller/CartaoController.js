@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Listar, remover, Salvar } from "../Repository/CartaoRepository.js";
+import { Listar, removerCartao, removerPagamentoCartao, Salvar } from "../Repository/CartaoRepository.js";
 const server = Router();
 
 server.get('/api/cartao/:id', async (req,resp) =>{
@@ -47,7 +47,8 @@ server.delete('/api/remover/cartao/:id', async (req, resp) => {
   try {
       const id = Number(req.params.id);
 
-      await remover(id);
+      await removerPagamentoCartao(id);
+      await removerCartao(id);
 
       resp.status(204).send();
   }

@@ -4,7 +4,7 @@ import Cabecalho from "../../components/cabecalho";
 import Menu from "../../components/MenuConfig";
 import Rodape from "../../components/rodape";
 
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ConsultarPedido } from "../../../api/UsuarioApi";
 import Storage from 'local-storage';
@@ -33,7 +33,7 @@ export default function Compras() {
 			<Cabecalho />
 
 			<section className="sec-row">
-				<Menu />
+				<Menu selecionado='pedidos'/>
 
 				<section className='sec-card'>
 					<div className="tite">
@@ -56,13 +56,40 @@ export default function Compras() {
 									</div>
 
 									<div className="direita-card">
-										<div className="status-pedido">
-											<img src="/images/em-preparacao.png" alt=""/>
-											<h2> Aguardando Pagamento </h2>
-										</div>
+										{item.status == "Pedido em Preparação" &&
+											<div className="status-pedido">
+												<img src="/images/em-preparacao.png" alt=""/>
+												<h2> {item.status} </h2>
+											</div>
+										}
 
-										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id)}>
-											<text> Ver Valor </text>
+										{item.status == "Confirmando Pagamento" &&
+											<div className="status-pedido">
+												<img src="/images/confirm-pag.png" alt=""/>
+												<h2> {item.status} </h2>
+											</div>
+										}
+
+										{item.status == "Entregue" &&
+											<div className="status-pedido">
+												<img src="/images/entregue.png" alt=""/>
+												<h2> {item.status} </h2>
+												&nbsp; &nbsp;
+												<img src="/images/estrela-vermelha.png" alt=""/>
+												<h2> Avaliar </h2>
+											</div>
+										}
+
+
+										{item.status == "Cancelado" &&
+											<div className="status-pedido">
+												<img src="/images/cancelado.png" alt=""/>
+												<h2> {item.status} </h2>
+											</div>
+										}
+
+										<div className="ver-pedido" onClick={() => AbrirDetalhes(item.id, item.idUser)}>
+											<text> Ver Total </text>
 										</div>
 									</div>
 								</section>
@@ -76,14 +103,9 @@ export default function Compras() {
 										<div className="div-chegara">
 											<text> O produto pedido dia {item.data} </text>
 										</div>
-
-										<div className="div-total-cancelar">
-											<button className="btn-cancelar"> Cancelar pedido </button>
-										</div>
 									</div>
 								</section>
 							</div>
-							
 						)}
 					</div>
 				</section>

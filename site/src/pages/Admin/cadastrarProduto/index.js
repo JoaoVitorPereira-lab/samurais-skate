@@ -221,7 +221,6 @@ export default function PageCadastrarProduto() {
                                             {item.nome}
                                         </option>
                                     )}
-
                                 </select>
 
                                 {IdTipos == 1 &&
@@ -302,8 +301,8 @@ export default function PageCadastrarProduto() {
                                     onChange={e => setDescricao(e.target.value)}
                                 />
                             </div>
-
-                            {IdTipoSkate <= 2 &&
+                            
+                            {IdTipoSkate == 2 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
                                     <select value={IdCategoria} onChange={e => setIdCategoria(e.target.value)}>

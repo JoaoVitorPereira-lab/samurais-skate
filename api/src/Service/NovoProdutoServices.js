@@ -21,7 +21,7 @@ export function criarNotaFiscal() {
 }
 
 
-export function criarNovoPedido(idUsuario, idCupom, info) {
+export function criarNovoPedido(idUsuario, info) {
     
     let agora = new Date();
     let notaFiscal = criarNotaFiscal();
@@ -29,7 +29,6 @@ export function criarNovoPedido(idUsuario, idCupom, info) {
     return {
         idUsuario: idUsuario,
         idEndereco: info.idEndereco,
-        idCupom: idCupom,
         data: agora,
         notaFiscal: notaFiscal,
         status: 'Confirmando Pagamento',

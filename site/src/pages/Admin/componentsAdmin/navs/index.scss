@@ -40,14 +40,12 @@
     .div-buscar{
         display: flex;
         flex-direction: row;
-        position: relative;
 
         margin-top: .5em;
         margin-right: 3em;
     }
     .div-buscar::before{
         content: "";
-        position: absolute;
         left: 0;
         bottom: 0;
         width: 100%;

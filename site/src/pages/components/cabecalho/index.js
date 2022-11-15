@@ -10,6 +10,7 @@ export default function CabecalhoUsuarioNavs(props) {
     const[popup, setPopUp] = useState(false)
 
     const navigate = useNavigate()
+
     function TenisClick(){
         navigate('/ConsultarTenis');
     }
@@ -26,7 +27,7 @@ export default function CabecalhoUsuarioNavs(props) {
     }
 
     function ComprasClick(){
-        navigate('/compras')
+        navigate('/pedidos')
     }
 
     function HomeClick(){

@@ -12,11 +12,10 @@ create table tb_tipo (
 create table tb_admin(
 	ID_ADMIN 		int primary key auto_increment,
     nm_admin		varchar(100),
-      ds_sobrenome  varchar(100),
-      DS_EMAIL		varchar(100),
-      DS_SENHA      varchar(100)
+    ds_sobrenome  varchar(100),
+    DS_EMAIL		varchar(100),
+    DS_SENHA      varchar(100)
 );
-
 
 -- Tabela do Usuário
 create table tb_conta_usuario (
@@ -134,22 +133,14 @@ create table tb_produto_curtido (
 -- Tabela do status do pedido
 
 
--- Tabela de cupom
-create table tb_cupom (
-	id_cupom			int primary key auto_increment,
-    cod_cupom			varchar(200),
-    vl_cupom			decimal(15,2),
-    qtd_restante		int
-);
-
-create table tb_cartao(
-	id_cartao		int primary key auto_increment,
+create table tb_cartao (
+	id_cartao			int primary key auto_increment,
     id_login_usuario	int,
-    nm_cartao		varchar(100),
-    ds_numero		varchar(16),
-    dt_vencimento	varchar(10),
-    ds_cvv			varchar(3),
-    ds_tipo_cartao  varchar(100),
+    nm_cartao			varchar(100),
+    ds_numero			varchar(20),
+    dt_vencimento		varchar(10),
+    ds_cvv				varchar(3),
+    ds_tipo_cartao  	varchar(100),
   foreign key (id_login_usuario) references tb_login_usuario (id_login_USUARIO)
 );
 
@@ -159,7 +150,6 @@ create table tb_pedido (
 	id_pedido			int primary key auto_increment,
     id_conta_usuario	int,
     id_usuario_endereco	int,
-    id_cupom			int,
     dt_pedido			datetime,
     cod_nota_fiscal		varchar(200),
     tp_pagamento		varchar(200),
@@ -181,7 +171,7 @@ create table tb_pedido_item (
 );
 
 -- Tabela de pagamento em cartão
-create table tb_pagamento_cartao (
+create table tb_pagamento_cartao(
 	id_pagamento_cartao		int primary key auto_increment,
     id_pedido				int,
 	id_cartao				int null,
@@ -223,6 +213,3 @@ create table tb_produto_pedido (
     foreign key (ID_PEDIDO)  references tb_pedido (ID_PEDIDO),
     foreign key (ID_PRODUTO) references tb_produto (ID_PRODUTO)
 );
-
-
-

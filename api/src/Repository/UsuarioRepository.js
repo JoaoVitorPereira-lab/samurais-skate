@@ -198,16 +198,17 @@ export async function ConsultarPedido(idUsuario){
 /* DETALHE DO PEDIDO */
 export async function DetalhePedido(idPedido, idUsuario){
   const comando = 
-  `select id_pedido_item		nome,
-          ds_imagem			    imagem,
-          nm_produto			  nome_produto,
-          DATE_FORMAT       (dt_pedido, '%d-%m-%y às %Hh%i') AS data,
-          nr_preco				  valor,
-          cod_nota_fiscal		codigo
+  `select id_pedido_item		            nome,
+          tb_produto.id_produto         idProduto,
+          tb_imagem_produto.ds_imagem   imagem,
+          nm_produto			              nome_produto,
+          tb_pedido.ds_status           status,
+          DATE_FORMAT                   (dt_pedido, '%d-%m-%y às %Hh%i') AS data,
+          nr_preco				              valor
      from tb_pedido_item
-     join tb_pedido 			    on tb_pedido_item.id_pedido   = tb_pedido.id_pedido
-     join tb_produto 			    on tb_pedido_item.id_produto  = tb_produto.id_produto
-     join tb_imagem_produto   on tb_produto.id_produto      = tb_imagem_produto.id_produto
+     join tb_pedido 			          on tb_pedido_item.id_pedido   = tb_pedido.id_pedido
+     join tb_produto 			          on tb_pedido_item.id_produto  = tb_produto.id_produto
+     join tb_imagem_produto         on tb_produto.id_produto      = tb_imagem_produto.id_produto
      where tb_pedido_item.id_pedido = ? and tb_pedido.id_conta_usuario = ?
   `;
 

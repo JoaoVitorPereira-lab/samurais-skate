@@ -77,7 +77,7 @@ export default function ModalEndereco({ exibir, fechar }) {
                         <div className='div-form-select div-form-select-1'>
                             <label id="lb"> Tipo: </label>
                             <select value={tipo} onChange={e => setTipo(e.target.value)}>
-                                <option disabled hidden selected>Selecione</option>
+                                <option hidden selected>Selecione</option>
                                 <option>Crédito</option>
                                 <option>Débito</option>
                             </select>

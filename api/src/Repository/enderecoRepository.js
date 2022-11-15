@@ -35,7 +35,19 @@ export async function Salvar(idUsuario, endereco){
 export async function remover(idEndereco) {
     const comando = `
         delete from tb_usuario_endereco
-            where id_usuario_endereco = ?
+              where id_usuario_endereco = ?
+    `;
+  
+    const [resp] = await con.query(comando, [idEndereco])
+    return resp.affectedRows;
+}
+
+/* REMOVER ENDEREÇO */
+export async function removerEnderecoPedido(idEndereco) {
+    const comando = `
+    UPDATE tb_pedido 
+       SET id_usuario_endereco = 0
+     WHERE id_usuario_endereco = ?
     `;
   
     const [resp] = await con.query(comando, [idEndereco])
