@@ -1,21 +1,13 @@
 import "./index.scss";
 import storage from 'local-storage';
-import { createContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
-import ReactSwitch from "react-switch";
 
-export const ThemeContext = createContext(null);
 export default function CabecalhoUsuarioNavs(props) {
     const [usuario,setUsuario] = useState('');
     const [email,setEmail] = useState('');
     const [popup, setPopUp] = useState(false)
-
-    const [theme, setTheme] = useState("dark");
-
-    const toggleTheme = () => {
-        setTheme((curr) => (curr === "light" ? "dark" : "light"));
-    };
 
     const navigate = useNavigate()
 
@@ -88,11 +80,6 @@ export default function CabecalhoUsuarioNavs(props) {
                 </div>
 
                 <div className="infos">
-
-                <div className="switch">
-                    <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
-                    <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
-                </div>
 
                     {!storage('usuario-logado') && 
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>

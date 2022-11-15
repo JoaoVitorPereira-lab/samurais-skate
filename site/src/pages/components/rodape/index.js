@@ -32,10 +32,6 @@ export default function Rodape(){
                     </div>
                 </div>
 
-                <a href="#inicio">
-                    <img src="/images/telefone.png" alt=""/>
-                </a>
-
                 {/* <div className='div-forma-pagamento'>
                     <h2 className='h2-forma-pagamento'> Formas de Pagamento </h2>
 
