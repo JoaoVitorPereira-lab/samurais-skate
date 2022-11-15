@@ -169,26 +169,6 @@ export default function ContinuarPedido(){
                 </section>
 
                 <section className="sec-pagamento">
-                    <div className="div-boleto">
-                        <h2> Boleto </h2>
-
-                        <div className="boleto">
-                            <input type="checkbox"/>
-                            <img src="../images/boleto.png" alt=""/>
-                            <text> Vencimento em 1 dia útil. A data de entrega será alterada devido ao tempo de processamento do Boleto. Veja mais na próxima página. </text>
-                        </div>
-                    </div>
-
-                    <div className="div-pix">
-                        <h2> Pix </h2>
-
-                        <div className="pix">
-                            <input type="checkbox"/>
-                            <img src="../images/pix-rodape.png" alt=""/>
-                            <text> Vencimento em 30 minutos. Após o pagamento seu pedido será processado.</text>
-                        </div>
-                    </div>
-
                     <div className="div-cartao-credito">
                         <h2> Cartão </h2>
 

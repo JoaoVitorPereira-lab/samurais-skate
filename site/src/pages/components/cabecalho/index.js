@@ -1,13 +1,21 @@
 import "./index.scss";
 import storage from 'local-storage';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
+import ReactSwitch from "react-switch";
 
+export const ThemeContext = createContext(null);
 export default function CabecalhoUsuarioNavs(props) {
-    const[usuario,setUsuario] = useState('');
-    const[email,setEmail] = useState('');
-    const[popup, setPopUp] = useState(false)
+    const [usuario,setUsuario] = useState('');
+    const [email,setEmail] = useState('');
+    const [popup, setPopUp] = useState(false)
+
+    const [theme, setTheme] = useState("dark");
+
+    const toggleTheme = () => {
+        setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    };
 
     const navigate = useNavigate()
 
@@ -26,7 +34,7 @@ export default function CabecalhoUsuarioNavs(props) {
         navigate('/Config')
     }
 
-    function ComprasClick(){
+    function PedidosClick(){
         navigate('/pedidos')
     }
 
@@ -71,7 +79,7 @@ export default function CabecalhoUsuarioNavs(props) {
     },[])
 
     return (
-        <main className="header-container">
+        <main className="header-container" id="inicio">
 
             <div className="div-logo">
 
@@ -80,6 +88,12 @@ export default function CabecalhoUsuarioNavs(props) {
                 </div>
 
                 <div className="infos">
+
+                <div className="switch">
+                    <label> {theme === "light" ? "Light Mode" : "Dark Mode"}</label>
+                    <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+                </div>
+
                     {!storage('usuario-logado') && 
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
@@ -123,15 +137,14 @@ export default function CabecalhoUsuarioNavs(props) {
                                     </div>
                                 </div>
 
-                                <div className='sair-popUp div-compras' onClick={ComprasClick}>
+                                <div className='sair-popUp div-pedidos' onClick={PedidosClick}>
 
-                                    <div className='img-compras-popUp'>
-
+                                    <div className='img-pedidos-popUp'>
                                         <img src="/images/Shopping Bag Full.png" alt="" />
                                     </div>
 
-                                    <div className='compras-popUp div-right'>
-                                        <h2> Compras </h2>
+                                    <div className='pedidos-popUp div-right'>
+                                        <h2> Pedidos </h2>
                                     </div>
 
                                 </div>
