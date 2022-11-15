@@ -129,29 +129,25 @@ server.get('/api/buscar', async (req, resp) =>{
 
 
 /* SALVAR IMAGEM */
-server.post('/api/admin/:id/imagem', upload.single("imgproduto"), async (req, resp) => {
+server.put('/admin/produto/:id/imagem', upload.array('imagens'), async (req, resp) => {
     try {
-      if(!req.file) throw new Error ('Escolha a imagem!')
+        const id = req.params.id;
+        const imagens = req.files;
 
-      const { id } = req.params
+        for (const imagem of imagens) {
+          await SalvarImagem(id, imagem.path)
+        }
 
-      
-
-      const imagem = req.file.path
-
-      const resposta = await SalvarImagem(imagem, id)
-
-      if (resposta != 1) throw new Error("Não foi possível salvar a imagem!")
-
-      resp.status(204).send()
+        resp.send({
+          id: id
+        });
+        
     } catch (err) {
-
-      resp.status(400).send({
-        erro: err.message,
-      });
+        resp.status(400).send({
+          erro: err.message
+        })
     }
-  }
-);
+})
 
 
 /* FAZER LOGIN */

@@ -12,22 +12,24 @@ import Storage from "local-storage";
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function PageCadastrarProduto(){
+export default function PageCadastrarProduto() {
     const [Tipos, setTipos] = useState([]);
-    const [Marcas,setMarcas] = useState([]);
-    const [Categoria,setCategoria] = useState([]);
+    const [Marcas, setMarcas] = useState([]);
+    const [Categoria, setCategoria] = useState([]);
     const [TiposSkate, setTiposSkate] = useState([]);
 
     const [IdTipos, setIdTipos] = useState()
-    const [IdMarcas,setIdMarcas] = useState()
-    const [IdCategoria,setIdCategoria] = useState()
+    const [IdMarcas, setIdMarcas] = useState()
+    const [IdCategoria, setIdCategoria] = useState()
     const [IdTipoSkate, setIdTipoSkate] = useState()
 
     const [imagem, setImagem] = useState();
+    const [imagem2, setImagem2] = useState();
+
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
     const [tamanho, setTamanho] = useState();
-    const [importado, setImportado] = useState(false); 
+    const [importado, setImportado] = useState(false);
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
     const [estoque, setEstoque] = useState(0);
@@ -38,20 +40,16 @@ export default function PageCadastrarProduto(){
 
     const navigate = useNavigate();
 
-    function MostrarImagem(){
-        if(typeof (imagem) === 'object'){
-            return URL.createObjectURL(imagem);
+    function MostrarImagem(imagem) {
+        if (imagem == undefined) {
+            return '../images/upload.png'
         }
-
-        else if (typeof (imagem) === 'string'){
-            return `${API_URL}/${imagem}` 
-        }
-        else{
-            return BuscarImagem(imagem);
+        else {
+            return URL.createObjectURL(imagem)
         }
     }
 
-    async function CarregarProduto(){
+    async function CarregarProduto() {
         const r = await BuscarPorID(idParam);
 
         setImagem(r.imagem)
@@ -68,60 +66,60 @@ export default function PageCadastrarProduto(){
         setId(r.id);
     }
 
-    async function CarregarCategorias(){
+    async function CarregarCategorias() {
         const resp = await ListarCategoria()
         setCategoria(resp)
     }
 
-    async function CarregarTipos(){
+    async function CarregarTipos() {
         const resp = await ListarTipos()
         setTipos(resp)
     }
 
-    async function CarregarMarcas(){
+    async function CarregarMarcas() {
         const resp = await ListarMarcas()
         setMarcas(resp)
     }
 
-    async function CarregartiposSkate(){
+    async function CarregartiposSkate() {
         const resp = await ListarTiposSkate()
         setTiposSkate(resp)
     }
 
-    async function salvarClick(){
+    async function salvarClick() {
         try {
-            if(!imagem)
+            if (!imagem)
                 throw new Error('Escolha a imagem!');
 
-            if(id === 0){
+            if (id === 0) {
                 const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, tamanho, importado, promocao, preco, estoque);
 
-                await enviarimagem(novoProduto.id, imagem);
-            
+                await enviarimagem(novoProduto.id, imagem, imagem2);
+
                 navigate('/consultarproduto')
                 setId(novoProduto.id)
 
                 toast.success('Produto cadastrado com sucesso 🚀');
             }
-            else{
+            else {
                 await AlterarProduto(id, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
-                if(typeof(imagem) == 'object'){
+                if (typeof (imagem) == 'object') {
                     await enviarimagem(idParam, imagem)
                 }
                 toast.success('Produto alterado com sucesso 🚀');
                 navigate('/consultarproduto')
             }
         } catch (err) {
-            if(err.response)
-                toast.error(err.response.data.erro);  
-            else{
+            if (err.response)
+                toast.error(err.response.data.erro);
+            else {
                 toast.error(err.message);
             }
         }
-        
+
     }
 
-    function novoClick(){
+    function novoClick() {
         setNome('');
         setDescricao('');
         setPreco('');
@@ -136,16 +134,16 @@ export default function PageCadastrarProduto(){
         setIdMarcas('Marca');
     }
 
-    function EscolherImagem() {
-        document.getElementById('ClickFoto').click();
+    function EscolherImagem(inputId) {
+        document.getElementById(inputId).click();
     }
 
     useEffect(() => {
         MostrarImagem()
     }, [imagem])
-    
-    useEffect(() =>{
-        if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
+
+    useEffect(() => {
+        if (!Storage('admin-logado') || Storage('admin-logado').length === 0) {
             toast.dark('Área apenas para administradores')
             navigate('/')
         }
@@ -155,75 +153,71 @@ export default function PageCadastrarProduto(){
         CarregarMarcas()
         CarregartiposSkate()
 
-        if(idParam){
+        if (idParam) {
             CarregarProduto();
         }
     }, [])
 
-    return(
+    return (
         <main className="page-cadastrar-produto">
             <div className="comps">
                 <Cabecalho />
-                <Navs selecionado='cadastrar-adm'/>
+                <Navs selecionado='cadastrar-adm' />
             </div>
 
             <div className="div-cadastrar">
                 <div className="tite">
                     <hr />
-                    <h2> {id===0 ? 'Cadastrar' : 'Alterar' } Novo Produto </h2>
+                    <h2> {id === 0 ? 'Cadastrar' : 'Alterar'} Produto </h2>
                 </div>
 
                 <div className="infos-cadastrar">
 
-                    <section className="sec-inputs-imgs">
-                        
-                        <div className='foto-upload' onClick={EscolherImagem}>
-                            {!imagem &&
-                                <img src="../images/upload.png" alt=""/>
-                            
-                            }
-                            {imagem &&
-                                <img className="img-produto" src={MostrarImagem()} alt=""/>
-                            }
-
-                            <input type="file" id='ClickFoto' onChange={e  => setImagem(e.target.files[0])}/>
+                    <section className="imgs">
+                        <div className="img1" onClick={() => EscolherImagem("clickFoto")}>
+                            <img src={MostrarImagem(imagem)} className="img-produto" alt="" />
+                            <input type="file" id="clickFoto" onChange={e => setImagem(e.target.files[0])} />
                         </div>
-                        
-                        <p className="p1"> Imagem 1 do produto </p>
-                    
+                        <p>Imagem 1 do produto</p>
+                        <div className="img2" onClick={() => EscolherImagem("clickFoto1")}>
+                            <img src={MostrarImagem(imagem2)} className="img-produto" alt="" />
+
+                            <input type="file" id="clickFoto1" onChange={e => setImagem2(e.target.files[0])} />
+                        </div>
+                        <p>Imagem 2 do produto</p>
                     </section>
 
 
-                    <section className="sec-linha1">
-                        <hr />
-                    </section>
+
+                    <hr className="linha" />
+
 
 
                     <section className="sec-infos-produto-1">
-                        
-                            <div className="div-infos-1">
-                                <label for="nome" id="nome-titulo"> Nome: </label>
-                                <input type="text" id="nome" placeholder="Nome do Produto" 
-                                       value={nome} 
-                                       onChange={e => setNome(e.target.value)}
-                                />
 
-                                <label for="preco" id="titulos" className="sla"> Preço: </label>
-                                <input min={0}type="number"  id="preco" placeholder="R$ 000,00"
-                                       value={preco} 
-                                       onChange={e => setPreco(e.target.value)}
-                                />
-                            </div>
+                        <div className="div-infos-1">
+                            <label for="nome" id="nome-titulo"> Nome: </label>
+                            <input type="text" id="nome" placeholder="Nome do Produto"
+                                value={nome}
+                                onChange={e => setNome(e.target.value)}
+                            />
 
-                            <div className="div-informacoes">
+                            <label for="preco" id="titulos" className="sla"> Preço: </label>
+                            <input min={0} type="number" id="preco" placeholder="R$ 000,00"
+                                value={preco}
+                                onChange={e => setPreco(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="div-informacoes">
 
                             <div className="div-infos-2">
                                 <label id="tipo-titulo"> Tipo: </label>
-                                <select value={IdTipos} onChange={e => setIdTipos(e.target.value) }>
+                                <select value={IdTipos} onChange={e => setIdTipos(e.target.value)}>
                                     <option selected disabled hidden> Tipos </option>
 
                                     {Tipos.map(item =>
-                                        <option value={item.id}> 
+                                        <option value={item.id}>
                                             {item.nome}
                                         </option>
                                     )}
@@ -232,11 +226,11 @@ export default function PageCadastrarProduto(){
 
                                 {IdTipos == 1 &&
                                     <section className="aa">
-                                        <select value={IdTipoSkate} onChange={e => setIdTipoSkate(e.target.value) }>
-                                        <option selected disabled hidden> Tipo do Skate </option>
+                                        <select value={IdTipoSkate} onChange={e => setIdTipoSkate(e.target.value)}>
+                                            <option selected disabled hidden> Tipo do Skate </option>
 
                                             {TiposSkate.map(item =>
-                                                <option value={item.id}> 
+                                                <option value={item.id}>
                                                     {item.nome}
                                                 </option>
                                             )}
@@ -244,21 +238,21 @@ export default function PageCadastrarProduto(){
                                         </select>
                                     </section>
                                 }
-                                
+
                             </div>
 
                             <div className="div-infos-3">
                                 <label id="titulos"> Estoque: </label>
-                                <input min={0} type="number" 
-                                       id="estoque" 
-                                       value={estoque} 
-                                       onChange={e=> setEstoque(Number(e.target.value))}
+                                <input min={0} type="number"
+                                    id="estoque"
+                                    value={estoque}
+                                    onChange={e => setEstoque(Number(e.target.value))}
                                 />
 
                                 <div className="promocao">
                                     <input type="checkbox"
-                                           value={promocao}
-                                           onChange={e => setPromocao(e.target.checked )}     
+                                        value={promocao}
+                                        onChange={e => setPromocao(e.target.checked)}
                                     />
                                     <label> Promoção </label>
                                 </div>
@@ -266,28 +260,28 @@ export default function PageCadastrarProduto(){
 
                             <div className="div-marcas">
                                 <label id="marca-titulo"> Marca: </label>
-                                <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
+                                <select value={IdMarcas} onChange={e => setIdMarcas(e.target.value)}>
                                     <option selected disabled hidden> Marca </option>
 
                                     {Marcas.map(item =>
                                         <option value={item.id}>
                                             {item.nome}
-                                        </option>    
+                                        </option>
                                     )}
                                 </select>
                             </div>
 
-                            {IdTipos == 3 && 
+                            {IdTipos == 3 &&
                                 <div className="div-marcas">
                                     <label id="marca-titulo"> Tamanho: </label>
-                                    <select value={IdMarcas} onChange={e=> setIdMarcas(e.target.value)}>
+                                    <select value={IdMarcas} onChange={e => setIdMarcas(e.target.value)}>
                                         <option selected disabled hidden> Marca </option>
 
-                                       
-                                            <option>
-                                                a
-                                            </option>    
-                                        
+
+                                        <option>
+                                            a
+                                        </option>
+
                                     </select>
                                 </div>
                             }
@@ -296,42 +290,42 @@ export default function PageCadastrarProduto(){
 
                     <section className="sec-infos-produtos-2">
 
-                        <section className="sec-linha2">
-                            <hr />
-                        </section>
+
+                        <hr className="linha2" />
+
 
                         <div className="div-informacoes2">
                             <div className="div-descricao">
                                 <label id="titulos"> Descrição Geral: </label>
                                 <textarea placeholder="Descrição do Produto"
-                                          value={descricao}
-                                          onChange={e => setDescricao(e.target.value)}
+                                    value={descricao}
+                                    onChange={e => setDescricao(e.target.value)}
                                 />
                             </div>
-                            
+
                             {IdTipoSkate <= 2 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
-                                    <select value={IdCategoria} onChange={e=> setIdCategoria(e.target.value)}>
-                                            <option selected disabled hidden >  Categoria  </option>
+                                    <select value={IdCategoria} onChange={e => setIdCategoria(e.target.value)}>
+                                        <option selected disabled hidden >  Categoria  </option>
 
-                                            {Categoria.map(item =>
-                                                <option value={item.id}>
-                                                    {item.nome}
-                                                </option>    
-                                            )}
-                                    </select> 
+                                        {Categoria.map(item =>
+                                            <option value={item.id}>
+                                                {item.nome}
+                                            </option>
+                                        )}
+                                    </select>
                                 </div>
                             }
 
                             {IdTipoSkate >= 4 &&
                                 <div className="importado">
-                                <input type="checkbox"
-                                       value={importado}
-                                       onChange={e => setImportado(e.target.checked )}     
-                                />
-                                <label id="importado-titulo"> Importado </label>
-                            </div>
+                                    <input type="checkbox"
+                                        value={importado}
+                                        onChange={e => setImportado(e.target.checked)}
+                                    />
+                                    <label id="importado-titulo"> Importado </label>
+                                </div>
                             }
 
                         </div>
@@ -339,7 +333,7 @@ export default function PageCadastrarProduto(){
                 </div>
 
                 <div className="div-button-salvar-novo">
-                    <button onClick={salvarClick}> { id === 0 ? 'SALVAR' : 'ALTERAR' } </button> <nbsp/> <nbsp/>
+                    <button onClick={salvarClick}> {id === 0 ? 'SALVAR' : 'ALTERAR'} </button> <nbsp /> <nbsp />
                     <button className="novo" onClick={novoClick}>NOVO</button>
                 </div>
             </div>

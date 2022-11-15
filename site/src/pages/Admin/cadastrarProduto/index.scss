@@ -22,14 +22,16 @@
         margin-bottom: 3em;
         border: 1.8px solid #000;
         border-radius: 1em;
-        width: 70em;
+        padding: 0em 2em;
+        width: fit-content;
+        height: 62vh;
     }
     .tite{
         display: flex;
         flex-direction: row;
         align-items: center;
 
-        margin-left: 2em;
+        
         width: 18em;
     }
     .tite hr{
@@ -50,54 +52,26 @@
 /* COMEÇO INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
     .infos-cadastrar{
         display: flex;
-        flex-direction: row;
-        margin: 6em 1.3em 7em 2.2em;
+        margin-top: 5em;
     }
 
-    .sec-inputs-imgs{
-        margin-top: -2.3em;
-        margin-right: 1em
-    }
-    .sec-inputs-imgs input{
+    .imgs input {
         display: none;
-        width: 10em; height: 20em;
-    }
-    .sec-inputs-imgs label {
-        margin: 1em;
-
-        border: 2px solid #DFDFDF;
-        border-radius: .3em;
-        background-color: #fff;
-        color: #FFF;
     }
 
-    .foto-upload {
+    .imgs div, .img-produto {
+        cursor: pointer;
+        border: solid 1px #DFDFDF;
+        width: 7.2em; height: 8.5em;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 7.2em; height: 8.5em;
+    }
 
-        border: 1px solid #DFDFDF;
-        border-radius: 3px;
-        background-color: #FFF;
-        cursor: pointer;
-    }
-    #ClickFoto{
-        visibility: hidden;
-    }
-    .img-produto{
-        width: 100%; height: 100%;
-    }
-    
-    .p1, 
-    .p2{
+    .imgs p {
         font-family: "Inter", sans-serif;
         font-size: 14px;
         color: #D1C9C9;
-    }
-    .p2{
-        margin: 4em 0em 0em 0.5em;
-        width: 7em;
     }
 /* FIM INFO CADASTRAR (INFORMAÇÕES DE CADASTRAR NOVO PRODUTO) */
 
@@ -241,32 +215,20 @@
 
 
 /* COMEÇO LINHA 1 (LINHA PT 1) */
-    .sec-linha1{
-        margin-left: -12.8em;
-        margin-right: -11.8em;
-        margin-top: 10.9em;
-    }
-    .sec-linha1 hr{
-        width: 443px;
-        height: 0px;
-
+   
+    .linha {
+        height: 437px;
         border: 1px solid #CCCCCC;
-        transform: rotate(90deg);
+        margin: -2em 2em 0em 2em;
     }
 /* FIM LINHA 1 (LINHA PT 1) */
 
 
 /* COMEÇO LINHA 2 (LINHA PT 2) */
-    .sec-linha2{
-        margin-top: 12.8em;
-        margin-left: -26em;
-    }
-    .sec-linha2 hr{
-        width: 435px;
-        height: 0px;
-
+    .linha2 {
+        height: 437px;
         border: 1px solid #CCCCCC;
-        transform: rotate(90deg);
+        margin: 0em 2.5em;
     }
 /* FIM LINHA 2 (LINHA PT 2) */
 
@@ -277,14 +239,16 @@
 /* COMEÇO INFOS PRODUTO 2 (INFORMAÇÕES DO PRODUTO A SER CADASTRADO) */
     .sec-infos-produtos-2{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         margin-left: -1.2em;
         margin-top: -2em;
     }
 
 /* COMEÇO DIV DA DESCRIÇÃO GERAL */
     .div-informacoes2{
-        margin-top: -13.7em;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0em;
     }
     .div-descricao{
         display: flex;
@@ -327,7 +291,7 @@
 
 /* COMEÇO DIV DO BOTÃO DE SALVAR */
     .div-button-salvar-novo{
-        margin: 5em 1.7em 1.5em 0em;
+        margin: 0em 1.7em 1.5em 0em;
         float: right;
     }
     .div-button-salvar-novo button{

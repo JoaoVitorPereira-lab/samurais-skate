@@ -98,7 +98,7 @@ export async function BuscarPorNome(nome){
 
 
 /* SALVAR IMAGEM */
-export async function SalvarImagem (imagem, id) {
+export async function SalvarImagem (id, imagem) {
     const comando = `INSERT INTO TB_IMAGEM_PRODUTO (id_produto, ds_imagem) 
                       VALUES(?,?)`
 
