@@ -92,7 +92,7 @@ export default function PageCadastrarProduto() {
                 throw new Error('Escolha a imagem!');
 
             if (id === 0) {
-                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, nome, descricao, tamanho, importado, promocao, preco, estoque);
+                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos,IdTipoSkate, nome, descricao, importado, promocao, preco, estoque);
 
                 await enviarimagem(novoProduto.id, imagem, imagem2);
 
@@ -302,7 +302,7 @@ export default function PageCadastrarProduto() {
                                 />
                             </div>
                             
-                            {IdTipoSkate == 2 &&
+                            {IdTipoSkate <= 2 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
                                     <select value={IdCategoria} onChange={e => setIdCategoria(e.target.value)}>
