@@ -32,7 +32,7 @@ export default function Rodape(){
                     </div>
                 </div>
 
-                <div className='div-forma-pagamento'>
+                {/* <div className='div-forma-pagamento'>
                     <h2 className='h2-forma-pagamento'> Formas de Pagamento </h2>
 
                     <div className="pag-a-vista">
@@ -59,7 +59,7 @@ export default function Rodape(){
                             <img src="/images/mercado-pago.png"     alt="" className="icon mercado-pago"/>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
     )
