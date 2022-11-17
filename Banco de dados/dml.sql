@@ -102,6 +102,12 @@ SELECT id_tipo_skate      id,
   FROM tb_tipo_skate;
 -- ----------------------------------------------
 
+-- INSERIR AVALIAÇÃO 
+insert into tb_produto_avaliacao (ID_CONTA_USUARIO,ID_PRODUTO, DS_AVALIACAO, NR_ESTRELA)
+	values (1, 1, "bom sia ", 3);
+
+-- ----------------------------------------------
+
 -- REMOVER AVALIAÇÃO 
 delete from tb_produto_avaliacao
 		where id_produto = 1;

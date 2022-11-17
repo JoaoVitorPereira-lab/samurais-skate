@@ -17,6 +17,7 @@ import { AlterarStatus } from '../../../api/StatusAPI';
 export default function VerPedido() {
     const [pedido, setPedido] = useState([]);
     const [status, setStatus] = useState('');
+    const [aval, setAval] = useState(false);
 
     const navigate = useNavigate();
     const { idPedido, idUser } = useParams();
@@ -64,10 +65,15 @@ export default function VerPedido() {
         return total + 20;
     }
 
+    function avaliar () {
+        setAval(true)
+    }
+
     useEffect(() => {
         CarregarDetalhePedido();
         PegarStatus();
     }, [status])
+
 
 	return (
 		<main className="main-verpedido">
@@ -76,9 +82,9 @@ export default function VerPedido() {
 			<section className="sec-row-2">
                 <div className="tite">
                     <hr />
-                    <h2> Detalhe do seu pedido: <span className="span-status"> {status} </span> </h2>
+                    <h2> Detalhe do seu pedido: <span className="span-status"> {status[0]} </span> </h2>
                 </div>
-                {pedido.map(item =>
+                
                     <div className='itens'>
                         <table>
                             <thead>
@@ -87,9 +93,15 @@ export default function VerPedido() {
                                     <th>Data da Compra</th>
                                     <th>Valor</th>
                                     <th>Código do Produto</th>
+                                    {status[0] == 'Entregue' &&
+                                        <th>
+                                          Avalie seu produto 
+                                        </th>
+                                    }
                                 </tr>
                             </thead>
                             <tbody>
+                            {pedido.map(item =>
                                 <tr>
                                     <td>
                                         <div className='celula-item'>
@@ -108,13 +120,18 @@ export default function VerPedido() {
                                     <td>
                                         #00{item.idProduto}
                                     </td>
+                                    {item.status == 'Entregue' &&
+                                        <td className='avaliar'>
+                                          Avaliar  
+                                        </td>
+                                    }
                                 </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
-                )}
+                
 			</section>
-
             <div className="div-final">
                 <text> Total: R$ {calcularTotal()} </text>
 
