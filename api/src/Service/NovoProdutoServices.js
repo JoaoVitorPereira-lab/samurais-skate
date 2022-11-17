@@ -1,6 +1,5 @@
 import randomString from 'randomstring'
 
-
 export function criarNotaFiscal() {
     return randomString.generate(11);
 }

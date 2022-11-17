@@ -5,15 +5,16 @@
     align-items: center;
 
     .logo {
-        height: 25em;
+        height: 20em;
         margin-top: 16em;
         margin-left: 4.3em;
     }
 
     .barra_lateral {
         background-color: #E52A45;
-        height: 38em;
-        width: 5px;
+        height: 40em;
+        width: 10px;
+        margin-top: 9em;
     }
 
     .email,
@@ -113,8 +114,8 @@
         border: transparent;
         color: #E9E9E9;
         font-size: 2em;
-        padding: 0em 1em;
-        text-align: center;
+        justify-items: center;
+        padding: 0em 0.6em;
     }
 }
 

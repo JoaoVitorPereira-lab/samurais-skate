@@ -1,3 +1,5 @@
+
+
 .page-cadastro {
     display: flex;
     flex-direction: row;
@@ -122,6 +124,14 @@
         border-radius: 14px;
         margin-top: 2em;
         border: none;
+    }
+
+    @media (max-width: 1280px){
+        .logo {
+            height: 20em;
+            margin-top: 2em;
+            margin-left: 4.3em;
+        }
     }
 
 }
