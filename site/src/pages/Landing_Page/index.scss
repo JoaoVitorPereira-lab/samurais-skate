@@ -178,6 +178,7 @@
 
         div:hover {
 
+           
             scale: 1.05;
             cursor: pointer;
             -webkit-transform: scaleX(1.0);
@@ -192,6 +193,14 @@
             transform: scaleX(1);
         }
 
+      img {
+        opacity:90%;
+      }
+
+      img:hover {
+        opacity: 100%;
+      }
+
     }
 
     .marca {
@@ -200,11 +209,14 @@
         padding: 3em;
 
         .titulo-marca {
+            text-decoration: underline;
             text-align: center;
             font-family: 'DELA GOTHIC ONE', cursive;
             font-size: 46px;
             font-weight: bold;
         }
+
+        
     }
 
 
@@ -278,6 +290,13 @@
             visibility: visible;
             -webkit-transform: scaleX(1);
             transform: scaleX(1);
+        }
+    }
+    @media(max-width: 1280px) {
+        .page {
+            img {
+                height: 22em;
+            }
         }
     }
 }
