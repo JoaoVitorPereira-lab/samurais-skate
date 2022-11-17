@@ -103,7 +103,7 @@ export default function CabecalhoUsuarioNavs(props) {
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
-                                    <div className='bolinha' >
+                                    <div className='bolinha'>
                                         <text> {usuario.toUpperCase()[0]} </text>
                                     </div>
 
