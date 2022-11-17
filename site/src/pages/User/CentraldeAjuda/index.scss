@@ -1,0 +1,201 @@
+.main-ajuda{
+    display: flex;
+    flex-direction: column;
+
+    .bot{
+        position: absolute;
+        margin-top: 20em;
+        margin-left: 20em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bot-inicial{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .texto-bot{
+        width: 214px;
+        height: 107px;
+        left: 377px;
+        top: 312px;
+        
+        background: #E9E9E9;
+        border-radius: 10px;
+        margin-left: 1em;
+        padding: 0px 0px 20px 20px;
+    }
+
+    .bot-inicial img{
+        margin-top: 3em;
+    }
+
+    .texto-bot p{
+        width: 192px;
+        font-family: 'Dekko', sans-serif;
+    }
+    .bolinha{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        margin-top: 0.5em;
+
+        width: 2.5em; height: 2.5em;
+        background-color: #E52A45;
+        border-radius: 50%;
+        border: transparent;
+
+    }
+    .bolinha text, .bolinha h2{
+        color: #ffffff;
+        font-family: 'Dekko', cursive;
+        font-size: 20px;
+    }
+    
+    .resposta{
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        margin-left: 70em;
+        margin-top:  10em;
+
+        
+    }
+
+    .texto-dificuldade{
+        font-family: 'Dekko', sans-serif;
+        width: 150px;
+        background: #E9E9E9;
+        border-radius: 10px;
+
+        margin-right: 1em;
+
+        padding: 0px 10px 0px 10px;
+    }
+
+    .map{
+        display: flex;
+        flex-direction: row;
+    }
+    .texto-conta{
+        font-family: 'Dekko', sans-serif;
+        width: 100px;
+        background: #E9E9E9;
+        border-radius: 10px;
+
+        margin-right: 1em;
+
+        padding: 0px 0px 0px 20px;    
+    }
+
+    .opcoes-bot{
+        margin-left: 35em;
+        background: #E9E9E9;
+        border-radius: 3px;
+        margin-top: 10em;
+        margin-bottom: 10em;
+        width: fit-content;
+
+        padding: 30px 60px 30px 60px;
+
+    }
+
+    .div-opcoes-bot{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 50em;
+        text-align: center;
+
+        border-radius: 3px;
+    }
+
+    .div-opcoes-bot button{
+        border: none;
+        color: #ffffff;
+        background: #E52A45;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        
+        font-family: 'Dekko', sans-serif;
+        padding: 1em;
+    }
+
+    .resposta-bot{
+        position: absolute;
+        margin-top: 35em;
+        margin-left: 20em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bot-resposta{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .bot-resposta img{
+        margin-top: 7em;
+    }
+    .texto-bot-resposta{
+        width: 214px;
+        height: 107px;
+        left: 377px;
+        top: 312px;
+        
+        background: #E9E9E9;
+        border-radius: 10px;
+        margin-left: 1em;
+        padding: 0px 0px 150px 20px;
+
+    }
+
+    .texto-bot-resposta p{
+        width: 192px;
+        font-family: 'Dekko', sans-serif;
+    }
+
+    .texto-bot-resposta1{
+        width: 214px;
+        height: 107px;
+        left: 377px;
+        top: 312px;
+        
+        background: #E9E9E9;
+        border-radius: 10px;
+        margin-left: 1em;
+        padding: 0px 0px 60px 20px;
+
+    }
+
+    .texto-bot-resposta1 p{
+        width: 192px;
+        font-family: 'Dekko', sans-serif;
+    }
+    .aaaa{
+        margin-top: 4em;
+    }
+
+    .texto-bot-resposta2{
+        width: 214px;
+        height: 107px;
+        left: 377px;
+        top: 312px;
+        
+        background: #E9E9E9;
+        border-radius: 10px;
+        margin-left: 1em;
+        padding: 0px 0px 120px 20px;
+
+    }
+
+    .texto-bot-resposta2 p{
+        width: 192px;
+        font-family: 'Dekko', sans-serif;
+    }
+    .aa{
+        margin-top: 6em;
+    }
+}
