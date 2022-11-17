@@ -11,10 +11,6 @@ export default function CabecalhoUsuarioNavs(props) {
 
     const navigate = useNavigate()
 
-    function TenisClick(){
-        navigate('/ConsultarTenis');
-    }
-
     function MostrarPopUp(){
         setPopUp(true)
     }
@@ -164,7 +160,7 @@ export default function CabecalhoUsuarioNavs(props) {
                     </Link>
 
                     <Link to='/consultartenis' className={verificarMenuSelecionado('tenis')}>
-                        <div className="navs-produtos" onClick={TenisClick}>
+                        <div className="navs-produtos">
                             <img src="/images/tenis.png" className="imgs-nav" alt=""/>
                             <span> Tênis </span>
                         </div>
@@ -211,7 +207,7 @@ export default function CabecalhoUsuarioNavs(props) {
                         </Link>
 
                         <Link to='/consultartenis' className={verificarMenuSelecionado('tenis')}>
-                            <div className="navs-produtos" onClick={TenisClick}>
+                            <div className="navs-produtos">
                                 <img src="/images/tenis.png" className="imgs-nav" alt=""/>
                                 <span> Tênis </span>
                             </div>
