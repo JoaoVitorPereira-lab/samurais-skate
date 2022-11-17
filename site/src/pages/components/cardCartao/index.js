@@ -48,3 +48,33 @@ export default function CardCartao({ item: { id, nome, numero, tipoCartao }, sel
         </div>
     )
 }
+
+{/* <section class="credit-card">
+    <div class="card">
+        <div class="face front">
+            <img src="/images/chip.svg" alt="Chip" id="chip" class="absolute" />
+            <img src="/images/signal.svg" alt="Signal" id="signal" class="absolute" />
+            <p id="owner" class="absolute">MAIATTO DEVasdasd asd asdasd as d asdasdsadasd asdasdadsa asdasdad</p>
+        </div>
+        <div class="face back absolute">
+            <div id="graybar" class="absolute"></div>
+            <div id="card-info" class="absolute">
+                <p id="card-number">1234 5678 9999 0000</p>
+                <div class="flex">
+                    <p class="flex informations">
+                        <span class="label">MEMBER SINCE</span>
+                        <span>01/01</span>
+                    </p>
+                    <p class="flex informations">
+                        <span class="label">VALID THRU</span>
+                        <span>12/29</span>
+                    </p>
+                    <p class="flex informations">
+                        <span class="label">SECURITY CODE</span>
+                        <span>000</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> */}

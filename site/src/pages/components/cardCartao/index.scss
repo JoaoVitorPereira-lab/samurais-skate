@@ -57,3 +57,165 @@
         background-color: inherit;
     }
 }
+
+// .credit-card{
+//     display: block;
+// 	justify-content: center;
+// 	align-items: center;
+// 	background-color: #000000;
+//     border-radius: 10px;
+
+//     .flex { display: flex }
+
+//     .card {
+//         width: 300px;
+//         height: 200px;
+//         transform-style: preserve-3d;
+//         perspective: 500px;
+
+//         font-family: "Dekko", sans-serif;
+//     }
+
+//     .card .face {
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         border: transparent;
+//         border-radius: 10px;
+//         background: linear-gradient(135deg, rgb(255 255 255 / 10%) 0%, transparent 100%);
+//         // backdrop-filter: blur(10px);
+//         box-shadow: 2px 2px 0px 0px rgb(255 255 255 / 20%);
+//         transform-style: preserve-3d;
+//         transition: 0.75s ease-in-out;
+//         backface-visibility: hidden;
+//         transform: rotateY(0);
+//     }
+    
+
+//     /* CARD FRONT FACE START */
+
+//     #chip {
+//         width: 60px;
+//         height: 60px;
+//         top: 100px;
+//         left: 20px;
+//     }
+
+//     #signal {
+//         width: 25px;
+//         height: 25px;
+//         top: 115px;
+//         left: 78px;
+//         transform: rotate(90deg);
+//     }
+
+//     #logo {
+//         width: 85px;
+//         height: 85px;
+//         bottom: 30px;
+//         left: 40px;
+//     }
+
+//     #owner {
+//         top: 85px;
+//         left: 110px;
+//         font-size: 1.2em;
+//         color: #ffffff;
+//     }
+
+//     /* CARD FRONT FACE END */
+
+//     /* CARD BACK FACE START */
+//     .card .face.back {
+//         transform: rotateY(180deg);
+//     }
+
+//     #graybar {
+//         width: 100%;
+//         height: 50px;
+//         top: 15px;
+//         background: #999999;
+//     }
+
+//     #card-info {
+//         width: 100%;
+//         bottom: 15px;
+//         padding: 0 20px;
+//         color: #ffffff;
+//     }
+
+//     #card-number {
+//         letter-spacing: 2px;
+//         font-size: 1.3rem;
+//     }
+
+//     #card-info .informations:not(:first-child) {
+//         margin-left: 10px;
+//     }
+
+//     #card-info .flex .informations {
+//         align-items: center;
+//     }
+
+//     #card-info .flex .informations .label {
+//         display: block;
+//         font-size: 0.4rem;
+//         margin-right: 4px;
+//         width: 30px;
+//     }
+
+//     /* FLAGS START */
+//     .card .face.front::before,
+//     .card .face.front::after,
+//     .card .face.back::before,
+//     .card .face.back::after {
+//         content: '';
+//         position: absolute;
+//         width: 45px;
+//         height: 45px;
+//         border-radius: 50%;
+//         opacity: 0.75;
+//     }
+
+//     .card .face.front::before,
+//     .card .face.front::after {
+//         top: 10px;
+//         mix-blend-mode: overlay;
+//     }
+
+//     .card .face.back::before,
+//     .card .face.back::after {
+//         bottom: 30px;
+//         mix-blend-mode: hue;
+//     }
+
+//     .card .face.front::before,
+//     .card .face.back::before {
+//         right: 20px;
+//     }
+
+//     .card .face.front::after,
+//     .card .face.back::after {
+//         right: 45px;
+//     }
+
+//     .card .face.front::before {
+//         background: #f79e1b;
+//     }
+
+//     .card .face.front::after {
+//         background: #eb001b;
+//     }
+
+//     /* FLAGS END */
+
+//     /* ANIMATION */
+//     .card:hover .face.front {
+//         transform: rotateY(180deg);
+//     }
+
+//     .card:hover .face.back {
+//         transform: rotateY(360deg);
+//     }
+// }

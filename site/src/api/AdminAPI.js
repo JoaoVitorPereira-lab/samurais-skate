@@ -4,14 +4,14 @@ const api = axios.create({
 })
 
 /* CADASTRAR PRODUTO */
-export async function CadastrarProduto(IdMarca, IdCategoria, IdTipo, nome, descricao, tamanho, importado, promocao, preco, estoque){
+export async function CadastrarProduto (IdMarca, IdCategoria, IdTipo, idTipoSkate, nome, descricao, importado, promocao, preco, estoque){
     const resposta = await api.post('/api/produto', {
         IdMarca: IdMarca, 
         IdCategoria: IdCategoria,
         IdTipo: IdTipo,
+        idTipoSkate: idTipoSkate,
         nome: nome,
         descricao: descricao,
-        tamanho: tamanho,
         importado: importado,
         promocao: promocao,
         preco: preco,
@@ -74,11 +74,12 @@ export async function BuscarImagem(imagem){
 
 
 /* ENVIAR IMAGEM */
-export async function enviarimagem (id, imagem){
+export async function enviarimagem (id, imagem1, imagem2){
     const formData = new FormData();
-    formData.append('imgproduto', imagem);
+    formData.append('imagens', imagem1);
+    formData.append('imagens', imagem2);
     
-    const resposta = await api.post(`/api/admin/${id}/imagem` , formData, {
+    const resposta = await api.put(`/admin/produto/${id}/imagem` , formData, {
         headers:{
             "Content-Type": "multipart/form-data"
         },

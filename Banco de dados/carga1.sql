@@ -28,37 +28,37 @@ insert into tb_tipo (nm_tipo)
 			 values ('Acessórios');
 -- ----------------------------------------------
 -- INSERIR MARCA
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Flip Skateboards');
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Santa Cruz');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Girl Skateboards');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Element');             
 insert into tb_marca (nm_marca)
 			 values ('Thrasher');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Everlong Skate');
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Vans');
 insert into tb_marca (nm_marca)
 			 values ('Tesla');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('DC Shoes');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Grizzly');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Hocks');             
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Nine Clouds');
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Nike');             
 insert into tb_marca (nm_marca)
 			 values ('Lakai');
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('ÖUS');
-insert into tb_marca (nm_marca, id_tipo)
+insert into tb_marca (nm_marca)
 			 values ('Independent');             
 insert into tb_marca (nm_marca)
 			 values ('Diamond');             

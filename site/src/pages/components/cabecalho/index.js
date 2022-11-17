@@ -5,9 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 
 export default function CabecalhoUsuarioNavs(props) {
-    const[usuario,setUsuario] = useState('');
-    const[email,setEmail] = useState('');
-    const[popup, setPopUp] = useState(false)
+    const [usuario,setUsuario] = useState('');
+    const [email,setEmail] = useState('');
+    const [popup, setPopUp] = useState(false)
 
     const navigate = useNavigate()
 
@@ -26,7 +26,7 @@ export default function CabecalhoUsuarioNavs(props) {
         navigate('/Config')
     }
 
-    function ComprasClick(){
+    function PedidosClick(){
         navigate('/pedidos')
     }
 
@@ -71,7 +71,7 @@ export default function CabecalhoUsuarioNavs(props) {
     },[])
 
     return (
-        <main className="header-container">
+        <main className="header-container" id="inicio">
 
             <div className="div-logo">
 
@@ -80,6 +80,7 @@ export default function CabecalhoUsuarioNavs(props) {
                 </div>
 
                 <div className="infos">
+
                     {!storage('usuario-logado') && 
                         <img onClick={Login} src="/images/favoritos.png" alt=""/>
                     }
@@ -102,7 +103,7 @@ export default function CabecalhoUsuarioNavs(props) {
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
-                                    <div className='bolinha' >
+                                    <div className='bolinha'>
                                         <text> {usuario.toUpperCase()[0]} </text>
                                     </div>
 
@@ -123,15 +124,14 @@ export default function CabecalhoUsuarioNavs(props) {
                                     </div>
                                 </div>
 
-                                <div className='sair-popUp div-compras' onClick={ComprasClick}>
+                                <div className='sair-popUp div-pedidos' onClick={PedidosClick}>
 
-                                    <div className='img-compras-popUp'>
-
+                                    <div className='img-pedidos-popUp'>
                                         <img src="/images/Shopping Bag Full.png" alt="" />
                                     </div>
 
-                                    <div className='compras-popUp div-right'>
-                                        <h2> Compras </h2>
+                                    <div className='pedidos-popUp div-right'>
+                                        <h2> Pedidos </h2>
                                     </div>
 
                                 </div>

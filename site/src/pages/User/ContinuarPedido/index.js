@@ -31,7 +31,6 @@ export default function ContinuarPedido(){
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
 
-    const [cupom, setCupom] = useState('');
     const [parcelas, setParcelas] = useState('');
 
     const navigate = useNavigate();
@@ -104,7 +103,6 @@ export default function ContinuarPedido(){
 
             let pedido =
             {
-                cupom: cupom,
                 idEndereco: idEndereco,
                 tipoPagamento: 'Cartão',
                 idCartao: idCartao,
@@ -171,26 +169,6 @@ export default function ContinuarPedido(){
                 </section>
 
                 <section className="sec-pagamento">
-                    <div className="div-boleto">
-                        <h2> Boleto </h2>
-
-                        <div className="boleto">
-                            <input type="checkbox"/>
-                            <img src="../images/boleto.png" alt=""/>
-                            <text> Vencimento em 1 dia útil. A data de entrega será alterada devido ao tempo de processamento do Boleto. Veja mais na próxima página. </text>
-                        </div>
-                    </div>
-
-                    <div className="div-pix">
-                        <h2> Pix </h2>
-
-                        <div className="pix">
-                            <input type="checkbox"/>
-                            <img src="../images/pix-rodape.png" alt=""/>
-                            <text> Vencimento em 30 minutos. Após o pagamento seu pedido será processado.</text>
-                        </div>
-                    </div>
-
                     <div className="div-cartao-credito">
                         <h2> Cartão </h2>
 
@@ -220,15 +198,6 @@ export default function ContinuarPedido(){
                                 </div>
                             </div>
                         }
-                    </div>
-
-                    <div className='div-cupom'>
-                        <h2> Cupom </h2>
-                        <div className='form'>
-                            <div>
-                                <input type='text' value={cupom} onChange={e => setCupom(e.target.value)} />
-                            </div>
-                        </div>
                     </div>
                 </section>
             </aside>
