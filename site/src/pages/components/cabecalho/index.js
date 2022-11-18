@@ -5,14 +5,10 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 
-import { BuscarProdutoPorNome } from '../../../api/AdminAPI';
-
 export default function CabecalhoUsuarioNavs(props) {
     const [usuario,setUsuario] = useState('');
     const [email,setEmail] = useState('');
     const [popup, setPopUp] = useState(false);
-    const [produto, setProduto] = useState([]);
-    const [filtro, setFiltro] = useState('');
 
     const navigate = useNavigate()
 
@@ -50,11 +46,6 @@ export default function CabecalhoUsuarioNavs(props) {
 
     function Login (){
         navigate('/Login')
-    }
-
-    async function Filtrar() {
-        const resp = await BuscarProdutoPorNome(filtro);
-        setProduto(resp);
     }
 
     function verificarMenuSelecionado(menu){
@@ -105,7 +96,7 @@ export default function CabecalhoUsuarioNavs(props) {
                             <div className='container-popUp'>
                                 
                                 <div className='sair-popUp' onClick={SairClick}>
-                                    <div className='bolinha'>
+                                    <div className='bolinha bolinha-2'>
                                         <text> {usuario.toUpperCase()[0]} </text>
                                     </div>
 

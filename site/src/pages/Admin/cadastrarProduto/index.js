@@ -139,11 +139,7 @@ export default function PageCadastrarProduto() {
     }
 
     useEffect(() => {
-        MostrarImagem()
-    }, [imagem])
-
-    useEffect(() => {
-        if (!Storage('admin-logado') || Storage('admin-logado').length === 0) {
+        if(!Storage('admin-logado') || Storage('admin-logado').length == 0) {
             toast.dark('Área apenas para administradores')
             navigate('/')
         }
@@ -152,11 +148,12 @@ export default function PageCadastrarProduto() {
         CarregarTipos()
         CarregarMarcas()
         CarregartiposSkate()
+        MostrarImagem()
 
-        if (idParam) {
+        if(idParam) {
             CarregarProduto();
         }
-    }, [])
+    }, [imagem])
 
     return (
         <main className="page-cadastrar-produto">
