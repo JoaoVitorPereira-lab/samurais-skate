@@ -167,3 +167,4 @@ export async function removerProdutoAval(idProduto) {
     const [resp] = await con.query(comando, [idProduto])
     return resp.affectedRows;
 }
+

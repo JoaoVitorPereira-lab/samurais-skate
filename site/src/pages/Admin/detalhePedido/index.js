@@ -55,6 +55,7 @@ export default function PageDetalheProduto(){
     function fecharNovoStatus() {
         setExibirStatus(false);
     }
+    
 
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
@@ -67,6 +68,7 @@ export default function PageDetalheProduto(){
         PegarStatus();
     }, [status])
 
+console.log(pedido)
     return(
         <main className="page-detalhe-pedido">
             <ModalStatus exibir={exibirStatus}  fechar={fecharNovoStatus} id={id}/>
@@ -79,11 +81,11 @@ export default function PageDetalheProduto(){
             <div className="tite">
                 <hr />
                 {usuario.map(item =>
-                    <h2> Pedido do <span> {item.nome} {item.sobrenome} </span> </h2>
+                    <h2> Pedido de <span> {item.nome} {item.sobrenome} </span> </h2>
                 )}
             </div>
 
-            {pedido.map(item =>
+            
                 <div className='itens'>
                     <table>
                         <thead>
@@ -95,6 +97,7 @@ export default function PageDetalheProduto(){
                             </tr>
                         </thead>
                         <tbody>
+                        {pedido.map(item =>
                             <tr>
                                 <td>
                                     <div className='celula-item'>
@@ -113,12 +116,14 @@ export default function PageDetalheProduto(){
                                 <td>
                                     #00{item.idProduto}
                                 </td>
+
                             </tr>
+                        )}
                         </tbody>
                     </table>
                     
                 </div>
-            )}
+            
 
             <div className="div-final">
                 <text> Total: R$ {calcularTotal()} </text>

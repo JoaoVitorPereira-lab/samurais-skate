@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { inserirPagamento, inserirPedido, inserirPedidoItem } from "../repository/PedidoRepository.js";
-import { acharCupom, criarNovoPedido } from "../Service/NovoProdutoServices.js";
+import { criarNovoPedido } from "../Service/NovoProdutoServices.js";
 import { BuscarPorID } from "../Repository/AdminRepository.js";
 const server = Router();
 
@@ -13,7 +13,7 @@ server.post('/api/pedido/:idUsuario', async (req, resp) => {
         if(!info.idCartao) throw new Error('Você precisa escolher um cartão');
         if(!info.parcelas) throw new Error('Você precisa escolher o parcelamento');
         
-        const novoPedido = criarNovoPedido(idUsuario, idCupom, info);
+        const novoPedido = criarNovoPedido(idUsuario, info);
 
         const idPedidoCriado = await inserirPedido(novoPedido);
         const pg = await inserirPagamento(idPedidoCriado, info.idCartao, info.parcelas);

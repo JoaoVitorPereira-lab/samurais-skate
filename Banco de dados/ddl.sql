@@ -155,8 +155,7 @@ create table tb_pedido (
     tp_pagamento		varchar(200),
     ds_status			varchar(100),
     foreign key (id_conta_usuario)      references tb_conta_usuario (ID_CONTA_USUARIO),
-    foreign key (id_usuario_endereco)   references tb_usuario_endereco (id_usuario_endereco),
-    foreign key (id_cupom)              references tb_cupom (id_cupom)
+    foreign key (id_usuario_endereco)   references tb_usuario_endereco (id_usuario_endereco)
 );
 
 -- Tabela do item do pedido

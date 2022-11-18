@@ -10,7 +10,7 @@ export async function inserirPedido(novoPedido) {
             ds_status,
             tp_pagamento
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?)
     `
 
     const [info] = await con.query(comando, [

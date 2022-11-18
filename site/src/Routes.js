@@ -25,6 +25,7 @@ import ConfiguracaoInicial from './pages/User/ConfInicial'
 import CentraldeAjuda from './pages/User/CentraldeAjuda'
 import Pedidos from './pages/User/Pedidos'
 import VerPedido from './pages/User/VerPedido'
+import Avaliar from './pages/User/Avaliar'
 import Dados from './pages/User/Dados'
 import Endereco from './pages/User/Endereco'
 import Cartoes from './pages/User/Cartoes'
@@ -58,6 +59,8 @@ export default function Rotas (){
                 <Route path='/CentralAjuda'                             element={<CentraldeAjuda/>}/>
                 <Route path='/pedidos'                                  element={<Pedidos/>}/>
                 <Route path='/detalhe/pedido/:idPedido/usuario/:idUser' element={<VerPedido/>}/>
+                <Route path='/avaliar/produto/'                         element={<Avaliar/>}/>
+                <Route path='/avaliar/produto/:id'                      element={<Avaliar/>}/>
                 <Route path='/Dados'                                    element={<Dados/>}/>
                 <Route path='/Endereco'                                 element={<Endereco/>}/>
                 <Route path='/cartoes'                                  element={<Cartoes/>}/>

@@ -1,4 +1,6 @@
 .main-verpedido{
+    display: flex;
+    flex-direction: column;
 
     .tite{
         display: flex;
@@ -133,4 +135,10 @@
     .div-btns button:first-child {
         margin-right: 3em;
     }
+
+    .avaliar:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
 }
