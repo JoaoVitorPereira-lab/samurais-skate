@@ -94,15 +94,17 @@ export async function BuscarPorNome(nome){
     const comando =
         `SELECT nm_produto		nome,
                 id_produto      id,
-                id_marca	    marca,
+                nm_marca	    marca,
                 id_categoria    categoria,
-                id_tipo  		tipo,
+                nm_tipo  		tipo,
                 ds_descricao	descricao,
                 bt_promocao	    promocao,
                 nr_preco		preco,
                 nr_estoque		estoque
            FROM tb_produto
-          WHERE nm_produto      like ? `;
+           JOIN tb_marca          ON tb_produto.id_marca = tb_marca.id_marca
+           JOIN tb_tipo           ON tb_produto.id_tipo  = tb_tipo.id_tipo
+          WHERE nm_produto        like ? `;
 
     const [linhas] = await con.query(comando, [ `%${nome}%` ]);
     return linhas;

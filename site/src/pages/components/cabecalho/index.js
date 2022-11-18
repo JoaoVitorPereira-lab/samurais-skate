@@ -1,13 +1,18 @@
 import "./index.scss";
+
 import storage from 'local-storage';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 
+import { BuscarProdutoPorNome } from '../../../api/AdminAPI';
+
 export default function CabecalhoUsuarioNavs(props) {
     const [usuario,setUsuario] = useState('');
     const [email,setEmail] = useState('');
-    const [popup, setPopUp] = useState(false)
+    const [popup, setPopUp] = useState(false);
+    const [produto, setProduto] = useState([]);
+    const [filtro, setFiltro] = useState('');
 
     const navigate = useNavigate()
 
@@ -38,10 +43,6 @@ export default function CabecalhoUsuarioNavs(props) {
         navigate('/favoritos')
     }
 
-    function Search ( ) {
-        return props.click;
-    }
-
     function SairClick(){
         storage.remove('usuario-logado')
         navigate('/Login')
@@ -49,6 +50,11 @@ export default function CabecalhoUsuarioNavs(props) {
 
     function Login (){
         navigate('/Login')
+    }
+
+    async function Filtrar() {
+        const resp = await BuscarProdutoPorNome(filtro);
+        setProduto(resp);
     }
 
     function verificarMenuSelecionado(menu){
@@ -187,13 +193,6 @@ export default function CabecalhoUsuarioNavs(props) {
                         </div>
                     </Link>
                 </div>
-
-                <div className="div-buscar">
-                    <input type="text" className="buscar-input" placeholder="Buscar" value={props.value} onChange={props.change} />
-                    <div>
-                        <img src="/images/buscar.png" className="buscar-img" alt="" onClick={Search} />
-                    </div>
-                </div>
             </nav>
             
             <nav className="navs-container-pequena">
@@ -234,14 +233,6 @@ export default function CabecalhoUsuarioNavs(props) {
                             </div>
                         </Link>
                     </Menu>
-                </div>
-                
-
-                <div className="div-buscar">
-                    <input type="text" className="buscar-input" placeholder="Buscar" onChange={props.change} />
-                    <div>
-                        <img src="/images/buscar.png" className="buscar-img" alt="" onClick={Search} />
-                    </div>
                 </div>
             </nav>
 
