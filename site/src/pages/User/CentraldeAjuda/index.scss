@@ -1,13 +1,23 @@
 .main-ajuda{
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     .bot{
-        position: absolute;
-        margin-top: 20em;
-        margin-left: 20em;
+        display: flex;
+        flex-direction: row;
+        width: 100%;    
+    }
+    .comp-menu{
+        width: 20%;
+    }
+
+    .div-bot{
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
+        width: 80%;
+        margin-left: 2em; margin-top: .9em;
     }
 
     .bot-inicial{
@@ -17,14 +27,12 @@
 
     .texto-bot{
         width: 214px;
-        height: 107px;
-        left: 377px;
-        top: 312px;
+        height: fit-content;
         
         background: #E9E9E9;
         border-radius: 10px;
         margin-left: 1em;
-        padding: 0px 0px 20px 20px;
+        padding-left: 20px;
     }
 
     .bot-inicial img{
@@ -58,54 +66,36 @@
         display: flex;
         flex-direction: row;
         position: absolute;
-        margin-left: 45em;
-        margin-top:  10em;
-
-        
-    }
-
-    .texto-dificuldade{
-        font-family: 'Dekko', sans-serif;
-        width: 150px;
-        background: #E9E9E9;
-        border-radius: 10px;
-
-        margin-right: 1em;
-
-        padding: 0px 10px 0px 10px;
+        right: 2.5em;
+        margin-top: 17.2em;
     }
 
     .map{
         display: flex;
         flex-direction: row;
+        align-items: center;
+        margin-top: 2em;
     }
-    .texto-conta{
-        font-family: 'Dekko', sans-serif;
-        width: 100px;
+    .texto-dificuldade{
+        font-family: 'Dekko', cursive;
+        width: max-content;
         background: #E9E9E9;
         border-radius: 10px;
-
         margin-right: 1em;
-
-        padding: 0px 0px 0px 20px;    
+        padding: 0px 20px;    
     }
 
     .opcoes-bot{
-        margin-left: 10em;
+        margin: 5em 10em;
         background: #E9E9E9;
         border-radius: 3px;
-        margin-top: 10em;
-        margin-bottom: 10em;
-        width: fit-content;
-
-        padding: 30px 60px 30px 60px;
-
+        width: 33.5em;
+        padding: 30px 30px;
     }
 
     .div-opcoes-bot{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
         width: 50em;
         text-align: center;
 
@@ -122,11 +112,13 @@
         font-family: 'Dekko', sans-serif;
         padding: 1em;
     }
+    .div-opcoes-bot button:not(.btn-not){
+        margin-left: 6em;
+    }
 
     .resposta-bot{
-        position: absolute;
-        margin-top: 35em;
-        margin-left: 20em;
+        left: 17.8em;
+        margin-top: 4.2em;
         display: flex;
         flex-direction: column;
     }
@@ -141,15 +133,12 @@
     }
     .texto-bot-resposta{
         width: 214px;
-        height: 107px;
-        left: 377px;
-        top: 312px;
+        height: fit-content;
         
         background: #E9E9E9;
         border-radius: 10px;
         margin-left: 1em;
-        padding: 0px 0px 150px 20px;
-
+        padding-left: 20px;
     }
 
     .texto-bot-resposta p{
@@ -157,45 +146,23 @@
         font-family: 'Dekko', sans-serif;
     }
 
-    .texto-bot-resposta1{
-        width: 214px;
-        height: 107px;
-        left: 377px;
-        top: 312px;
-        
-        background: #E9E9E9;
-        border-radius: 10px;
-        margin-left: 1em;
-        padding: 0px 0px 60px 20px;
-
+    .titulo-dados h1{
+        font-family: 'Dela Gothic One';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 29px;
     }
-
-    .texto-bot-resposta1 p{
-        width: 192px;
-        font-family: 'Dekko', sans-serif;
+    .titulo-dados label{
+        font-family: 'Dekko';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
     }
-    .aaaa{
-        margin-top: 4em;
-    }
-
-    .texto-bot-resposta2{
-        width: 214px;
-        height: 107px;
-        left: 377px;
-        top: 312px;
-        
-        background: #E9E9E9;
-        border-radius: 10px;
-        margin-left: 1em;
-        padding: 0px 0px 120px 20px;
-
-    }
-
-    .texto-bot-resposta2 p{
-        width: 192px;
-        font-family: 'Dekko', sans-serif;
-    }
-    .aa{
-        margin-top: 6em;
+    .titulo-dados{
+        width: 50em;
+        border-bottom: 1px solid #000;
+        margin-bottom: 2em;
     }
 }

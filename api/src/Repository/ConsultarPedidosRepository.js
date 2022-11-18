@@ -5,9 +5,11 @@ export async function InfosUsuario(id){
   const comando = 
   `select id_pedido     id,
           nm_usuario    nome,
-          nm_sobrenome  sobrenome
+          nm_sobrenome  sobrenome,
+          ds_email      email
      from tb_pedido
      join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
+     join tb_login_usuario on tb_conta_usuario.id_conta_usuario = tb_login_usuario.id_conta_usuario
     where tb_pedido.id_pedido = ?
   `;
   const [resposta] = await con.query(comando, [id]);

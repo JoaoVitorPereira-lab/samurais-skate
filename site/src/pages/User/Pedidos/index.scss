@@ -15,24 +15,21 @@
         margin-bottom: 5em;
     }
     
-    .tite{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        margin-left: 4em; margin-top: .8em; margin-bottom: -3em;
+    .titulo-dados{
+        width: 50em;
+        border-bottom: 1px solid #000;
+        margin: .8em 0em -2em 2em;
     }
-    .tite hr{
-        border: none;
-        border-radius: .5em;
-        background-color: #E52A45;
-        margin: 0;
-        height: 2em; width: .4em;
+    .titulo-dados h1{
+        font-family: 'Dela Gothic One', cursive;
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: .7em;
     }
-    .tite h2{
-        font-family: "Dela Gothic One", cursive;
-        font-size: 18px;
-        margin-left: 1em;
+    .titulo-dados span{
+        font-family: 'Dekko', cursive;
+        font-weight: 400;
+        font-size: 16px;
     }
 
     .card-pedido{
@@ -50,7 +47,7 @@
         min-width: 40%;
         width: 70%;
         height: 14.6em;
-        margin-left: 4em; margin-top: 4.5em;
+        margin-left: 2em; margin-top: 4.5em;
         padding: 0em 2em;
 
         background-color: #FFFFFF;
