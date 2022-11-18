@@ -92,7 +92,6 @@ export default function Login() {
                     {mostrarSenha &&
                         <img className="olho_mostrar_senha" src="../images/olho com x.png" onClick={OcultarSenhaClick}/>
                     }
-                    <a className="esqueceu">Esqueceu a senha?</a>
                 </div>
 
                 <div className="botao">
@@ -104,8 +103,8 @@ export default function Login() {
                     <button className="entrar" onClick={Entrar}> Entrar </button>
                 </div>
 
-                <div className="criar_conta">
-                    <a href="../CriarConta">criar conta</a>
+                <div className="criar-conta">
+                    <a href="../CriarConta">Criar conta</a>
                 </div>
             </div>
         </section>

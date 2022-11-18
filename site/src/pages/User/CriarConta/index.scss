@@ -44,9 +44,9 @@
     }
 
     .titulo {
-        margin-top: -2em;
-        margin-bottom: 2em;
-        font-size: 55px;
+        margin-top: -4em;
+        margin-bottom: 1em;
+        font-size: 35px;
         text-align: center;
         font-family: 'Dela Gothic One', cursive;
     }
@@ -112,18 +112,20 @@
     }
 
     .criar {
-        font-family: "Timmana", sans-serif;
-        color: #fff;
-        text-align: center;
-        padding-top: 0.4em;
-        letter-spacing: 9px;
-        font-size: 2em;
-        width: 7em;
-        height: 1.5em;
-        background: #E52A45;
+        width: 120px; height: 40px;
+        margin-top: 1em; margin-bottom: -.5em;
+        padding-top: .15em;
+
+        border: transparent;
         border-radius: 14px;
-        margin-top: 2em;
-        border: none;
+        background: #E52A45;
+
+        font-family: 'Timmana', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+        color: #FFFFFF;
     }
 
     @media (max-width: 1280px){

@@ -26,8 +26,7 @@ export default function PageConsultarProduto(){
 
     async function CarregarProdutos(){
         const resp = await ConsultarProduto();
-        console.log(resp);
-        setProduto(resp); 
+        setProduto(resp);
     }
 
     async function Filtrar() {
@@ -58,6 +57,13 @@ export default function PageConsultarProduto(){
             ]
         })
     }
+
+    document.addEventListener("keypress", function  (e) {
+        if(e.key === "Enter"){
+            const btn = document.querySelector("#send");
+            btn.click();
+        }
+    })
 
     useEffect(() => {
         if(!Storage('admin-logado') || Storage('admin-logado').length === 0) {
@@ -99,7 +105,7 @@ export default function PageConsultarProduto(){
                        value={filtro}
                        onChange={e => setFiltro(e.target.value)}
                 />
-                <img src='../images/buscar.png' alt='buscar' onClick={Filtrar}/>
+                <img id= "send" type="submit" src='../images/buscar.png' alt='buscar' onClick={Filtrar}/>
             </div>
                 
             {produto.map(item =>

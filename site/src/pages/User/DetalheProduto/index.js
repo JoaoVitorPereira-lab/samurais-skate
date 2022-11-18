@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Cabecalho from '../../components/cabecalho'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BuscarProdutoPorID } from '../../../api/UsuarioApi';
 import { API_URL } from '../../../api/config';
 import './index.scss'
@@ -9,8 +9,6 @@ import Storage from 'local-storage'
 import { toast } from 'react-toastify'
 
 export default function ProdutoDetalhe() {
-
-    const navigate = useNavigate()
     const favoritos = Storage('favoritos');
 
     const [produto, setProduto] = useState([]);
@@ -49,7 +47,6 @@ export default function ProdutoDetalhe() {
     }
 
     function adicionarAoFavoritos() {
-
         let favoritos = [];
         
         if(Storage('favoritos')) {

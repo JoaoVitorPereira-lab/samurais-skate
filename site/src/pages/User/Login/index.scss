@@ -40,8 +40,8 @@
 
     .titulo {
         margin-top: -2em;
-        margin-bottom: 2em;
-        font-size: 60px;
+        margin-bottom: 1em;
+        font-size: 40px;
         text-align: center;
         font-family: 'Dela Gothic One', cursive;
     }
@@ -79,43 +79,48 @@
          margin-bottom: 2em;
     }
 
-    .criar_conta {
+    .criar-conta {
         display:flex;
         justify-content: center;
-        margin-top: 1em;
         font-family:'Timmana', sans-serif;
         font-weight: bold;
         font-size: 20px;
     }
 
-    .criar_conta:hover {
-        display:flex;
-        justify-content: center;
-        margin-top: 1em;
-        font-family:'Timmana', sans-serif;
-        font-weight: bold;
-        cursor:pointer;
-    }
     .olho_mostrar_senha{
         position: absolute;
         margin-top: 1em;
         margin-left: -3em;
         cursor: pointer;
     }
-
+    .cx2{
+        margin-bottom: 1em;
+    }
     .ERRO {
+        font-family: 'inter', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+
         position: absolute;
+        margin-left: -1.5em;
     }
 
     .entrar{
-        font-family: "Timmana", sans-serif;
-        background: #E52A45;
-        border-radius: 14px;
+        width: 120px; height: 40px;
+        margin-top: 1em; margin-bottom: -.5em;
+        padding-top: .15em;
+
         border: transparent;
-        color: #E9E9E9;
-        font-size: 2em;
-        justify-items: center;
-        padding: 0em 0.6em;
+        border-radius: 14px;
+        background: #E52A45;
+
+        font-family: 'Timmana', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 26px;
+        text-align: center;
+        color: #FFFFFF;
     }
 }
 
