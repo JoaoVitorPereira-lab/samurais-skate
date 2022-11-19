@@ -1,8 +1,10 @@
 import "./index.scss"
-import { CadastrarLogin, CadastrarConta } from '../../../api/UsuarioApi.js'
+import { CadastrarLogin, CadastrarConta, EntrarLogin } from '../../../api/UsuarioApi.js'
 import { useRef, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
+import storage from 'local-storage'
+import { EnviarEmailAoCriar } from "../../../api/GmailAPI"
 
 export default function CriarContaa() {
     const [email, setEmail] = useState('')
@@ -36,9 +38,16 @@ export default function CriarContaa() {
         try {
             const r = await CadastrarConta(nome, sobrenome)
             const resp = await CadastrarLogin(email, senha, r.id)
+            const login = await EntrarLogin(email,senha)
+
+            
+            storage('usuario-logado', login)
+
             setTimeout(() => {
-                navigate('/Login');
+                navigate('/');
             }, 3000);
+
+            await EnviarEmailAoCriar(nome, sobrenome, email);
         }
         catch (err) {
             if (err.response.status === 401) {

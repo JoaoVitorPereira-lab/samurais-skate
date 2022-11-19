@@ -1,4 +1,4 @@
-import { Router} from 'express';
+import { Router } from 'express';
 import nodemailer from 'nodemailer'
 import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2} from '../repository/usuarioRepository.js'
 

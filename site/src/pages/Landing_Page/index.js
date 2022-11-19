@@ -45,6 +45,9 @@ export default function Landing_Page() {
         if(!Storage('favoritos')){
             Storage('favoritos', [])
         }
+        if(!Storage('admin-logado')){
+            Storage('admin-logado', [])
+        }
     }, [])
 
     const responsive = {

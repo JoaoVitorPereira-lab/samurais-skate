@@ -13,6 +13,7 @@ import cartaoController from './Controller/CartaoController.js'
 import consultasController from './Controller/ConsultasController.js'
 import ConsultarPedidoController from './Controller/ConsultarPedidosController.js'
 import StatusController from './Controller/StatusController.js'
+import GmailController from './Controller/GmailController.js'
 
 // Configurando o Server
 const server = express();
@@ -30,7 +31,7 @@ server.use(cartaoController)
 server.use(consultasController)
 server.use(ConsultarPedidoController)
 server.use(StatusController)
-
+server.use(GmailController)
 
 //Liberar rota para a imagem
 server.use('/storage/imgproduto' , express.static('storage/imgproduto'));

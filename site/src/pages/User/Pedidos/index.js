@@ -36,10 +36,10 @@ export default function Compras() {
 				<Menu selecionado='pedidos'/>
 
 				<section className='sec-card'>
-					<div className="tite">
-						<hr />
-						<h2> Seus pedidos </h2>
-					</div>
+					<div className='titulo-dados'>
+                        <h1> Seus Pedidos </h1>
+                        <span> Veja seus pedidos: </span>
+                    </div>
 
 					<div className="card-pedido">
 						{pedido.map(item =>
@@ -106,6 +106,7 @@ export default function Compras() {
 									</div>
 								</section>
 							</div>
+							
 						)}
 					</div>
 				</section>

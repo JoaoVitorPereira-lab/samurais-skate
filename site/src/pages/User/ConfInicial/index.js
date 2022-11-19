@@ -4,10 +4,14 @@ import Menu from '../../components/MenuConfig'
 import Rodape from '../../components/rodape'
 import { useNavigate } from 'react-router-dom'
 import './index.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
 
 export default function Configuracao(){
 
+    useEffect(() =>{
+
+    },[])
 
     return (
         <main className='mae-config-inicial'>
