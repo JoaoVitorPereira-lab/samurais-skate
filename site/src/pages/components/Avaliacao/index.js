@@ -1,9 +1,9 @@
 export default function Estrela(props) {
 
-    console.log(props.aval)
+    
 
     return(
-        <main>
+        <main className="estrela-container">
 
             {props.aval == 0 || !props.aval &&
                 <img src="/images/aval0.png" alt="" />

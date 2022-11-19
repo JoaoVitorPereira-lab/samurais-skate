@@ -210,8 +210,56 @@ export async function DetalhePedido(idPedido, idUsuario){
      join tb_produto 			          on tb_pedido_item.id_produto  = tb_produto.id_produto
      join tb_imagem_produto         on tb_produto.id_produto      = tb_imagem_produto.id_produto
      where tb_pedido_item.id_pedido = ? and tb_pedido.id_conta_usuario = ?
+     group by 
+      tb_produto.id_produto
   `;
 
   const [resposta] = await con.query(comando, [idPedido, idUsuario]);
   return resposta;
 }
+
+/* AVALIAR PRODUTO */
+export async function avaliarProduto(idProduto, idUser, descricao, nota) {
+  const comando = `
+      insert into tb_produto_avaliacao (ID_PRODUTO, ID_CONTA_USUARIO,  DS_AVALIACAO, NR_ESTRELA)
+	                              values (?, ?, ?, ?);
+  `
+
+  const [resposta] = await con.query(comando, [idProduto, idUser, descricao, nota]);
+  return resposta.insertId;
+}
+
+/* ALTERAR AVALIAÇÃO DO PRODUTO */
+export async function deletarAvaliacao (id){
+  const comando = `delete from tb_produto_avaliacao
+  where id_produto_avaliacao = ?`
+  const [resposta] = await con.query(comando,[id])
+  
+  return resposta.affectedRows;
+}
+
+/* BUSCAR AVALIAÇÃO DO PRODUTO*/
+export async function buscarAval1(idProduto, idUser) {
+  const comando = `select id_produto_avaliacao                      id,
+                   DS_AVALIACAO                                     descricao, 
+                   NR_ESTRELA                                       nota 
+        from tb_produto_avaliacao
+        join tb_conta_usuario on tb_conta_usuario.id_conta_usuario = tb_produto_avaliacao.id_conta_usuario
+        where id_produto = ?
+        and TB_PRODUTO_AVALIACAO.ID_CONTA_USUARIO = ?`
+  const [resposta] = await con.query(comando, [idProduto, idUser]);
+  return resposta;
+}
+
+export async function buscarAval2(id) {
+  const comando = `select id_produto_avaliacao                      id,
+                   nm_usuario                                       nome,
+                   DS_AVALIACAO                                     descricao, 
+                   NR_ESTRELA                                       nota 
+        from tb_produto_avaliacao
+        join tb_conta_usuario on tb_conta_usuario.id_conta_usuario = tb_produto_avaliacao.id_conta_usuario
+        where id_produto = ?`
+  const [resposta] = await con.query(comando, [id]);
+  return resposta;
+}
+

@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import nodemailer from 'nodemailer'
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -270,6 +270,77 @@ server.get('/detalhe/pedido/:idPedido/usuario/:idUser', async (req, resp) =>{
         resp.status(400).send({
             erro: err.message
         })
+    }
+})
+
+server.post('/produto/:idProduto/usuario/:idUsuario/avaliacao', async (req, resp) => {
+    try {
+        
+
+        const {idProduto, idUsuario} = req.params;
+        const {descricao, nota} = req.body;
+
+        if (!nota) throw new Error ('NOTA DO PRODUTO OBRIGATÓRIA') 
+
+        const resposta = await avaliarProduto(idProduto, idUsuario, descricao, nota);
+        console.log(resposta)
+        resp.status(200).send({
+            id: resposta
+        });
+        
+    } catch (err) {
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+})
+
+server.delete('/avaliacao/produto/:id', async (req,resp) => {
+    try {
+        const {id} = req.params;
+        
+        const resposta = await deletarAvaliacao(id)
+
+        
+      if(resposta != 1)
+        throw new Error('Avaliação não pôde ser alterada!');
+        else
+      resp.sendStatus(204)
+        
+    } 
+    catch (err) {
+        resp.status(400).send({
+            erro: err.message
+        })        
+    }
+})
+
+server.get('/avaliacao/produto/:idProduto/usuario/:idUser', async (req, resp) => {
+    try {
+        const {idProduto, idUser} = req.params;
+
+        const resposta = await buscarAval1(idProduto, idUser);
+
+        if(!resposta)
+          resp.status(404).send([]);
+        else
+          resp.send(resposta);
+        
+    } catch (err) {
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+})
+
+server.get('/avaliacao/produto/:id', async (req, resp) => {
+    try {
+        const id = req.params.id;
+        const resposta = await buscarAval2(id);
+
+        
+    } catch (err) {
+        
     }
 })
 

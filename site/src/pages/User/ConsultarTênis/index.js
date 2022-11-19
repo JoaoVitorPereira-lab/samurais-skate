@@ -2,7 +2,7 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarTenis, buscarimagem, buscarAvaliacao } from '../../../api/UsuarioApi';
+import { ListarTenis, buscarimagem } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 
 export default function ConsultarTenis() {
@@ -19,14 +19,9 @@ export default function ConsultarTenis() {
         
     }
 
-    async function CarregarAvaliacoes() {
-        const resp = await buscarAvaliacao(produto[0].tipo);
-        setAval(resp);
-    }
 
     useEffect(() => {
         CarregarProdutos();
-        CarregarAvaliacoes();
     }, [])
 
     function AbrirDetalhes(id) {

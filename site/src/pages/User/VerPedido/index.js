@@ -4,6 +4,7 @@ import Rodape from "../../components/rodape";
 
 import { confirmAlert } from 'react-confirm-alert'; 
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import Storage from 'local-storage'
 
 import { API_URL } from '../../../api/config';
 import { toast } from "react-toastify"
@@ -21,6 +22,7 @@ export default function VerPedido() {
 
     const navigate = useNavigate();
     const { idPedido, idUser } = useParams();
+    
 
     function PegarStatus(){
         const stts = pedido.map(item => item.status);
@@ -74,6 +76,7 @@ export default function VerPedido() {
         PegarStatus();
     }, [status])
 
+    console.log(pedido)
 
 	return (
 		<main className="main-verpedido">
@@ -121,7 +124,7 @@ export default function VerPedido() {
                                         #00{item.idProduto}
                                     </td>
                                     {item.status == 'Entregue' &&
-                                        <td className='avaliar'>
+                                        <td className='avaliar' onClick={() => navigate(`/avaliar/produto/${item.idProduto}/pedido/${idPedido}/usuario/${idUser}`)}>
                                           Avaliar  
                                         </td>
                                     }

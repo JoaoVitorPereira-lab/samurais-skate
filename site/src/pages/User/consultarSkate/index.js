@@ -46,15 +46,7 @@ export default function ConsultarSkate() {
             <h1 className="titulo">Você está na página: <span className="titulo-span">HOME / SKATE</span></h1>
 
             <div className='contents'>
-                <div className="filtros">
-                    <h1>Filtrar Por:</h1>
-                    {marca.map(item =>
-                        <div>
-                            <input type="checkbox" /> <label>{item.nm_marca}</label>
-                        </div>
-                    )}
-
-                </div>
+                
 
                 <div className='produtos'>
                     {produto.map(item =>

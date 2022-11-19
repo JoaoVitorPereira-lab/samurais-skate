@@ -104,13 +104,28 @@ SELECT id_tipo_skate      id,
 
 -- INSERIR AVALIAÇÃO 
 insert into tb_produto_avaliacao (ID_CONTA_USUARIO,ID_PRODUTO, DS_AVALIACAO, NR_ESTRELA)
-	values (1, 1, "bom sia ", 3);
+	values (1, 2, "bom sia ", 3);
 
 -- ----------------------------------------------
 
 -- REMOVER AVALIAÇÃO 
 delete from tb_produto_avaliacao
 		where id_produto = 1;
+
+-- ----------------------------------------------
+
+-- ALTERAR AVALIAÇÃO 
+update tb_produto_avaliacao
+                   set ds_avaliacao = "aaaaaa",
+                       nr_estrela = 5
+                   where id_produto_avaliacao = 1;
+
+-- ----------------------------------------------
+-- BUSCAR AVALIAÇÃO 
+select ID_PRODUTO_AVALIACAO, NM_USUARIO, DS_AVALIACAO, NR_ESTRELA 
+		from tb_produto_avaliacao
+	 join tb_conta_usuario on tb_conta_usuario.id_conta_usuario = tb_produto_avaliacao.id_conta_usuario
+    where id_produto = 1;
 
 -- ----------------------------------------------
   

@@ -56,12 +56,6 @@ export async function BuscarProdutoPorID(id){
     return resposta.data;
 }
 
-// BUSCAR AVALIAÇÃO
-export async function buscarAvaliacao(id) {
-    const resposta = await api.get(`/produto/${id}/avaliacao`);
-    return resposta.data;
-}
-
 //Listar Produtos do Skate
 export async function ListarSkate(){
     const resposta = await api.get('/api/produtos/skate')
@@ -113,5 +107,26 @@ export async function DetalhesPedido(idPedido, idUsuario){
 /* CONSULTAR PEDIDO DO USUÁRIO*/
 export async function ConsultarPedido(id){
     const resposta = await api.get('/pedido/' + id + '/usuario');
+    return resposta.data;
+}
+
+/* INSERIR AVALIAÇÃO */
+export async function avaliarProduto(idProduto, idUser, descricao, nota) {
+    const resposta = await api.post(`/produto/${idProduto}/usuario/${idUser}/avaliacao`, {
+        descricao: descricao,
+        nota: nota
+    })
+    return resposta.data;
+}
+
+/*ALTERAR AVALIAÇÃO */
+export async function deletarAvaliacao(id) {
+    const resposta = await api.put(`/avaliacao/produto/${id}`)
+    return resposta.data;
+}
+
+/* BUSCAR AVALIAÇÃO(1) */
+export async function buscarAval1(idProduto, idUser){
+    const resposta = await api.get(`/avaliacao/produto/${idProduto}/usuario/${idUser}`);
     return resposta.data;
 }

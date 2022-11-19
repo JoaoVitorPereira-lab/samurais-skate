@@ -2,7 +2,7 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarPromocoes, buscarimagem, buscarAvaliacao } from '../../../api/UsuarioApi';
+import { ListarPromocoes, buscarimagem} from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 
 export default function Promocoes() {
@@ -19,14 +19,9 @@ export default function Promocoes() {
         
     }
 
-    async function CarregarAvaliacoes() {
-        const resp = await buscarAvaliacao(produto[0].tipo);
-        setAval(resp);
-    }
 
     useEffect(() => {
         CarregarProdutos();
-        CarregarAvaliacoes();
     }, [])
 
     function AbrirDetalhes(id) {

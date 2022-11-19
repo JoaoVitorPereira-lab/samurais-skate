@@ -34,38 +34,38 @@ export default function Rotas (){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path='/'                                         element={<LandingPage/>}/>
+                <Route path='/'                                                                         element={<LandingPage/>}/>
                 
-                <Route path='/Login'                                    element={<Login/>} />
-                <Route path='/CriarConta'                               element={<CriarConta/>} />   
+                <Route path='/Login'                                                                    element={<Login/>} />
+                <Route path='/CriarConta'                                                               element={<CriarConta/>} />   
 
-                <Route path='/cadastrarproduto'                         element={<CadastrarProduto/>}/>
-                <Route path='/alterarproduto/:idParam'                  element={<CadastrarProduto/>}/>
-                <Route path='/consultarproduto'                         element={<ConsultarProduto/>}/>
-                <Route path='/consultarpedidos'                         element={<ConsultarPedido/>}/>
-                <Route path='/detalhe/pedido/admin/:id'                 element={<DetalhePedido/>}/>
+                <Route path='/cadastrarproduto'                                                         element={<CadastrarProduto/>}/>
+                <Route path='/alterarproduto/:idParam'                                                  element={<CadastrarProduto/>}/>
+                <Route path='/consultarproduto'                                                         element={<ConsultarProduto/>}/>
+                <Route path='/consultarpedidos'                                                         element={<ConsultarPedido/>}/>
+                <Route path='/detalhe/pedido/admin/:id'                                                 element={<DetalhePedido/>}/>
 
-                <Route path='/ConsultarTenis'                           element={<ConsultarTenis/>}/>
-                <Route path='/ConsultarSkate'                           element={<ConsultarSkate/>}/>
-                <Route path='/ConsultarBone'                            element={<ConsultarBone/>}/>
-                <Route path='/ConsultarAcessorios'                      element={<ConsultarAcessorio/>}/>
-                <Route path='/Promocoes'                                element={<Promocoes/>}/>
+                <Route path='/ConsultarTenis'                                                           element={<ConsultarTenis/>}/>
+                <Route path='/ConsultarSkate'                                                           element={<ConsultarSkate/>}/>
+                <Route path='/ConsultarBone'                                                            element={<ConsultarBone/>}/>
+                <Route path='/ConsultarAcessorios'                                                      element={<ConsultarAcessorio/>}/>
+                <Route path='/Promocoes'                                                                element={<Promocoes/>}/>
 
-                <Route path='/produto/:id/detalhe'                      element={<DetalheProduto/>}/>
-                <Route path='/carrinho'                                 element={<Carrinho/>}/>
-                <Route path='/ContinuarPedido'                          element={<ContinuarPedido/>}/>
-                <Route path='/favoritos'                                element={<Favoritos/>}/>
-                <Route path='/Config'                                   element={<ConfiguracaoInicial/>}/>
-                <Route path='/CentralAjuda'                             element={<CentraldeAjuda/>}/>
-                <Route path='/pedidos'                                  element={<Pedidos/>}/>
-                <Route path='/detalhe/pedido/:idPedido/usuario/:idUser' element={<VerPedido/>}/>
-                <Route path='/avaliar/produto/'                         element={<Avaliar/>}/>
-                <Route path='/avaliar/produto/:id'                      element={<Avaliar/>}/>
-                <Route path='/Dados'                                    element={<Dados/>}/>
-                <Route path='/Endereco'                                 element={<Endereco/>}/>
-                <Route path='/cartoes'                                  element={<Cartoes/>}/>
+                <Route path='/produto/:id/detalhe'                                                      element={<DetalheProduto/>}/>
+                <Route path='/carrinho'                                                                 element={<Carrinho/>}/>
+                <Route path='/ContinuarPedido'                                                          element={<ContinuarPedido/>}/>
+                <Route path='/favoritos'                                                                element={<Favoritos/>}/>
+                <Route path='/Config'                                                                   element={<ConfiguracaoInicial/>}/>
+                <Route path='/pedidos'                                                                  element={<Pedidos/>}/>
+                <Route path='/CentralAjuda'                                                             element={<CentraldeAjuda/>}/>
+                <Route path='/detalhe/pedido/:idPedido/usuario/:idUser'                                 element={<VerPedido/>}/>
+                <Route path='/avaliar/:idAval/produto/:idProduto/pedido/:idPedido/usuario/:idUsuario'   element={<Avaliar/>}/>
+                <Route path='/avaliar/produto/:idProduto/pedido/:idPedido/usuario/:idUsuario'           element={<Avaliar/>}/>
+                <Route path='/Dados'                                                                    element={<Dados/>}/>
+                <Route path='/Endereco'                                                                 element={<Endereco/>}/>
+                <Route path='/cartoes'                                                                  element={<Cartoes/>}/>
 
             </Routes>
         </BrowserRouter>
-    )
+    )       
 }

@@ -111,7 +111,7 @@ create table tb_produto_avaliacao (
 	ID_PRODUTO_AVALIACAO 	int primary key auto_increment,
 	ID_CONTA_USUARIO		int,
 	ID_PRODUTO				int,
-	DS_AVALIACAO			varchar(600),
+	DS_AVALIACAO			varchar(900),
 	NR_ESTRELA				int,
     
     foreign key (ID_CONTA_USUARIO)  references tb_conta_usuario (ID_CONTA_USUARIO),
