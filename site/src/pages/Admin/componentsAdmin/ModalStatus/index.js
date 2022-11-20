@@ -2,10 +2,9 @@ import './index.scss'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { AlterarStatus } from '../../../../api/StatusAPI';
-import { EnviarEmailStatus } from '../../../../api/GmailAPI';
 import { useNavigate } from 'react-router-dom';
 
-export default function ModalStatus({ id, exibir, fechar, nome, sobrenome, email }) {
+export default function ModalStatus({ id, exibir, fechar}) {
     const [status, setStatus] = useState();
 
     const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function ModalStatus({ id, exibir, fechar, nome, sobrenome, email
             }
             else{
                 await AlterarStatus(id, status);
-                await EnviarEmailStatus(nome, sobrenome, email, status);
                 toast.dark('Status modificado com sucesso!!!');
                 navigate('/consultarpedidos');
                 fechar();

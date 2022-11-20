@@ -35,8 +35,8 @@ server.post('/api/produto', async (req, resp) => {
   }
 });
 
-// SALVAR TAMANHO
 
+// SALVAR TAMANHO
 server.put('/admin/produto/:id/tamanho', async (req, resp) => {
   try {
     const id = req.params.id;

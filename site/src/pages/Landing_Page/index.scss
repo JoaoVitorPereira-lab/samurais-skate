@@ -209,10 +209,9 @@
         padding: 3em;
 
         .titulo-marca {
-            text-decoration: underline;
             text-align: center;
             font-family: 'DELA GOTHIC ONE', cursive;
-            font-size: 46px;
+            font-size: 32px;
             font-weight: bold;
         }
 
@@ -222,17 +221,18 @@
 
     .texto {
         text-align: center;
+        margin-top: 5em;
 
         .titulo {
             text-align: center;
             font-family: 'DELA GOTHIC ONE', cursive;
-            font-size: 50px;
+            font-size: 30px;
             font-weight: bold;
         }
 
         .subtitulo {
             font-family: 'INTER', sans-serif;
-            font-size: 20px;
+            font-size: 16px;
             width: 7px;
         }
     }

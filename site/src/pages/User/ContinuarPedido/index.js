@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 import Storage from 'local-storage'
 
 import { API_URL } from '../../../api/config';
-import { EnviarEmailAoComprar } from '../../../api/GmailAPI';
+import { EnviarAoComprar } from '../../../api/GmailAPI';
 import { BuscarPorIDCarrinho } from '../../../api/CarrinhoAPI'
 import { SalvarNovoPedido } from '../../../api/PedidoAPI'
 import { Listar } from '../../../api/EnderecoAPI'
@@ -104,6 +104,7 @@ export default function ContinuarPedido(){
             let nome = Storage('usuario-logado').nome;
             let sobrenome = Storage('usuario-logado').sobrenome;
             let email = Storage('usuario-logado').Email;
+
             let pedido =
             {
                 idEndereco: idEndereco,
@@ -114,7 +115,7 @@ export default function ContinuarPedido(){
             }
 
             await SalvarNovoPedido(id, pedido);
-            await EnviarEmailAoComprar(nome, sobrenome, email);
+            await EnviarAoComprar(nome, sobrenome, email);
             toast.dark('Pedido foi inserido com sucesso');
             Storage('carrinho', []);
             navigate('/');

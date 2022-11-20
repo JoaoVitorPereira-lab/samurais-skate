@@ -71,7 +71,7 @@ export default function PageDetalheProduto(){
 console.log(pedido)
     return(
         <main className="page-detalhe-pedido">
-            <ModalStatus exibir={exibirStatus}  fechar={fecharNovoStatus} id={id} nome={usuario.nome} sobrenome={usuario.sobrenome} email={usuario.Email}/>
+            <ModalStatus exibir={exibirStatus}  fechar={fecharNovoStatus} id={id} />
 
             <div className="comps">
                 <Cabecalho />

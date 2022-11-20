@@ -8,6 +8,7 @@ import { AtualizarConta,AtualizarLogin, EntrarLogin } from '../../../api/Usuario
 import { toast } from 'react-toastify'
  
 import './index.scss'
+import { EnviarAoAlterar } from '../../../api/GmailAPI'
 
 export default function Dados(){
     const[nome,setNome] = useState()
@@ -23,9 +24,10 @@ export default function Dados(){
             const NovaConta = await AtualizarConta (usuario.id, nome, sobrenome)
             const alterarStorage = await EntrarLogin (email,senha)
 
-            storage('usuario-logado',alterarStorage )
+            storage('usuario-logado', alterarStorage)
 
             toast.dark("Informações Atualizadas!")
+            await EnviarAoAlterar(nome, sobrenome, email, senha);
         } 
         
         catch (err) {

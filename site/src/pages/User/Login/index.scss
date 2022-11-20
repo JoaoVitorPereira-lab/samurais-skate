@@ -46,32 +46,11 @@
         font-family: 'Dela Gothic One', cursive;
     }
 
-    .esqueceu {
-        font-family: 'Inter', sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        text-decoration: underline;
-        margin-top: 7px;
-    }
-
-    .esqueceu:hover {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        text-decoration: underline;
-        margin-top: 7px;
-        cursor: pointer;
-    }
-
-    
-
     h6 {
         margin-bottom: 0.7em;
         font-family: "Inter", sans-serif;
         font-size: 12px;
     }
-
         
     .botao {
          display: flex;

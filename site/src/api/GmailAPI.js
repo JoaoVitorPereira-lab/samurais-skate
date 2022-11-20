@@ -3,31 +3,31 @@ const api = axios.create({
     baseURL: 'http://localhost:5000'
 })
 
-export async function EnviarEmailAoCriar(nome, sobrenome, email){
-    const resposta = await api.post('/enviar-email', {
+export async function EnviarAoAlterar(nome, sobrenome, email, senha){
+    const resposta = await api.post('/alterar-email', {
         nome:nome, 
-        sobrenome: sobrenome,
-        email:email
-    });
-    return resposta.status;
-}
-
-
-export async function EnviarEmailAoComprar(nome, sobrenome, email){
-    const resposta = await api.post('/pedido-email', {
-        nome:nome, 
-        sobrenome: sobrenome,
-        email:email
-    });
-    return resposta.status;
-}
-
-export async function EnviarEmailStatus(nome, sobrenome, email, status){
-    const resposta = await api.post('/pedido-email', {
-        nome:nome, 
-        sobrenome: sobrenome,
+        sobrenome:sobrenome,
         email:email,
-        status:status
+        senha:senha
     });
-    return resposta.status;
+    return resposta;
+}
+
+export async function EnviarAoCriar(nome, sobrenome, email, senha){
+    const resposta = await api.post('/criarconta-email', {
+        nome:nome, 
+        sobrenome:sobrenome,
+        email:email,
+        senha:senha
+    });
+    return resposta;
+}
+
+export async function EnviarAoComprar(nome, sobrenome, email){
+    const resposta = await api.post('/pedido-email', {
+        nome:nome, 
+        sobrenome: sobrenome,
+        email:email
+    });
+    return resposta;
 }

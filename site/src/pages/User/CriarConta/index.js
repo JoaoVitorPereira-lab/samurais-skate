@@ -4,7 +4,7 @@ import { useRef, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import storage from 'local-storage'
-import { EnviarEmailAoCriar } from "../../../api/GmailAPI"
+import { EnviarAoCriar } from "../../../api/GmailAPI"
 
 export default function CriarContaa() {
     const [email, setEmail] = useState('')
@@ -40,14 +40,13 @@ export default function CriarContaa() {
             const resp = await CadastrarLogin(email, senha, r.id)
             const login = await EntrarLogin(email,senha)
 
-            
             storage('usuario-logado', login)
 
             setTimeout(() => {
                 navigate('/');
             }, 3000);
 
-            await EnviarEmailAoCriar(nome, sobrenome, email);
+            await EnviarAoCriar(nome, sobrenome, email, senha);
         }
         catch (err) {
             if (err.response.status === 401) {

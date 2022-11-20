@@ -17,7 +17,6 @@ export default function Login() {
     const [carregando, setCarregando] = useState(false)
 
     const navigate = useNavigate()
-
     const ref = useRef()
 
     function HomeClick(){
@@ -65,6 +64,7 @@ export default function Login() {
     return (
         <section className="page-login">
             <LoadingBar color="#E52A45" ref={ref}/>
+
             <div>
                 <img onClick={HomeClick} src="/images/logo-branco.gif" alt="logo" className="logo" />
             </div>
