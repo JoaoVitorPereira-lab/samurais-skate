@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import Cabecalho from '../../components/cabecalho'
+import Avaliacao from '../../components/Avaliacao'
+
 import { useParams } from 'react-router-dom';
-import { BuscarProdutoPorID } from '../../../api/UsuarioApi';
+import { buscarAval2, BuscarProdutoPorID } from '../../../api/UsuarioApi';
 import { API_URL } from '../../../api/config';
 import './index.scss'
 
@@ -12,8 +15,9 @@ export default function ProdutoDetalhe() {
     const favoritos = Storage('favoritos');
 
     const [produto, setProduto] = useState([]);
-    const [descricao, setDescricao] = useState(true);
-    const [avaliacao, setAvaliacao] = useState(false);
+    const [descricao, setDescricao] = useState(false);
+    const [avaliacao, setAvaliacao] = useState(true);
+    const [aval, setAval] = useState([]);
 
     const { id } = useParams();
 
@@ -44,6 +48,11 @@ export default function ProdutoDetalhe() {
             Storage('carrinho', carrinho);
             toast.dark('Produto adicionado ao carrinho')
         }
+    }
+
+    async function carregarAvaliacoes() {
+        const r = await buscarAval2(produto.id);
+        setAval(r);
     }
 
     function adicionarAoFavoritos() {
@@ -90,6 +99,7 @@ export default function ProdutoDetalhe() {
 
     useEffect(() => {
         carregarPagina();
+        carregarAvaliacoes();
     }, [favoritos])
 
     return (
@@ -168,8 +178,24 @@ export default function ProdutoDetalhe() {
                     {descricao === true &&
                         <p>{produto.descricao}</p>
                     }
+                    
                     {avaliacao === true &&
-                        <p>ksajfgusyfud</p>
+                        <section className='avaliacoes'>
+                            {aval.map(item =>
+                                <div>
+                                    <div className='username'>
+                                        <img src="/images/Usuario.png" alt="" width='70px' height= '50'/>
+                                        <div>
+                                            <h3>{item.nome}</h3>
+                                            <Avaliacao aval={item.nota} width='100px' />
+                                        </div>
+                                    </div>
+                                    <div className='descricao-aval'>
+                                        <p>{item.descricao}</p>
+                                    </div>
+                                </div>
+                            )}
+                        </section>
                     }
                 </div>
 

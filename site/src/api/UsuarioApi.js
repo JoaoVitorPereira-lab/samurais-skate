@@ -125,8 +125,13 @@ export async function deletarAvaliacao(id) {
     return resposta.data;
 }
 
-/* BUSCAR AVALIAÇÃO(1) */
+/* BUSCAR AVALIAÇÃO */
 export async function buscarAval1(idProduto, idUser){
     const resposta = await api.get(`/avaliacao/produto/${idProduto}/usuario/${idUser}`);
+    return resposta.data;
+}
+
+export async function buscarAval2(id) {
+    const resposta = await api.get(`/avaliacao/produto/${id}`);
     return resposta.data;
 }

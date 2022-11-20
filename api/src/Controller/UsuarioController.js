@@ -338,9 +338,13 @@ server.get('/avaliacao/produto/:id', async (req, resp) => {
         const id = req.params.id;
         const resposta = await buscarAval2(id);
 
+        resp.send(resposta)
+
         
     } catch (err) {
-        
+        resp.send({
+            erro: err.message
+        })
     }
 })
 
