@@ -74,9 +74,9 @@ export async function BuscarImagem(imagem){
 
 
 /* ENVIAR IMAGEM */
-export async function enviarimagem (id, imagem1, imagem2){
+export async function SalvarImagens(id, imagem, imagem2){
     const formData = new FormData();
-    formData.append('imagens', imagem1);
+    formData.append('imagens', imagem);
     formData.append('imagens', imagem2);
     
     const resposta = await api.put(`/admin/produto/${id}/imagem` , formData, {

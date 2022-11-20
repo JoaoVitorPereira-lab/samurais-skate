@@ -1,5 +1,39 @@
 import { con } from './connection.js'
 
+/* BUSCAR POR ID */
+export async function BuscarPorID(id){
+  const comando = 
+  `SELECT tb_produto.id_produto       id,
+          nm_marca	                  marca,
+          id_tamanho		              tamanho,
+          tb_produto.id_tipo  	      tipo,
+          tb_produto.id_tipo_skate    tipoSkate,
+          tb_produto.id_categoria     categoria,
+          nm_produto		              nome,
+          ds_descricao	              descricao,
+          bt_promocao                 promocao,
+          bt_importado                importado,
+          nr_preco		                preco,
+          nr_estoque		              estoque
+     FROM tb_produto
+     JOIN tb_marca    ON tb_produto.id_marca    = tb_marca.id_marca
+    WHERE tb_produto.id_produto = ?`;
+  
+  const [linhas] = await con.query(comando, [id]);
+  return linhas[0];
+}
+
+export async function buscarProdutoImagens(idProduto) {
+  const comando = `
+        select ds_imagem   as imagem
+          from tb_imagem_produto
+         where id_produto = ?
+      `
+
+  const [registros] = await con.query(comando, [idProduto]);
+  return registros.map(item => item.imagem);
+}
+
 export async function Login(email, senha) {
   const comando = ` select tb_conta_usuario.id_conta_usuario     id,
                                             nm_usuario           nome,
@@ -190,6 +224,10 @@ export async function ConsultarPedido(idUsuario){
      from tb_pedido
      join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
     where tb_pedido.id_conta_usuario = ?
+    order
+       by 
+     data
+     desc
   `;
   const [resposta] = await con.query(comando,[idUsuario]);
   return resposta;
@@ -204,7 +242,8 @@ export async function DetalhePedido(idPedido, idUsuario){
           nm_produto			              nome_produto,
           tb_pedido.ds_status           status,
           DATE_FORMAT                   (dt_pedido, '%d-%m-%y às %Hh%i') AS data,
-          nr_preco				              valor
+          nr_preco				              valor,
+          qtd_itens                     qtd
      from tb_pedido_item
      join tb_pedido 			          on tb_pedido_item.id_pedido   = tb_pedido.id_pedido
      join tb_produto 			          on tb_pedido_item.id_produto  = tb_produto.id_produto

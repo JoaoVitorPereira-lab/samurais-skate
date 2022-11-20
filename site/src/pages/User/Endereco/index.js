@@ -14,7 +14,7 @@ export default function Endereco() {
 
     const [exibirEndereco, setExibirEndereco] = useState(false)
     const [endereco, setEndereco] = useState([])
-    const [idCartao, setIdCartao] = useState();
+    const [idEndereco, setIdEndereco] = useState();
 
     function exibirNovoEndereco() {
         setExibirEndereco(true);
@@ -51,7 +51,7 @@ export default function Endereco() {
 
                     <div className='card-endereco'>
                         {endereco.map(item =>
-                            <CardEndereco item={item} selecionar={setIdCartao} selecionado={item.id == idCartao} />
+                            <CardEndereco item={item} selecionar={setIdEndereco} selecionado={item.id == idEndereco} />
                         )}
                     </div>
 

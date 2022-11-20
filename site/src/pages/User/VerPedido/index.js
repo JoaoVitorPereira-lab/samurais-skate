@@ -62,7 +62,7 @@ export default function VerPedido() {
     function calcularTotal() {
         let total = 0;
         for (let item of pedido) {
-            total = total + Number(item.valor);
+            total = total + Number(item.valor) * Number(item.qtd);
         }
         return total + 20;
     }
@@ -94,7 +94,8 @@ export default function VerPedido() {
                                 <tr>
                                     <th>Produto</th>
                                     <th>Data da Compra</th>
-                                    <th>Valor</th>
+                                    <th>Valor Unitário</th>
+                                    <th>Quantidade comprada</th>
                                     <th>Código do Produto</th>
                                     {status[0] == 'Entregue' &&
                                         <th>
@@ -119,6 +120,9 @@ export default function VerPedido() {
                                     </td>
                                     <td>
                                         R$ {item.valor}
+                                    </td>
+                                    <td>
+                                        {item.qtd}
                                     </td>
                                     <td>
                                         #00{item.idProduto}

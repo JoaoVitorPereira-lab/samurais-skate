@@ -1,12 +1,9 @@
 .page-detalhes{
-
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    .Nome-samurais{
-        
 
+    .Nome-samurais{
         font-family: 'Dela Gothic One';
         font-style: normal;
         font-weight: 400;
@@ -16,10 +13,29 @@
     .div-detalhes{
         display: flex;
         flex-direction: row;
-        margin-top: 5em;
-        width: 50em;
         justify-content: space-between;
-        margin-left: 10em;
+        align-items: center;
+        margin-top: 5em;
+        width: 100%;
+    }
+
+    .imagens {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .opcoes {
+            display: flex;
+            flex-direction: column;
+            margin: 30px;
+            img {
+                width: 60px;
+                margin: 10px;
+            }
+        }
+        .atual img {
+            width: 350px;
+        }
     }
 
     .div-detalhes-pai {
@@ -68,14 +84,36 @@
         color: #E52A45;
     }
 
+    .tamanho-produto{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 60%;
+    }
+    .aa{
+        margin-left: .2em;
+    }
+    .div-tamanhos{
+        display: flex;
+        flex-direction: row;
+    }
+    .div-tamanhos button{
+        background-color: #FFFFFF;
+        border: 1px solid #000000; border-radius: 5px;
+
+        width: 3em;
+        margin-top: .5em;
+    }
+
     .imgs img {
         width: 55%;
-        
     }
 
     .div-btn-carrinho {
         display: flex;
         flex-direction: row;
+        margin-right: -4em;
         margin-top: 1em;
         //border: solid 1px green;
     }
@@ -97,7 +135,7 @@
 
         color: #FFFFFF;
         margin-left: 1em;
-        margin-right: 2em;
+        margin-right: 3em;
     }
     .div-btn-favoritos{
         cursor: pointer;

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, removerProdutoAval, InserirTamanho } from "../repository/AdminRepository.js";
+import { InserirProduto, SalvarImagem, Login, ConsultarProduto, AlterarProduto, BuscarPorID, BuscarPorNome, removerProduto, removerProdutoImagens, removerProdutoAval, buscarProdutoImagens, removerPedidoItemProduto } from "../repository/AdminRepository.js";
 import multer from "multer";
 
 const server = Router();
@@ -108,12 +108,17 @@ server.put('/api/admin/:id', async (req, resp) => {
 server.get('/api/produto/:id', async (req, resp) => {
   try {
     const id = Number(req.params.id);
+
     const resposta = await BuscarPorID(id);
+    const imagens = await buscarProdutoImagens(id);
 
     if (!resposta)
       resp.status(404).send([]);
     else
-      resp.send(resposta);
+      resp.send({
+        info:resposta,
+        imagens:imagens
+      });
   }
 
   catch (err) {
@@ -192,6 +197,7 @@ server.delete('/api/produto/:id', async (req, resp) => {
     const id = req.params.id;
 
     await removerProdutoImagens(id);
+    await removerPedidoItemProduto(id);
     await removerProduto(id);
     await removerProdutoAval(id);
 

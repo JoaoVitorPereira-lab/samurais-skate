@@ -5,14 +5,14 @@ import { toast } from "react-toastify"
 import Navs from '../componentsAdmin/navs';
 import Cabecalho from '../componentsAdmin/cabecalho';
 
-import { CadastrarProduto, enviarimagem, AlterarProduto, BuscarPorID, BuscarImagem, ListarCategoria } from "../../../api/AdminAPI";
+import { CadastrarProduto, AlterarProduto, BuscarPorID, ListarCategoria, SalvarImagens } from "../../../api/AdminAPI";
 import { ListarMarcas, ListarTipos, ListarTiposSkate } from "../../../api/ListarAPI";
 import { API_URL } from "../../../api/config";
 import Storage from "local-storage";
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function PageCadastrarProduto() {
+export default function PageCadastrarr() {
     const [Tipos, setTipos] = useState([]);
     const [Marcas, setMarcas] = useState([]);
     const [Categoria, setCategoria] = useState([]);
@@ -28,7 +28,6 @@ export default function PageCadastrarProduto() {
 
     const [nome, setNome] = useState('');
     const [descricao, setDescricao] = useState('');
-    const [tamanho, setTamanho] = useState();
     const [importado, setImportado] = useState(false);
     const [promocao, setPromocao] = useState(false);
     const [preco, setPreco] = useState();
@@ -40,30 +39,40 @@ export default function PageCadastrarProduto() {
 
     const navigate = useNavigate();
 
-    function MostrarImagem(imagem) {
+    function exibirImagem(imagem) {
         if (imagem == undefined) {
-            return '../images/upload.png'
+            return '/images/download.svg';
+        }
+        else if (typeof (imagem) == 'string') {
+            return `${API_URL}/${imagem}`
         }
         else {
-            return URL.createObjectURL(imagem)
+            return URL.createObjectURL(imagem);
         }
     }
 
     async function CarregarProduto() {
         const r = await BuscarPorID(idParam);
 
-        setImagem(r.imagem)
+        setId(r.info.id);
+        setIdMarcas(r.info.marca);
+        setIdTipos(r.info.tipo);
+        setIdTipoSkate(r.info.tipoSkate);
+        setIdCategoria(r.info.categoria);
 
-        setNome(r.nome);
-        setDescricao(r.descricao);
-        setPreco(r.preco.toString());
-        setEstoque(r.estoque);
-        setPromocao(r.promocao)
+        setNome(r.info.nome);
+        setDescricao(r.info.descricao);
+        setPromocao(r.info.promocao);
+        setImportado(r.info.importado);
+        setPreco(r.info.preco.toString())
+        setEstoque(r.info.estoque);
 
-        setIdTipos(r.tipo);
-        setIdMarcas(r.marca);
-
-        setId(r.id);
+        if (r.imagens.length > 0) {
+            setImagem(r.imagens[0]);
+        }
+        if (r.imagens.length > 1) {
+            setImagem2(r.imagens[1]);
+        }
     }
 
     async function CarregarCategorias() {
@@ -88,25 +97,23 @@ export default function PageCadastrarProduto() {
 
     async function salvarClick() {
         try {
-            if (!imagem)
-                throw new Error('Escolha a imagem!');
+            if (!id || id === 0) {
+                if (!imagem){
+                    toast.error('Imagem 1 é obrigatória')
+                }
+                else{
+                    const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos, IdTipoSkate, nome, descricao, importado, promocao, preco, estoque);
+                    await SalvarImagens(novoProduto.id, imagem, imagem2);
 
-            if (id === 0) {
-                const novoProduto = await CadastrarProduto(IdMarcas, IdCategoria, IdTipos,IdTipoSkate, nome, descricao, importado, promocao, preco, estoque);
-
-                await enviarimagem(novoProduto.id, imagem, imagem2);
-
-                navigate('/consultarproduto')
-                setId(novoProduto.id)
-
-                toast.success('Produto cadastrado com sucesso 🚀');
+                    navigate('/consultarproduto');
+                    toast.dark('Produto cadastrado com sucesso 🚀');
+                }
             }
             else {
                 await AlterarProduto(id, IdMarcas, IdCategoria, IdTipos, nome, descricao, promocao, preco, estoque);
-                if (typeof (imagem) == 'object') {
-                    await enviarimagem(idParam, imagem)
-                }
-                toast.success('Produto alterado com sucesso 🚀');
+                await SalvarImagens(id, imagem, imagem2);
+
+                toast.dark('Produto alterado com sucesso 🚀');
                 navigate('/consultarproduto')
             }
         } catch (err) {
@@ -128,6 +135,7 @@ export default function PageCadastrarProduto() {
         setPromocao(false);
 
         setImagem();
+        setImagem2();
         setIdTipoSkate('Tipo do Skate');
         setIdCategoria('Categoria');
         setIdTipos('Tipos');
@@ -144,16 +152,13 @@ export default function PageCadastrarProduto() {
             navigate('/')
         }
 
-        CarregarCategorias()
-        CarregarTipos()
-        CarregarMarcas()
-        CarregartiposSkate()
-        MostrarImagem()
+        CarregarCategorias();
+        CarregarTipos();
+        CarregarMarcas();
+        CarregartiposSkate();
+        CarregarProduto();
 
-        if(idParam) {
-            CarregarProduto();
-        }
-    }, [imagem])
+    }, [])
 
     return (
         <main className="page-cadastrar-produto">
@@ -171,17 +176,17 @@ export default function PageCadastrarProduto() {
                 <div className="infos-cadastrar">
 
                     <section className="imgs">
-                        <div className="img1" onClick={() => EscolherImagem("clickFoto")}>
-                            <img src={MostrarImagem(imagem)} className="img-produto" alt="" />
-                            <input type="file" id="clickFoto" onChange={e => setImagem(e.target.files[0])} />
+                        <div className="img1">
+                            <img src={exibirImagem(imagem)} className="img-produto" alt="" onClick={() => EscolherImagem('imagem')} />
                         </div>
-                        <p>Imagem 1 do produto</p>
-                        <div className="img2" onClick={() => EscolherImagem("clickFoto1")}>
-                            <img src={MostrarImagem(imagem2)} className="img-produto" alt="" />
+                        <p>Imagem 1 do Produto</p>
+                        <div className="img2">
+                            <img src={exibirImagem(imagem2)} className="img-produto" alt="" onClick={() => EscolherImagem('imagem2')}/>
+                        </div>
+                        <p>Imagem 2 do Produto</p>
 
-                            <input type="file" id="clickFoto1" onChange={e => setImagem2(e.target.files[0])} />
-                        </div>
-                        <p>Imagem 2 do produto</p>
+                        <input type='file' id='imagem'  onChange={e =>  setImagem (e.target.files[0])} />
+                        <input type='file' id='imagem2' onChange={e =>  setImagem2(e.target.files[0])} />
                     </section>
 
 
@@ -266,21 +271,6 @@ export default function PageCadastrarProduto() {
                                     )}
                                 </select>
                             </div>
-
-                            {IdTipos == 3 &&
-                                <div className="div-marcas">
-                                    <label id="marca-titulo"> Tamanho: </label>
-                                    <select value={IdMarcas} onChange={e => setIdMarcas(e.target.value)}>
-                                        <option selected disabled hidden> Marca </option>
-
-
-                                        <option>
-                                            a
-                                        </option>
-
-                                    </select>
-                                </div>
-                            }
                         </div>
                     </section>
 
@@ -299,7 +289,7 @@ export default function PageCadastrarProduto() {
                                 />
                             </div>
                             
-                            {IdTipoSkate <= 2 &&
+                            {IdTipoSkate == 2 &&
                                 <div className="div-categoria">
                                     <label id="categoria-titulo"> Categoria: </label>
                                     <select value={IdCategoria} onChange={e => setIdCategoria(e.target.value)}>

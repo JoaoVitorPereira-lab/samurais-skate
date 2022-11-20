@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Categoria, Marca, MarcaSkate, Tipos, TiposSkate } from "../repository/ConsultasRepository.js";
+import { Categoria, Marca, MarcaSkate, TamanhoTenis, Tipos, TiposSkate } from "../repository/ConsultasRepository.js";
 
 const server = Router();
 
@@ -67,6 +67,21 @@ server.get('/api/tipo/skate' , async (req,resp) =>{
     const resposta = await TiposSkate ()
     
     resp.status(200).send(resposta)
+  } 
+  
+  catch (err) {
+    resp.status(400).send({
+      Erro:err.message
+    })
+  }
+})
+
+
+/* CONSULTAR TIPOS DO SKATE */
+server.get('/api/tamanho/tenis' , async (req,resp) =>{
+  try {
+    const resposta = await TamanhoTenis();
+    resp.status(200).send(resposta);
   } 
   
   catch (err) {

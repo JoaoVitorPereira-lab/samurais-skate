@@ -21,7 +21,6 @@ export async function InserirTamanho(id, tamanho) {
 }
 
 
-
 /* CONSULTAR PRODUTOS */
 export async function ConsultarProduto(){
     const comando = 
@@ -68,26 +67,39 @@ export async function AlterarProduto(id, produto){
 
 
 /* BUSCAR POR ID */
-export async function BuscarPorID (id){
+export async function BuscarPorID(id){
     const comando = 
-    `SELECT tb_produto.id_produto   id,
-            id_marca	            marca,
-            id_tipo  		        tipo,
-            id_tipo_skate           tipoSkate,
-            id_categoria            categoria,
-            nm_produto		        nome,
-            ds_descricao	        descricao,
-            bt_promocao             promocao,
-            bt_importado            importado,
-            nr_preco		        preco,
-            nr_estoque		        estoque
-
+    `SELECT tb_produto.id_produto       id,
+            nm_marca	                marca,
+            tb_produto.id_tipo  	    tipo,
+            tb_produto.id_tipo_skate    tipoSkate,
+            tb_produto.id_categoria     categoria,
+            nm_produto		            nome,
+            ds_descricao	            descricao,
+            bt_promocao                 promocao,
+            bt_importado                importado,
+            nr_preco		            preco,
+            nr_estoque		            estoque
        FROM tb_produto
+       JOIN tb_marca ON tb_produto.id_marca = tb_marca.id_marca
       WHERE tb_produto.id_produto = ?`;
     
     const [linhas] = await con.query(comando, [id]);
     return linhas[0];
 }
+
+
+export async function buscarProdutoImagens(idProduto) {
+    const comando = `
+          select ds_imagem   as imagem
+            from tb_imagem_produto
+           where id_produto = ?
+        `
+
+    const [registros] = await con.query(comando, [idProduto]);
+    return registros.map(item => item.imagem);
+}
+
 
 // BUSCAR PRODUTO POR NOME //
 export async function BuscarPorNome(nome){
@@ -141,6 +153,17 @@ export async function Login(email, senha) {
 export async function removerProduto(idProduto) {
     const comando = `
         delete from tb_produto 
+              where id_produto = ?
+    `
+
+    const [resp] = await con.query(comando, [idProduto])
+    return resp.affectedRows;
+}
+
+/* REMOVER PRODUTO */
+export async function removerPedidoItemProduto(idProduto) {
+    const comando = `
+        delete from tb_pedido_item
               where id_produto = ?
     `
 

@@ -27,10 +27,19 @@ export default function PageCarrinho(){
 
             for (let produto of carrinho){
                 let p = await BuscarPorIDCarrinho(produto.id);
-                temp.push({
-                    produto: p,
-                    qtd: produto.qtd
-                })
+                if(carrinho.tamanho == undefined){
+                    temp.push({
+                        produto: p,
+                        qtd: produto.qtd,
+                        tamanho: produto.tamanho
+                    })
+                }
+                else{
+                    temp.push({
+                        produto: p,
+                        qtd: produto.qtd
+                    })
+                }
             }
             setItens(temp);
         }
@@ -41,17 +50,17 @@ export default function PageCarrinho(){
     }
 
     function calcularValorTotal() {
-        let total = 0;
+        let t = 0;
         for (let item of itens) {
-            total = total + item.produto.preco * item.qtd;
+            t = t + Number(item.produto.preco) * Number(item.qtd);
         }
-        return total + 20;
+        return t + 20;
     }
 
     function calcularSubtotal() {
         let t = 0;
         for (let item of itens){
-            t = t + item.produto.preco * item.qtd;
+            t = t + Number(item.produto.preco) * Number(item.qtd);
         }
         return t;
     }
@@ -67,6 +76,8 @@ export default function PageCarrinho(){
 
     useEffect(() => {
         CarregarCarrinho();
+        calcularValorTotal();
+        calcularSubtotal();
 
         if (!Storage('usuario-logado')) {
             navigate('/Login')
@@ -76,7 +87,7 @@ export default function PageCarrinho(){
             toast.error('Carrinho vazio, Coloque um item no carrinho')
             navigate('/')
         }
-    }, [])
+    }, [itens])
     
     return(
         <main className="main-carrinho">

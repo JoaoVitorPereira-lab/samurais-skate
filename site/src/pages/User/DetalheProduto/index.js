@@ -4,26 +4,48 @@ import Cabecalho from '../../components/cabecalho'
 import Avaliacao from '../../components/Avaliacao'
 
 import { useParams } from 'react-router-dom';
-import { buscarAval2, BuscarProdutoPorID } from '../../../api/UsuarioApi';
+import { buscarAval2, BuscarPorID } from '../../../api/UsuarioApi';
+import { ListarTamanhos } from '../../../api/ConsultasAPI';
 import { API_URL } from '../../../api/config';
 import './index.scss'
 
 import Storage from 'local-storage'
 import { toast } from 'react-toastify'
+import InputsTamanhos from '../../components/InputsTamanhos';
 
 export default function ProdutoDetalhe() {
-    const favoritos = Storage('favoritos');
+    const [produto, setProduto] = useState({ imagens: [], info: {} });
+    const [tamanhos, setTamanhos] = useState([]);
+    const [idTamanhos, setIdTamanhos] = useState();
+    const [imagemPrincipal, setImagemPrincipal] = useState(0);
 
-    const [produto, setProduto] = useState([]);
     const [descricao, setDescricao] = useState(false);
     const [avaliacao, setAvaliacao] = useState(true);
     const [aval, setAval] = useState([]);
 
     const { id } = useParams();
 
+    async function CarregarTamanhos() {
+        const resp = await ListarTamanhos();
+        setTamanhos(resp);
+    }
+
     async function carregarPagina() {
-        const r = await BuscarProdutoPorID(id);
+        const r = await BuscarPorID(id);
         setProduto(r);
+    }
+    
+    function exibirImagemPrincipal() {
+        if (produto.imagens.length > 0) {
+            return API_URL + '/' + produto.imagens[imagemPrincipal];
+        }
+        else {
+            return '/produto-padrao.png';
+        }
+    }
+
+    function exibirImagemProduto(imagem) {
+        return API_URL + '/' + imagem;
     }
 
     function adicionarAoCarrinho() {
@@ -40,13 +62,25 @@ export default function ProdutoDetalhe() {
             toast.error('Produto já está no carrinho')
         }
         else if (!carrinho.find(item => item.id == - id)) {
-            carrinho.push({
-                id: id,
-                qtd: 1
-            })
+            if(produto.info.tipo === 3){
+                carrinho.push({
+                    id: id,
+                    qtd: 1,
+                    tamanho: Number(idTamanhos)
+                })
 
-            Storage('carrinho', carrinho);
-            toast.dark('Produto adicionado ao carrinho')
+                Storage('carrinho', carrinho);
+                toast.dark('Produto adicionado ao carrinho')
+            }
+            else{
+                carrinho.push({
+                    id: id,
+                    qtd: 1
+                })
+
+                Storage('carrinho', carrinho);
+                toast.dark('Produto adicionado ao carrinho')
+            }
         }
     }
 
@@ -78,12 +112,12 @@ export default function ProdutoDetalhe() {
     }
 
     function desc () {
-        let comDesconto = produto.preco * 0.9;
+        let comDesconto = produto.info.preco * 0.9;
         return comDesconto.toFixed(2);
     }
 
     function parc () {
-        let parcelado = produto.preco / 6;
+        let parcelado = produto.info.preco / 6;
         return parcelado.toFixed(2);
     }
 
@@ -96,11 +130,13 @@ export default function ProdutoDetalhe() {
         setAvaliacao(true);
         setDescricao(false);
     }
+    
 
     useEffect(() => {
         carregarPagina();
+        CarregarTamanhos();
         carregarAvaliacoes();
-    }, [favoritos])
+    }, [produto])
 
     return (
         <main className='page-detalhes'>
@@ -111,16 +147,21 @@ export default function ProdutoDetalhe() {
                 </div>
                 <div className='div-detalhes'>
 
-                    <div className='imgs'>
-
-                        <img src={API_URL + '/' + produto.imagem} alt="" />
-
+                    <div className='imagens'>
+                        <div className='opcoes'>
+                            {produto.imagens.map((item, pos) => 
+                                <img src={exibirImagemProduto(item)} onClick={() => setImagemPrincipal(pos)} />
+                            )}
+                        </div>
+                        <div className='atual'>
+                            <img src={exibirImagemPrincipal()} />
+                        </div>
                     </div>
 
                     <div className='infos-produto'>
 
                         <div className='nome-produto'>
-                            <p>{produto.nome}</p>
+                            <p>{produto.info.nome}</p>
                         </div>
 
                         <div className='avaliacao'>
@@ -128,13 +169,22 @@ export default function ProdutoDetalhe() {
                         </div>
 
                         <div className='nome-marca'>
-                            <p>Marca: {produto.marca}</p>
+                            <p>Marca: {produto.info.marca}</p>
                         </div>
-
 
                         <div className='preco-produto'>
-                            <p>R${produto.preco}</p>
+                            <p>R${produto.info.preco}</p>
                         </div>
+
+                        {produto.info.tipo == 3 &&
+                            <div className='tamanho-produto'>
+                                {tamanhos.map(item =>
+                                    <div className='aa'>
+                                        <InputsTamanhos item={item} selecionar={setIdTamanhos} selecionado={item.tamanho == idTamanhos}/>
+                                    </div>
+                                )}
+                            </div>
+                        }
 
                         <div className='nome-marca'>
                             <p>R${desc().replace('.', ',')} à vista com desconto </p>
@@ -143,13 +193,13 @@ export default function ProdutoDetalhe() {
 
                         <div className='div-btn-carrinho'>
 
-                            {!favoritos.find(item => item.id == id) &&
+                            {!Storage('favoritos').find(item => item.id == id) &&
                                 <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
                                     <img src="/images/Favorite.png" alt="" width="50" height="50"/>
                                 </div>
                             }
 
-                            {favoritos.find(item => item.id == id) && 
+                            {Storage('favoritos').find(item => item.id == id) && 
                                 <div className='div-btn-favoritos' onClick={adicionarAoFavoritos}>
                                     <img src="/images/coracao-vermelho.png" alt=""/>
                                 </div>
@@ -176,7 +226,7 @@ export default function ProdutoDetalhe() {
                 </div>
                 <div className='descs-txt'>
                     {descricao === true &&
-                        <p>{produto.descricao}</p>
+                        <p>{produto.info.descricao}</p>
                     }
                     
                     {avaliacao === true &&

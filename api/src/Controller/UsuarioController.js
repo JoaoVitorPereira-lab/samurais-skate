@@ -1,8 +1,32 @@
 import { Router } from 'express';
 import nodemailer from 'nodemailer'
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2, BuscarPorID, buscarProdutoImagens} from '../repository/usuarioRepository.js'
 
 const server = Router();
+
+/* BUSCAR POR ID */
+server.get('/usuario/produto/:id', async (req, resp) => {
+    try {
+      const id = Number(req.params.id);
+  
+      const resposta = await BuscarPorID(id);
+      const imagens = await buscarProdutoImagens(id);
+  
+      if (!resposta)
+        resp.status(404).send([]);
+      else
+        resp.send({
+          info:resposta,
+          imagens:imagens
+        });
+    }
+  
+    catch (err) {
+      resp.status(400).send({
+        erro: err.message
+      })
+    }
+  })
 
 server.post('/api/login', async (req,resp) =>{
     try {
@@ -105,39 +129,6 @@ server.get('/produto/:id/detalhe', async (req, resp) =>{
             erro: err.message
         })
     }
-})
-
-//Enviar email após o cadastro
-server.post('/api/email', (req,resp) => {
-    let dados = req.body;
-    const transport = nodemailer.createTransport({
-        host: process.env.HOST,
-        port: 587,
-        service: process.env.SERVICE,
-        secure: process.env.SECURE,
-        auth:{
-            user: process.env.EMAILA,
-            pass: process.env.SENHA
-        }
-    })
-
-    const message ={
-        from: process.env.EMAIL,
-        to: dados.email,
-        subject:"Samurai's Skate shop",
-        html:`
-            <h1> Skate shop Samurasi's </h1>
-            <h3> Seja bem vindo ao nosso site, ${dados.nome}! </h3>
-        `
-       }
-
-    transport.sendMail(message, (error, info)=>{
-        if(error){
-            return resp.status(400).send(error)
-        }
-        return resp.status(200).send('Email enviado com sucesso')
-    })
-
 })
 
 server.get('/api/produtos/skate', async (req, resp) =>{

@@ -47,6 +47,7 @@ export default function Login() {
             try {
                 const r = await EntrarLogin(email, senha);
                 storage('usuario-logado', r)
+                storage('carrinho', [])
                 setTimeout(() => {
                     navigate('/');
                     toast.dark(`Usuário ${storage('usuario-logado').nome} logado`)

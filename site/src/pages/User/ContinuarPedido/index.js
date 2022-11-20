@@ -31,6 +31,7 @@ export default function ContinuarPedido(){
 
     const [exibirEndereco, setExibirEndereco] = useState(false);
     const [idEndereco, setIdEndereco] = useState();
+    const [total, setTotal] = useState();
 
     const [parcelas, setParcelas] = useState('');
 
@@ -73,10 +74,19 @@ export default function ContinuarPedido(){
 
             for (let produto of carrinho){
                 let p = await BuscarPorIDCarrinho(produto.id);
-                temp.push({
-                    produto: p,
-                    qtd: produto.qtd
-                })
+                if(carrinho.tamanho == undefined){
+                    temp.push({
+                        produto: p,
+                        qtd: produto.qtd,
+                        tamanho: produto.tamanho
+                    })
+                }
+                else{
+                    temp.push({
+                        produto: p,
+                        qtd: produto.qtd
+                    })
+                }
             }
             setItens(temp);
         }
@@ -87,7 +97,7 @@ export default function ContinuarPedido(){
         for (let item of itens) {
             total = total + item.produto.preco * item.qtd;
         }
-        return total + 20;
+        setTotal(Number(total + 20));
     }
 
     function exibirImagem(item) {
@@ -131,6 +141,7 @@ export default function ContinuarPedido(){
         }
 
         CarregarCartoes();
+        calcularTotal();
         CarregarItens();
         CarregarEnderecos();
 
@@ -152,7 +163,7 @@ export default function ContinuarPedido(){
 
                 <div className="div-finalizarpedido">
                     <text> Total: </text>
-                    <span> {calcularTotal()} </span>
+                    <span> {total} </span>
 
                     <button onClick={SalvarPedido}> Finalizar Pedido </button>
                 </div>
@@ -183,7 +194,7 @@ export default function ContinuarPedido(){
                             )}
                         </div>
 
-                        <button onClick={exibirNovoCartao}>
+                        <button className='btn-add-cartao' onClick={exibirNovoCartao}>
                             ADICIONAR CARTÃO
                         </button>
 
@@ -213,6 +224,7 @@ export default function ContinuarPedido(){
                         <tr>
                             <th>Item</th>
                             <th>Quantidade</th>
+                            <th>Tamanho</th>
                             <th>Preço Unitário</th>
                             <th>Total</th>
                         </tr>
@@ -232,6 +244,9 @@ export default function ContinuarPedido(){
                                 </td>
                                 <td>
                                     {item.qtd}
+                                </td>
+                                <td>
+                                    {item.tamanho}
                                 </td>
                                 <td>
                                     R$ {item.produto.preco}

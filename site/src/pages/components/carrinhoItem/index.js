@@ -4,8 +4,11 @@ import Storage from 'local-storage'
 
 import './index.scss'
 
-export default function Carrinho({ item: { produto: { id, nome, preco, imagem }, qtd } }) {
+export default function Carrinho({ item: { produto: { id, nome, preco, imagem }, qtd, tamanho } }) {
     const [qtdProduto, setQtdProduto] = useState(qtd);
+
+    const t = tamanho;
+    console.log(t)
 
     function alterarQuantidade(novaQtd) {
         setQtdProduto(novaQtd);
@@ -39,6 +42,10 @@ export default function Carrinho({ item: { produto: { id, nome, preco, imagem },
                     <option>4</option>
                     <option>5</option>
                 </select>
+
+                {tamanho &&
+                    <span className='span-tamanho'> tamanho: {tamanho} </span>
+                }
 
                 <span className='preco-produto'> {preco.replace(".", ",")} </span>
             </div>

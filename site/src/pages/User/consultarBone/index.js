@@ -2,8 +2,9 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarBone, buscarimagem} from '../../../api/UsuarioApi';
+import { buscarimagem} from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
+import { ListarBone } from '../../../api/ConsultasAPI';
 
 export default function ConsultarBone() {
 
@@ -18,7 +19,6 @@ export default function ConsultarBone() {
         setProduto(resp);
         
     }
-
 
     useEffect(() => {
         CarregarProdutos();

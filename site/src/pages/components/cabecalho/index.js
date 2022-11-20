@@ -41,6 +41,8 @@ export default function CabecalhoUsuarioNavs(props) {
 
     function SairClick(){
         storage.remove('usuario-logado')
+        storage.remove('carrinho')
+        storage.remove('favoritos')
         navigate('/Login')
     }
 

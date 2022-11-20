@@ -2,8 +2,9 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarPromocoes, buscarimagem} from '../../../api/UsuarioApi';
+import { buscarimagem} from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
+import { ListarPromocoes } from '../../../api/ConsultasAPI';
 
 export default function Promocoes() {
 

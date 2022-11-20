@@ -50,3 +50,12 @@ export async function TiposSkate(){
   const [resposta] = await con.query(comando)
   return resposta
 }
+
+/* CONSULTAR TIPOS DO SKATE */
+export async function TamanhoTenis(){
+  const comando = ` Select id_tamanho         id,
+                           nr_tamanho         tamanho
+                      from tb_tamanho`
+  const [resposta] = await con.query(comando)
+  return resposta
+}

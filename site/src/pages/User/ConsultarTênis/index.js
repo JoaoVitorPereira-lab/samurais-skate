@@ -2,11 +2,10 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarTenis, buscarimagem } from '../../../api/UsuarioApi';
+import { buscarimagem, ListarTenis } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 
 export default function ConsultarTenis() {
-
     const [produto, setProduto] = useState([]);
     const [aval, setAval] = useState([]);
     const [busca, setBusca] = useState('');
@@ -16,9 +15,7 @@ export default function ConsultarTenis() {
     async function CarregarProdutos() {
         const resp = await ListarTenis();
         setProduto(resp);
-        
     }
-
 
     useEffect(() => {
         CarregarProdutos();
@@ -27,8 +24,6 @@ export default function ConsultarTenis() {
     function AbrirDetalhes(id) {
         navigate('/produto/' + id + '/detalhe')
     }
-
-    
 
     return (
         <main className='tenis-container'>

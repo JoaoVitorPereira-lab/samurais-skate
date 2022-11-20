@@ -2,8 +2,9 @@ import './index.scss'
 
 import Cabecalho from '../../components/cabecalho'
 import { useEffect, useState } from 'react'
-import { ListarAcessorios, buscarimagem} from '../../../api/UsuarioApi';
+import { buscarimagem } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
+import { ListarAcessorios } from '../../../api/ConsultasAPI';
 
 export default function ConsultarAcessorio() {
 
@@ -16,9 +17,7 @@ export default function ConsultarAcessorio() {
     async function CarregarProdutos() {
         const resp = await ListarAcessorios();
         setProduto(resp);
-        
     }
-
 
     useEffect(() => {
         CarregarProdutos();
@@ -27,8 +26,6 @@ export default function ConsultarAcessorio() {
     function AbrirDetalhes(id) {
         navigate('/produto/' + id + '/detalhe')
     }
-
-    
 
     return (
         <main className='acessorio-container'>

@@ -56,30 +56,6 @@ export async function BuscarProdutoPorID(id){
     return resposta.data;
 }
 
-//Listar Produtos do Skate
-export async function ListarSkate(){
-    const resposta = await api.get('/api/produtos/skate')
-    return resposta.data
-}
-
-//Listar Produtos do Boné
-export async function ListarBone(){
-    const resposta = await api.get('/api/produtos/bone')
-    return resposta.data
-}
-
-//Listar Produtos do Acessório
-export async function ListarAcessorios(){
-    const resposta = await api.get('/api/produtos/acessorios')
-    return resposta.data
-}
-
-//Listar Produtos em Promoção
-export async function ListarPromocoes(){
-    const resposta = await api.get('/api/produtos/promocoes')
-    return resposta.data
-}
-
 //Atualizar Infos Conta
 export async function AtualizarConta(id,nome,sobrenome){
     const resposta = await api.put (`/api/usuario/conta/${id}`,{
@@ -134,4 +110,10 @@ export async function buscarAval1(idProduto, idUser){
 export async function buscarAval2(id) {
     const resposta = await api.get(`/avaliacao/produto/${id}`);
     return resposta.data;
+}
+
+/* BUSCAR POR ID */
+export async function BuscarPorID(id){
+    const resposta = await api.get(`/usuario/produto/${id}`);
+    return resposta.data
 }

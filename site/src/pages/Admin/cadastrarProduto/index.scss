@@ -55,19 +55,19 @@
         margin-top: 5em;
     }
 
+    .imgs{
+        margin-top: -1.5em;
+    }
     .imgs input {
         display: none;
     }
-
     .imgs div, .img-produto {
-        cursor: pointer;
-        border: solid 1px #DFDFDF;
-        width: 7.2em; height: 8.5em;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 7.2em; height: 8.5em;
+        cursor: pointer;
     }
-
     .imgs p {
         font-family: "Inter", sans-serif;
         font-size: 14px;

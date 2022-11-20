@@ -26,6 +26,10 @@ export async function Consultar(){
           ds_status	    status
      from tb_pedido
      join tb_conta_usuario on tb_pedido.id_conta_usuario = tb_conta_usuario.id_conta_usuario
+    order
+       by data
+     desc
+      
   `;
   const [resposta] = await con.query(comando);
   return resposta;

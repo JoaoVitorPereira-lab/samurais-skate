@@ -3,9 +3,10 @@ import './index.scss'
 import Cabecalho from '../../components/cabecalho'
 import Avaliacao from '../../components/Avaliacao'
 import { useEffect, useState } from 'react'
-import { ListarSkate, buscarimagem } from '../../../api/UsuarioApi';
+import { buscarimagem } from '../../../api/UsuarioApi';
 import { useNavigate } from 'react-router-dom'
 import { ListarMarcaskate } from '../../../api/ListarAPI';
+import { ListarSkate } from '../../../api/ConsultasAPI';
 
 export default function ConsultarSkate() {
 

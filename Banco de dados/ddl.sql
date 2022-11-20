@@ -74,6 +74,12 @@ create table tb_tipo_skate (
 
 );
 
+-- tabela tipo skate
+create table tb_tamanho (
+    id_tamanho			int primary key auto_increment,
+    nr_tamanho			varchar(100)
+);
+
 -- Tabela do produto
 create table tb_produto	(
 	ID_PRODUTO			int primary key auto_increment,
@@ -81,6 +87,7 @@ create table tb_produto	(
 	ID_CATEGORIA		int,
 	ID_TIPO				int,
     ID_TIPO_SKATE		int,
+    ID_TAMANHO			int,
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
 	NR_TAMANHO			int,
@@ -93,7 +100,8 @@ create table tb_produto	(
     foreign key (ID_MARCA)      references tb_marca (ID_MARCA),
     foreign key (ID_CATEGORIA)  references tb_categoria (ID_CATEGORIA),
     foreign key (ID_TIPO)       references tb_tipo (ID_TIPO),
-    foreign key (ID_TIPO_SKATE) references tb_tipo_skate (ID_TIPO_SKATE)
+    foreign key (ID_TIPO_SKATE) references tb_tipo_skate (ID_TIPO_SKATE),
+    foreign key (ID_TAMANHO)    references tb_tamanho (ID_TAMANHO)
 );
 
 
