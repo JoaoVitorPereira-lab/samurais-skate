@@ -139,6 +139,8 @@ export default function ProdutoDetalhe() {
         carregarAvaliacoes();
     }, [produto])
 
+   
+
     return (
         <main className='page-detalhes'>
             <Cabecalho />
@@ -166,7 +168,7 @@ export default function ProdutoDetalhe() {
                         </div>
 
                         <div className='avaliacao'>
-                            <img src="/images/aval3.png" alt="" />
+                            <Avaliacao aval={produto.info.estrela} />
                         </div>
 
                         <div className='nome-marca'>
@@ -231,9 +233,9 @@ export default function ProdutoDetalhe() {
                     }
                     
                     {avaliacao === true &&
-                        <section className='avaliacoes'>
+                        <section>
                             {aval.map(item =>
-                                <div>
+                                <div className='avaliacoes'>
                                     <div className='username'>
                                         <img src="/images/Usuario.png" alt="" width='70px' height= '50'/>
                                         <div>

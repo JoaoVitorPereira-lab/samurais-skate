@@ -1,9 +1,11 @@
 import { API_URL } from '../../../api/config'
 import { useNavigate } from "react-router-dom";
 
+import Avaliacao from '../../components/Avaliacao'
+
 import './index.scss'
 
-export default function Favoritos({ item: { produto: { id, nome, preco, imagem } } } ) {
+export default function Favoritos({ item: { produto: { id, nome, preco, imagem, estrela } } }, props ) {
 
     function exibirImagem() {
         if (imagem) {
@@ -40,7 +42,7 @@ export default function Favoritos({ item: { produto: { id, nome, preco, imagem }
                 </div>
 
                 <div className="Avaliacao">
-                    <img src="../images/aval3.png" alt="" />
+                    <Avaliacao aval={estrela} />
                 </div>
             </div>
         </div>

@@ -6,6 +6,6 @@ const api = axios.create({
 })
 
 export async function BuscarPorIDFavoritos(id){
-    const resposta = await api.get(`/api/carrinho/produto/${id}`);
+    const resposta = await api.get(`/api/favoritos/produto/${id}`);
     return resposta.data
 }

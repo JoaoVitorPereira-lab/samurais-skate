@@ -12,7 +12,6 @@ export default function Navs(props) {
 
     return (
         <nav className="comp-navs">
-
             <div className="div-navs">
                 <Link to='/cadastrarproduto' className={verificarMenuSelecionado('cadastrar-adm')}>
                     <div className="navs-produtos">
@@ -35,14 +34,6 @@ export default function Navs(props) {
                     </div>
                 </Link>
             </div>
-
-            <div className="div-buscar">
-                <input type="text" className="buscar-input" placeholder="Buscar pedido" />
-                <div>
-                    <img src="/images/buscar.png" className="buscar-img" alt="" />
-                </div>
-            </div>
-
         </nav>
     );
 }

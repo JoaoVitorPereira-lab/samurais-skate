@@ -199,7 +199,7 @@ export default function PageCadastrarr() {
 
                         <div className="div-infos-1">
                             <label for="nome" id="nome-titulo"> Nome: </label>
-                            <input type="text" id="nome" placeholder="Nome do Produto"
+                            <input type="text" id="nome" placeholder="Nome"
                                 value={nome}
                                 onChange={e => setNome(e.target.value)}
                             />

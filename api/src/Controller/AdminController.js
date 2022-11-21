@@ -93,9 +93,9 @@ server.put('/api/admin/:id', async (req, resp) => {
     const resposta = await AlterarProduto(id, novoproduto);
 
     if (resposta != 1)
-      throw new Error('Produto não pode ser alterado. ');
+      throw new Error('Produto não pode ser alterado.');
     else
-      resp.status(204).send(resposta)
+      resp.status(204).send([])
   } catch (err) {
     resp.status(400).send({
       erro: err.message

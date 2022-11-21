@@ -13,15 +13,6 @@
         color: #E52A45;
     }
 
-    .contents {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: fit-content;
-        justify-content: center;
-        
-    }
-
     .filtros {
         display: flex;
         flex-direction: column;
@@ -35,7 +26,9 @@
 
     .produtos {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
+        width: 100%;
         margin: 0em 1em;
     }
 

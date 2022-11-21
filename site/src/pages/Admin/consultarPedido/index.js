@@ -43,7 +43,90 @@ export default function PageCadastrarProduto(){
 
             <section className="section-cards-pedidos">
                 {pedido.map(item =>
-                
+                    <div className="card-pedido">
+                        <div className="div-1">
+                            <div className="div-letra-nome">
+                                <text> {item.nome[0]} </text>
+                            </div>
+
+                            <div className="div-nome">
+                                <p> {item.nome} {item.sobrenome} </p>
+                            </div>
+
+                            <div className="div-data-pedido">
+                                <text> {item.data} </text>
+                            </div>
+                        </div>
+
+                        <div className="div-2">
+                            <div className="div-status">
+                                <p> Status: {item.status} </p>
+                            </div>
+
+                            <button className="btn-ver-pedido"
+                                    onClick={() => AbrirDetalhes(item.id)}
+                            >
+                                Ver Pedido
+                            </button>
+                        </div>
+                    </div>
+                )}{pedido.map(item =>
+                    <div className="card-pedido">
+                        <div className="div-1">
+                            <div className="div-letra-nome">
+                                <text> {item.nome[0]} </text>
+                            </div>
+
+                            <div className="div-nome">
+                                <p> {item.nome} {item.sobrenome} </p>
+                            </div>
+
+                            <div className="div-data-pedido">
+                                <text> {item.data} </text>
+                            </div>
+                        </div>
+
+                        <div className="div-2">
+                            <div className="div-status">
+                                <p> Status: {item.status} </p>
+                            </div>
+
+                            <button className="btn-ver-pedido"
+                                    onClick={() => AbrirDetalhes(item.id)}
+                            >
+                                Ver Pedido
+                            </button>
+                        </div>
+                    </div>
+                )}{pedido.map(item =>
+                    <div className="card-pedido">
+                        <div className="div-1">
+                            <div className="div-letra-nome">
+                                <text> {item.nome[0]} </text>
+                            </div>
+
+                            <div className="div-nome">
+                                <p> {item.nome} {item.sobrenome} </p>
+                            </div>
+
+                            <div className="div-data-pedido">
+                                <text> {item.data} </text>
+                            </div>
+                        </div>
+
+                        <div className="div-2">
+                            <div className="div-status">
+                                <p> Status: {item.status} </p>
+                            </div>
+
+                            <button className="btn-ver-pedido"
+                                    onClick={() => AbrirDetalhes(item.id)}
+                            >
+                                Ver Pedido
+                            </button>
+                        </div>
+                    </div>
+                )}{pedido.map(item =>
                     <div className="card-pedido">
                         <div className="div-1">
                             <div className="div-letra-nome">

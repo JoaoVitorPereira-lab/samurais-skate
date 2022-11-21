@@ -106,7 +106,6 @@ export default function Compras() {
 									</div>
 								</section>
 							</div>
-							
 						)}
 					</div>
 				</section>

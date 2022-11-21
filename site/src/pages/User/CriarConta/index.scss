@@ -20,8 +20,6 @@
         width: 10px;
     }
 
-
-
     .email,
     .senha {
         width: 30em;
@@ -133,6 +131,17 @@
             height: 20em;
             margin-top: 2em;
             margin-left: 4.3em;
+        }
+        .barra_lateral{
+            width: 10px; height: 30em;
+        }
+        .logo{
+            width: 20em; margin-right: 1em;
+        }
+        .email,
+        .senha {
+            width: 22em;
+            height: 3.8em;
         }
     }
 

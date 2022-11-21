@@ -101,5 +101,19 @@
         text-align: center;
         color: #FFFFFF;
     }
+
+    @media screen and (max-width: 1024px) {
+        .barra_lateral{
+            width: 10px; height: 30em;
+        }
+        .logo{
+            width: 20em; margin-right: 1em;
+        }
+        .email,
+        .senha {
+            width: 25em;
+            height: 3.8em;
+        }
+    }
 }
 

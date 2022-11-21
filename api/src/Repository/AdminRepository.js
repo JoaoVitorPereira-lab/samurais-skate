@@ -52,15 +52,14 @@ export async function AlterarProduto(id, produto){
            id_tipo = ?, 
            id_tipo_skate = ?, 
            nm_produto = ?, 
-           ds_descricao = ?, 
-           nr_tamanho = ?, 
+           ds_descricao = ?,
            bt_importado = ?, 
            bt_promocao = ?, 
            nr_preco = ?, 
            nr_estoque = ?
      WHERE id_produto      = ?`;
         
-    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.idTipoSkate, produto.nome, produto.descricao, produto.tamanho, produto.importado, produto.promocao, produto.preco, produto.estoque, id])
+    const [resposta] = await con.query(comando, [produto.IdMarca, produto.IdCategoria, produto.IdTipo, produto.idTipoSkate, produto.nome, produto.descricao, produto.importado, produto.promocao, produto.preco, produto.estoque, id])
 
     return resposta.affectedRows;
 }

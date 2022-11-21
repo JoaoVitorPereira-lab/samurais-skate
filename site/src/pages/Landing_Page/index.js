@@ -155,7 +155,7 @@ export default function Landing_Page() {
 
                 <div className='imgs'>
                     <Link to='/consultarskate'>
-                        <img src={images13}/>
+                        <img className='skateimg' src={images13}/>
                         <p></p>
                         <label className='skate'>
                             <li>
@@ -165,7 +165,7 @@ export default function Landing_Page() {
                     </Link>
 
                     <Link to='/consultarbone'>
-                        <img src={images14}/>
+                        <img className='bonesimg' src={images14}/>
                         <p></p>
                         <label className='bones'>
                             <li>
@@ -175,7 +175,7 @@ export default function Landing_Page() {
                     </Link>
 
                     <Link to='/consultartenis'>
-                        <img src={images15}/>
+                        <img className='tenisimg' src={images15}/>
                         <p></p>
                         <label className='tenis'>
                             <li>

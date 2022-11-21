@@ -295,8 +295,16 @@
     @media(max-width: 1280px) {
         .page {
             img {
-                height: 22em;
+                height: 17em;
             }
         }
+
+        .skateimg,
+        .bonesimg,
+        .tenisimg {
+            height: 17em;
+        }
     }
+
+    
 }

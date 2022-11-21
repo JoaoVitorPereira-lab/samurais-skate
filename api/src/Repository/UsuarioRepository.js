@@ -4,20 +4,23 @@ import { con } from './connection.js'
 export async function BuscarPorID(id){
   const comando = 
   `SELECT tb_produto.id_produto       id,
-          nm_marca	                  marca,
-          id_tamanho		              tamanho,
-          tb_produto.id_tipo  	      tipo,
-          tb_produto.id_tipo_skate    tipoSkate,
-          tb_produto.id_categoria     categoria,
-          nm_produto		              nome,
-          ds_descricao	              descricao,
-          bt_promocao                 promocao,
-          bt_importado                importado,
-          nr_preco		                preco,
-          nr_estoque		              estoque
-     FROM tb_produto
-     JOIN tb_marca    ON tb_produto.id_marca    = tb_marca.id_marca
-    WHERE tb_produto.id_produto = ?`;
+  nm_marca	                  marca,
+  id_tamanho		              tamanho,
+  tb_produto.id_tipo  	      tipo,
+  tb_produto.id_tipo_skate    tipoSkate,
+  tb_produto.id_categoria     categoria,
+  nm_produto		              nome,
+  ds_descricao	              descricao,
+  bt_promocao                 promocao,
+  bt_importado                importado,
+  nr_preco		                preco,
+  nr_estoque		              estoque,
+  format(avg(nr_estrela), 1)       estrela
+FROM tb_produto
+JOIN tb_marca    ON tb_produto.id_marca    = tb_marca.id_marca
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+WHERE tb_produto.id_produto = 1
+group by tb_produto.id_produto`;
   
   const [linhas] = await con.query(comando, [id]);
   return linhas[0];

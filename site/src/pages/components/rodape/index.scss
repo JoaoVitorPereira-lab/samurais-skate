@@ -129,15 +129,4 @@
         width: 4em;  height: 3em;
     }
 /* FINAL div dos pagamentos */
-
-/*******************************************************************************/
-/* Responsividades */
-    @media screen and (max-width: 1024px){
-        .div-separa-container{
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-        }
-    }
-
 }
