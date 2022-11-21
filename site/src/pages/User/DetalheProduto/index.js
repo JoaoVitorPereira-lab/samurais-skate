@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Cabecalho from '../../components/cabecalho'
 import Avaliacao from '../../components/Avaliacao'
+import Rodape from '../../components/rodape'
 
 import { useParams } from 'react-router-dom';
 import { buscarAval2, BuscarPorID } from '../../../api/UsuarioApi';
@@ -19,8 +20,8 @@ export default function ProdutoDetalhe() {
     const [idTamanhos, setIdTamanhos] = useState();
     const [imagemPrincipal, setImagemPrincipal] = useState(0);
 
-    const [descricao, setDescricao] = useState(false);
-    const [avaliacao, setAvaliacao] = useState(true);
+    const [descricao, setDescricao] = useState(true);
+    const [avaliacao, setAvaliacao] = useState(false);
     const [aval, setAval] = useState([]);
 
     const { id } = useParams();
@@ -85,7 +86,7 @@ export default function ProdutoDetalhe() {
     }
 
     async function carregarAvaliacoes() {
-        const r = await buscarAval2(produto.id);
+        const r = await buscarAval2(produto.info.id);
         setAval(r);
     }
 
@@ -226,7 +227,7 @@ export default function ProdutoDetalhe() {
                 </div>
                 <div className='descs-txt'>
                     {descricao === true &&
-                        <p>{produto.info.descricao}</p>
+                        <p className='desc'>{produto.info.descricao}</p>
                     }
                     
                     {avaliacao === true &&
@@ -248,8 +249,10 @@ export default function ProdutoDetalhe() {
                         </section>
                     }
                 </div>
+                
 
             </div>
+            <Rodape />
         </main>
 
     );

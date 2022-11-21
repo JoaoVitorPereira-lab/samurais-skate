@@ -11,7 +11,6 @@ import { ListarSkate } from '../../../api/ConsultasAPI';
 export default function ConsultarSkate() {
 
     const [produto, setProduto] = useState([]);
-    const [aval, setAval] = useState([]);
     const [busca, setBusca] = useState('');
     const [marca, setMarca] = useState([]);
 

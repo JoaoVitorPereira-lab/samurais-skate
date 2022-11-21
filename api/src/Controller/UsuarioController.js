@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2, BuscarPorID, buscarProdutoImagens} from '../repository/usuarioRepository.js'
+import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis,  BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2, BuscarPorID, buscarProdutoImagens, ConsultarTudo, ConsultarProdutoNome} from '../repository/usuarioRepository.js'
 
 const server = Router();
 
@@ -78,6 +78,17 @@ server.post('/api/cadastro' , async (req,resp) => {
     }
 })
 
+server.get('/api/produtos', async (req, resp) => {
+    try {
+        const resposta = await ConsultarTudo();
+        resp.send(resposta)
+    } catch (err) {
+        resp.status(401).send({
+            erro: err.message
+        })
+    }
+})
+
 server.get('/api/produtos/tenis', async (req, resp) => {
     try {
         const resposta = await ConsultarTenis();
@@ -89,12 +100,12 @@ server.get('/api/produtos/tenis', async (req, resp) => {
     }
 })
 
-server.get('/api/buscar/tenis', async (req, resp) =>{
+server.get('/api/buscar/produtos', async (req, resp) =>{
     try
     {
         const { nome } = req.query;
   
-        const resposta = await ConsultarTenisNome(nome);
+        const resposta = await ConsultarProdutoNome(nome);
   
         if(resposta.length == 0)
             resp.status(404).send( [] );

@@ -70,34 +70,66 @@ export async function CadastrarInformacoes(info) {
   return info
 }
 
-export async function ConsultarTenis() {
-  const comando = `select nm_produto              produto, 
-  nr_preco                preco,  
-  tb_tipo.id_tipo         tipo, 
-  ds_imagem               imagem, 
-  tb_produto.id_produto   id
+export async function ConsultarTudo() {
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
 from tb_produto
 join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
 join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Tênis"`
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+group by tb_produto.id_produto`
             
   const [resposta] = await con.query(comando);
   return resposta;
 }
 
-export async function ConsultarTenisNome (nome) {
-  const comando = `select nm_produto        produto,
-                          nr_preco          preco,
-                          nr_estrela      avaliacao,
-                          tb_tipo.id_tipo   idTipo,
-                          ds_imagem         imagem,
-                          tb_produto.id_produto  id
-                     from tb_produto
-                     join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
-                     join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-                     
-                    where nm_tipo = "Tênis"
-                    and nm_produto like ?`
+export async function ConsultarTenis() {
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+where nm_tipo = "Tênis"
+group by tb_produto.id_produto`
+            
+  const [resposta] = await con.query(comando);
+  return resposta;
+}
+
+export async function ConsultarProdutoNome (nome) {
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+where nm_produto like ?
+group by tb_produto.id_produto`
   
   const [resposta] = await con.query(comando, [ `%${nome}%` ]); 
   return resposta;
@@ -149,44 +181,66 @@ export async function ConsultarSkate() {
 }
 
 export async function ConsultarBone() {
-  const comando = `select nm_produto              produto, 
-  nr_preco                preco,  
-  tb_tipo.id_tipo         tipo, 
-  ds_imagem               imagem, 
-  tb_produto.id_produto   id
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
 from tb_produto
 join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
 join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Boné"`
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+where nm_tipo = "Boné"
+group by tb_produto.id_produto`
             
   const [resposta] = await con.query(comando);
   return resposta;
 }
 
 export async function ConsultarAcessorios() {
-  const comando = `select nm_produto              produto, 
-  nr_preco                preco,  
-  tb_tipo.id_tipo         tipo, 
-  ds_imagem               imagem, 
-  tb_produto.id_produto   id
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
 from tb_produto
 join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
 join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-where nm_tipo = "Acessórios"`
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+where nm_tipo = "Acessórios"
+group by tb_produto.id_produto`
             
   const [resposta] = await con.query(comando);
   return resposta;
 }
 
 export async function Promocoes() {
-  const comando = `select nm_produto        produto, 
-                   nr_preco                 preco, 
-                   id_tipo                  tipo, 
-                   ds_imagem                imagem, 
-                   tb_produto.id_produto    id
-  from tb_produto
-    join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
-  where bt_promocao = 1`
+  const comando = `select nm_produto                        produto, 
+  nr_preco                          preco, 
+  tb_tipo.id_tipo                   tipo, 
+  format(avg(nr_estrela), 1)        avaliacao, 
+  id_tipo_skate                     tipoSkate, 
+  id_categoria                      categoria, 
+  bt_importado                      importado, 
+  ds_imagem                         imagem, 
+  tb_produto.id_produto             id,
+  id_marca                          marca 
+from tb_produto
+join tb_tipo on tb_tipo.id_tipo = tb_produto.id_tipo
+join tb_imagem_produto on tb_imagem_produto.id_produto = tb_produto.id_produto
+left join tb_produto_avaliacao on tb_produto_avaliacao.id_produto = tb_produto.id_produto
+where bt_promocao = 1
+group by tb_produto.id_produto`
             
   const [resposta] = await con.query(comando);
   return resposta;

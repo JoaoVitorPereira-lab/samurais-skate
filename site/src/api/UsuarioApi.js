@@ -33,6 +33,12 @@ export async function CadastrarConta (nome, sobrenome) {
     return resposta.data
 }
 
+//Listar Tudo
+export async function ListarTudo(){
+    const resposta = await api.get('/api/produtos')
+    return resposta.data
+}
+
 //Listar Produtos do Tenis
 export async function ListarTenis(){
     const resposta = await api.get('/api/produtos/tenis')
@@ -45,8 +51,8 @@ export function buscarimagem(imagem){
 }
 
 // BUSCAR TÊNIS POR NOME //
-export async function BuscarTenisPorNome(nome){
-    const resposta = await api.get(`/api/buscar/tenis?nome=${nome}`);
+export async function BuscarProdutoPorNome(nome){
+    const resposta = await api.get(`/api/buscar/produtos?nome=${nome}`);
     return resposta.data;
 }
 
