@@ -11,12 +11,11 @@ import './index.scss'
 import { EnviarAoAlterar } from '../../../api/GmailAPI'
 
 export default function Dados(){
-    const[nome,setNome] = useState()
-    const[sobrenome,setSobrenome] = useState()
-    const[email,setEmail] = useState()
+    const[nome,setNome] = useState(storage('usuario-logado').nome)
+    const[sobrenome,setSobrenome] = useState(storage('usuario-logado').sobrenome)
+    const[email,setEmail] = useState(storage('usuario-logado').Email)
     const[senha,setSenha] = useState()
     const[usuario,setUsuario] = useState([])
-
 
     async function AlterarInfosClick(){
         try {
@@ -59,15 +58,15 @@ export default function Dados(){
                 <div className='infos-dados'>
 
                     <div className='nome-dados'>
-                        <label> Nome: </label> <input type="text" value={nome} placeholder={usuario.nome} onChange={e => setNome(e.target.value)} />
+                        <label> Nome: </label> <input type="text" value={nome} onChange={e => setNome(e.target.value)} />
                     </div>  
 
                     <div className='sobrenome-dados'>
-                        <label> Sobrenome: </label> <input type="text" value={sobrenome} placeholder={usuario.sobrenome} onChange={e =>setSobrenome(e.target.value)} />               
+                        <label> Sobrenome: </label> <input type="text" value={sobrenome}  onChange={e =>setSobrenome(e.target.value)} />               
                     </div>
 
                     <div className='email-dados'>
-                        <label> Email: </label> <input type="text" value={email} placeholder={usuario.Email} onChange={e => setEmail(e.target.value)} />
+                        <label> Email: </label> <input type="text" value={email}  onChange={e => setEmail(e.target.value)} />
                     </div>      
 
                     <div className='senha-dados'>

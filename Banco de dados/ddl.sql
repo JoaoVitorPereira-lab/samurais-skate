@@ -90,7 +90,6 @@ create table tb_produto	(
     ID_TAMANHO			int,
 	NM_PRODUTO			varchar(200),
 	DS_DESCRICAO		varchar(600),
-	NR_TAMANHO			int,
     BT_IMPORTADO		boolean,
 	BT_PROMOCAO			boolean,
 	NR_PRECO			decimal(15, 2),

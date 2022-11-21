@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import nodemailer from 'nodemailer'
 import { CadastrarLogin, Login, CadastrarInformacoes, ConsultarTenis, ConsultarTenisNome, BuscarNomePorID, ConsultarSkate, ConsultarBone, ConsultarAcessorios, Promocoes, AlterarInfosConta, AlterarInfosLogin, ConsultarPedido, DetalhePedido, avaliarProduto, buscarAval1, deletarAvaliacao, buscarAval2, BuscarPorID, buscarProdutoImagens} from '../repository/usuarioRepository.js'
 
 const server = Router();
+
 
 /* BUSCAR POR ID */
 server.get('/usuario/produto/:id', async (req, resp) => {
